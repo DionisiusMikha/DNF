@@ -20,7 +20,7 @@ public class DNFMain {
         String title = "DNF";
         String iconImageName = "";
         JFrame loginFrame = new JFrame();
-        ImageIcon iconImg = new ImageIcon("smilink.png"); //tolong bikin logo trus diganti.
+        ImageIcon iconImg = new ImageIcon("smilink.png"); // tolong bikin logo trus diganti.
 
         loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         loginFrame.setSize(p, l);
@@ -28,7 +28,7 @@ public class DNFMain {
         loginFrame.setIconImage(iconImg.getImage());
         loginFrame.setVisible(true);
 
-        System.out.println("frans babi");
+        System.out.println("feli cinta ariel");
 
     }
 
