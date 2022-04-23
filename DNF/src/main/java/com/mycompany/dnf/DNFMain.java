@@ -27,7 +27,7 @@ public class DNFMain {
        loginFrame.setIconImage(iconImg.getImage());
        loginFrame.setVisible(true);
        
-        System.out.println("HAII");
+        System.out.println("Tes");
        
     }
     
