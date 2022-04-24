@@ -11,11 +11,14 @@ import java.util.*;
  */
 public class LoginFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LoginFrame
-     */
+    private ArrayList<User> listUser = new ArrayList<User>();
     public LoginFrame() {
         initComponents();
+    }
+    
+    public LoginFrame(ArrayList<User> list) {
+        initComponents();
+        this.listUser = list;
     }
 
     /**
@@ -33,6 +36,8 @@ public class LoginFrame extends javax.swing.JFrame {
         UsernameField = new javax.swing.JTextField();
         PasswordField = new javax.swing.JTextField();
         LoginButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        Register = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +67,16 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        jLabel4.setText("Don't have an account? Register here!");
+
+        Register.setText(" Register");
+        Register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -69,19 +84,24 @@ public class LoginFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                            .addComponent(UsernameField))))
-                .addContainerGap(99, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LoginButton)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                                    .addComponent(UsernameField)))
+                            .addComponent(jLabel4))
+                        .addGap(0, 128, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LoginButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Register, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -99,7 +119,11 @@ public class LoginFrame extends javax.swing.JFrame {
                     .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(LoginButton)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Register)
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         pack();
@@ -114,9 +138,34 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_UsernameFieldActionPerformed
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-
+        String loginuser, loginpass;
+        loginuser = UsernameField.getText();
+        loginpass = PasswordField.getText();
+        boolean match = false;
+        for(int i =0;i<listUser.size();i++){
+            System.out.println(listUser.get(i).getUsername()); //testing ArrayList
+            if(listUser.get(i).getPassword().equals(loginpass) && listUser.get(i).getUsername().equals(loginuser)){
+                System.out.println("Berhasil Login");
+            }
+        }
     }//GEN-LAST:event_LoginButtonActionPerformed
 
+    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
+        this.setVisible(false);
+        Register rg = new Register(listUser); //rg = register Jframe
+        rg.setVisible(true);
+        rg.pack();
+        rg.setLocationRelativeTo(null);
+        rg.setDefaultCloseOperation(LoginFrame.EXIT_ON_CLOSE);
+    }//GEN-LAST:event_RegisterActionPerformed
+
+    public ArrayList<User> SendUserList(){
+        return this.listUser;
+    }
+    
+    public void addUser(User newUser){
+        this.listUser.add(newUser);
+    }
     
     public static void main(String args[]) {
         
@@ -130,9 +179,11 @@ public class LoginFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LoginButton;
     private javax.swing.JTextField PasswordField;
+    private javax.swing.JButton Register;
     private javax.swing.JTextField UsernameField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

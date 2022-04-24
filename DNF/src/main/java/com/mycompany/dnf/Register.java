@@ -3,18 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.dnf;
-
+import java.util.*;
 /**
  *
  * @author Frans
  */
 public class Register extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Register
-     */
+    private ArrayList<User> listUser = new ArrayList<User>();
+    
     public Register() {
         initComponents();
+    }
+    
+    public Register(ArrayList<User> List){
+        initComponents();
+        this.listUser = List;
     }
 
     /**
@@ -26,21 +30,163 @@ public class Register extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        ConfirmButton = new javax.swing.JButton();
+        ReConfirmPass = new javax.swing.JTextField();
+        RegPass = new javax.swing.JTextField();
+        RegEmail = new javax.swing.JTextField();
+        RegUser = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
+        jLabel1.setText("REGISTER YOUR ACCOUNT");
+
+        jLabel2.setText("Username : ");
+
+        jLabel3.setText("E-mail : ");
+
+        jLabel4.setText("Password : ");
+
+        jLabel5.setText("Confirm your Password : ");
+
+        ConfirmButton.setText("Confirm");
+        ConfirmButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmButtonActionPerformed(evt);
+            }
+        });
+
+        ReConfirmPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReConfirmPassActionPerformed(evt);
+            }
+        });
+
+        RegPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegPassActionPerformed(evt);
+            }
+        });
+
+        RegEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegEmailActionPerformed(evt);
+            }
+        });
+
+        RegUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegUserActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(RegUser)
+                            .addComponent(RegEmail)
+                            .addComponent(ReConfirmPass)
+                            .addComponent(RegPass))))
+                .addContainerGap(105, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ConfirmButton)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(RegUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(RegEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(RegPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(ReConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addComponent(ConfirmButton)
+                .addContainerGap(123, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmButtonActionPerformed
+        String newUsername, newPassword, newEmail, ConfirmPass;
+        newUsername = RegUser.getText();
+        newPassword = RegPass.getText();
+        newEmail = RegEmail.getText();
+        ConfirmPass = ReConfirmPass.getText();
+        if (ConfirmPass.equals(newPassword)){
+            boolean seeDouble = false;
+            for(int i =0;i<listUser.size();i++){
+                if(newUsername.equals(listUser.get(i).getUsername())){
+                    seeDouble = true;
+                }
+            }
+            if(seeDouble){
+                
+            }
+            else{
+                listUser.add(new User(newUsername,newPassword));
+                LoginFrame LG = new LoginFrame(listUser);
+                this.setVisible(false);
+                LG.setVisible(true);
+                LG.pack();
+                LG.setLocationRelativeTo(null);
+                LG.setDefaultCloseOperation(LoginFrame.EXIT_ON_CLOSE);
+            }
+        }
+        
+        else{
+            
+        }
+    }//GEN-LAST:event_ConfirmButtonActionPerformed
+
+    private void ReConfirmPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReConfirmPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ReConfirmPassActionPerformed
+
+    private void RegPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RegPassActionPerformed
+
+    private void RegEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RegEmailActionPerformed
+
+    private void RegUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RegUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +224,15 @@ public class Register extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ConfirmButton;
+    private javax.swing.JTextField ReConfirmPass;
+    private javax.swing.JTextField RegEmail;
+    private javax.swing.JTextField RegPass;
+    private javax.swing.JTextField RegUser;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }
