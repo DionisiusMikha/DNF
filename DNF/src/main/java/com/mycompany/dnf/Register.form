@@ -38,8 +38,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="RegUser" alignment="0" max="32767" attributes="0"/>
                           <Component id="RegEmail" alignment="0" max="32767" attributes="0"/>
-                          <Component id="ReConfirmPass" max="32767" attributes="0"/>
                           <Component id="RegPass" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ReConfirmPass" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -73,13 +73,13 @@
                   <Component id="RegPass" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ReConfirmPass" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                  <Component id="ReConfirmPass" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="ConfirmButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="123" max="32767" attributes="0"/>
+              <EmptySpace pref="125" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -121,16 +121,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConfirmButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="ReConfirmPass">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ReConfirmPassActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="RegPass">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegPassActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JTextField" name="RegEmail">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegEmailActionPerformed"/>
@@ -140,6 +130,10 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegUserActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="RegPass">
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="ReConfirmPass">
     </Component>
   </SubComponents>
 </Form>

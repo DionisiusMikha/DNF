@@ -36,10 +36,10 @@ public class Register extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         ConfirmButton = new javax.swing.JButton();
-        ReConfirmPass = new javax.swing.JTextField();
-        RegPass = new javax.swing.JTextField();
         RegEmail = new javax.swing.JTextField();
         RegUser = new javax.swing.JTextField();
+        RegPass = new javax.swing.JPasswordField();
+        ReConfirmPass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,18 +58,6 @@ public class Register extends javax.swing.JFrame {
         ConfirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConfirmButtonActionPerformed(evt);
-            }
-        });
-
-        ReConfirmPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReConfirmPassActionPerformed(evt);
-            }
-        });
-
-        RegPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegPassActionPerformed(evt);
             }
         });
 
@@ -103,8 +91,8 @@ public class Register extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(RegUser)
                             .addComponent(RegEmail)
-                            .addComponent(ReConfirmPass)
-                            .addComponent(RegPass))))
+                            .addComponent(RegPass)
+                            .addComponent(ReConfirmPass))))
                 .addContainerGap(105, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -129,12 +117,12 @@ public class Register extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(RegPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(ReConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(18, 18, 18)
                 .addComponent(ConfirmButton)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         pack();
@@ -157,7 +145,7 @@ public class Register extends javax.swing.JFrame {
                 
             }
             else{
-                listUser.add(new User(newUsername,newPassword));
+                listUser.add(new User(newUsername,newPassword,newEmail));
                 LoginFrame LG = new LoginFrame(listUser);
                 this.setVisible(false);
                 LG.setVisible(true);
@@ -171,14 +159,6 @@ public class Register extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_ConfirmButtonActionPerformed
-
-    private void ReConfirmPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReConfirmPassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ReConfirmPassActionPerformed
-
-    private void RegPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegPassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RegPassActionPerformed
 
     private void RegEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegEmailActionPerformed
         // TODO add your handling code here:
@@ -225,9 +205,9 @@ public class Register extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ConfirmButton;
-    private javax.swing.JTextField ReConfirmPass;
+    private javax.swing.JPasswordField ReConfirmPass;
     private javax.swing.JTextField RegEmail;
-    private javax.swing.JTextField RegPass;
+    private javax.swing.JPasswordField RegPass;
     private javax.swing.JTextField RegUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

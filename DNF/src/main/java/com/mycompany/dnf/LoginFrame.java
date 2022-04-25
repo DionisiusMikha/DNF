@@ -34,10 +34,10 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         UsernameField = new javax.swing.JTextField();
-        PasswordField = new javax.swing.JTextField();
         LoginButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         Register = new javax.swing.JButton();
+        PasswordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,12 +51,6 @@ public class LoginFrame extends javax.swing.JFrame {
         UsernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UsernameFieldActionPerformed(evt);
-            }
-        });
-
-        PasswordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PasswordFieldActionPerformed(evt);
             }
         });
 
@@ -93,8 +87,8 @@ public class LoginFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                                    .addComponent(UsernameField)))
+                                    .addComponent(UsernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                                    .addComponent(PasswordField)))
                             .addComponent(jLabel4))
                         .addGap(0, 128, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -129,10 +123,6 @@ public class LoginFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PasswordFieldActionPerformed
-
     private void UsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UsernameFieldActionPerformed
@@ -142,10 +132,15 @@ public class LoginFrame extends javax.swing.JFrame {
         loginuser = UsernameField.getText();
         loginpass = PasswordField.getText();
         boolean match = false;
-        for(int i =0;i<listUser.size();i++){
-            System.out.println(listUser.get(i).getUsername()); //testing ArrayList
-            if(listUser.get(i).getPassword().equals(loginpass) && listUser.get(i).getUsername().equals(loginuser)){
-                System.out.println("Berhasil Login");
+        if(listUser.size()==0){
+            System.out.println("Gagal Login"); // no User has registered, do Return stuff here.
+        }
+        else{
+            for(int i =0;i<listUser.size();i++){
+                System.out.println(listUser.get(i).getUsername()); //testing to see how many User Objects in ArrayList of Users
+                if(listUser.get(i).getPassword().equals(loginpass) && listUser.get(i).getUsername().equals(loginuser)){
+                    System.out.println("Berhasil Login");
+                }
             }
         }
     }//GEN-LAST:event_LoginButtonActionPerformed
@@ -178,7 +173,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LoginButton;
-    private javax.swing.JTextField PasswordField;
+    private javax.swing.JPasswordField PasswordField;
     private javax.swing.JButton Register;
     private javax.swing.JTextField UsernameField;
     private javax.swing.JLabel jLabel1;
