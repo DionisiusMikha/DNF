@@ -4,6 +4,7 @@
  */
 package com.mycompany.dnf;
 import java.util.*;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -12,6 +13,7 @@ import java.util.*;
 public class LoginFrame extends javax.swing.JFrame {
 
     private ArrayList<User> listUser = new ArrayList<User>();
+    private ImageIcon imgIcon = new ImageIcon("C:\\Users\\Frans\\Documents\\GitHub\\DNF\\DNF\\src\\main\\java\\srcimg\\logo.png"); //Path to Image.
     public LoginFrame() {
         initComponents();
     }
@@ -40,6 +42,7 @@ public class LoginFrame extends javax.swing.JFrame {
         PasswordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(imgIcon.getImage());
 
         jLabel1.setFont(new java.awt.Font("Eras Medium ITC", 1, 24)); // NOI18N
         jLabel1.setText("DNF (JNE SEDERHANA)");
@@ -167,6 +170,7 @@ public class LoginFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoginFrame().setVisible(true);
+                
             }
         });
     }
