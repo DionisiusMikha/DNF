@@ -14,6 +14,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private ArrayList<User> listUser = new ArrayList<User>();
     private ImageIcon imgIcon = new ImageIcon("C:\\Users\\Frans\\Documents\\GitHub\\DNF\\DNF\\src\\main\\java\\srcimg\\logo.png"); //Path to Image.
+    
     public LoginFrame() {
         initComponents();
     }
