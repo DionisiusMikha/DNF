@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.dnf;
+
 import java.util.*;
 import javax.swing.ImageIcon;
 
@@ -14,11 +15,11 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private ArrayList<User> listUser = new ArrayList<User>();
     private ImageIcon imgIcon = new ImageIcon("C:\\Users\\Frans\\Documents\\GitHub\\DNF\\DNF\\src\\main\\java\\srcimg\\logo.png"); //Path to Image.
-    
+
     public LoginFrame() {
         initComponents();
     }
-    
+
     public LoginFrame(ArrayList<User> list) {
         initComponents();
         this.listUser = list;
@@ -136,13 +137,12 @@ public class LoginFrame extends javax.swing.JFrame {
         loginuser = UsernameField.getText();
         loginpass = PasswordField.getText();
         boolean match = false;
-        if(listUser.size()==0){
+        if (listUser.size() == 0) {
             System.out.println("Gagal Login"); // no User has registered, do Return stuff here.
-        }
-        else{
-            for(int i =0;i<listUser.size();i++){
+        } else {
+            for (int i = 0; i < listUser.size(); i++) {
                 System.out.println(listUser.get(i).getUsername()); //testing to see how many User Objects in ArrayList of Users
-                if(listUser.get(i).getPassword().equals(loginpass) && listUser.get(i).getUsername().equals(loginuser)){
+                if (listUser.get(i).getPassword().equals(loginpass) && listUser.get(i).getUsername().equals(loginuser)) {
                     System.out.println("Berhasil Login");
                 }
             }
@@ -158,20 +158,20 @@ public class LoginFrame extends javax.swing.JFrame {
         rg.setDefaultCloseOperation(LoginFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_RegisterActionPerformed
 
-    public ArrayList<User> SendUserList(){
+    public ArrayList<User> SendUserList() {
         return this.listUser;
     }
-    
-    public void addUser(User newUser){
+
+    public void addUser(User newUser) {
         this.listUser.add(newUser);
     }
-    
+
     public static void main(String args[]) {
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoginFrame().setVisible(true);
-                
+
             }
         });
     }

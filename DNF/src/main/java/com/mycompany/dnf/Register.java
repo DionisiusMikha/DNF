@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.dnf;
+
 import java.util.*;
+
 /**
  *
  * @author Frans
@@ -11,14 +13,16 @@ import java.util.*;
 public class Register extends javax.swing.JFrame {
 
     private ArrayList<User> listUser = new ArrayList<User>();
-    
+
     public Register() {
         initComponents();
+        DoubleAlert.setVisible(false);
     }
-    
-    public Register(ArrayList<User> List){
+
+    public Register(ArrayList<User> List) {
         initComponents();
         this.listUser = List;
+        DoubleAlert.setVisible(false);
     }
 
     /**
@@ -40,6 +44,7 @@ public class Register extends javax.swing.JFrame {
         RegUser = new javax.swing.JTextField();
         RegPass = new javax.swing.JPasswordField();
         ReConfirmPass = new javax.swing.JPasswordField();
+        DoubleAlert = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,31 +78,39 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
+        DoubleAlert.setText("User sudah terdaftar !");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ConfirmButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(RegUser)
-                            .addComponent(RegEmail)
-                            .addComponent(RegPass)
-                            .addComponent(ReConfirmPass))))
-                .addContainerGap(105, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ConfirmButton)
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(RegUser)
+                                    .addComponent(RegEmail)
+                                    .addComponent(RegPass)
+                                    .addComponent(ReConfirmPass))))
+                        .addGap(0, 94, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(DoubleAlert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(105, 105, 105))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +135,9 @@ public class Register extends javax.swing.JFrame {
                     .addComponent(ReConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(ConfirmButton)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(DoubleAlert)
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         pack();
@@ -134,18 +149,18 @@ public class Register extends javax.swing.JFrame {
         newPassword = RegPass.getText();
         newEmail = RegEmail.getText();
         ConfirmPass = ReConfirmPass.getText();
-        if (ConfirmPass.equals(newPassword)){
+        if (ConfirmPass.equals(newPassword)) {
             boolean seeDouble = false;
-            for(int i =0;i<listUser.size();i++){
-                if(newUsername.equals(listUser.get(i).getUsername())){
+            for (int i = 0; i < listUser.size(); i++) {
+                if (newUsername.equals(listUser.get(i).getUsername())) {
                     seeDouble = true;
                 }
             }
-            if(seeDouble){
-                
-            }
-            else{
-                listUser.add(new User(newUsername,newPassword,newEmail));
+            if (seeDouble) {
+                System.out.println("kembar bro");
+                DoubleAlert.setVisible(true);
+            } else {
+                listUser.add(new User(newUsername, newPassword, newEmail));
                 LoginFrame LG = new LoginFrame(listUser);
                 this.setVisible(false);
                 LG.setVisible(true);
@@ -153,10 +168,8 @@ public class Register extends javax.swing.JFrame {
                 LG.setLocationRelativeTo(null);
                 LG.setDefaultCloseOperation(LoginFrame.EXIT_ON_CLOSE);
             }
-        }
-        
-        else{
-            
+        } else {
+
         }
     }//GEN-LAST:event_ConfirmButtonActionPerformed
 
@@ -205,6 +218,7 @@ public class Register extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ConfirmButton;
+    private javax.swing.JLabel DoubleAlert;
     private javax.swing.JPasswordField ReConfirmPass;
     private javax.swing.JTextField RegEmail;
     private javax.swing.JPasswordField RegPass;
