@@ -4,26 +4,17 @@
  */
 package dnfapp;
 
-import java.util.HashMap;
-
 /**
  *
  * @author Frans
  */
-public class CreateAccountPage extends javax.swing.JFrame {
+public class UserMainMenu extends javax.swing.JFrame {
 
-    private HashMap<String, User> userlist = new HashMap<String, User>();
-    
     /**
-     * Creates new form CreateAccountPage
+     * Creates new form UserMainMenu
      */
-    public CreateAccountPage() {
+    public UserMainMenu() {
         initComponents();
-    }
-    
-    public CreateAccountPage(HashMap<String, User> userlist){
-        initComponents();
-        this.userlist=userlist;
     }
 
     /**
@@ -68,20 +59,20 @@ public class CreateAccountPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CreateAccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserMainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CreateAccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserMainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CreateAccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserMainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CreateAccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserMainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreateAccountPage().setVisible(true);
+                new UserMainMenu().setVisible(true);
             }
         });
     }

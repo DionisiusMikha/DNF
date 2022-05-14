@@ -5,14 +5,14 @@
 package dnfapp;
 
 import java.util.HashMap;
-
+import javax.swing.JFrame;
 /**
  *
  * @author Frans
  */
 public class LoginMenu extends javax.swing.JFrame {
 
-    private HashMap<String , String> userlist = new HashMap<String, String>();
+    private HashMap<String , User> userlist = new HashMap<String, User>();
     
     /**
      * Creates new form LoginMenu
@@ -34,8 +34,8 @@ public class LoginMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField1 = new javax.swing.JTextField();
+        UserPassField = new javax.swing.JPasswordField();
+        UsernameField = new javax.swing.JTextField();
         CreateAccButton = new javax.swing.JButton();
         SignInButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -43,26 +43,26 @@ public class LoginMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.setForeground(new java.awt.Color(0, 0, 0));
-        jPasswordField1.setBorder(null);
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        UserPassField.setBackground(new java.awt.Color(255, 255, 255));
+        UserPassField.setForeground(new java.awt.Color(0, 0, 0));
+        UserPassField.setBorder(null);
+        UserPassField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                UserPassFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 530, 420, 30));
+        getContentPane().add(UserPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 530, 420, 30));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setText("Username");
-        jTextField1.setBorder(null);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        UsernameField.setBackground(new java.awt.Color(255, 255, 255));
+        UsernameField.setForeground(new java.awt.Color(0, 0, 0));
+        UsernameField.setText("Username");
+        UsernameField.setBorder(null);
+        UsernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                UsernameFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 440, 440, 30));
+        getContentPane().add(UsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 440, 440, 30));
 
         CreateAccButton.setBackground(new java.awt.Color(30, 105, 255));
         CreateAccButton.setForeground(new java.awt.Color(30, 120, 152));
@@ -78,6 +78,11 @@ public class LoginMenu extends javax.swing.JFrame {
         SignInButton.setBackground(new java.awt.Color(30, 105, 255));
         SignInButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Signin_icon.png"))); // NOI18N
         SignInButton.setBorder(null);
+        SignInButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignInButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(SignInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1390, 700, 230, 90));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Login.png"))); // NOI18N
@@ -88,16 +93,54 @@ public class LoginMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CreateAccButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateAccButtonActionPerformed
-        // TODO add your handling code here:
+        int userAmount = userlist.size();
+        if(userAmount==0){
+            CreateAccountPage CAP = new CreateAccountPage();
+            dispose();          //dispose of current JFrame. This is used to make performance better.
+            CAP.setVisible(true);
+            CAP.pack();
+            CAP.setLocationRelativeTo(null);
+            CAP.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+        }
+        else{
+            CreateAccountPage CAP = new CreateAccountPage(userlist);
+            dispose();          //dispose of current JFrame. This is used to make performance better.
+            CAP.setVisible(true);
+            CAP.pack();
+            CAP.setLocationRelativeTo(null);
+            CAP.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+        }
     }//GEN-LAST:event_CreateAccButtonActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void UsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_UsernameFieldActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void UserPassFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserPassFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_UserPassFieldActionPerformed
+
+    private void SignInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonActionPerformed
+        boolean Verify = true;
+        String logUsername = UsernameField.getText();
+        String logPass = String.valueOf(UserPassField.getPassword());
+        if(userlist.containsKey(logUsername)){
+            User designated = userlist.get(logUsername);
+            String passCheck = designated.getPassword();
+            if(!passCheck.equals(logPass)){
+                Verify=false;
+            }
+        }
+        else{
+            Verify = false;
+        }
+        if(!Verify){
+            
+        }
+        else{
+            
+        }
+    }//GEN-LAST:event_SignInButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,8 +180,8 @@ public class LoginMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CreateAccButton;
     private javax.swing.JButton SignInButton;
+    private javax.swing.JPasswordField UserPassField;
+    private javax.swing.JTextField UsernameField;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
