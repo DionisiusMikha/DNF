@@ -4,16 +4,24 @@
  */
 package dnfapp;
 
+import java.util.HashMap;
+
 /**
  *
  * @author Frans
  */
 public class LoginMenu extends javax.swing.JFrame {
 
+    private HashMap<String , String> userlist = new HashMap<String, String>();
+    
     /**
      * Creates new form LoginMenu
      */
     public LoginMenu() {
+        initComponents();
+    }
+    
+    public LoginMenu(HashMap<String, String> userlist){
         initComponents();
     }
 
