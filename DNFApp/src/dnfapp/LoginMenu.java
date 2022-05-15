@@ -39,7 +39,7 @@ public class LoginMenu extends javax.swing.JFrame {
         CreateAccButton = new javax.swing.JButton();
         SignInButton = new javax.swing.JButton();
         usernamefield = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        PasswordField = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,9 +86,17 @@ public class LoginMenu extends javax.swing.JFrame {
         });
         getContentPane().add(usernamefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 430, 430, 40));
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.setBorder(null);
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 519, 440, 40));
+        PasswordField.setBackground(new java.awt.Color(255, 255, 255));
+        PasswordField.setBorder(null);
+        PasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                PasswordFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                PasswordFieldFocusLost(evt);
+            }
+        });
+        getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 519, 440, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Login.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -141,7 +149,6 @@ public class LoginMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_usernamefieldActionPerformed
 
     private void usernamefieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernamefieldFocusGained
-        // TODO add your handling code here:
         if (usernamefield.getText().equals("Enter Username")) {
             usernamefield.setText("");
             usernamefield.setForeground(new Color(153, 153, 153));
@@ -149,12 +156,34 @@ public class LoginMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_usernamefieldFocusGained
 
     private void usernamefieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernamefieldFocusLost
-        // TODO add your handling code here:
         if (usernamefield.getText().equals("")) {
             usernamefield.setText("Enter Username");
             usernamefield.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_usernamefieldFocusLost
+
+    private void PasswordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFieldFocusGained
+        PasswordField.setEchoChar('*');
+        String password = String.valueOf(PasswordField.getPassword());
+
+        if(password.toLowerCase().equals("password"))
+        {
+            PasswordField.setText("");
+            PasswordField.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_PasswordFieldFocusGained
+
+    private void PasswordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFieldFocusLost
+        String password = String.valueOf(PasswordField.getPassword());
+
+        if(password.toLowerCase().equals("password") || password.toLowerCase().equals("") )
+        {
+            PasswordField.setText("Password");
+            PasswordField.setEchoChar((char)0);
+            PasswordField.setForeground(new Color(153, 153, 153));
+        }
+        
+    }//GEN-LAST:event_PasswordFieldFocusLost
 
     /**
      * @param args the command line arguments
@@ -193,9 +222,9 @@ public class LoginMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CreateAccButton;
+    private javax.swing.JPasswordField PasswordField;
     private javax.swing.JButton SignInButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField usernamefield;
     // End of variables declaration//GEN-END:variables
 }
