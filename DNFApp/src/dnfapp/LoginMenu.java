@@ -4,24 +4,26 @@
  */
 package dnfapp;
 
+import java.awt.Color;
 import java.util.HashMap;
 import javax.swing.JFrame;
+
 /**
  *
  * @author Frans
  */
 public class LoginMenu extends javax.swing.JFrame {
 
-    private HashMap<String , User> userlist = new HashMap<String, User>();
-    
+    private HashMap<String, User> userlist = new HashMap<String, User>();
+
     /**
      * Creates new form LoginMenu
      */
     public LoginMenu() {
         initComponents();
     }
-    
-    public LoginMenu(HashMap<String, String> userlist){
+
+    public LoginMenu(HashMap<String, String> userlist) {
         initComponents();
     }
 
@@ -34,46 +36,14 @@ public class LoginMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        UserPassField = new javax.swing.JPasswordField();
-        UsernameField = new javax.swing.JTextField();
         CreateAccButton = new javax.swing.JButton();
         SignInButton = new javax.swing.JButton();
+        usernamefield = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        UserPassField.setBackground(new java.awt.Color(255, 255, 255));
-        UserPassField.setForeground(new java.awt.Color(0, 0, 0));
-        UserPassField.setBorder(null);
-        UserPassField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                UserPassFieldFocusGained(evt);
-            }
-        });
-        UserPassField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UserPassFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(UserPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 520, 420, 40));
-
-        UsernameField.setBackground(new java.awt.Color(255, 255, 255));
-        UsernameField.setFont(new java.awt.Font("Cambria", 1, 24)); // NOI18N
-        UsernameField.setForeground(new java.awt.Color(0, 0, 0));
-        UsernameField.setText("USERNAME");
-        UsernameField.setBorder(null);
-        UsernameField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                UsernameFieldFocusGained(evt);
-            }
-        });
-        UsernameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsernameFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(UsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 430, 440, 40));
 
         CreateAccButton.setBackground(new java.awt.Color(30, 105, 255));
         CreateAccButton.setForeground(new java.awt.Color(30, 120, 152));
@@ -96,6 +66,30 @@ public class LoginMenu extends javax.swing.JFrame {
         });
         getContentPane().add(SignInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1390, 700, 230, 90));
 
+        usernamefield.setBackground(new java.awt.Color(255, 255, 255));
+        usernamefield.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        usernamefield.setForeground(new java.awt.Color(102, 102, 102));
+        usernamefield.setText("Enter Username");
+        usernamefield.setBorder(null);
+        usernamefield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                usernamefieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                usernamefieldFocusLost(evt);
+            }
+        });
+        usernamefield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernamefieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(usernamefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 430, 430, 40));
+
+        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
+        jPasswordField1.setBorder(null);
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 519, 440, 40));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Login.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 1100));
@@ -105,15 +99,14 @@ public class LoginMenu extends javax.swing.JFrame {
 
     private void CreateAccButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateAccButtonActionPerformed
         int userAmount = userlist.size();
-        if(userAmount==0){
+        if (userAmount == 0) {
             CreateAccountPage CAP = new CreateAccountPage();
             dispose();          //dispose of current JFrame. This is used to make performance better.
             CAP.setVisible(true);
             CAP.pack();
             CAP.setLocationRelativeTo(null);
             CAP.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
-        }
-        else{
+        } else {
             CreateAccountPage CAP = new CreateAccountPage(userlist);
             dispose();          //dispose of current JFrame. This is used to make performance better.
             CAP.setVisible(true);
@@ -123,43 +116,45 @@ public class LoginMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_CreateAccButtonActionPerformed
 
-    private void UsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UsernameFieldActionPerformed
-
-    private void UserPassFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserPassFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UserPassFieldActionPerformed
-
     private void SignInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonActionPerformed
         boolean Verify = true;
-        String logUsername = UsernameField.getText();
-        String logPass = String.valueOf(UserPassField.getPassword());
-        if(userlist.containsKey(logUsername)){
+        String logUsername = usernamefield.getText();
+//        String logPass = String.valueOf(UserPassField.getPassword());
+        if (userlist.containsKey(logUsername)) {
             User designated = userlist.get(logUsername);
             String passCheck = designated.getPassword();
-            if(!passCheck.equals(logPass)){
-                Verify=false;
-            }
-        }
-        else{
+//            if (!passCheck.equals(logPass)) {
+//                Verify = false;
+//            }
+        } else {
             Verify = false;
         }
-        if(!Verify){
-            
-        }
-        else{
-            
+        if (!Verify) {
+
+        } else {
+
         }
     }//GEN-LAST:event_SignInButtonActionPerformed
 
-    private void UsernameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UsernameFieldFocusGained
-        //when user clicks on usernamefield
-    }//GEN-LAST:event_UsernameFieldFocusGained
+    private void usernamefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernamefieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernamefieldActionPerformed
 
-    private void UserPassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UserPassFieldFocusGained
-        //when user clicks on PassField 
-    }//GEN-LAST:event_UserPassFieldFocusGained
+    private void usernamefieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernamefieldFocusGained
+        // TODO add your handling code here:
+        if (usernamefield.getText().equals("Enter Username")) {
+            usernamefield.setText("");
+            usernamefield.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_usernamefieldFocusGained
+
+    private void usernamefieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernamefieldFocusLost
+        // TODO add your handling code here:
+        if (usernamefield.getText().equals("")) {
+            usernamefield.setText("Enter Username");
+            usernamefield.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_usernamefieldFocusLost
 
     /**
      * @param args the command line arguments
@@ -199,8 +194,8 @@ public class LoginMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CreateAccButton;
     private javax.swing.JButton SignInButton;
-    private javax.swing.JPasswordField UserPassField;
-    private javax.swing.JTextField UsernameField;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JTextField usernamefield;
     // End of variables declaration//GEN-END:variables
 }
