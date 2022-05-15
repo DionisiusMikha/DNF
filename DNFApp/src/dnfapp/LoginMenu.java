@@ -46,23 +46,34 @@ public class LoginMenu extends javax.swing.JFrame {
         UserPassField.setBackground(new java.awt.Color(255, 255, 255));
         UserPassField.setForeground(new java.awt.Color(0, 0, 0));
         UserPassField.setBorder(null);
+        UserPassField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                UserPassFieldFocusGained(evt);
+            }
+        });
         UserPassField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UserPassFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(UserPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 530, 420, 30));
+        getContentPane().add(UserPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 520, 420, 40));
 
         UsernameField.setBackground(new java.awt.Color(255, 255, 255));
+        UsernameField.setFont(new java.awt.Font("Cambria", 1, 24)); // NOI18N
         UsernameField.setForeground(new java.awt.Color(0, 0, 0));
-        UsernameField.setText("Username");
+        UsernameField.setText("USERNAME");
         UsernameField.setBorder(null);
+        UsernameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                UsernameFieldFocusGained(evt);
+            }
+        });
         UsernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UsernameFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(UsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 440, 440, 30));
+        getContentPane().add(UsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 430, 440, 40));
 
         CreateAccButton.setBackground(new java.awt.Color(30, 105, 255));
         CreateAccButton.setForeground(new java.awt.Color(30, 120, 152));
@@ -87,7 +98,7 @@ public class LoginMenu extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Login.png"))); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 1090));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 1100));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -141,6 +152,14 @@ public class LoginMenu extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_SignInButtonActionPerformed
+
+    private void UsernameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UsernameFieldFocusGained
+        //when user clicks on usernamefield
+    }//GEN-LAST:event_UsernameFieldFocusGained
+
+    private void UserPassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UserPassFieldFocusGained
+        //when user clicks on PassField 
+    }//GEN-LAST:event_UserPassFieldFocusGained
 
     /**
      * @param args the command line arguments
