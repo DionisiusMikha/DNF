@@ -11,12 +11,22 @@ import java.util.HashMap;
  * @author Frans
  */
 public class User {
-    String username;
-    String password;
+    private String username;
+    private String password;
+    private String Email;
 
-    public User(String username, String password) {
+    public User(String username, String password, String Email) {
         this.username = username;
         this.password = password;
+        this.Email = Email;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
 
     public String getUsername() {

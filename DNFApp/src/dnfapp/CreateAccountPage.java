@@ -4,6 +4,7 @@
  */
 package dnfapp;
 
+import java.awt.Color;
 import java.util.HashMap;
 
 /**
@@ -35,21 +36,192 @@ public class CreateAccountPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        RegUsernameField = new javax.swing.JTextField();
+        RegEmailField = new javax.swing.JTextField();
+        RegPassField = new javax.swing.JPasswordField();
+        ConfirmPassField = new javax.swing.JPasswordField();
+        CancelButton = new javax.swing.JButton();
+        SubmitButton = new javax.swing.JButton();
+        Background_Frame = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1080, 1920));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        RegUsernameField.setBackground(new java.awt.Color(255, 255, 255));
+        RegUsernameField.setForeground(new java.awt.Color(153, 153, 153));
+        RegUsernameField.setText("Username");
+        RegUsernameField.setBorder(null);
+        RegUsernameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                RegUsernameFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                RegUsernameFieldFocusLost(evt);
+            }
+        });
+        RegUsernameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegUsernameFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(RegUsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 400, 470, 40));
+
+        RegEmailField.setBackground(new java.awt.Color(255, 255, 255));
+        RegEmailField.setForeground(new java.awt.Color(153, 153, 153));
+        RegEmailField.setText("E-Mail");
+        RegEmailField.setBorder(null);
+        RegEmailField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                RegEmailFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                RegEmailFieldFocusLost(evt);
+            }
+        });
+        getContentPane().add(RegEmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 460, 470, 40));
+
+        RegPassField.setBackground(new java.awt.Color(255, 255, 255));
+        RegPassField.setForeground(new java.awt.Color(0, 0, 0));
+        RegPassField.setBorder(null);
+        RegPassField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                RegPassFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                RegPassFieldFocusLost(evt);
+            }
+        });
+        RegPassField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegPassFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(RegPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 520, 460, 40));
+
+        ConfirmPassField.setBackground(new java.awt.Color(255, 255, 255));
+        ConfirmPassField.setForeground(new java.awt.Color(0, 0, 0));
+        ConfirmPassField.setBorder(null);
+        ConfirmPassField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                ConfirmPassFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                ConfirmPassFieldFocusLost(evt);
+            }
+        });
+        ConfirmPassField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmPassFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ConfirmPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 590, 450, 30));
+
+        CancelButton.setBackground(new java.awt.Color(128, 180, 172));
+        CancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_3.png"))); // NOI18N
+        CancelButton.setBorder(null);
+        getContentPane().add(CancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 720, 230, 70));
+
+        SubmitButton.setBackground(new java.awt.Color(128, 180, 172));
+        SubmitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_0.png"))); // NOI18N
+        SubmitButton.setBorder(null);
+        SubmitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(SubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 720, 230, 70));
+
+        Background_Frame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Create_Acc.png"))); // NOI18N
+        getContentPane().add(Background_Frame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -50, -1, 1170));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void RegPassFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegPassFieldActionPerformed
+        
+    }//GEN-LAST:event_RegPassFieldActionPerformed
+
+    private void ConfirmPassFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmPassFieldActionPerformed
+        
+    }//GEN-LAST:event_ConfirmPassFieldActionPerformed
+
+    private void RegUsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegUsernameFieldActionPerformed
+        
+    }//GEN-LAST:event_RegUsernameFieldActionPerformed
+
+    private void RegUsernameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegUsernameFieldFocusGained
+        if (RegUsernameField.getText().equals("Username")) {
+            RegUsernameField.setText("");
+            RegUsernameField.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_RegUsernameFieldFocusGained
+
+    private void RegUsernameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegUsernameFieldFocusLost
+        if (RegUsernameField.getText().equals("")) {
+            RegUsernameField.setText("Username");
+            RegUsernameField.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_RegUsernameFieldFocusLost
+
+    private void RegEmailFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegEmailFieldFocusGained
+        if (RegEmailField.getText().equals("E-Mail")) {
+            RegEmailField.setText("");
+            RegEmailField.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_RegEmailFieldFocusGained
+
+    private void RegEmailFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegEmailFieldFocusLost
+        if (RegEmailField.getText().equals("")) {
+            RegEmailField.setText("E-Mail");
+            RegEmailField.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_RegEmailFieldFocusLost
+
+    private void RegPassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegPassFieldFocusGained
+        
+    }//GEN-LAST:event_RegPassFieldFocusGained
+
+    private void RegPassFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegPassFieldFocusLost
+        
+    }//GEN-LAST:event_RegPassFieldFocusLost
+
+    private void ConfirmPassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ConfirmPassFieldFocusGained
+        
+    }//GEN-LAST:event_ConfirmPassFieldFocusGained
+
+    private void ConfirmPassFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ConfirmPassFieldFocusLost
+        
+    }//GEN-LAST:event_ConfirmPassFieldFocusLost
+
+    private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
+        String newUsername = RegUsernameField.getText();
+        String newEmail = RegEmailField.getText();
+        String newPass = String.valueOf(RegPassField.getPassword());
+        String ConfirmPass = String.valueOf(ConfirmPassField.getPassword());
+        if(ConfirmPass.equals(newPass)){
+            boolean exist = false;
+            if(userlist.containsKey(newUsername)){
+                exist=true;
+            }
+            if(!exist){
+                User newUser = new User(newUsername,newPass,newEmail);
+                userlist.put(newUsername, newUser);
+                LoginMenu LM = new LoginMenu(userlist);
+                dispose();
+                LM.setVisible(true);
+                LM.pack();
+                LM.setLocationRelativeTo(null);
+                LM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
+            }
+            else{
+                
+            }
+        }
+        else{
+            
+        }
+    }//GEN-LAST:event_SubmitButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -87,5 +259,12 @@ public class CreateAccountPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background_Frame;
+    private javax.swing.JButton CancelButton;
+    private javax.swing.JPasswordField ConfirmPassField;
+    private javax.swing.JTextField RegEmailField;
+    private javax.swing.JPasswordField RegPassField;
+    private javax.swing.JTextField RegUsernameField;
+    private javax.swing.JButton SubmitButton;
     // End of variables declaration//GEN-END:variables
 }

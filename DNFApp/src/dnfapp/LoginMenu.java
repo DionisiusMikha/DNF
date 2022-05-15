@@ -23,7 +23,7 @@ public class LoginMenu extends javax.swing.JFrame {
         initComponents();
     }
 
-    public LoginMenu(HashMap<String, String> userlist) {
+    public LoginMenu(HashMap<String, User> userlist) {
         initComponents();
     }
 
@@ -47,7 +47,7 @@ public class LoginMenu extends javax.swing.JFrame {
 
         CreateAccButton.setBackground(new java.awt.Color(30, 105, 255));
         CreateAccButton.setForeground(new java.awt.Color(30, 120, 152));
-        CreateAccButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Create_Acc_Icon.png"))); // NOI18N
+        CreateAccButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_1.png"))); // NOI18N
         CreateAccButton.setBorder(null);
         CreateAccButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,7 +57,7 @@ public class LoginMenu extends javax.swing.JFrame {
         getContentPane().add(CreateAccButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 710, 240, 70));
 
         SignInButton.setBackground(new java.awt.Color(30, 105, 255));
-        SignInButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Signin_icon.png"))); // NOI18N
+        SignInButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_2.png"))); // NOI18N
         SignInButton.setBorder(null);
         SignInButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +98,7 @@ public class LoginMenu extends javax.swing.JFrame {
         });
         getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 519, 440, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Login.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Login_Menu.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 1100));
 
