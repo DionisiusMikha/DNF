@@ -127,13 +127,13 @@ public class LoginMenu extends javax.swing.JFrame {
     private void SignInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonActionPerformed
         boolean Verify = true;
         String logUsername = usernamefield.getText();
-//        String logPass = String.valueOf(UserPassField.getPassword());
+        String logPass = String.valueOf(PasswordField.getPassword());
         if (userlist.containsKey(logUsername)) {
             User designated = userlist.get(logUsername);
             String passCheck = designated.getPassword();
-//            if (!passCheck.equals(logPass)) {
-//                Verify = false;
-//            }
+            if (!passCheck.equals(logPass)) {
+                Verify = false;
+            }
         } else {
             Verify = false;
         }
