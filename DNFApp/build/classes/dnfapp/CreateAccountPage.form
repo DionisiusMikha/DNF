@@ -124,7 +124,7 @@
     <Component class="javax.swing.JButton" name="CancelButton">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ac" green="b4" red="80" type="rgb"/>
+          <Color blue="ab" green="b2" red="78" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/images/Button_3.png"/>
@@ -142,7 +142,7 @@
     <Component class="javax.swing.JButton" name="SubmitButton">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ac" green="b4" red="80" type="rgb"/>
+          <Color blue="ab" green="b2" red="78" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/images/Button_0.png"/>

@@ -117,12 +117,12 @@ public class CreateAccountPage extends javax.swing.JFrame {
         });
         getContentPane().add(ConfirmPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 590, 450, 30));
 
-        CancelButton.setBackground(new java.awt.Color(128, 180, 172));
+        CancelButton.setBackground(new java.awt.Color(120, 178, 171));
         CancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_3.png"))); // NOI18N
         CancelButton.setBorder(null);
         getContentPane().add(CancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 720, 230, 70));
 
-        SubmitButton.setBackground(new java.awt.Color(128, 180, 172));
+        SubmitButton.setBackground(new java.awt.Color(120, 178, 171));
         SubmitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_0.png"))); // NOI18N
         SubmitButton.setBorder(null);
         SubmitButton.addActionListener(new java.awt.event.ActionListener() {
