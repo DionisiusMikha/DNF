@@ -66,7 +66,6 @@ public class LoginMenu extends javax.swing.JFrame {
         });
         getContentPane().add(SignInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1390, 700, 230, 90));
 
-        usernamefield.setBackground(new java.awt.Color(255, 255, 255));
         usernamefield.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         usernamefield.setForeground(new java.awt.Color(102, 102, 102));
         usernamefield.setText("Enter Username");
@@ -86,7 +85,6 @@ public class LoginMenu extends javax.swing.JFrame {
         });
         getContentPane().add(usernamefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 430, 430, 40));
 
-        PasswordField.setBackground(new java.awt.Color(255, 255, 255));
         PasswordField.setBorder(null);
         PasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {

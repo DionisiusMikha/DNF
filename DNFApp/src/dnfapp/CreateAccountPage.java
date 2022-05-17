@@ -6,6 +6,7 @@ package dnfapp;
 
 import java.awt.Color;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -45,10 +46,8 @@ public class CreateAccountPage extends javax.swing.JFrame {
         Background_Frame = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        RegUsernameField.setBackground(new java.awt.Color(255, 255, 255));
         RegUsernameField.setForeground(new java.awt.Color(153, 153, 153));
         RegUsernameField.setText("Username");
         RegUsernameField.setBorder(null);
@@ -67,7 +66,6 @@ public class CreateAccountPage extends javax.swing.JFrame {
         });
         getContentPane().add(RegUsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 400, 470, 40));
 
-        RegEmailField.setBackground(new java.awt.Color(255, 255, 255));
         RegEmailField.setForeground(new java.awt.Color(153, 153, 153));
         RegEmailField.setText("E-Mail");
         RegEmailField.setBorder(null);
@@ -81,8 +79,6 @@ public class CreateAccountPage extends javax.swing.JFrame {
         });
         getContentPane().add(RegEmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 460, 470, 40));
 
-        RegPassField.setBackground(new java.awt.Color(255, 255, 255));
-        RegPassField.setForeground(new java.awt.Color(0, 0, 0));
         RegPassField.setBorder(null);
         RegPassField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -99,8 +95,6 @@ public class CreateAccountPage extends javax.swing.JFrame {
         });
         getContentPane().add(RegPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 520, 460, 40));
 
-        ConfirmPassField.setBackground(new java.awt.Color(255, 255, 255));
-        ConfirmPassField.setForeground(new java.awt.Color(0, 0, 0));
         ConfirmPassField.setBorder(null);
         ConfirmPassField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -179,19 +173,19 @@ public class CreateAccountPage extends javax.swing.JFrame {
     }//GEN-LAST:event_RegEmailFieldFocusLost
 
     private void RegPassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegPassFieldFocusGained
-        
+ 
     }//GEN-LAST:event_RegPassFieldFocusGained
 
     private void RegPassFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegPassFieldFocusLost
-        
+ 
     }//GEN-LAST:event_RegPassFieldFocusLost
 
     private void ConfirmPassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ConfirmPassFieldFocusGained
-        
+
     }//GEN-LAST:event_ConfirmPassFieldFocusGained
 
     private void ConfirmPassFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ConfirmPassFieldFocusLost
-        
+
     }//GEN-LAST:event_ConfirmPassFieldFocusLost
 
     private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
@@ -213,13 +207,14 @@ public class CreateAccountPage extends javax.swing.JFrame {
                 LM.pack();
                 LM.setLocationRelativeTo(null);
                 LM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
+                JOptionPane.showMessageDialog(null, "Berhasil daftar!");
             }
             else{
-                
+                JOptionPane.showMessageDialog(null, "Username telah dipakai!");
             }
         }
         else{
-            
+            JOptionPane.showMessageDialog(null, "Password dan Confirm Password harus sama!");
         }
     }//GEN-LAST:event_SubmitButtonActionPerformed
 
