@@ -45,7 +45,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         Background_Frame = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1080, 1920));
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         RegUsernameField.setBackground(new java.awt.Color(255, 255, 255));
