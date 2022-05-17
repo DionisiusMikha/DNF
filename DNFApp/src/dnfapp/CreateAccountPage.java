@@ -15,17 +15,17 @@ import javax.swing.JOptionPane;
 public class CreateAccountPage extends javax.swing.JFrame {
 
     private HashMap<String, User> userlist = new HashMap<String, User>();
-    
+
     /**
      * Creates new form CreateAccountPage
      */
     public CreateAccountPage() {
         initComponents();
     }
-    
-    public CreateAccountPage(HashMap<String, User> userlist){
+
+    public CreateAccountPage(HashMap<String, User> userlist) {
         initComponents();
-        this.userlist=userlist;
+        this.userlist = userlist;
     }
 
     /**
@@ -133,15 +133,15 @@ public class CreateAccountPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegPassFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegPassFieldActionPerformed
-        
+
     }//GEN-LAST:event_RegPassFieldActionPerformed
 
     private void ConfirmPassFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmPassFieldActionPerformed
-        
+
     }//GEN-LAST:event_ConfirmPassFieldActionPerformed
 
     private void RegUsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegUsernameFieldActionPerformed
-        
+
     }//GEN-LAST:event_RegUsernameFieldActionPerformed
 
     private void RegUsernameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegUsernameFieldFocusGained
@@ -173,19 +173,44 @@ public class CreateAccountPage extends javax.swing.JFrame {
     }//GEN-LAST:event_RegEmailFieldFocusLost
 
     private void RegPassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegPassFieldFocusGained
- 
+        RegPassField.setEchoChar('*');
+        String password = String.valueOf(RegPassField.getPassword());
+
+        if (password.toLowerCase().equals("password")) {
+            RegPassField.setText("");
+            RegPassField.setForeground(Color.black);
+        }
+
     }//GEN-LAST:event_RegPassFieldFocusGained
 
     private void RegPassFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegPassFieldFocusLost
- 
+        String password = String.valueOf(RegPassField.getPassword());
+//
+        if (password.toLowerCase().equals("password") || password.toLowerCase().equals("")) {
+            RegPassField.setText("Password");
+            RegPassField.setEchoChar((char) 0);
+            RegPassField.setForeground(new Color(153, 153, 153));
+        }
     }//GEN-LAST:event_RegPassFieldFocusLost
 
     private void ConfirmPassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ConfirmPassFieldFocusGained
+        ConfirmPassField.setEchoChar('*');
+        String password = String.valueOf(ConfirmPassField.getPassword());
 
+        if (password.toLowerCase().equals("password")) {
+            ConfirmPassField.setText("");
+            ConfirmPassField.setForeground(Color.black);
+        }
     }//GEN-LAST:event_ConfirmPassFieldFocusGained
 
     private void ConfirmPassFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ConfirmPassFieldFocusLost
-
+        String password = String.valueOf(ConfirmPassField.getPassword());
+//
+        if (password.toLowerCase().equals("password") || password.toLowerCase().equals("")) {
+            ConfirmPassField.setText("Confirm Password");
+            ConfirmPassField.setEchoChar((char) 0);
+            ConfirmPassField.setForeground(new Color(153, 153, 153));
+        }
     }//GEN-LAST:event_ConfirmPassFieldFocusLost
 
     private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
@@ -193,29 +218,40 @@ public class CreateAccountPage extends javax.swing.JFrame {
         String newEmail = RegEmailField.getText();
         String newPass = String.valueOf(RegPassField.getPassword());
         String ConfirmPass = String.valueOf(ConfirmPassField.getPassword());
-        if(ConfirmPass.equals(newPass)){
-            boolean exist = false;
-            if(userlist.containsKey(newUsername)){
-                exist=true;
+
+        if (newUsername.equals("Username")) {
+            JOptionPane.showMessageDialog(null, "Isi dulu usernamenya !");
+        } else {
+            if (newEmail.equals("E-Mail")) {
+                JOptionPane.showMessageDialog(null, "Isi dulu E-Mailnya !");
+            } else {
+                if (ConfirmPass.equals(newPass) && !(newPass.equals(""))) {
+                    boolean exist = false;
+                    if (userlist.containsKey(newUsername)) {
+                        exist = true;
+                    }
+                    if (!exist) {
+                        User newUser = new User(newUsername, newPass, newEmail);
+                        userlist.put(newUsername, newUser);
+                        LoginMenu LM = new LoginMenu(userlist);
+                        dispose();
+                        LM.setVisible(true);
+                        LM.pack();
+                        LM.setLocationRelativeTo(null);
+                        LM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
+                        JOptionPane.showMessageDialog(null, "Berhasil daftar!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Username telah dipakai!");
+                    }
+                } else if (newPass.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Password belum diisi!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Password dan Confirm Password harus sama!");
+                }
             }
-            if(!exist){
-                User newUser = new User(newUsername,newPass,newEmail);
-                userlist.put(newUsername, newUser);
-                LoginMenu LM = new LoginMenu(userlist);
-                dispose();
-                LM.setVisible(true);
-                LM.pack();
-                LM.setLocationRelativeTo(null);
-                LM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
-                JOptionPane.showMessageDialog(null, "Berhasil daftar!");
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Username telah dipakai!");
-            }
+
         }
-        else{
-            JOptionPane.showMessageDialog(null, "Password dan Confirm Password harus sama!");
-        }
+
     }//GEN-LAST:event_SubmitButtonActionPerformed
 
     /**

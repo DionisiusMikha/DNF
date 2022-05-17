@@ -25,7 +25,7 @@ public class LoginMenu extends javax.swing.JFrame {
 
     public LoginMenu(HashMap<String, User> userlist) {
         initComponents();
-        this.userlist=userlist;
+        this.userlist = userlist;
     }
 
     /**
@@ -86,6 +86,7 @@ public class LoginMenu extends javax.swing.JFrame {
         });
         getContentPane().add(usernamefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 430, 430, 40));
 
+        PasswordField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         PasswordField.setBorder(null);
         PasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -137,9 +138,9 @@ public class LoginMenu extends javax.swing.JFrame {
             Verify = false;
         }
         if (!Verify) {
-            
+
         } else {
-            
+
         }
     }//GEN-LAST:event_SignInButtonActionPerformed
 
@@ -165,8 +166,7 @@ public class LoginMenu extends javax.swing.JFrame {
         PasswordField.setEchoChar('*');
         String password = String.valueOf(PasswordField.getPassword());
 
-        if(password.toLowerCase().equals("password"))
-        {
+        if (password.toLowerCase().equals("password")) {
             PasswordField.setText("");
             PasswordField.setForeground(Color.black);
         }
@@ -175,13 +175,12 @@ public class LoginMenu extends javax.swing.JFrame {
     private void PasswordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFieldFocusLost
         String password = String.valueOf(PasswordField.getPassword());
 
-        if(password.toLowerCase().equals("password") || password.toLowerCase().equals("") )
-        {
+        if (password.toLowerCase().equals("password") || password.toLowerCase().equals("")) {
             PasswordField.setText("Password");
-            PasswordField.setEchoChar((char)0);
+            PasswordField.setEchoChar((char) 0);
             PasswordField.setForeground(new Color(153, 153, 153));
         }
-        
+
     }//GEN-LAST:event_PasswordFieldFocusLost
 
     /**
@@ -215,7 +214,7 @@ public class LoginMenu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoginMenu().setVisible(true);
-                
+
             }
         });
     }
