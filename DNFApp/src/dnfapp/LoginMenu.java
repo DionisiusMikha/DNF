@@ -25,6 +25,7 @@ public class LoginMenu extends javax.swing.JFrame {
 
     public LoginMenu(HashMap<String, User> userlist) {
         initComponents();
+        this.userlist=userlist;
     }
 
     /**
@@ -136,9 +137,9 @@ public class LoginMenu extends javax.swing.JFrame {
             Verify = false;
         }
         if (!Verify) {
-
+            
         } else {
-
+            
         }
     }//GEN-LAST:event_SignInButtonActionPerformed
 
@@ -214,6 +215,7 @@ public class LoginMenu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoginMenu().setVisible(true);
+                
             }
         });
     }
