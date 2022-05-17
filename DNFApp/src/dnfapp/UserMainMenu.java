@@ -4,17 +4,27 @@
  */
 package dnfapp;
 
+import java.util.HashMap;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Frans
  */
 public class UserMainMenu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form UserMainMenu
-     */
+    private HashMap<String, User> userlist = new HashMap<String, User>();
+    private HashMap<String, String> usedEmail = new HashMap<String, String>();  
+    
     public UserMainMenu() {
         initComponents();
+    }
+    
+    public UserMainMenu(HashMap<String, User> userlist, HashMap<String, String> usedEmail){
+        initComponents();
+        this.userlist=userlist;
+        this.usedEmail=usedEmail;
     }
 
     /**

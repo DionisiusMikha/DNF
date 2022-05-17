@@ -153,7 +153,7 @@ public class LoginMenu extends javax.swing.JFrame {
         
         if(verifyUsername && verifyPassword){
             //berhasil login
-            UserMainMenu UserMenu = new UserMainMenu();
+            UserMainMenu UserMenu = new UserMainMenu(userlist,usedEmail);
             dispose();
             UserMenu.setVisible(true);
             UserMenu.pack();
