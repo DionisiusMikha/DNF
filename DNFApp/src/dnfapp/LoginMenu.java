@@ -7,6 +7,7 @@ package dnfapp;
 import java.awt.Color;
 import java.util.HashMap;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -125,22 +126,29 @@ public class LoginMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_CreateAccButtonActionPerformed
 
     private void SignInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonActionPerformed
-        boolean Verify = true;
+        boolean verifyUsername = true;
+        boolean verifyPassword = true;
         String logUsername = usernamefield.getText();
         String logPass = String.valueOf(PasswordField.getPassword());
         if (userlist.containsKey(logUsername)) {
-            User designated = userlist.get(logUsername);
-            String passCheck = designated.getPassword();
+            User yangLogin = userlist.get(logUsername);
+            String passCheck = yangLogin.getPassword();
             if (!passCheck.equals(logPass)) {
-                Verify = false;
+                verifyPassword = false;
             }
         } else {
-            Verify = false;
+            verifyUsername = false;
         }
-        if (!Verify) {
-
-        } else {
-
+        if (!verifyUsername) {
+            JOptionPane.showMessageDialog(null, "Username tidak ditemukan!");
+        } 
+        if(!verifyPassword){
+            JOptionPane.showMessageDialog(null, "Password salah!");
+        }
+        
+        if(verifyUsername && verifyPassword){
+            //berhasil login
+            JOptionPane.showMessageDialog(null, "Berhasil login!");
         }
     }//GEN-LAST:event_SignInButtonActionPerformed
 

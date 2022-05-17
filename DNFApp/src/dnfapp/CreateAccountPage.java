@@ -225,10 +225,10 @@ public class CreateAccountPage extends javax.swing.JFrame {
         String ConfirmPass = String.valueOf(ConfirmPassField.getPassword());
 
         if (newUsername.equals("Username")) {
-            JOptionPane.showMessageDialog(null, "Isi dulu usernamenya !");
+            JOptionPane.showMessageDialog(null, "Username diisi terlebih dahulu!");
         } else {
             if (newEmail.equals("E-Mail")) {
-                JOptionPane.showMessageDialog(null, "Isi dulu E-Mailnya !");
+                JOptionPane.showMessageDialog(null, "E-Mail diisi terlebih dahulu!");
             } else {
                 if (!(newEmail.equals("E-Mail")) && newEmail.contains("@gmail.com")) {
                     if (ConfirmPass.equals(newPass) && !(newPass.equals(""))) {
@@ -255,7 +255,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Password dan Confirm Password harus sama!");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "format gmailnya salah!");
+                    JOptionPane.showMessageDialog(null, "Format gmailnya salah!");
                 }
             }
         }
