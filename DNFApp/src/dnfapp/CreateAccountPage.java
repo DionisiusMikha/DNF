@@ -15,17 +15,32 @@ import javax.swing.JOptionPane;
 public class CreateAccountPage extends javax.swing.JFrame {
 
     private HashMap<String, User> userlist = new HashMap<String, User>();
+    private HashMap<String, String> usedEmail = new HashMap<String, String>();
+    private HashMap<String, Integer> VALID_DOMAIN = new HashMap<String, Integer>();
 
     /**
      * Creates new form CreateAccountPage
      */
     public CreateAccountPage() {
         initComponents();
+        GenerateList();
     }
 
-    public CreateAccountPage(HashMap<String, User> userlist) {
+    public CreateAccountPage(HashMap<String, User> userlist, HashMap<String, String> usedEmail) {
         initComponents();
+        GenerateList();
         this.userlist = userlist;
+        this.usedEmail=usedEmail;
+    }
+    
+    private void GenerateList(){
+        VALID_DOMAIN.put("gmail.com", 10);
+        VALID_DOMAIN.put("yahoo.com", 10);
+        VALID_DOMAIN.put("outlook.com", 12);
+        VALID_DOMAIN.put("hotmail.com", 12);
+        VALID_DOMAIN.put("live.com", 9);
+        VALID_DOMAIN.put("aol.com", 8);
+        VALID_DOMAIN.put("icloud.com", 11);
     }
 
     /**
@@ -228,36 +243,55 @@ public class CreateAccountPage extends javax.swing.JFrame {
 
         if (newUsername.equals("Username")) {
             JOptionPane.showMessageDialog(null, "Username diisi terlebih dahulu!");
-        } else {
-            if (newEmail.equals("E-Mail")) {
+        } 
+        else {
+            if (newEmail.equals("E-Mail")||newEmail.equals("")) {
                 JOptionPane.showMessageDialog(null, "E-Mail diisi terlebih dahulu!");
-            } else {
-                if (!(newEmail.equals("E-Mail")) && newEmail.contains("@gmail.com")) {
-                    if (ConfirmPass.equals(newPass) && !(newPass.equals(""))) {
-                        boolean exist = false;
-                        if (userlist.containsKey(newUsername)) {
-                            exist = true;
+            } 
+            else {
+                Integer mailLen = newEmail.length();
+                String[] parts = new String[2];
+                boolean EmailUsed = false;
+                if(usedEmail.containsKey(newEmail)){
+                    EmailUsed = true;
+                }
+                if(newEmail.contains("@")&&!EmailUsed){
+                    parts = newEmail.split("@");
+                    if (VALID_DOMAIN.containsKey(parts[1])){
+                        if (ConfirmPass.equals(newPass) && !(newPass.equals(""))) {
+                            boolean exist = false;
+                            if (userlist.containsKey(newUsername)) {
+                                exist = true;
+                            }
+                            if (!exist) {
+                                User newUser = new User(newUsername, newPass, newEmail);
+                                userlist.put(newUsername, newUser);
+                                usedEmail.put(newEmail, newUsername);
+                                LoginMenu LM = new LoginMenu(userlist,usedEmail);
+                                dispose();
+                                LM.setVisible(true);
+                                LM.pack();
+                                LM.setLocationRelativeTo(null);
+                                LM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
+                                JOptionPane.showMessageDialog(null, "Berhasil daftar!");
+                            } 
+                            else {
+                                JOptionPane.showMessageDialog(null, "Username telah dipakai!");
+                            }
+                        } 
+                        else if (newPass.equals("")) {
+                            JOptionPane.showMessageDialog(null, "Password belum diisi!");
+                        } 
+                        else {
+                            JOptionPane.showMessageDialog(null, "Password dan Confirm Password harus sama!");
                         }
-                        if (!exist) {
-                            User newUser = new User(newUsername, newPass, newEmail);
-                            userlist.put(newUsername, newUser);
-                            LoginMenu LM = new LoginMenu(userlist);
-                            dispose();
-                            LM.setVisible(true);
-                            LM.pack();
-                            LM.setLocationRelativeTo(null);
-                            LM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
-                            JOptionPane.showMessageDialog(null, "Berhasil daftar!");
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Username telah dipakai!");
-                        }
-                    } else if (newPass.equals("")) {
-                        JOptionPane.showMessageDialog(null, "Password belum diisi!");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Password dan Confirm Password harus sama!");
                     }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Format gmailnya salah!");
+                }
+                else if(EmailUsed){
+                    JOptionPane.showMessageDialog(null, "Alamat E-mail tersebut sudah digunakan!");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Format E-mail yang dimasukkan salah!");
                 }
             }
         }
@@ -272,13 +306,15 @@ public class CreateAccountPage extends javax.swing.JFrame {
             dispose();
             LM.setVisible(true);
             LM.pack();
+            LM.setResizable(false);
             LM.setLocationRelativeTo(null);
             LM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
         } else if (userAmount > 0) {
-            LoginMenu LM = new LoginMenu(userlist);
+            LoginMenu LM = new LoginMenu(userlist,usedEmail);
             dispose();
             LM.setVisible(true);
             LM.pack();
+            LM.setResizable(false);
             LM.setLocationRelativeTo(null);
             LM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
         }

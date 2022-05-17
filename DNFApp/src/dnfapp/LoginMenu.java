@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 public class LoginMenu extends javax.swing.JFrame {
 
     private HashMap<String, User> userlist = new HashMap<String, User>();
+    private HashMap<String, String> usedEmail = new HashMap<String, String>();  
 
     /**
      * Creates new form LoginMenu
@@ -24,9 +25,10 @@ public class LoginMenu extends javax.swing.JFrame {
         initComponents();
     }
 
-    public LoginMenu(HashMap<String, User> userlist) {
+    public LoginMenu(HashMap<String, User> userlist, HashMap<String, String> usedEmail) {
         initComponents();
         this.userlist = userlist;
+        this.usedEmail=usedEmail;
     }
 
     /**
@@ -114,14 +116,16 @@ public class LoginMenu extends javax.swing.JFrame {
             dispose();          //dispose of current JFrame. This is used to make performance better.
             CAP.setVisible(true);
             CAP.pack();
+            CAP.setResizable(false);
             CAP.setLocationRelativeTo(null);
             CAP.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
         } else {
-            CreateAccountPage CAP = new CreateAccountPage(userlist);
+            CreateAccountPage CAP = new CreateAccountPage(userlist,usedEmail);
             dispose();          //dispose of current JFrame. This is used to make performance better.
             CAP.setVisible(true);
             CAP.pack();
             CAP.setLocationRelativeTo(null);
+            CAP.setResizable(false);
             CAP.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
         }
     }//GEN-LAST:event_CreateAccButtonActionPerformed
@@ -149,7 +153,13 @@ public class LoginMenu extends javax.swing.JFrame {
         
         if(verifyUsername && verifyPassword){
             //berhasil login
-            JOptionPane.showMessageDialog(null, "Berhasil login!");
+            UserMainMenu UserMenu = new UserMainMenu();
+            dispose();
+            UserMenu.setVisible(true);
+            UserMenu.pack();
+            UserMenu.setLocationRelativeTo(null);
+            UserMenu.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+            UserMenu.setResizable(false);
         }
     }//GEN-LAST:event_SignInButtonActionPerformed
 

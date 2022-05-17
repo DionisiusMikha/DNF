@@ -18,6 +18,7 @@ public class DNFApp {
         LM.setVisible(true);
         LM.pack();
         LM.setLocationRelativeTo(null);
+        LM.setResizable(false);
         LM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
     }
     
