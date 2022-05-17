@@ -114,6 +114,11 @@ public class CreateAccountPage extends javax.swing.JFrame {
         CancelButton.setBackground(new java.awt.Color(120, 178, 171));
         CancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_3.png"))); // NOI18N
         CancelButton.setBorder(null);
+        CancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(CancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 720, 230, 70));
 
         SubmitButton.setBackground(new java.awt.Color(120, 178, 171));
@@ -197,7 +202,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         ConfirmPassField.setEchoChar('*');
         String password = String.valueOf(ConfirmPassField.getPassword());
 
-        if (password.toLowerCase().equals("password")) {
+        if (password.toLowerCase().equals("confirm password")) {
             ConfirmPassField.setText("");
             ConfirmPassField.setForeground(Color.black);
         }
@@ -225,34 +230,57 @@ public class CreateAccountPage extends javax.swing.JFrame {
             if (newEmail.equals("E-Mail")) {
                 JOptionPane.showMessageDialog(null, "Isi dulu E-Mailnya !");
             } else {
-                if (ConfirmPass.equals(newPass) && !(newPass.equals(""))) {
-                    boolean exist = false;
-                    if (userlist.containsKey(newUsername)) {
-                        exist = true;
-                    }
-                    if (!exist) {
-                        User newUser = new User(newUsername, newPass, newEmail);
-                        userlist.put(newUsername, newUser);
-                        LoginMenu LM = new LoginMenu(userlist);
-                        dispose();
-                        LM.setVisible(true);
-                        LM.pack();
-                        LM.setLocationRelativeTo(null);
-                        LM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
-                        JOptionPane.showMessageDialog(null, "Berhasil daftar!");
+                if (!(newEmail.equals("E-Mail")) && newEmail.contains("@gmail.com")) {
+                    if (ConfirmPass.equals(newPass) && !(newPass.equals(""))) {
+                        boolean exist = false;
+                        if (userlist.containsKey(newUsername)) {
+                            exist = true;
+                        }
+                        if (!exist) {
+                            User newUser = new User(newUsername, newPass, newEmail);
+                            userlist.put(newUsername, newUser);
+                            LoginMenu LM = new LoginMenu(userlist);
+                            dispose();
+                            LM.setVisible(true);
+                            LM.pack();
+                            LM.setLocationRelativeTo(null);
+                            LM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
+                            JOptionPane.showMessageDialog(null, "Berhasil daftar!");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Username telah dipakai!");
+                        }
+                    } else if (newPass.equals("")) {
+                        JOptionPane.showMessageDialog(null, "Password belum diisi!");
                     } else {
-                        JOptionPane.showMessageDialog(null, "Username telah dipakai!");
+                        JOptionPane.showMessageDialog(null, "Password dan Confirm Password harus sama!");
                     }
-                } else if (newPass.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Password belum diisi!");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Password dan Confirm Password harus sama!");
+                    JOptionPane.showMessageDialog(null, "format gmailnya salah!");
                 }
             }
-
         }
 
     }//GEN-LAST:event_SubmitButtonActionPerformed
+
+    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
+        // TODO add your handling code here:
+        int userAmount = userlist.size();
+        if (userAmount == 0) {
+            LoginMenu LM = new LoginMenu();
+            dispose();
+            LM.setVisible(true);
+            LM.pack();
+            LM.setLocationRelativeTo(null);
+            LM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
+        } else if (userAmount > 0) {
+            LoginMenu LM = new LoginMenu(userlist);
+            dispose();
+            LM.setVisible(true);
+            LM.pack();
+            LM.setLocationRelativeTo(null);
+            LM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
+        }
+    }//GEN-LAST:event_CancelButtonActionPerformed
 
     /**
      * @param args the command line arguments
