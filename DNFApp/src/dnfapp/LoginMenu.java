@@ -45,9 +45,11 @@ public class LoginMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CreateAccButton.setBackground(new java.awt.Color(30, 105, 255));
+        CreateAccButton.setBackground(new java.awt.Color(45, 104, 201));
         CreateAccButton.setForeground(new java.awt.Color(30, 120, 152));
         CreateAccButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_1.png"))); // NOI18N
         CreateAccButton.setBorder(null);
@@ -56,9 +58,9 @@ public class LoginMenu extends javax.swing.JFrame {
                 CreateAccButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CreateAccButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 710, 240, 70));
+        getContentPane().add(CreateAccButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 470, 180, 40));
 
-        SignInButton.setBackground(new java.awt.Color(30, 105, 255));
+        SignInButton.setBackground(new java.awt.Color(45, 104, 201));
         SignInButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_2.png"))); // NOI18N
         SignInButton.setBorder(null);
         SignInButton.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +68,7 @@ public class LoginMenu extends javax.swing.JFrame {
                 SignInButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(SignInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1390, 700, 230, 90));
+        getContentPane().add(SignInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 470, 180, 40));
 
         usernamefield.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         usernamefield.setForeground(new java.awt.Color(102, 102, 102));
@@ -85,7 +87,7 @@ public class LoginMenu extends javax.swing.JFrame {
                 usernamefieldActionPerformed(evt);
             }
         });
-        getContentPane().add(usernamefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 430, 430, 40));
+        getContentPane().add(usernamefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, 320, 20));
 
         PasswordField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         PasswordField.setBorder(null);
@@ -97,11 +99,10 @@ public class LoginMenu extends javax.swing.JFrame {
                 PasswordFieldFocusLost(evt);
             }
         });
-        getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 519, 440, 40));
+        getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 350, 320, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Login_Menu.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 1100));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -190, -1, 1100));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
