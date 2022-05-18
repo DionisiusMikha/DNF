@@ -17,6 +17,8 @@ public class LoginMenu extends javax.swing.JFrame {
 
     private HashMap<String, User> userlist = new HashMap<String, User>();
     private HashMap<String, String> usedEmail = new HashMap<String, String>();  
+    private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
+    private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
 
     /**
      * Creates new form LoginMenu
@@ -24,11 +26,38 @@ public class LoginMenu extends javax.swing.JFrame {
     public LoginMenu() {
         initComponents();
     }
+    
+    //initial constructor, used to generate admin account.
+    public LoginMenu(boolean generate){
+        if(generate){
+            initComponents();
+            User admin = new User("admin","41874665168","CustomerService@DNF.co.id");
+            userlist.put("admin", admin);
+        }
+    }
 
+    //situational, for compatibility issues.
     public LoginMenu(HashMap<String, User> userlist, HashMap<String, String> usedEmail) {
         initComponents();
         this.userlist = userlist;
         this.usedEmail=usedEmail;
+    }
+    
+    //situational, for compatibility issues.
+    public LoginMenu(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList) {
+        initComponents();
+        this.userlist = userlist;
+        this.usedEmail=usedEmail;
+        this.DeliveryList=DeliveryList;
+    }
+    
+    //main cons
+    public LoginMenu(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir) {
+        initComponents();
+        this.userlist = userlist;
+        this.usedEmail=usedEmail;
+        this.DeliveryList=DeliveryList;
+        this.ListKurir=ListKurir;
     }
 
     /**
@@ -141,7 +170,8 @@ public class LoginMenu extends javax.swing.JFrame {
             if (!passCheck.equals(logPass)) {
                 verifyPassword = false;
             }
-        } else {
+        } 
+        else {
             verifyUsername = false;
         }
         if (!verifyUsername) {
@@ -153,13 +183,24 @@ public class LoginMenu extends javax.swing.JFrame {
         
         if(verifyUsername && verifyPassword){
             //berhasil login
-            UserMainMenu UserMenu = new UserMainMenu(userlist,usedEmail);
-            dispose();
-            UserMenu.setVisible(true);
-            UserMenu.pack();
-            UserMenu.setLocationRelativeTo(null);
-            UserMenu.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
-            UserMenu.setResizable(false);
+            if(logUsername.equals("admin")){
+                AdminMenu adminMenu = new AdminMenu();
+                dispose();
+                adminMenu.setVisible(true);
+                adminMenu.pack();
+                adminMenu.setLocationRelativeTo(null);
+                adminMenu.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+                adminMenu.setResizable(false);
+            }
+            else{
+                UserMainMenu UserMenu = new UserMainMenu(userlist,usedEmail);
+                dispose();
+                UserMenu.setVisible(true);
+                UserMenu.pack();
+                UserMenu.setLocationRelativeTo(null);
+                UserMenu.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+                UserMenu.setResizable(false);
+            }
         }
     }//GEN-LAST:event_SignInButtonActionPerformed
 

@@ -17,6 +17,8 @@ public class CreateAccountPage extends javax.swing.JFrame {
     private HashMap<String, User> userlist = new HashMap<String, User>();
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Integer> VALID_DOMAIN = new HashMap<String, Integer>();
+    private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
+    private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
 
     /**
      * Creates new form CreateAccountPage
@@ -26,6 +28,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         GenerateList();
     }
 
+    //situational, for compatibility issues.
     public CreateAccountPage(HashMap<String, User> userlist, HashMap<String, String> usedEmail) {
         initComponents();
         GenerateList();
@@ -33,6 +36,26 @@ public class CreateAccountPage extends javax.swing.JFrame {
         this.usedEmail=usedEmail;
     }
     
+    //situational, for compatibility issues.
+    public CreateAccountPage(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList) {
+        initComponents();
+        GenerateList();
+        this.userlist = userlist;
+        this.usedEmail=usedEmail;
+        this.DeliveryList=DeliveryList;
+    }
+    
+    //main cons
+    public CreateAccountPage(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir) {
+        initComponents();
+        GenerateList();
+        this.userlist = userlist;
+        this.usedEmail=usedEmail;
+        this.DeliveryList=DeliveryList;
+        this.ListKurir=ListKurir;
+    }
+    
+    //generate email list, to add use put method to VALID_DOMAIN HashMap. Put Method requires String(domain name) and Integer(domain name str length)
     private void GenerateList(){
         VALID_DOMAIN.put("gmail.com", 10);
         VALID_DOMAIN.put("yahoo.com", 10);

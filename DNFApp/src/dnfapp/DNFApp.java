@@ -14,7 +14,7 @@ public class DNFApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        LoginMenu LM = new LoginMenu();
+        LoginMenu LM = new LoginMenu(true);
         LM.setVisible(true);
         LM.pack();
         LM.setLocationRelativeTo(null);
