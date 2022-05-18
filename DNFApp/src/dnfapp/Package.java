@@ -32,4 +32,42 @@ public class Package {
         track.add(s);
     }
     
+    public void changeResi (String resi){
+        this.resi=resi;
+    }
+
+    public String getResi() {
+        return resi;
+    }
+
+    public String getContains() {
+        return contains;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public ArrayList<String> getTrack() {
+        return track;
+    }
+
+    public boolean isDelivered() {
+        return Delivered;
+    }
+    
+    
+    
 }
