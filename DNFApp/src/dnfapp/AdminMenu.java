@@ -14,6 +14,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private HashMap<String, User> userlist = new HashMap<String, User>();
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
+    private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
     /**
      * Creates new form AdminMenu
@@ -22,11 +23,12 @@ public class AdminMenu extends javax.swing.JFrame {
         initComponents();
     }
     
-    public AdminMenu(HashMap<String, User> userlist, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir) {
+    public AdminMenu(HashMap<String, User> userlist, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir, HashMap<String, String> usedEmail) {
         initComponents();
         this.userlist = userlist;
         this.DeliveryList=DeliveryList;
         this.ListKurir=ListKurir;
+        this.usedEmail=usedEmail;
     }
 
     /**
@@ -44,7 +46,7 @@ public class AdminMenu extends javax.swing.JFrame {
         DaftarKurirButton = new javax.swing.JButton();
         ListPengirimanButton = new javax.swing.JButton();
         LogOutButton = new javax.swing.JButton();
-        tambahKategori = new javax.swing.JButton();
+        TambahKategoriButton = new javax.swing.JButton();
         AdminMenuBG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,6 +59,8 @@ public class AdminMenu extends javax.swing.JFrame {
         RegisKurirButton.setForeground(new java.awt.Color(37, 150, 190));
         RegisKurirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_0.png"))); // NOI18N
         RegisKurirButton.setBorder(null);
+        RegisKurirButton.setBorderPainted(false);
+        RegisKurirButton.setContentAreaFilled(false);
         RegisKurirButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegisKurirButtonActionPerformed(evt);
@@ -67,43 +71,60 @@ public class AdminMenu extends javax.swing.JFrame {
         MasukanPengirimanButton.setBackground(new java.awt.Color(233, 233, 255));
         MasukanPengirimanButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_1.png"))); // NOI18N
         MasukanPengirimanButton.setBorder(null);
+        MasukanPengirimanButton.setBorderPainted(false);
+        MasukanPengirimanButton.setContentAreaFilled(false);
         getContentPane().add(MasukanPengirimanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, -1, -1));
 
         HapusPengirimanButton.setBackground(new java.awt.Color(233, 233, 255));
         HapusPengirimanButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_2.png"))); // NOI18N
         HapusPengirimanButton.setBorder(null);
-        getContentPane().add(HapusPengirimanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 440, -1, -1));
+        HapusPengirimanButton.setBorderPainted(false);
+        HapusPengirimanButton.setContentAreaFilled(false);
+        getContentPane().add(HapusPengirimanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 440, -1, -1));
 
         DaftarKurirButton.setBackground(new java.awt.Color(233, 233, 255));
         DaftarKurirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_3.png"))); // NOI18N
         DaftarKurirButton.setBorder(null);
-        getContentPane().add(DaftarKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, -1, -1));
+        DaftarKurirButton.setBorderPainted(false);
+        DaftarKurirButton.setContentAreaFilled(false);
+        getContentPane().add(DaftarKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, 130, -1));
 
         ListPengirimanButton.setBackground(new java.awt.Color(233, 233, 255));
         ListPengirimanButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_4.png"))); // NOI18N
         ListPengirimanButton.setBorder(null);
+        ListPengirimanButton.setBorderPainted(false);
+        ListPengirimanButton.setContentAreaFilled(false);
         getContentPane().add(ListPengirimanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, -1, -1));
 
         LogOutButton.setBackground(new java.awt.Color(192, 196, 220));
         LogOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5.png"))); // NOI18N
         LogOutButton.setBorder(null);
-        getContentPane().add(LogOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 560, -1, -1));
+        LogOutButton.setBorderPainted(false);
+        LogOutButton.setContentAreaFilled(false);
+        LogOutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogOutButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(LogOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 550, -1, -1));
 
-        tambahKategori.setBackground(new java.awt.Color(233, 233, 255));
-        tambahKategori.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_6.png"))); // NOI18N
-        tambahKategori.setActionCommand("jButton1");
-        getContentPane().add(tambahKategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 210, -1, -1));
+        TambahKategoriButton.setBackground(new java.awt.Color(233, 233, 255));
+        TambahKategoriButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_6.png"))); // NOI18N
+        TambahKategoriButton.setActionCommand("jButton1");
+        TambahKategoriButton.setBorder(null);
+        TambahKategoriButton.setBorderPainted(false);
+        TambahKategoriButton.setContentAreaFilled(false);
+        getContentPane().add(TambahKategoriButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 210, -1, -1));
 
         AdminMenuBG.setBackground(new java.awt.Color(242, 242, 255));
         AdminMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BG_Admin.png"))); // NOI18N
-        getContentPane().add(AdminMenuBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1280, 720));
+        getContentPane().add(AdminMenuBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegisKurirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisKurirButtonActionPerformed
-        // TODO add your handling code here:
-        RegisterKurir registerkuliah = new RegisterKurir();
+        RegisterKurir registerkuliah = new RegisterKurir(userlist, DeliveryList, ListKurir, usedEmail);
         dispose();
         registerkuliah.setVisible(true);
         registerkuliah.pack();
@@ -111,6 +132,16 @@ public class AdminMenu extends javax.swing.JFrame {
         registerkuliah.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
         registerkuliah.setResizable(false);
     }//GEN-LAST:event_RegisKurirButtonActionPerformed
+
+    private void LogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutButtonActionPerformed
+        LoginMenu LM = new LoginMenu(userlist, usedEmail,DeliveryList, ListKurir);
+        dispose();
+        LM.setVisible(true);
+        LM.pack();
+        LM.setLocationRelativeTo(null);
+        LM.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+        LM.setResizable(false);
+    }//GEN-LAST:event_LogOutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,6 +186,6 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton LogOutButton;
     private javax.swing.JButton MasukanPengirimanButton;
     private javax.swing.JButton RegisKurirButton;
-    private javax.swing.JButton tambahKategori;
+    private javax.swing.JButton TambahKategoriButton;
     // End of variables declaration//GEN-END:variables
 }

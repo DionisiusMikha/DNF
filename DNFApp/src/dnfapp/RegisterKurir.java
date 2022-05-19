@@ -19,6 +19,7 @@ public class RegisterKurir extends javax.swing.JFrame {
      */
     
     private HashMap<String, User> userlist = new HashMap<String, User>();
+    private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
 
@@ -26,25 +27,14 @@ public class RegisterKurir extends javax.swing.JFrame {
         initComponents();
     }
 
-    //situational, for compatibility issues.
-    public RegisterKurir(HashMap<String, User> userlist, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir) {
+    //main cons.
+    public RegisterKurir(HashMap<String, User> userlist, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir, HashMap<String, String> usedEmail) {
         initComponents();
         this.userlist = userlist;
         this.DeliveryList = DeliveryList;
         this.ListKurir = ListKurir;
+        this.usedEmail = usedEmail;
     }
-//    
-//    public RegisterKurir(HashMap<String, User> userlist, HashMap<String, Kurir> ListKurir) {
-//        initComponents();
-//        this.userlist = userlist;
-//        this.ListKurir = ListKurir;
-//    }
-//    
-//    public RegisterKurir(HashMap<String, User> userlist, HashMap<String, Package> DeliveryList) {
-//        initComponents();
-//        this.userlist = userlist;
-//        this.DeliveryList = DeliveryList;
-//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,7 +49,7 @@ public class RegisterKurir extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         NamaKurir = new javax.swing.JTextField();
         UsernameKurir = new javax.swing.JTextField();
-        daftarnoKurir = new javax.swing.JButton();
+        DaftarKurirButton = new javax.swing.JButton();
         cancelDaftarKurir = new javax.swing.JButton();
         PasswordKurir = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
@@ -112,15 +102,15 @@ public class RegisterKurir extends javax.swing.JFrame {
         });
         getContentPane().add(UsernameKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 300, 445, 30));
 
-        daftarnoKurir.setBackground(new java.awt.Color(62, 97, 155));
-        daftarnoKurir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_3.png"))); // NOI18N
-        daftarnoKurir.setBorder(null);
-        daftarnoKurir.addActionListener(new java.awt.event.ActionListener() {
+        DaftarKurirButton.setBackground(new java.awt.Color(62, 97, 155));
+        DaftarKurirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_3.png"))); // NOI18N
+        DaftarKurirButton.setBorder(null);
+        DaftarKurirButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                daftarnoKurirActionPerformed(evt);
+                DaftarKurirButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(daftarnoKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, -1, -1));
+        getContentPane().add(DaftarKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, -1, -1));
 
         cancelDaftarKurir.setBackground(new java.awt.Color(62, 97, 155));
         cancelDaftarKurir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_2.png"))); // NOI18N
@@ -146,8 +136,7 @@ public class RegisterKurir extends javax.swing.JFrame {
         getContentPane().add(PasswordKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 445, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Regis_kurir.png"))); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(1280, 720));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1280, 730));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -156,10 +145,10 @@ public class RegisterKurir extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_UsernameKurirActionPerformed
 
-    private void daftarnoKurirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarnoKurirActionPerformed
+    private void DaftarKurirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaftarKurirButtonActionPerformed
         String namaKurir = NamaKurir.getText();
         String unameKurir = UsernameKurir.getText();
-        String passwordKurir = PasswordKurir.getText();
+        String passwordKurir = String.valueOf(PasswordKurir.getPassword());
         boolean jadiKurir = false;
         if (namaKurir.equals("Nama Kurir")) {
             JOptionPane.showMessageDialog(null, "Nama Kurir diisi terlebih dahulu!");
@@ -180,7 +169,7 @@ public class RegisterKurir extends javax.swing.JFrame {
                     if(!jadiKurir){
                         Kurir newKurir = new Kurir(unameKurir, namaKurir, passwordKurir);
                         ListKurir.put(unameKurir, newKurir);
-                        AdminMenu AM = new AdminMenu(userlist, DeliveryList, ListKurir);
+                        AdminMenu AM = new AdminMenu(userlist, DeliveryList, ListKurir, usedEmail);
                         dispose();
                         AM.setVisible(true);
                         AM.pack();
@@ -188,13 +177,13 @@ public class RegisterKurir extends javax.swing.JFrame {
                         AM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
                         JOptionPane.showMessageDialog(null, "Berhasil mendafatarkan " + namaKurir + " !");
                     } else{
-                        JOptionPane.showMessageDialog(null, "Kurir telah terdaftar!");   
+                        JOptionPane.showMessageDialog(null, "Kurir sudah terdaftar!");   
                     }
                 }
             }
         }
         
-    }//GEN-LAST:event_daftarnoKurirActionPerformed
+    }//GEN-LAST:event_DaftarKurirButtonActionPerformed
 
     private void NamaKurirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamaKurirActionPerformed
         // TODO add your handling code here:
@@ -203,14 +192,14 @@ public class RegisterKurir extends javax.swing.JFrame {
     private void NamaKurirFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NamaKurirFocusGained
         if (NamaKurir.getText().equals("Nama Kurir")) {
             NamaKurir.setText("");
-            NamaKurir.setForeground(new Color(153, 153, 153));
+            NamaKurir.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_NamaKurirFocusGained
 
     private void NamaKurirFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NamaKurirFocusLost
         if (NamaKurir.getText().equals("")) {
             NamaKurir.setText("Nama Kurir");
-            NamaKurir.setForeground(new Color(153, 153, 153));
+            NamaKurir.setForeground(new Color(255, 255, 255));
         }
         
     }//GEN-LAST:event_NamaKurirFocusLost
@@ -218,14 +207,14 @@ public class RegisterKurir extends javax.swing.JFrame {
     private void UsernameKurirFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UsernameKurirFocusGained
         if (UsernameKurir.getText().equals("Username Kurir")) {
             UsernameKurir.setText("");
-            UsernameKurir.setForeground(new Color(153, 153, 153));
+            UsernameKurir.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_UsernameKurirFocusGained
 
     private void UsernameKurirFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UsernameKurirFocusLost
         if (UsernameKurir.getText().equals("")) {
             UsernameKurir.setText("Username Kurir");
-            UsernameKurir.setForeground(new Color(153, 153, 153));
+            UsernameKurir.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_UsernameKurirFocusLost
 
@@ -249,7 +238,7 @@ public class RegisterKurir extends javax.swing.JFrame {
         if (password.toLowerCase().equals("password") || password.toLowerCase().equals("")) {
             PasswordKurir.setText("Password");
             PasswordKurir.setEchoChar((char) 0);
-            PasswordKurir.setForeground(new Color(153, 153, 153));
+            PasswordKurir.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_PasswordKurirFocusLost
 
@@ -289,11 +278,11 @@ public class RegisterKurir extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DaftarKurirButton;
     private javax.swing.JTextField NamaKurir;
     private javax.swing.JPasswordField PasswordKurir;
     private javax.swing.JTextField UsernameKurir;
     private javax.swing.JButton cancelDaftarKurir;
-    private javax.swing.JButton daftarnoKurir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

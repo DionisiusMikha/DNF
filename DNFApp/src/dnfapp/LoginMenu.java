@@ -31,7 +31,7 @@ public class LoginMenu extends javax.swing.JFrame {
     public LoginMenu(boolean generate){
         if(generate){
             initComponents();
-            User admin = new User("admin","41874665168","CustomerService@DNF.co.id");
+            User admin = new User("admin","admin","CustomerService@DNF.co.id");
             userlist.put("admin", admin);
         }
     }
@@ -84,6 +84,8 @@ public class LoginMenu extends javax.swing.JFrame {
         CreateAccButton.setForeground(new java.awt.Color(30, 120, 152));
         CreateAccButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_0.png"))); // NOI18N
         CreateAccButton.setBorder(null);
+        CreateAccButton.setBorderPainted(false);
+        CreateAccButton.setContentAreaFilled(false);
         CreateAccButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CreateAccButtonActionPerformed(evt);
@@ -94,6 +96,8 @@ public class LoginMenu extends javax.swing.JFrame {
         SignInButton.setBackground(new java.awt.Color(62, 97, 155));
         SignInButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_1.png"))); // NOI18N
         SignInButton.setBorder(null);
+        SignInButton.setBorderPainted(false);
+        SignInButton.setContentAreaFilled(false);
         SignInButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SignInButtonActionPerformed(evt);
@@ -189,7 +193,7 @@ public class LoginMenu extends javax.swing.JFrame {
         if(verifyUsername && verifyPassword){
             //berhasil login
             if(logUsername.equals("admin")){
-                AdminMenu adminMenu = new AdminMenu();
+                AdminMenu adminMenu = new AdminMenu(userlist,DeliveryList,ListKurir,usedEmail);
                 dispose();
                 adminMenu.setVisible(true);
                 adminMenu.pack();
@@ -216,14 +220,14 @@ public class LoginMenu extends javax.swing.JFrame {
     private void usernamefieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernamefieldFocusGained
         if (usernamefield.getText().equals("Enter Username")) {
             usernamefield.setText("");
-            usernamefield.setForeground(new Color(153, 153, 153));
+            usernamefield.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_usernamefieldFocusGained
 
     private void usernamefieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernamefieldFocusLost
         if (usernamefield.getText().equals("")) {
             usernamefield.setText("Enter Username");
-            usernamefield.setForeground(new Color(153, 153, 153));
+            usernamefield.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_usernamefieldFocusLost
 
@@ -243,7 +247,7 @@ public class LoginMenu extends javax.swing.JFrame {
         if (password.toLowerCase().equals("password") || password.toLowerCase().equals("")) {
             PasswordField.setText("Password");
             PasswordField.setEchoChar((char) 0);
-            PasswordField.setForeground(new Color(153, 153, 153));
+            PasswordField.setForeground(new Color(255,255,255));
         }
 
     }//GEN-LAST:event_PasswordFieldFocusLost

@@ -211,28 +211,28 @@ public class CreateAccountPage extends javax.swing.JFrame {
     private void RegUsernameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegUsernameFieldFocusGained
         if (RegUsernameField.getText().equals("Username")) {
             RegUsernameField.setText("");
-            RegUsernameField.setForeground(new Color(153, 153, 153));
+            RegUsernameField.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_RegUsernameFieldFocusGained
 
     private void RegUsernameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegUsernameFieldFocusLost
         if (RegUsernameField.getText().equals("")) {
             RegUsernameField.setText("Username");
-            RegUsernameField.setForeground(new Color(153, 153, 153));
+            RegUsernameField.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_RegUsernameFieldFocusLost
 
     private void RegEmailFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegEmailFieldFocusGained
         if (RegEmailField.getText().equals("E-Mail")) {
             RegEmailField.setText("");
-            RegEmailField.setForeground(new Color(153, 153, 153));
+            RegEmailField.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_RegEmailFieldFocusGained
 
     private void RegEmailFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegEmailFieldFocusLost
         if (RegEmailField.getText().equals("")) {
             RegEmailField.setText("E-Mail");
-            RegEmailField.setForeground(new Color(153, 153, 153));
+            RegEmailField.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_RegEmailFieldFocusLost
 
@@ -253,7 +253,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         if (password.toLowerCase().equals("password") || password.toLowerCase().equals("")) {
             RegPassField.setText("Password");
             RegPassField.setEchoChar((char) 0);
-            RegPassField.setForeground(new Color(153, 153, 153));
+            RegPassField.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_RegPassFieldFocusLost
 
@@ -273,7 +273,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         if (password.toLowerCase().equals("password") || password.toLowerCase().equals("")) {
             ConfirmPassField.setText("Confirm Password");
             ConfirmPassField.setEchoChar((char) 0);
-            ConfirmPassField.setForeground(new Color(153, 153, 153));
+            ConfirmPassField.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_ConfirmPassFieldFocusLost
 
@@ -327,6 +327,9 @@ public class CreateAccountPage extends javax.swing.JFrame {
                         else {
                             JOptionPane.showMessageDialog(null, "Password dan Confirm Password harus sama!");
                         }
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Domain E-mail yang dimasukkan salah atau tidak diizinkan!");
                     }
                 }
                 else if(EmailUsed){
