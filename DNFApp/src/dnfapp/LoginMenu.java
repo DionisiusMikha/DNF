@@ -80,31 +80,33 @@ public class LoginMenu extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CreateAccButton.setBackground(new java.awt.Color(45, 104, 201));
+        CreateAccButton.setBackground(new java.awt.Color(62, 97, 155));
         CreateAccButton.setForeground(new java.awt.Color(30, 120, 152));
-        CreateAccButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_1.png"))); // NOI18N
+        CreateAccButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_0.png"))); // NOI18N
         CreateAccButton.setBorder(null);
         CreateAccButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CreateAccButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CreateAccButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 470, 180, 40));
+        getContentPane().add(CreateAccButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 430, 180, 40));
 
-        SignInButton.setBackground(new java.awt.Color(45, 104, 201));
-        SignInButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_2.png"))); // NOI18N
+        SignInButton.setBackground(new java.awt.Color(62, 97, 155));
+        SignInButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_1.png"))); // NOI18N
         SignInButton.setBorder(null);
         SignInButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SignInButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(SignInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 470, 180, 40));
+        getContentPane().add(SignInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 430, 180, 40));
 
+        usernamefield.setBackground(new java.awt.Color(62, 97, 155));
         usernamefield.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        usernamefield.setForeground(new java.awt.Color(102, 102, 102));
+        usernamefield.setForeground(new java.awt.Color(255, 255, 255));
         usernamefield.setText("Enter Username");
         usernamefield.setBorder(null);
+        usernamefield.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         usernamefield.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 usernamefieldFocusGained(evt);
@@ -118,10 +120,13 @@ public class LoginMenu extends javax.swing.JFrame {
                 usernamefieldActionPerformed(evt);
             }
         });
-        getContentPane().add(usernamefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, 320, 20));
+        getContentPane().add(usernamefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 260, 320, 20));
 
+        PasswordField.setBackground(new java.awt.Color(62, 97, 155));
         PasswordField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        PasswordField.setForeground(new java.awt.Color(255, 255, 255));
         PasswordField.setBorder(null);
+        PasswordField.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         PasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 PasswordFieldFocusGained(evt);
@@ -130,7 +135,7 @@ public class LoginMenu extends javax.swing.JFrame {
                 PasswordFieldFocusLost(evt);
             }
         });
-        getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 350, 320, 20));
+        getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 335, 320, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Login_Menu.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -190, -1, 1100));

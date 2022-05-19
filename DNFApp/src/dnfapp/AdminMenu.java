@@ -4,17 +4,29 @@
  */
 package dnfapp;
 
+import java.util.HashMap;
+
 /**
  *
  * @author Frans
  */
 public class AdminMenu extends javax.swing.JFrame {
 
+    private HashMap<String, User> userlist = new HashMap<String, User>();
+    private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
+    private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
     /**
      * Creates new form AdminMenu
      */
     public AdminMenu() {
         initComponents();
+    }
+    
+    public AdminMenu(HashMap<String, User> userlist, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir) {
+        initComponents();
+        this.userlist = userlist;
+        this.DeliveryList=DeliveryList;
+        this.ListKurir=ListKurir;
     }
 
     /**
@@ -32,6 +44,7 @@ public class AdminMenu extends javax.swing.JFrame {
         DaftarKurirButton = new javax.swing.JButton();
         ListPengirimanButton = new javax.swing.JButton();
         LogOutButton = new javax.swing.JButton();
+        tambahKategori = new javax.swing.JButton();
         AdminMenuBG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -40,40 +53,64 @@ public class AdminMenu extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        RegisKurirButton.setBackground(new java.awt.Color(192, 196, 220));
+        RegisKurirButton.setBackground(new java.awt.Color(233, 233, 255));
         RegisKurirButton.setForeground(new java.awt.Color(37, 150, 190));
         RegisKurirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_0.png"))); // NOI18N
         RegisKurirButton.setBorder(null);
-        getContentPane().add(RegisKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
+        RegisKurirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisKurirButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(RegisKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, -1, -1));
 
-        MasukanPengirimanButton.setBackground(new java.awt.Color(192, 196, 220));
+        MasukanPengirimanButton.setBackground(new java.awt.Color(233, 233, 255));
         MasukanPengirimanButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_1.png"))); // NOI18N
         MasukanPengirimanButton.setBorder(null);
-        getContentPane().add(MasukanPengirimanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 260, -1, -1));
+        getContentPane().add(MasukanPengirimanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, -1, -1));
 
-        HapusPengirimanButton.setBackground(new java.awt.Color(192, 196, 220));
+        HapusPengirimanButton.setBackground(new java.awt.Color(233, 233, 255));
         HapusPengirimanButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_2.png"))); // NOI18N
         HapusPengirimanButton.setBorder(null);
-        getContentPane().add(HapusPengirimanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 260, -1, -1));
+        getContentPane().add(HapusPengirimanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 440, -1, -1));
 
+        DaftarKurirButton.setBackground(new java.awt.Color(233, 233, 255));
         DaftarKurirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_3.png"))); // NOI18N
         DaftarKurirButton.setBorder(null);
-        getContentPane().add(DaftarKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, -1, -1));
+        getContentPane().add(DaftarKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, -1, -1));
 
+        ListPengirimanButton.setBackground(new java.awt.Color(233, 233, 255));
         ListPengirimanButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_4.png"))); // NOI18N
         ListPengirimanButton.setBorder(null);
-        getContentPane().add(ListPengirimanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, -1, -1));
+        getContentPane().add(ListPengirimanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, -1, -1));
 
-        LogOutButton.setBackground(new java.awt.Color(37, 150, 180));
+        LogOutButton.setBackground(new java.awt.Color(192, 196, 220));
         LogOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5.png"))); // NOI18N
         LogOutButton.setBorder(null);
-        getContentPane().add(LogOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 440, -1, -1));
+        getContentPane().add(LogOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 560, -1, -1));
 
+        tambahKategori.setBackground(new java.awt.Color(233, 233, 255));
+        tambahKategori.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_6.png"))); // NOI18N
+        tambahKategori.setActionCommand("jButton1");
+        getContentPane().add(tambahKategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 210, -1, -1));
+
+        AdminMenuBG.setBackground(new java.awt.Color(242, 242, 255));
         AdminMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BG_Admin.png"))); // NOI18N
         getContentPane().add(AdminMenuBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void RegisKurirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisKurirButtonActionPerformed
+        // TODO add your handling code here:
+        RegisterKurir registerkuliah = new RegisterKurir();
+        dispose();
+        registerkuliah.setVisible(true);
+        registerkuliah.pack();
+        registerkuliah.setLocationRelativeTo(null);
+        registerkuliah.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+        registerkuliah.setResizable(false);
+    }//GEN-LAST:event_RegisKurirButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,5 +155,6 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton LogOutButton;
     private javax.swing.JButton MasukanPengirimanButton;
     private javax.swing.JButton RegisKurirButton;
+    private javax.swing.JButton tambahKategori;
     // End of variables declaration//GEN-END:variables
 }

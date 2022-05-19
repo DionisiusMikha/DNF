@@ -88,9 +88,12 @@ public class CreateAccountPage extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        RegUsernameField.setForeground(new java.awt.Color(153, 153, 153));
+        RegUsernameField.setBackground(new java.awt.Color(62, 97, 155));
+        RegUsernameField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        RegUsernameField.setForeground(new java.awt.Color(255, 255, 255));
         RegUsernameField.setText("Username");
         RegUsernameField.setBorder(null);
+        RegUsernameField.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         RegUsernameField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 RegUsernameFieldFocusGained(evt);
@@ -104,11 +107,14 @@ public class CreateAccountPage extends javax.swing.JFrame {
                 RegUsernameFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(RegUsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, 330, 20));
+        getContentPane().add(RegUsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, 322, 20));
 
-        RegEmailField.setForeground(new java.awt.Color(153, 153, 153));
+        RegEmailField.setBackground(new java.awt.Color(62, 97, 155));
+        RegEmailField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        RegEmailField.setForeground(new java.awt.Color(255, 255, 255));
         RegEmailField.setText("E-Mail");
         RegEmailField.setBorder(null);
+        RegEmailField.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         RegEmailField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 RegEmailFieldFocusGained(evt);
@@ -117,9 +123,18 @@ public class CreateAccountPage extends javax.swing.JFrame {
                 RegEmailFieldFocusLost(evt);
             }
         });
-        getContentPane().add(RegEmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, 320, 20));
+        RegEmailField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegEmailFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(RegEmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 270, 322, 20));
 
+        RegPassField.setBackground(new java.awt.Color(62, 97, 155));
+        RegPassField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        RegPassField.setForeground(new java.awt.Color(255, 255, 255));
         RegPassField.setBorder(null);
+        RegPassField.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         RegPassField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 RegPassFieldFocusGained(evt);
@@ -133,9 +148,13 @@ public class CreateAccountPage extends javax.swing.JFrame {
                 RegPassFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(RegPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 320, 20));
+        getContentPane().add(RegPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 325, 322, 20));
 
+        ConfirmPassField.setBackground(new java.awt.Color(62, 97, 155));
+        ConfirmPassField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        ConfirmPassField.setForeground(new java.awt.Color(255, 255, 255));
         ConfirmPassField.setBorder(null);
+        ConfirmPassField.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         ConfirmPassField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 ConfirmPassFieldFocusGained(evt);
@@ -149,19 +168,19 @@ public class CreateAccountPage extends javax.swing.JFrame {
                 ConfirmPassFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(ConfirmPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 390, 320, 20));
+        getContentPane().add(ConfirmPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 378, 322, 20));
 
-        CancelButton.setBackground(new java.awt.Color(120, 178, 171));
-        CancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_3.png"))); // NOI18N
+        CancelButton.setBackground(new java.awt.Color(62, 97, 155));
+        CancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_2.png"))); // NOI18N
         CancelButton.setBorder(null);
         CancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 500, 180, -1));
+        getContentPane().add(CancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 440, 180, 40));
 
-        SubmitButton.setBackground(new java.awt.Color(120, 178, 171));
+        SubmitButton.setBackground(new java.awt.Color(62, 97, 155));
         SubmitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_0.png"))); // NOI18N
         SubmitButton.setBorder(null);
         SubmitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +188,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
                 SubmitButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(SubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 500, 180, 40));
+        getContentPane().add(SubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, 180, 40));
 
         Background_Frame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Create_Acc.png"))); // NOI18N
         getContentPane().add(Background_Frame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -230, -1, 1170));
@@ -342,6 +361,10 @@ public class CreateAccountPage extends javax.swing.JFrame {
             LM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
         }
     }//GEN-LAST:event_CancelButtonActionPerformed
+
+    private void RegEmailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegEmailFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RegEmailFieldActionPerformed
 
     /**
      * @param args the command line arguments

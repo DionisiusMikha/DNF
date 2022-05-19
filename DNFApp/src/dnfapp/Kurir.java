@@ -10,13 +10,24 @@ import java.util.ArrayList;
  * @author Frans
  */
 public class Kurir {
-    private String id;
-    private String namaD;
-    private String namaB;
-    private int umur;
-    private boolean status;
+    private String uname;
+    private String nama;
+    private String password;
+    
+//    private boolean status;
     private boolean isDelivering;
     private ArrayList<Package> deliveredPackages = new ArrayList<Package>();
+
+    public Kurir(String uname, String nama, String password) {
+        this.uname = uname;
+        this.nama = nama;
+        this.password = password;
+//        this.status = true; //true = nganggur, false = gak nganggur
+        this.isDelivering = false; //false = nganggur, true = lagi ada kiriman
+        this.deliveredPackages = new ArrayList<Package>();
+    }
+    
+    
     
     
     
