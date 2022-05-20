@@ -43,7 +43,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Username"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor" postCode="RegUsernameField.setCaretColor(new Color(255,255,255));">
           <Border info="null"/>
         </Property>
         <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -72,7 +72,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="E-Mail"/>
+        <Property name="text" type="java.lang.String" value="E-Mail" postCode="RegEmailField.setCaretColor(new Color(255,255,255));"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
@@ -102,7 +102,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Password" postCode="RegPassField.setText(&quot;Password&quot;);&#xa;RegPassField.setEchoChar((char) 0);"/>
+        <Property name="text" type="java.lang.String" value="Password" postCode="RegPassField.setText(&quot;Password&quot;);&#xa;RegPassField.setEchoChar((char) 0);&#xa;RegPassField.setCaretColor(new Color(255,255,255));"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
@@ -132,7 +132,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Confirm Password" postCode="ConfirmPassField.setText(&quot;Confirm Password&quot;);&#xa;ConfirmPassField.setEchoChar((char) 0);"/>
+        <Property name="text" type="java.lang.String" value="Confirm Password" postCode="ConfirmPassField.setText(&quot;Confirm Password&quot;);&#xa;ConfirmPassField.setEchoChar((char) 0);&#xa;ConfirmPassField.setCaretColor(new Color(255,255,255));"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>

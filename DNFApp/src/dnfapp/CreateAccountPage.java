@@ -97,6 +97,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         RegUsernameField.setForeground(new java.awt.Color(255, 255, 255));
         RegUsernameField.setText("Username");
         RegUsernameField.setBorder(null);
+        RegUsernameField.setCaretColor(new Color(255,255,255));
         RegUsernameField.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         RegUsernameField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -117,6 +118,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         RegEmailField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         RegEmailField.setForeground(new java.awt.Color(255, 255, 255));
         RegEmailField.setText("E-Mail");
+        RegEmailField.setCaretColor(new Color(255,255,255));
         RegEmailField.setBorder(null);
         RegEmailField.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         RegEmailField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -140,6 +142,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         RegPassField.setText("Password");
         RegPassField.setText("Password");
         RegPassField.setEchoChar((char) 0);
+        RegPassField.setCaretColor(new Color(255,255,255));
         RegPassField.setBorder(null);
         RegPassField.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         RegPassField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -163,6 +166,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         ConfirmPassField.setText("Confirm Password");
         ConfirmPassField.setText("Confirm Password");
         ConfirmPassField.setEchoChar((char) 0);
+        ConfirmPassField.setCaretColor(new Color(255,255,255));
         ConfirmPassField.setBorder(null);
         ConfirmPassField.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         ConfirmPassField.addFocusListener(new java.awt.event.FocusAdapter() {

@@ -70,6 +70,7 @@ public class RegisterKurir extends javax.swing.JFrame {
         NamaKurir.setFont(new java.awt.Font("Dialog", 3, 16)); // NOI18N
         NamaKurir.setForeground(new java.awt.Color(255, 255, 255));
         NamaKurir.setBorder(null);
+        NamaKurir.setCaretColor(new Color(255,255,255));
         NamaKurir.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         NamaKurir.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -90,6 +91,7 @@ public class RegisterKurir extends javax.swing.JFrame {
         UsernameKurir.setFont(new java.awt.Font("Dialog", 3, 16)); // NOI18N
         UsernameKurir.setForeground(new java.awt.Color(255, 255, 255));
         UsernameKurir.setBorder(null);
+        UsernameKurir.setCaretColor(new Color(255,255,255));
         UsernameKurir.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 UsernameKurirFocusGained(evt);
@@ -118,11 +120,18 @@ public class RegisterKurir extends javax.swing.JFrame {
         cancelDaftarKurir.setBackground(new java.awt.Color(62, 97, 155));
         cancelDaftarKurir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_2.png"))); // NOI18N
         cancelDaftarKurir.setBorder(null);
+        cancelDaftarKurir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelDaftarKurirActionPerformed(evt);
+            }
+        });
         getContentPane().add(cancelDaftarKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 490, 200, 60));
 
         PasswordKurir.setBackground(new java.awt.Color(62, 97, 155));
         PasswordKurir.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         PasswordKurir.setBorder(null);
+        PasswordKurir.setCaretColor(new Color(255,255,255));
+        PasswordKurir.setForeground(new Color(255,255,255));
         PasswordKurir.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 PasswordKurirFocusGained(evt);
@@ -223,7 +232,7 @@ public class RegisterKurir extends javax.swing.JFrame {
 
         if (password.toLowerCase().equals("password")) {
             PasswordKurir.setText("");
-            PasswordKurir.setForeground(Color.black);
+            PasswordKurir.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_PasswordKurirFocusGained
 
@@ -244,6 +253,15 @@ public class RegisterKurir extends javax.swing.JFrame {
             UsernameKurir.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_UsernameKurirFocusGained
+
+    private void cancelDaftarKurirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelDaftarKurirActionPerformed
+        AdminMenu AM = new AdminMenu(userlist, DeliveryList, ListKurir, usedEmail);
+        dispose();
+        AM.setVisible(true);
+        AM.pack();
+        AM.setLocationRelativeTo(null);
+        AM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
+    }//GEN-LAST:event_cancelDaftarKurirActionPerformed
 
     /**
      * @param args the command line arguments

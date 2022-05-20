@@ -114,6 +114,7 @@ public class LoginMenu extends javax.swing.JFrame {
         usernamefield.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         usernamefield.setForeground(new java.awt.Color(255, 255, 255));
         usernamefield.setText("Enter Username");
+        usernamefield.setCaretColor(new Color(255,255,255));
         usernamefield.setBorder(null);
         usernamefield.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         usernamefield.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -129,7 +130,7 @@ public class LoginMenu extends javax.swing.JFrame {
                 usernamefieldActionPerformed(evt);
             }
         });
-        getContentPane().add(usernamefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 260, 320, 20));
+        getContentPane().add(usernamefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 263, 320, 20));
 
         PasswordField.setBackground(new java.awt.Color(62, 97, 155));
         PasswordField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -137,6 +138,7 @@ public class LoginMenu extends javax.swing.JFrame {
         PasswordField.setText("Password");
         PasswordField.setEchoChar((char) 0);
         PasswordField.setForeground(new Color(255,255,255));
+        PasswordField.setCaretColor(new Color(255,255,255));
         PasswordField.setBorder(null);
         PasswordField.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         PasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
