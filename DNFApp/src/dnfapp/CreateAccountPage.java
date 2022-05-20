@@ -252,7 +252,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
 
         if (password.toLowerCase().equals("password")) {
             RegPassField.setText("");
-            RegPassField.setForeground(Color.black);
+            RegPassField.setForeground(new Color(255,255,255));
         }
 
     }//GEN-LAST:event_RegPassFieldFocusGained
@@ -273,7 +273,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
 
         if (password.toLowerCase().equals("confirm password")) {
             ConfirmPassField.setText("");
-            ConfirmPassField.setForeground(Color.black);
+            ConfirmPassField.setForeground(new Color(255,255,255));
         }
     }//GEN-LAST:event_ConfirmPassFieldFocusGained
 

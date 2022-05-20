@@ -7,6 +7,8 @@ package dnfapp;
 import java.awt.Color;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.Map;
 
 /**
  *
@@ -22,6 +24,7 @@ public class RegisterKurir extends javax.swing.JFrame {
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
+
 
     public RegisterKurir() {
         initComponents();
@@ -64,7 +67,7 @@ public class RegisterKurir extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 726, -1, -1));
 
         NamaKurir.setBackground(new java.awt.Color(62, 97, 155));
-        NamaKurir.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        NamaKurir.setFont(new java.awt.Font("Dialog", 3, 16)); // NOI18N
         NamaKurir.setForeground(new java.awt.Color(255, 255, 255));
         NamaKurir.setBorder(null);
         NamaKurir.setDisabledTextColor(new java.awt.Color(255, 255, 255));
@@ -81,10 +84,10 @@ public class RegisterKurir extends javax.swing.JFrame {
                 NamaKurirActionPerformed(evt);
             }
         });
-        getContentPane().add(NamaKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 215, 492, 30));
+        getContentPane().add(NamaKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 225, 492, 30));
 
         UsernameKurir.setBackground(new java.awt.Color(62, 97, 155));
-        UsernameKurir.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        UsernameKurir.setFont(new java.awt.Font("Dialog", 3, 16)); // NOI18N
         UsernameKurir.setForeground(new java.awt.Color(255, 255, 255));
         UsernameKurir.setBorder(null);
         UsernameKurir.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -100,7 +103,7 @@ public class RegisterKurir extends javax.swing.JFrame {
                 UsernameKurirActionPerformed(evt);
             }
         });
-        getContentPane().add(UsernameKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 300, 445, 30));
+        getContentPane().add(UsernameKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 310, 445, 30));
 
         DaftarKurirButton.setBackground(new java.awt.Color(62, 97, 155));
         DaftarKurirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_3.png"))); // NOI18N
@@ -110,12 +113,12 @@ public class RegisterKurir extends javax.swing.JFrame {
                 DaftarKurirButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(DaftarKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, -1, -1));
+        getContentPane().add(DaftarKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 480, 260, 70));
 
         cancelDaftarKurir.setBackground(new java.awt.Color(62, 97, 155));
         cancelDaftarKurir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_2.png"))); // NOI18N
         cancelDaftarKurir.setBorder(null);
-        getContentPane().add(cancelDaftarKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 490, 200, 60));
+        getContentPane().add(cancelDaftarKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 490, 200, 60));
 
         PasswordKurir.setBackground(new java.awt.Color(62, 97, 155));
         PasswordKurir.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -140,10 +143,6 @@ public class RegisterKurir extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void UsernameKurirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameKurirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UsernameKurirActionPerformed
 
     private void DaftarKurirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaftarKurirButtonActionPerformed
         String namaKurir = NamaKurir.getText();
@@ -204,23 +203,19 @@ public class RegisterKurir extends javax.swing.JFrame {
         
     }//GEN-LAST:event_NamaKurirFocusLost
 
-    private void UsernameKurirFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UsernameKurirFocusGained
-        if (UsernameKurir.getText().equals("Username Kurir")) {
-            UsernameKurir.setText("");
-            UsernameKurir.setForeground(new Color(255, 255, 255));
-        }
-    }//GEN-LAST:event_UsernameKurirFocusGained
-
-    private void UsernameKurirFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UsernameKurirFocusLost
-        if (UsernameKurir.getText().equals("")) {
-            UsernameKurir.setText("Username Kurir");
-            UsernameKurir.setForeground(new Color(255, 255, 255));
-        }
-    }//GEN-LAST:event_UsernameKurirFocusLost
-
     private void PasswordKurirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordKurirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordKurirActionPerformed
+
+    private void PasswordKurirFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordKurirFocusLost
+        String password = String.valueOf(PasswordKurir.getPassword());
+        //
+        if (password.toLowerCase().equals("password") || password.toLowerCase().equals("")) {
+            PasswordKurir.setText("Password");
+            PasswordKurir.setEchoChar((char) 0);
+            PasswordKurir.setForeground(new Color(255, 255, 255));
+        }
+    }//GEN-LAST:event_PasswordKurirFocusLost
 
     private void PasswordKurirFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordKurirFocusGained
         PasswordKurir.setEchoChar('*');
@@ -232,15 +227,23 @@ public class RegisterKurir extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_PasswordKurirFocusGained
 
-    private void PasswordKurirFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordKurirFocusLost
-        String password = String.valueOf(PasswordKurir.getPassword());
-//
-        if (password.toLowerCase().equals("password") || password.toLowerCase().equals("")) {
-            PasswordKurir.setText("Password");
-            PasswordKurir.setEchoChar((char) 0);
-            PasswordKurir.setForeground(new Color(255, 255, 255));
+    private void UsernameKurirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameKurirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UsernameKurirActionPerformed
+
+    private void UsernameKurirFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UsernameKurirFocusLost
+        if (UsernameKurir.getText().equals("")) {
+            UsernameKurir.setText("Username Kurir");
+            UsernameKurir.setForeground(new Color(255, 255, 255));
         }
-    }//GEN-LAST:event_PasswordKurirFocusLost
+    }//GEN-LAST:event_UsernameKurirFocusLost
+
+    private void UsernameKurirFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UsernameKurirFocusGained
+        if (UsernameKurir.getText().equals("Username Kurir")) {
+            UsernameKurir.setText("");
+            UsernameKurir.setForeground(new Color(255, 255, 255));
+        }
+    }//GEN-LAST:event_UsernameKurirFocusGained
 
     /**
      * @param args the command line arguments

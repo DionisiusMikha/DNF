@@ -16,9 +16,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
-    /**
-     * Creates new form AdminMenu
-     */
+
     public AdminMenu() {
         initComponents();
     }
@@ -86,6 +84,11 @@ public class AdminMenu extends javax.swing.JFrame {
         DaftarKurirButton.setBorder(null);
         DaftarKurirButton.setBorderPainted(false);
         DaftarKurirButton.setContentAreaFilled(false);
+        DaftarKurirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DaftarKurirButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(DaftarKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, 130, -1));
 
         ListPengirimanButton.setBackground(new java.awt.Color(233, 233, 255));
@@ -141,6 +144,27 @@ public class AdminMenu extends javax.swing.JFrame {
         LM.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
         LM.setResizable(false);
     }//GEN-LAST:event_LogOutButtonActionPerformed
+
+    private void DaftarKurirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaftarKurirButtonActionPerformed
+        if(ListKurir.size()==0){
+            SeeListKurir SLM = new SeeListKurir(userlist,usedEmail,DeliveryList,ListKurir);
+            dispose();
+            SLM.setVisible(true);
+            SLM.pack();
+            SLM.setLocationRelativeTo(null);
+            SLM.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+            SLM.setResizable(false);
+        }
+        else{
+            SeeListKurir SLM = new SeeListKurir(userlist,usedEmail,DeliveryList,ListKurir);
+            dispose();
+            SLM.setVisible(true);
+            SLM.pack();
+            SLM.setLocationRelativeTo(null);
+            SLM.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+            SLM.setResizable(false);
+        }
+    }//GEN-LAST:event_DaftarKurirButtonActionPerformed
 
     /**
      * @param args the command line arguments
