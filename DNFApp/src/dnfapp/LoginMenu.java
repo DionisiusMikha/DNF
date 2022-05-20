@@ -25,12 +25,14 @@ public class LoginMenu extends javax.swing.JFrame {
      */
     public LoginMenu() {
         initComponents();
+        LoginBG.requestFocus();
     }
     
     //initial constructor, used to generate admin account.
     public LoginMenu(boolean generate){
         if(generate){
             initComponents();
+            LoginBG.requestFocus();
             User admin = new User("admin","admin","CustomerService@DNF.co.id");
             userlist.put("admin", admin);
         }
@@ -39,6 +41,7 @@ public class LoginMenu extends javax.swing.JFrame {
     //situational, for compatibility issues.
     public LoginMenu(HashMap<String, User> userlist, HashMap<String, String> usedEmail) {
         initComponents();
+        LoginBG.requestFocus();
         this.userlist = userlist;
         this.usedEmail=usedEmail;
     }
@@ -46,6 +49,7 @@ public class LoginMenu extends javax.swing.JFrame {
     //situational, for compatibility issues.
     public LoginMenu(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList) {
         initComponents();
+        LoginBG.requestFocus();
         this.userlist = userlist;
         this.usedEmail=usedEmail;
         this.DeliveryList=DeliveryList;
@@ -54,6 +58,7 @@ public class LoginMenu extends javax.swing.JFrame {
     //main cons
     public LoginMenu(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir) {
         initComponents();
+        LoginBG.requestFocus();
         this.userlist = userlist;
         this.usedEmail=usedEmail;
         this.DeliveryList=DeliveryList;
@@ -73,7 +78,7 @@ public class LoginMenu extends javax.swing.JFrame {
         SignInButton = new javax.swing.JButton();
         usernamefield = new javax.swing.JTextField();
         PasswordField = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
+        LoginBG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -129,6 +134,9 @@ public class LoginMenu extends javax.swing.JFrame {
         PasswordField.setBackground(new java.awt.Color(62, 97, 155));
         PasswordField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         PasswordField.setForeground(new java.awt.Color(255, 255, 255));
+        PasswordField.setText("Password");
+        PasswordField.setEchoChar((char) 0);
+        PasswordField.setForeground(new Color(255,255,255));
         PasswordField.setBorder(null);
         PasswordField.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         PasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -141,8 +149,8 @@ public class LoginMenu extends javax.swing.JFrame {
         });
         getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 335, 320, 20));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Login_Menu.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -190, -1, 1100));
+        LoginBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Login_Menu.png"))); // NOI18N
+        getContentPane().add(LoginBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -190, -1, 1100));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -237,7 +245,7 @@ public class LoginMenu extends javax.swing.JFrame {
 
         if (password.toLowerCase().equals("password")) {
             PasswordField.setText("");
-            PasswordField.setForeground(Color.black);
+            PasswordField.setForeground(new Color(255,255,255));
         }
     }//GEN-LAST:event_PasswordFieldFocusGained
 
@@ -283,16 +291,16 @@ public class LoginMenu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoginMenu().setVisible(true);
-
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CreateAccButton;
+    private javax.swing.JLabel LoginBG;
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JButton SignInButton;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField usernamefield;
     // End of variables declaration//GEN-END:variables
 }

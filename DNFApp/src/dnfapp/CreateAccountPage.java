@@ -26,12 +26,14 @@ public class CreateAccountPage extends javax.swing.JFrame {
     public CreateAccountPage() {
         initComponents();
         GenerateList();
+        Background_Frame.requestFocus();
     }
 
     //situational, for compatibility issues.
     public CreateAccountPage(HashMap<String, User> userlist, HashMap<String, String> usedEmail) {
         initComponents();
         GenerateList();
+        Background_Frame.requestFocus();
         this.userlist = userlist;
         this.usedEmail=usedEmail;
     }
@@ -40,6 +42,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
     public CreateAccountPage(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList) {
         initComponents();
         GenerateList();
+        Background_Frame.requestFocus();
         this.userlist = userlist;
         this.usedEmail=usedEmail;
         this.DeliveryList=DeliveryList;
@@ -49,6 +52,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
     public CreateAccountPage(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir) {
         initComponents();
         GenerateList();
+        Background_Frame.requestFocus();
         this.userlist = userlist;
         this.usedEmail=usedEmail;
         this.DeliveryList=DeliveryList;
@@ -133,6 +137,9 @@ public class CreateAccountPage extends javax.swing.JFrame {
         RegPassField.setBackground(new java.awt.Color(62, 97, 155));
         RegPassField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         RegPassField.setForeground(new java.awt.Color(255, 255, 255));
+        RegPassField.setText("Password");
+        RegPassField.setText("Password");
+        RegPassField.setEchoChar((char) 0);
         RegPassField.setBorder(null);
         RegPassField.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         RegPassField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -153,6 +160,9 @@ public class CreateAccountPage extends javax.swing.JFrame {
         ConfirmPassField.setBackground(new java.awt.Color(62, 97, 155));
         ConfirmPassField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         ConfirmPassField.setForeground(new java.awt.Color(255, 255, 255));
+        ConfirmPassField.setText("Confirm Password");
+        ConfirmPassField.setText("Confirm Password");
+        ConfirmPassField.setEchoChar((char) 0);
         ConfirmPassField.setBorder(null);
         ConfirmPassField.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         ConfirmPassField.addFocusListener(new java.awt.event.FocusAdapter() {
