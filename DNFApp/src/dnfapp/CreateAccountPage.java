@@ -298,7 +298,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         String ConfirmPass = String.valueOf(ConfirmPassField.getPassword());
 
         if (newUsername.equals("Username")) {
-            JOptionPane.showMessageDialog(null, "Username diisi terlebih dahulu!");
+            JOptionPane.showMessageDialog(null, "Username diisi terlebih dahulu!", "DNF App", 2);
         } 
         else {
             if (newEmail.equals("E-Mail")||newEmail.equals("")) {
@@ -329,28 +329,28 @@ public class CreateAccountPage extends javax.swing.JFrame {
                                 LM.pack();
                                 LM.setLocationRelativeTo(null);
                                 LM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
-                                JOptionPane.showMessageDialog(null, "Berhasil daftar!");
+                                JOptionPane.showMessageDialog(null, "Berhasil daftar!", "DNF App", 1);
                             } 
                             else {
-                                JOptionPane.showMessageDialog(null, "Username telah dipakai!");
+                                JOptionPane.showMessageDialog(null, "Username telah dipakai!", "DNF App", 2);
                             }
                         } 
                         else if (newPass.equals("")) {
-                            JOptionPane.showMessageDialog(null, "Password belum diisi!");
+                            JOptionPane.showMessageDialog(null, "Password belum diisi!", "DNF App", 2);
                         } 
                         else {
-                            JOptionPane.showMessageDialog(null, "Password dan Confirm Password harus sama!");
+                            JOptionPane.showMessageDialog(null, "Password dan Confirm Password harus sama!", "DNF App", 2);
                         }
                     }
                     else{
-                        JOptionPane.showMessageDialog(null, "Domain E-mail yang dimasukkan salah atau tidak diizinkan!");
+                        JOptionPane.showMessageDialog(null, "Domain E-mail yang dimasukkan salah atau tidak diizinkan!", "DNF App", 0);
                     }
                 }
                 else if(EmailUsed){
-                    JOptionPane.showMessageDialog(null, "Alamat E-mail tersebut sudah digunakan!");
+                    JOptionPane.showMessageDialog(null, "Alamat E-mail tersebut sudah digunakan!", "DNF App", 2);
                 }
                 else {
-                    JOptionPane.showMessageDialog(null, "Format E-mail yang dimasukkan salah!");
+                    JOptionPane.showMessageDialog(null, "Format E-mail yang dimasukkan salah!", "DNF App", 2);
                 }
             }
         }

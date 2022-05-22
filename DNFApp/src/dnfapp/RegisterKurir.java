@@ -183,9 +183,9 @@ public class RegisterKurir extends javax.swing.JFrame {
                         AM.pack();
                         AM.setLocationRelativeTo(null);
                         AM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
-                        JOptionPane.showMessageDialog(null, "Berhasil mendafatarkan " + namaKurir + " !");
+                        JOptionPane.showMessageDialog(null, "Berhasil mendafatarkan " + namaKurir + " !", "DNF App", 1);
                     } else{
-                        JOptionPane.showMessageDialog(null, "Kurir sudah terdaftar!");   
+                        JOptionPane.showMessageDialog(null, "Kurir sudah terdaftar!", "DNF App", 2);   
                     }
                 }
             }

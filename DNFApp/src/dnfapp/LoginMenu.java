@@ -194,10 +194,11 @@ public class LoginMenu extends javax.swing.JFrame {
             verifyUsername = false;
         }
         if (!verifyUsername) {
-            JOptionPane.showMessageDialog(null, "Username tidak ditemukan!");
+            JOptionPane.showMessageDialog(null, "Username tidak ditemukan!", "DNF App", 2);
+            
         } 
         if(!verifyPassword){
-            JOptionPane.showMessageDialog(null, "Password salah!");
+            JOptionPane.showMessageDialog(null, "Password salah!", "DNF App", 2);
         }
         
         if(verifyUsername && verifyPassword){
