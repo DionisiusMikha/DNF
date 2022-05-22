@@ -9,6 +9,7 @@ import java.util.HashMap;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Random;
 
 /**
  *
@@ -37,6 +38,32 @@ public class RegisterKurir extends javax.swing.JFrame {
         this.DeliveryList = DeliveryList;
         this.ListKurir = ListKurir;
         this.usedEmail = usedEmail;
+    }
+    
+    //static global char arr to generate random string
+    private static char[] chars = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'q', 'w', 'e', 'r', 't', 'z', 'u', 'i', 'o', 'p', 'a', 's',
+        'd', 'f', 'g', 'h', 'j', 'k', 'l', 'y', 'x', 'c', 'v', 'b', 'n', 'm', 'Q', 'W', 'E', 'R', 'T', 'Z', 'U', 'I', 'O', 'P', 'A',
+        'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Y', 'X', 'C', 'V', 'B', 'N', 'M' };
+
+    //randomString generator procedure
+    private static String randomString(int length) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < length; i++) {
+            stringBuilder.append(chars[new Random().nextInt(chars.length)]);
+        }
+        return stringBuilder.toString();
+    }
+    
+    //testing tool.
+    public void GenerateTestObject(){
+
+        System.out.println("Called Generator Method");
+        for(int i = 0;i<100;i++){
+            String randUsername = randomString(7);
+            Kurir generatedKurir = new Kurir(randUsername,randomString(7),randomString(7));
+            this.ListKurir.put(randUsername, generatedKurir);
+        }
     }
 
     /**
@@ -145,7 +172,7 @@ public class RegisterKurir extends javax.swing.JFrame {
                 PasswordKurirActionPerformed(evt);
             }
         });
-        getContentPane().add(PasswordKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 445, 30));
+        getContentPane().add(PasswordKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 395, 445, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Regis_kurir.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 730));
@@ -164,7 +191,18 @@ public class RegisterKurir extends javax.swing.JFrame {
         else {
             if (unameKurir.equals("Username Kurir")||unameKurir.equals("")) {
                 JOptionPane.showMessageDialog(null, "Username Kurir diisi terlebih dahulu!");
-            } 
+            }
+            //method Test JList.
+            else if(unameKurir.equalsIgnoreCase("TESTFILL")||namaKurir.equalsIgnoreCase("TESTFILL")){
+                GenerateTestObject();
+                AdminMenu AM = new AdminMenu(userlist, DeliveryList, ListKurir, usedEmail);
+                dispose();
+                AM.setVisible(true);
+                AM.pack();
+                AM.setLocationRelativeTo(null);
+                AM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
+                JOptionPane.showMessageDialog(null, "Generated 100 Test Object of Class Kurir!", "DNF App", 1);
+            }
             else {
                 if (passwordKurir.equals("Password Kurir")||passwordKurir.equals("")) {
                     JOptionPane.showMessageDialog(null, "Password Kurir diisi terlebih dahulu!");

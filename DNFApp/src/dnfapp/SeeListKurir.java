@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
-
-
 /**
  *
  * @author Frans
@@ -73,13 +71,13 @@ public class SeeListKurir extends javax.swing.JFrame {
 
         JListKurir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         JListKurir.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "item 1", "item2", " " };
+            String[] strings = { "Your List of Kurir will be here" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(JListKurir);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 600, 540));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 600, 540));
 
         BG.setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
