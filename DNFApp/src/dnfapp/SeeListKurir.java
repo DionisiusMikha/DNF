@@ -40,7 +40,7 @@ public class SeeListKurir extends javax.swing.JFrame {
     private void generateElement(){
         DefaultListModel listModel = new DefaultListModel();
         for(int i =0;i<ARRListKurir.size();i++){
-            String container = ARRListKurir.get(i).getNama() + " - "+ ARRListKurir.get(i).getUname();
+            String container = ARRListKurir.get(i).getNama() + " - "+ ARRListKurir.get(i).getUsername();
             listModel.addElement(container);
         }
         JListKurir.setModel(listModel);

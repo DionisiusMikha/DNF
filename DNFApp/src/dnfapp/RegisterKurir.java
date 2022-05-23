@@ -213,7 +213,7 @@ public class RegisterKurir extends javax.swing.JFrame {
                     }
                     
                     if(!jadiKurir){
-                        Kurir newKurir = new Kurir(unameKurir, namaKurir, passwordKurir);
+                        Kurir newKurir = new Kurir(namaKurir,unameKurir, passwordKurir);
                         ListKurir.put(unameKurir, newKurir);
                         AdminMenu AM = new AdminMenu(userlist, DeliveryList, ListKurir, usedEmail);
                         dispose();

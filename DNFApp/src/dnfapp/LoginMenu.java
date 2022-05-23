@@ -35,6 +35,7 @@ public class LoginMenu extends javax.swing.JFrame {
             LoginBG.requestFocus();
             User admin = new User("admin","admin","CustomerService@DNF.co.id");
             userlist.put("admin", admin);
+            System.out.println(userlist);
         }
     }
 
@@ -205,7 +206,6 @@ public class LoginMenu extends javax.swing.JFrame {
             //berhasil login
             if(logUsername.equals("admin")){
                 AdminMenu adminMenu = new AdminMenu(userlist,DeliveryList,ListKurir,usedEmail);
-                dispose();
                 adminMenu.setVisible(true);
                 adminMenu.pack();
                 adminMenu.setLocationRelativeTo(null);
