@@ -206,6 +206,7 @@ public class LoginMenu extends javax.swing.JFrame {
             if (logUsername.equals("admin")) {
                 AdminMenu adminMenu = new AdminMenu(userlist, DeliveryList, ListKurir, usedEmail);
                 adminMenu.setVisible(true);
+                dispose();
                 adminMenu.pack();
                 adminMenu.setLocationRelativeTo(null);
                 adminMenu.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);

@@ -108,7 +108,7 @@ public class SeeListKurir extends javax.swing.JFrame {
                 KeluarSeeListKurirActionPerformed(evt);
             }
         });
-        getContentPane().add(KeluarSeeListKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 580, 80, -1));
+        getContentPane().add(KeluarSeeListKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 584, 80, -1));
 
         displayNamaKurir.setBackground(new java.awt.Color(62, 97, 155));
         displayNamaKurir.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
@@ -173,17 +173,11 @@ public class SeeListKurir extends javax.swing.JFrame {
     private void JListKurirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JListKurirMouseClicked
         // TODO add your handling code here:
         if (evt.getClickCount() == 2 && evt.getButton() == evt.BUTTON1) {
-
             int i = JListKurir.getSelectedIndex();
             tempNamaLamaKurir = ARRListKurir.get(i).getNama();
-//            System.out.println("ini i nyaaaaaaaaa" + i);
-
             displayNamaKurir.setText(ARRListKurir.get(i).getNama());
-
             displayUsernameKurir.setText(ARRListKurir.get(i).getUsername());
-
             displayPasswordKurir.setText(ARRListKurir.get(i).getPassword());
-
         }
 
     }//GEN-LAST:event_JListKurirMouseClicked
@@ -191,7 +185,7 @@ public class SeeListKurir extends javax.swing.JFrame {
     private void KeluarSeeListKurirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KeluarSeeListKurirActionPerformed
         // TODO add your handling code here:
         int userAmount = userlist.size();
-        if (userAmount == 0) {
+        if (userAmount==0) {
             AdminMenu AM = new AdminMenu();
             dispose();
             AM.setVisible(true);
@@ -223,37 +217,32 @@ public class SeeListKurir extends javax.swing.JFrame {
     }//GEN-LAST:event_displayPasswordKurirActionPerformed
 
     private void EditKurirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditKurirButtonActionPerformed
-        // TODO add your handling code here:
-        String newnama = displayNamaKurir.getText();
-        String newPassword = displayPasswordKurir.getText();
-        String newUsername = displayUsernameKurir.getText();
-
-        if (displayNamaKurir.getText().equals("") && displayPasswordKurir.getText().equals("") && displayUsernameKurir.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Silahkan pilih user yang mau di-edit!", "DNF App", 2);
-        } else {
-            int ctr = 0;
-            for (int i = 0; i < ARRListKurir.size(); i++) {
-                if (ARRListKurir.get(i).getNama().equals(tempNamaLamaKurir)) {
-                    ctr = i;
-                    break;
-                }
-            }
-            for (Map.Entry<String, Kurir> set : ListKurir.entrySet()) {
-                if (set.getKey().equals(tempNamaLamaKurir)) {
-
-                }
-//                this.ARRListKurir.add(set.getValue());
-            }
-            ARRListKurir.get(ctr).setNama(newnama);
-            ARRListKurir.get(ctr).setUsername(newUsername);
-            ARRListKurir.get(ctr).setPassword(newPassword);
-            resetField();
-            JOptionPane.showMessageDialog(null, "Berhasil memperbaharui data Kurir!", "DNF App", 1);
-        }
-
+//        String newnama = displayNamaKurir.getText();
+//        String newPassword = displayPasswordKurir.getText();
+//        String newUsername = displayUsernameKurir.getText();
+//
+//        if (displayNamaKurir.getText().equals("") && displayPasswordKurir.getText().equals("") && displayUsernameKurir.getText().equals("")) {
+//            JOptionPane.showMessageDialog(null, "Silahkan pilih user yang mau di-edit!", "DNF App", 2);
+//        } 
+//        else {
+//            int ctr = 0;
+//            for (int i = 0; i < ARRListKurir.size(); i++) {
+//                if (ARRListKurir.get(i).getNama().equals(tempNamaLamaKurir)) {
+//                    ctr = i;
+//                    break;
+//                }
+//            }
+//            ARRListKurir.get(ctr).setNama(newnama);
+//            ARRListKurir.get(ctr).setUsername(newUsername);
+//            ARRListKurir.get(ctr).setPassword(newPassword);
+//            resetField();
+//            generateElement();
+//            JOptionPane.showMessageDialog(null, "Berhasil memperbaharui data Kurir!", "DNF App", 1);
+//        }
+        
     }//GEN-LAST:event_EditKurirButtonActionPerformed
 
-    void resetField() {
+    private void resetField() {
         displayNamaKurir.setText("");
         displayUsernameKurir.setText("");
         displayPasswordKurir.setText("");

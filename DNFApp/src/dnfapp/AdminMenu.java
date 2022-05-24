@@ -122,7 +122,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 LogOutButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(LogOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 560, -1, -1));
+        getContentPane().add(LogOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1106, 560, -1, -1));
 
         ListSemuaUserButton.setBackground(new java.awt.Color(233, 233, 255));
         ListSemuaUserButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_6.png"))); // NOI18N
@@ -185,8 +185,7 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_DaftarKurirButtonActionPerformed
 
     private void ListSemuaUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListSemuaUserButtonActionPerformed
-        // TODO add your handling code here:
-
+        
     }//GEN-LAST:event_ListSemuaUserButtonActionPerformed
 
     private void MasukanPengirimanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MasukanPengirimanButtonActionPerformed
