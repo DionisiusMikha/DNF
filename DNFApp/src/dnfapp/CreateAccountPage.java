@@ -35,32 +35,32 @@ public class CreateAccountPage extends javax.swing.JFrame {
         GenerateList();
         Background_Frame.requestFocus();
         this.userlist = userlist;
-        this.usedEmail=usedEmail;
+        this.usedEmail = usedEmail;
     }
-    
+
     //situational, for compatibility issues.
     public CreateAccountPage(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList) {
         initComponents();
         GenerateList();
         Background_Frame.requestFocus();
         this.userlist = userlist;
-        this.usedEmail=usedEmail;
-        this.DeliveryList=DeliveryList;
+        this.usedEmail = usedEmail;
+        this.DeliveryList = DeliveryList;
     }
-    
+
     //main cons
     public CreateAccountPage(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir) {
         initComponents();
         GenerateList();
         Background_Frame.requestFocus();
         this.userlist = userlist;
-        this.usedEmail=usedEmail;
-        this.DeliveryList=DeliveryList;
-        this.ListKurir=ListKurir;
+        this.usedEmail = usedEmail;
+        this.DeliveryList = DeliveryList;
+        this.ListKurir = ListKurir;
     }
-    
+
     //generate email list, to add use put method to VALID_DOMAIN HashMap. Put Method requires String(domain name) and Integer(domain name str length)
-    private void GenerateList(){
+    private void GenerateList() {
         VALID_DOMAIN.put("gmail.com", 10);
         VALID_DOMAIN.put("yahoo.com", 10);
         VALID_DOMAIN.put("outlook.com", 12);
@@ -256,7 +256,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
 
         if (password.toLowerCase().equals("password")) {
             RegPassField.setText("");
-            RegPassField.setForeground(new Color(255,255,255));
+            RegPassField.setForeground(new Color(255, 255, 255));
         }
 
     }//GEN-LAST:event_RegPassFieldFocusGained
@@ -277,7 +277,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
 
         if (password.toLowerCase().equals("confirm password")) {
             ConfirmPassField.setText("");
-            ConfirmPassField.setForeground(new Color(255,255,255));
+            ConfirmPassField.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_ConfirmPassFieldFocusGained
 
@@ -299,21 +299,19 @@ public class CreateAccountPage extends javax.swing.JFrame {
 
         if (newUsername.equals("Username")) {
             JOptionPane.showMessageDialog(null, "Username diisi terlebih dahulu!", "DNF App", 2);
-        } 
-        else {
-            if (newEmail.equals("E-Mail")||newEmail.equals("")) {
+        } else {
+            if (newEmail.equals("E-Mail") || newEmail.equals("")) {
                 JOptionPane.showMessageDialog(null, "E-Mail diisi terlebih dahulu!");
-            } 
-            else {
+            } else {
                 Integer mailLen = newEmail.length();
                 String[] parts = new String[2];
                 boolean EmailUsed = false;
-                if(usedEmail.containsKey(newEmail)){
+                if (usedEmail.containsKey(newEmail)) {
                     EmailUsed = true;
                 }
-                if(newEmail.contains("@")&&!EmailUsed){
+                if (newEmail.contains("@") && !EmailUsed) {
                     parts = newEmail.split("@");
-                    if (VALID_DOMAIN.containsKey(parts[1])){
+                    if (VALID_DOMAIN.containsKey(parts[1])) {
                         if (ConfirmPass.equals(newPass) && !(newPass.equals(""))) {
                             boolean exist = false;
                             if (userlist.containsKey(newUsername)) {
@@ -323,33 +321,27 @@ public class CreateAccountPage extends javax.swing.JFrame {
                                 User newUser = new User(newUsername, newPass, newEmail);
                                 userlist.put(newUsername, newUser);
                                 usedEmail.put(newEmail, newUsername);
-                                LoginMenu LM = new LoginMenu(userlist,usedEmail);
+                                LoginMenu LM = new LoginMenu(userlist, usedEmail);
                                 dispose();
                                 LM.setVisible(true);
                                 LM.pack();
                                 LM.setLocationRelativeTo(null);
                                 LM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
                                 JOptionPane.showMessageDialog(null, "Berhasil daftar!", "DNF App", 1);
-                            } 
-                            else {
+                            } else {
                                 JOptionPane.showMessageDialog(null, "Username telah dipakai!", "DNF App", 2);
                             }
-                        } 
-                        else if (newPass.equals("")) {
+                        } else if (newPass.equals("")) {
                             JOptionPane.showMessageDialog(null, "Password belum diisi!", "DNF App", 2);
-                        } 
-                        else {
+                        } else {
                             JOptionPane.showMessageDialog(null, "Password dan Confirm Password harus sama!", "DNF App", 2);
                         }
-                    }
-                    else{
+                    } else {
                         JOptionPane.showMessageDialog(null, "Domain E-mail yang dimasukkan salah atau tidak diizinkan!", "DNF App", 0);
                     }
-                }
-                else if(EmailUsed){
+                } else if (EmailUsed) {
                     JOptionPane.showMessageDialog(null, "Alamat E-mail tersebut sudah digunakan!", "DNF App", 2);
-                }
-                else {
+                } else {
                     JOptionPane.showMessageDialog(null, "Format E-mail yang dimasukkan salah!", "DNF App", 2);
                 }
             }
@@ -369,7 +361,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
             LM.setLocationRelativeTo(null);
             LM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
         } else if (userAmount > 0) {
-            LoginMenu LM = new LoginMenu(userlist,usedEmail);
+            LoginMenu LM = new LoginMenu(userlist, usedEmail);
             dispose();
             LM.setVisible(true);
             LM.pack();

@@ -20,13 +20,13 @@ public class AdminMenu extends javax.swing.JFrame {
     public AdminMenu() {
         initComponents();
     }
-    
+
     public AdminMenu(HashMap<String, User> userlist, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir, HashMap<String, String> usedEmail) {
         initComponents();
         this.userlist = userlist;
-        this.DeliveryList=DeliveryList;
-        this.ListKurir=ListKurir;
-        this.usedEmail=usedEmail;
+        this.DeliveryList = DeliveryList;
+        this.ListKurir = ListKurir;
+        this.usedEmail = usedEmail;
     }
 
     /**
@@ -44,7 +44,7 @@ public class AdminMenu extends javax.swing.JFrame {
         DaftarKurirButton = new javax.swing.JButton();
         ListPengirimanButton = new javax.swing.JButton();
         LogOutButton = new javax.swing.JButton();
-        TambahKategoriButton = new javax.swing.JButton();
+        ListSemuaUserButton = new javax.swing.JButton();
         AdminMenuBG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,6 +69,11 @@ public class AdminMenu extends javax.swing.JFrame {
         MasukanPengirimanButton.setBorder(null);
         MasukanPengirimanButton.setBorderPainted(false);
         MasukanPengirimanButton.setContentAreaFilled(false);
+        MasukanPengirimanButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MasukanPengirimanButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(MasukanPengirimanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, -1, -1));
 
         HapusPengirimanButton.setBackground(new java.awt.Color(233, 233, 255));
@@ -76,6 +81,11 @@ public class AdminMenu extends javax.swing.JFrame {
         HapusPengirimanButton.setBorder(null);
         HapusPengirimanButton.setBorderPainted(false);
         HapusPengirimanButton.setContentAreaFilled(false);
+        HapusPengirimanButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HapusPengirimanButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(HapusPengirimanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 440, -1, -1));
 
         DaftarKurirButton.setBackground(new java.awt.Color(233, 233, 255));
@@ -95,6 +105,11 @@ public class AdminMenu extends javax.swing.JFrame {
         ListPengirimanButton.setBorder(null);
         ListPengirimanButton.setBorderPainted(false);
         ListPengirimanButton.setContentAreaFilled(false);
+        ListPengirimanButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListPengirimanButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(ListPengirimanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, -1, -1));
 
         LogOutButton.setBackground(new java.awt.Color(192, 196, 220));
@@ -109,13 +124,18 @@ public class AdminMenu extends javax.swing.JFrame {
         });
         getContentPane().add(LogOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 560, -1, -1));
 
-        TambahKategoriButton.setBackground(new java.awt.Color(233, 233, 255));
-        TambahKategoriButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_6.png"))); // NOI18N
-        TambahKategoriButton.setActionCommand("jButton1");
-        TambahKategoriButton.setBorder(null);
-        TambahKategoriButton.setBorderPainted(false);
-        TambahKategoriButton.setContentAreaFilled(false);
-        getContentPane().add(TambahKategoriButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 210, -1, -1));
+        ListSemuaUserButton.setBackground(new java.awt.Color(233, 233, 255));
+        ListSemuaUserButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_6.png"))); // NOI18N
+        ListSemuaUserButton.setActionCommand("jButton1");
+        ListSemuaUserButton.setBorder(null);
+        ListSemuaUserButton.setBorderPainted(false);
+        ListSemuaUserButton.setContentAreaFilled(false);
+        ListSemuaUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListSemuaUserButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ListSemuaUserButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 210, -1, -1));
 
         AdminMenuBG.setBackground(new java.awt.Color(242, 242, 255));
         AdminMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BG_Admin.png"))); // NOI18N
@@ -135,7 +155,7 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_RegisKurirButtonActionPerformed
 
     private void LogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutButtonActionPerformed
-        LoginMenu LM = new LoginMenu(userlist, usedEmail,DeliveryList, ListKurir);
+        LoginMenu LM = new LoginMenu(userlist, usedEmail, DeliveryList, ListKurir);
         dispose();
         LM.setVisible(true);
         LM.pack();
@@ -145,17 +165,16 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_LogOutButtonActionPerformed
 
     private void DaftarKurirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaftarKurirButtonActionPerformed
-        if(ListKurir.size()==0){
-            SeeListKurir SLM = new SeeListKurir(userlist,usedEmail,DeliveryList,ListKurir);
+        if (ListKurir.size() == 0) {
+            SeeListKurir SLM = new SeeListKurir(userlist, usedEmail, DeliveryList, ListKurir);
             dispose();
             SLM.setVisible(true);
             SLM.pack();
             SLM.setLocationRelativeTo(null);
             SLM.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
             SLM.setResizable(false);
-        }
-        else{
-            SeeListKurir SLM = new SeeListKurir(userlist,usedEmail,DeliveryList,ListKurir);
+        } else {
+            SeeListKurir SLM = new SeeListKurir(userlist, usedEmail, DeliveryList, ListKurir);
             dispose();
             SLM.setVisible(true);
             SLM.pack();
@@ -164,6 +183,23 @@ public class AdminMenu extends javax.swing.JFrame {
             SLM.setResizable(false);
         }
     }//GEN-LAST:event_DaftarKurirButtonActionPerformed
+
+    private void ListSemuaUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListSemuaUserButtonActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_ListSemuaUserButtonActionPerformed
+
+    private void MasukanPengirimanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MasukanPengirimanButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MasukanPengirimanButtonActionPerformed
+
+    private void ListPengirimanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListPengirimanButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ListPengirimanButtonActionPerformed
+
+    private void HapusPengirimanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusPengirimanButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HapusPengirimanButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,9 +241,9 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton DaftarKurirButton;
     private javax.swing.JButton HapusPengirimanButton;
     private javax.swing.JButton ListPengirimanButton;
+    private javax.swing.JButton ListSemuaUserButton;
     private javax.swing.JButton LogOutButton;
     private javax.swing.JButton MasukanPengirimanButton;
     private javax.swing.JButton RegisKurirButton;
-    private javax.swing.JButton TambahKategoriButton;
     // End of variables declaration//GEN-END:variables
 }

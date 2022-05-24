@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class LoginMenu extends javax.swing.JFrame {
 
     private HashMap<String, User> userlist = new HashMap<String, User>();
-    private HashMap<String, String> usedEmail = new HashMap<String, String>();  
+    private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
 
@@ -27,13 +27,13 @@ public class LoginMenu extends javax.swing.JFrame {
         initComponents();
         LoginBG.requestFocus();
     }
-    
+
     //initial constructor, used to generate admin account.
-    public LoginMenu(boolean generate){
-        if(generate){
+    public LoginMenu(boolean generate) {
+        if (generate) {
             initComponents();
             LoginBG.requestFocus();
-            User admin = new User("admin","admin","CustomerService@DNF.co.id");
+            User admin = new User("admin", "admin", "CustomerService@DNF.co.id");
             userlist.put("admin", admin);
             System.out.println(userlist);
         }
@@ -44,26 +44,26 @@ public class LoginMenu extends javax.swing.JFrame {
         initComponents();
         LoginBG.requestFocus();
         this.userlist = userlist;
-        this.usedEmail=usedEmail;
+        this.usedEmail = usedEmail;
     }
-    
+
     //situational, for compatibility issues.
     public LoginMenu(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList) {
         initComponents();
         LoginBG.requestFocus();
         this.userlist = userlist;
-        this.usedEmail=usedEmail;
-        this.DeliveryList=DeliveryList;
+        this.usedEmail = usedEmail;
+        this.DeliveryList = DeliveryList;
     }
-    
+
     //main cons
     public LoginMenu(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir) {
         initComponents();
         LoginBG.requestFocus();
         this.userlist = userlist;
-        this.usedEmail=usedEmail;
-        this.DeliveryList=DeliveryList;
-        this.ListKurir=ListKurir;
+        this.usedEmail = usedEmail;
+        this.DeliveryList = DeliveryList;
+        this.ListKurir = ListKurir;
     }
 
     /**
@@ -169,7 +169,7 @@ public class LoginMenu extends javax.swing.JFrame {
             CAP.setLocationRelativeTo(null);
             CAP.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
         } else {
-            CreateAccountPage CAP = new CreateAccountPage(userlist,usedEmail);
+            CreateAccountPage CAP = new CreateAccountPage(userlist, usedEmail);
             dispose();          //dispose of current JFrame. This is used to make performance better.
             CAP.setVisible(true);
             CAP.pack();
@@ -190,30 +190,28 @@ public class LoginMenu extends javax.swing.JFrame {
             if (!passCheck.equals(logPass)) {
                 verifyPassword = false;
             }
-        } 
-        else {
+        } else {
             verifyUsername = false;
         }
         if (!verifyUsername) {
             JOptionPane.showMessageDialog(null, "Username tidak ditemukan!", "DNF App", 2);
-            
-        } 
-        if(!verifyPassword){
+
+        }
+        if (!verifyPassword) {
             JOptionPane.showMessageDialog(null, "Password salah!", "DNF App", 2);
         }
-        
-        if(verifyUsername && verifyPassword){
+
+        if (verifyUsername && verifyPassword) {
             //berhasil login
-            if(logUsername.equals("admin")){
-                AdminMenu adminMenu = new AdminMenu(userlist,DeliveryList,ListKurir,usedEmail);
+            if (logUsername.equals("admin")) {
+                AdminMenu adminMenu = new AdminMenu(userlist, DeliveryList, ListKurir, usedEmail);
                 adminMenu.setVisible(true);
                 adminMenu.pack();
                 adminMenu.setLocationRelativeTo(null);
                 adminMenu.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
                 adminMenu.setResizable(false);
-            }
-            else{
-                UserMainMenu UserMenu = new UserMainMenu(userlist,usedEmail);
+            } else {
+                UserMainMenu UserMenu = new UserMainMenu(userlist, usedEmail);
                 dispose();
                 UserMenu.setVisible(true);
                 UserMenu.pack();
@@ -248,7 +246,7 @@ public class LoginMenu extends javax.swing.JFrame {
 
         if (password.toLowerCase().equals("password")) {
             PasswordField.setText("");
-            PasswordField.setForeground(new Color(255,255,255));
+            PasswordField.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_PasswordFieldFocusGained
 
@@ -258,7 +256,7 @@ public class LoginMenu extends javax.swing.JFrame {
         if (password.toLowerCase().equals("password") || password.toLowerCase().equals("")) {
             PasswordField.setText("Password");
             PasswordField.setEchoChar((char) 0);
-            PasswordField.setForeground(new Color(255,255,255));
+            PasswordField.setForeground(new Color(255, 255, 255));
         }
 
     }//GEN-LAST:event_PasswordFieldFocusLost
@@ -294,7 +292,7 @@ public class LoginMenu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoginMenu().setVisible(true);
-                
+
             }
         });
     }
