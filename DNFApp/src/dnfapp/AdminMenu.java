@@ -48,7 +48,6 @@ public class AdminMenu extends javax.swing.JFrame {
         AdminMenuBG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -108,7 +107,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 LogOutButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(LogOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 550, -1, -1));
+        getContentPane().add(LogOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 560, -1, -1));
 
         TambahKategoriButton.setBackground(new java.awt.Color(233, 233, 255));
         TambahKategoriButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_6.png"))); // NOI18N
