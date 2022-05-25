@@ -21,6 +21,7 @@ public class SeeListKurir extends javax.swing.JFrame {
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
     private ArrayList<Kurir> ARRListKurir = new ArrayList<Kurir>();
+    private Integer SelectedObj;
 
     private static String tempNamaLamaKurir;
 
@@ -178,6 +179,7 @@ public class SeeListKurir extends javax.swing.JFrame {
             displayNamaKurir.setText(ARRListKurir.get(i).getNama());
             displayUsernameKurir.setText(ARRListKurir.get(i).getUsername());
             displayPasswordKurir.setText(ARRListKurir.get(i).getPassword());
+            SelectedObj=i;
         }
 
     }//GEN-LAST:event_JListKurirMouseClicked
@@ -239,7 +241,13 @@ public class SeeListKurir extends javax.swing.JFrame {
 //            generateElement();
 //            JOptionPane.showMessageDialog(null, "Berhasil memperbaharui data Kurir!", "DNF App", 1);
 //        }
-        
+        EditKurir EK = new EditKurir(userlist,DeliveryList,ListKurir,usedEmail,ARRListKurir,SelectedObj);
+        dispose();
+        EK.setVisible(true);
+        EK.pack();
+        EK.setResizable(false);
+        EK.setLocationRelativeTo(null);
+        EK.setDefaultCloseOperation(AdminMenu.EXIT_ON_CLOSE);
     }//GEN-LAST:event_EditKurirButtonActionPerformed
 
     private void resetField() {
