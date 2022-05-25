@@ -44,6 +44,8 @@ public class EditKurir extends javax.swing.JFrame {
         UsernameEditField = new javax.swing.JTextField();
         PasswordEditField = new javax.swing.JTextField();
         KeluarButton = new javax.swing.JButton();
+        InputButton = new javax.swing.JButton();
+        CancelButton = new javax.swing.JButton();
         BG_EditKurir = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -82,6 +84,22 @@ public class EditKurir extends javax.swing.JFrame {
         KeluarButton.setDefaultCapable(false);
         getContentPane().add(KeluarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 585, 90, 90));
 
+        InputButton.setText("Input(PlaceHolder)");
+        InputButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(InputButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 500, -1, -1));
+
+        CancelButton.setText("CancelBtn(PlaceHolder)");
+        CancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, -1, -1));
+
         BG_EditKurir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Profile_Kurir.png"))); // NOI18N
         getContentPane().add(BG_EditKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -89,16 +107,24 @@ public class EditKurir extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void NameEditFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameEditFieldActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_NameEditFieldActionPerformed
 
     private void UsernameEditFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameEditFieldActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_UsernameEditFieldActionPerformed
 
     private void PasswordEditFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordEditFieldActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_PasswordEditFieldActionPerformed
+
+    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
+        
+    }//GEN-LAST:event_CancelButtonActionPerformed
+
+    private void InputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputButtonActionPerformed
+        
+    }//GEN-LAST:event_InputButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,6 +163,8 @@ public class EditKurir extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG_EditKurir;
+    private javax.swing.JButton CancelButton;
+    private javax.swing.JButton InputButton;
     private javax.swing.JButton KeluarButton;
     private javax.swing.JTextField NameEditField;
     private javax.swing.JTextField PasswordEditField;
