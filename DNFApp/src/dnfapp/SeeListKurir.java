@@ -41,6 +41,7 @@ public class SeeListKurir extends javax.swing.JFrame {
             generate();
             generateElement();
         }
+        this.SelectedObj=null;
     }
 
     private void generateElement() {
@@ -72,14 +73,11 @@ public class SeeListKurir extends javax.swing.JFrame {
         JListKurir = new javax.swing.JList<>();
         KeluarSeeListKurir = new javax.swing.JButton();
         displayNamaKurir = new javax.swing.JTextField();
-        LabelNama = new javax.swing.JLabel();
-        LabelUser = new javax.swing.JLabel();
         displayUsernameKurir = new javax.swing.JTextField();
-        LabelPassword = new javax.swing.JLabel();
         displayPasswordKurir = new javax.swing.JTextField();
         EditKurirButton = new javax.swing.JButton();
+        DeleteButton = new javax.swing.JButton();
         BG = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -97,7 +95,7 @@ public class SeeListKurir extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(JListKurir);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 510, 340));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 400, 380));
 
         KeluarSeeListKurir.setBackground(new java.awt.Color(4, 37, 107));
         KeluarSeeListKurir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5_minisize.png"))); // NOI18N
@@ -119,17 +117,7 @@ public class SeeListKurir extends javax.swing.JFrame {
                 displayNamaKurirActionPerformed(evt);
             }
         });
-        getContentPane().add(displayNamaKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 220, 260, -1));
-
-        LabelNama.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        LabelNama.setForeground(new java.awt.Color(0, 0, 0));
-        LabelNama.setText("Nama : ");
-        getContentPane().add(LabelNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 220, -1, -1));
-
-        LabelUser.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        LabelUser.setForeground(new java.awt.Color(0, 0, 0));
-        LabelUser.setText("Username :");
-        getContentPane().add(LabelUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 280, -1, -1));
+        getContentPane().add(displayNamaKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 190, 260, -1));
 
         displayUsernameKurir.setBackground(new java.awt.Color(62, 97, 155));
         displayUsernameKurir.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
@@ -139,12 +127,7 @@ public class SeeListKurir extends javax.swing.JFrame {
                 displayUsernameKurirActionPerformed(evt);
             }
         });
-        getContentPane().add(displayUsernameKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 280, 210, -1));
-
-        LabelPassword.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        LabelPassword.setForeground(new java.awt.Color(0, 0, 0));
-        LabelPassword.setText("Password :");
-        getContentPane().add(LabelPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, -1, -1));
+        getContentPane().add(displayUsernameKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 250, 210, -1));
 
         displayPasswordKurir.setBackground(new java.awt.Color(62, 97, 155));
         displayPasswordKurir.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
@@ -154,19 +137,26 @@ public class SeeListKurir extends javax.swing.JFrame {
                 displayPasswordKurirActionPerformed(evt);
             }
         });
-        getContentPane().add(displayPasswordKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 340, 200, -1));
+        getContentPane().add(displayPasswordKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 310, 200, -1));
 
-        EditKurirButton.setText("Edit");
+        EditKurirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_5.png"))); // NOI18N
+        EditKurirButton.setBorder(null);
+        EditKurirButton.setBorderPainted(false);
+        EditKurirButton.setContentAreaFilled(false);
         EditKurirButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EditKurirButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(EditKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 440, -1, -1));
+        getContentPane().add(EditKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 510, 250, 70));
+
+        DeleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_6.png"))); // NOI18N
+        DeleteButton.setBorderPainted(false);
+        DeleteButton.setContentAreaFilled(false);
+        getContentPane().add(DeleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 510, 250, 70));
 
         BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/List_Kurir.png"))); // NOI18N
         getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 600, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -181,7 +171,6 @@ public class SeeListKurir extends javax.swing.JFrame {
             displayPasswordKurir.setText(ARRListKurir.get(i).getPassword());
             SelectedObj=i;
         }
-
     }//GEN-LAST:event_JListKurirMouseClicked
 
     private void KeluarSeeListKurirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KeluarSeeListKurirActionPerformed
@@ -241,13 +230,18 @@ public class SeeListKurir extends javax.swing.JFrame {
 //            generateElement();
 //            JOptionPane.showMessageDialog(null, "Berhasil memperbaharui data Kurir!", "DNF App", 1);
 //        }
-        EditKurir EK = new EditKurir(userlist,DeliveryList,ListKurir,usedEmail,ARRListKurir,SelectedObj);
-        dispose();
-        EK.setVisible(true);
-        EK.pack();
-        EK.setResizable(false);
-        EK.setLocationRelativeTo(null);
-        EK.setDefaultCloseOperation(AdminMenu.EXIT_ON_CLOSE);
+        if(this.SelectedObj!=null){
+            EditKurir EK = new EditKurir(userlist,DeliveryList,ListKurir,usedEmail,ARRListKurir,SelectedObj);
+            dispose();
+            EK.setVisible(true);
+            EK.pack();
+            EK.setResizable(false);
+            EK.setLocationRelativeTo(null);
+            EK.setDefaultCloseOperation(AdminMenu.EXIT_ON_CLOSE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Belum ada kurir yang dipilih!", "DNF App", 2);
+        }
     }//GEN-LAST:event_EditKurirButtonActionPerformed
 
     private void resetField() {
@@ -293,16 +287,13 @@ public class SeeListKurir extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG;
+    private javax.swing.JButton DeleteButton;
     private javax.swing.JButton EditKurirButton;
     private javax.swing.JList<String> JListKurir;
     private javax.swing.JButton KeluarSeeListKurir;
-    private javax.swing.JLabel LabelNama;
-    private javax.swing.JLabel LabelPassword;
-    private javax.swing.JLabel LabelUser;
     private javax.swing.JTextField displayNamaKurir;
     private javax.swing.JTextField displayPasswordKurir;
     private javax.swing.JTextField displayUsernameKurir;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

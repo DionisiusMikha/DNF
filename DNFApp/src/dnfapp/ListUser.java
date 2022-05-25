@@ -28,9 +28,6 @@ public class ListUser extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         BG_ListUser = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -45,19 +42,7 @@ public class ListUser extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 330, 400));
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
-        jLabel1.setText("Nama :");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 200, 70, 40));
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
-        jLabel2.setText("Username :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
-        jLabel3.setText("Password : ");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, -1, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 400, 380));
 
         BG_ListUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/List_User.png"))); // NOI18N
         getContentPane().add(BG_ListUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -102,9 +87,6 @@ public class ListUser extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG_ListUser;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

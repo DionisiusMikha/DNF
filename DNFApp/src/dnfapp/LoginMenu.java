@@ -211,7 +211,8 @@ public class LoginMenu extends javax.swing.JFrame {
                 adminMenu.setLocationRelativeTo(null);
                 adminMenu.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
                 adminMenu.setResizable(false);
-            } else {
+            } 
+            else {
                 UserMainMenu UserMenu = new UserMainMenu(userlist, usedEmail);
                 dispose();
                 UserMenu.setVisible(true);
@@ -253,13 +254,11 @@ public class LoginMenu extends javax.swing.JFrame {
 
     private void PasswordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFieldFocusLost
         String password = String.valueOf(PasswordField.getPassword());
-
         if (password.toLowerCase().equals("password") || password.toLowerCase().equals("")) {
             PasswordField.setText("Password");
             PasswordField.setEchoChar((char) 0);
             PasswordField.setForeground(new Color(255, 255, 255));
         }
-
     }//GEN-LAST:event_PasswordFieldFocusLost
 
     /**
