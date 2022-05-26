@@ -18,6 +18,10 @@ public class EditKurir extends javax.swing.JFrame {
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
     private ArrayList<Kurir> ARRKurir = new ArrayList<Kurir>();
+    private String CurrentNama;
+    private String CurrentUsername;
+    private String CurrentPassword;
+    private Kurir TargetOBJECT;
     
     public EditKurir() {
         initComponents();
@@ -30,10 +34,13 @@ public class EditKurir extends javax.swing.JFrame {
         this.usedEmail=usedEmail;
         this.DeliveryList=DeliveryList;
         this.ARRKurir=KurirARRList;
-        Kurir TargetOBJECT = ARRKurir.get(objIndex);
-        NameEditField.setText(TargetOBJECT.getNama());
-        UsernameEditField.setText(TargetOBJECT.getUsername());
-        PasswordEditField.setText(TargetOBJECT.getPassword());
+        this.TargetOBJECT = ARRKurir.get(objIndex);
+        this.CurrentNama=TargetOBJECT.getNama();
+        this.CurrentUsername=TargetOBJECT.getUsername();
+        this.CurrentPassword=TargetOBJECT.getPassword();
+        NameEditField.setText(CurrentNama);
+        UsernameEditField.setText(CurrentUsername);
+        PasswordEditField.setText(CurrentPassword);
     }
 
     @SuppressWarnings("unchecked")
@@ -53,6 +60,14 @@ public class EditKurir extends javax.swing.JFrame {
 
         NameEditField.setBackground(new java.awt.Color(62, 97, 155));
         NameEditField.setBorder(null);
+        NameEditField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                NameEditFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                NameEditFieldFocusLost(evt);
+            }
+        });
         NameEditField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NameEditFieldActionPerformed(evt);
@@ -62,6 +77,14 @@ public class EditKurir extends javax.swing.JFrame {
 
         UsernameEditField.setBackground(new java.awt.Color(62, 97, 155));
         UsernameEditField.setBorder(null);
+        UsernameEditField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                UsernameEditFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                UsernameEditFieldFocusLost(evt);
+            }
+        });
         UsernameEditField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UsernameEditFieldActionPerformed(evt);
@@ -71,6 +94,14 @@ public class EditKurir extends javax.swing.JFrame {
 
         PasswordEditField.setBackground(new java.awt.Color(62, 97, 155));
         PasswordEditField.setBorder(null);
+        PasswordEditField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                PasswordEditFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                PasswordEditFieldFocusLost(evt);
+            }
+        });
         PasswordEditField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PasswordEditFieldActionPerformed(evt);
@@ -123,8 +154,57 @@ public class EditKurir extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelButtonActionPerformed
 
     private void InputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputButtonActionPerformed
+        String newUsername,newPassword,newName;
+        newUsername=UsernameEditField.getText();
+        newPassword=PasswordEditField.getText();
+        newName=NameEditField.getText();
+
+        if(!newUsername.equals(CurrentUsername)||!newName.equals(CurrentNama)||!newPassword.equals(CurrentPassword)){
+            Kurir EditedObj = new Kurir(newName,newUsername,newPassword);
+            ListKurir.remove(CurrentUsername);
+            ListKurir.put(newUsername,EditedObj);
+        }
         
+        SeeListKurir SLK = new SeeListKurir(userlist,usedEmail,DeliveryList,ListKurir);
+        dispose();
+        SLK.setVisible(true);
+        SLK.pack();
+        SLK.setResizable(false);
+        SLK.setLocationRelativeTo(null);
+        SLK.setDefaultCloseOperation(AdminMenu.EXIT_ON_CLOSE);
     }//GEN-LAST:event_InputButtonActionPerformed
+
+    private void NameEditFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NameEditFieldFocusGained
+        if(NameEditField.getText().equalsIgnoreCase(CurrentNama)){
+            NameEditField.setText("");
+        }
+    }//GEN-LAST:event_NameEditFieldFocusGained
+
+    private void NameEditFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NameEditFieldFocusLost
+        if(NameEditField.getText().equalsIgnoreCase("")){
+            NameEditField.setText(CurrentNama);
+        }
+    }//GEN-LAST:event_NameEditFieldFocusLost
+
+    private void UsernameEditFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UsernameEditFieldFocusGained
+        if(UsernameEditField.getText().equalsIgnoreCase(CurrentUsername)){
+            UsernameEditField.setText("");
+        }
+    }//GEN-LAST:event_UsernameEditFieldFocusGained
+
+    private void UsernameEditFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UsernameEditFieldFocusLost
+        if(UsernameEditField.getText().equals("")){
+            UsernameEditField.setText(CurrentUsername);
+        }
+    }//GEN-LAST:event_UsernameEditFieldFocusLost
+
+    private void PasswordEditFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordEditFieldFocusGained
+        
+    }//GEN-LAST:event_PasswordEditFieldFocusGained
+
+    private void PasswordEditFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordEditFieldFocusLost
+        
+    }//GEN-LAST:event_PasswordEditFieldFocusLost
 
     /**
      * @param args the command line arguments

@@ -43,7 +43,7 @@ public class SeeListKurir extends javax.swing.JFrame {
         }
         this.SelectedObj=null;
     }
-
+    
     private void generateElement() {
         DefaultListModel listModel = new DefaultListModel();
         for (int i = 0; i < ARRListKurir.size(); i++) {
