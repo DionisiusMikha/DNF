@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
  * @author Frans
  */
 public class LoginMenu extends javax.swing.JFrame {
+
     private HashMap<String, User> userlist = new HashMap<String, User>();
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
@@ -213,8 +214,7 @@ public class LoginMenu extends javax.swing.JFrame {
                 adminMenu.setLocationRelativeTo(null);
                 adminMenu.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
                 adminMenu.setResizable(false);
-            } 
-            else {
+            } else {
                 UserMainMenu UserMenu = new UserMainMenu(userlist, usedEmail);
                 dispose();
                 UserMenu.setVisible(true);
@@ -263,7 +263,6 @@ public class LoginMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_PasswordFieldFocusLost
 
-    
     /**
      * @param args the command line arguments
      */

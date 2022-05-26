@@ -98,7 +98,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 DaftarKurirButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(DaftarKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, 130, -1));
+        getContentPane().add(DaftarKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, 170, -1));
 
         ListPengirimanButton.setBackground(new java.awt.Color(233, 233, 255));
         ListPengirimanButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_4.png"))); // NOI18N
@@ -185,11 +185,19 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_DaftarKurirButtonActionPerformed
 
     private void ListSemuaUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListSemuaUserButtonActionPerformed
-        
+
     }//GEN-LAST:event_ListSemuaUserButtonActionPerformed
 
     private void MasukanPengirimanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MasukanPengirimanButtonActionPerformed
         // TODO add your handling code here:
+        MasukkanPengiriman MP = new MasukkanPengiriman(userlist, DeliveryList, usedEmail, ListKurir);
+        dispose();
+        MP.setVisible(true);
+        MP.pack();
+        MP.setLocationRelativeTo(null);
+        MP.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+        MP.setResizable(false);
+
     }//GEN-LAST:event_MasukanPengirimanButtonActionPerformed
 
     private void ListPengirimanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListPengirimanButtonActionPerformed
