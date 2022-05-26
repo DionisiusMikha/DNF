@@ -153,6 +153,11 @@ public class SeeListKurir extends javax.swing.JFrame {
         DeleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_6.png"))); // NOI18N
         DeleteButton.setBorderPainted(false);
         DeleteButton.setContentAreaFilled(false);
+        DeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(DeleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 510, 250, 70));
 
         BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/List_Kurir.png"))); // NOI18N
@@ -170,6 +175,7 @@ public class SeeListKurir extends javax.swing.JFrame {
             displayUsernameKurir.setText(ARRListKurir.get(i).getUsername());
             displayPasswordKurir.setText(ARRListKurir.get(i).getPassword());
             SelectedObj=i;
+            
         }
     }//GEN-LAST:event_JListKurirMouseClicked
 
@@ -243,6 +249,29 @@ public class SeeListKurir extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Belum ada kurir yang dipilih!", "DNF App", 2);
         }
     }//GEN-LAST:event_EditKurirButtonActionPerformed
+
+    private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
+        // TODO add your handling code here:
+        String newnama = displayNamaKurir.getText();
+        String newPassword = displayPasswordKurir.getText();
+        String newUsername = displayUsernameKurir.getText();
+        ListKurir.remove(newnama);
+        if (displayNamaKurir.getText().equals("") && displayPasswordKurir.getText().equals("") && displayUsernameKurir.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Silahkan pilih user yang mau di-edit!", "DNF App", 2);
+        } else {
+            int ctr = 0;
+            for (int i = 0; i < ARRListKurir.size(); i++) {
+                if (ARRListKurir.get(i).getNama().equals(tempNamaLamaKurir)) {
+                    ctr = i;
+                    break;
+                }
+            }
+            String temp = ARRListKurir.get(ctr).getNama();
+            resetField();
+            ((DefaultListModel) JListKurir.getModel()).remove(ctr);
+            JOptionPane.showMessageDialog(null, "Berhasil menghapus kurir " + temp + " !", "DNF App", 1);
+        }
+    }//GEN-LAST:event_DeleteButtonActionPerformed
 
     private void resetField() {
         displayNamaKurir.setText("");

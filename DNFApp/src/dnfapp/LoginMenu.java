@@ -5,6 +5,9 @@
 package dnfapp;
 
 import java.awt.Color;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -14,7 +17,6 @@ import javax.swing.JOptionPane;
  * @author Frans
  */
 public class LoginMenu extends javax.swing.JFrame {
-
     private HashMap<String, User> userlist = new HashMap<String, User>();
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
@@ -261,6 +263,7 @@ public class LoginMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_PasswordFieldFocusLost
 
+    
     /**
      * @param args the command line arguments
      */

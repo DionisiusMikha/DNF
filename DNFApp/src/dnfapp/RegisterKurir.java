@@ -5,6 +5,8 @@
 package dnfapp;
 
 import java.awt.Color;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
@@ -229,6 +231,16 @@ public class RegisterKurir extends javax.swing.JFrame {
             }
         }
         
+//        try {
+//            FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir") + "\\kurir.ser");
+//            ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+//            objOut.writeObject(ListKurir);
+//            objOut.close();
+//            fileOut.close();  
+//            System.out.println("SUKSES SIMPEN KURIR");
+//        } catch (Exception e) {
+//            System.out.println("error :" + e.getMessage());
+//        }
     }//GEN-LAST:event_DaftarKurirButtonActionPerformed
 
     private void NamaKurirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamaKurirActionPerformed

@@ -50,7 +50,6 @@ public class EditKurir extends javax.swing.JFrame {
         NameEditField = new javax.swing.JTextField();
         UsernameEditField = new javax.swing.JTextField();
         PasswordEditField = new javax.swing.JTextField();
-        KeluarButton = new javax.swing.JButton();
         InputButton = new javax.swing.JButton();
         CancelButton = new javax.swing.JButton();
         BG_EditKurir = new javax.swing.JLabel();
@@ -109,12 +108,6 @@ public class EditKurir extends javax.swing.JFrame {
         });
         getContentPane().add(PasswordEditField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 380, 30));
 
-        KeluarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5_minisize.png"))); // NOI18N
-        KeluarButton.setBorder(null);
-        KeluarButton.setContentAreaFilled(false);
-        KeluarButton.setDefaultCapable(false);
-        getContentPane().add(KeluarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 585, 90, 90));
-
         InputButton.setText("Input(PlaceHolder)");
         InputButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,7 +143,13 @@ public class EditKurir extends javax.swing.JFrame {
     }//GEN-LAST:event_PasswordEditFieldActionPerformed
 
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
-        
+        SeeListKurir SLM = new SeeListKurir(userlist, usedEmail, DeliveryList, ListKurir);
+        dispose();
+        SLM.setVisible(true);
+        SLM.pack();
+        SLM.setLocationRelativeTo(null);
+        SLM.setDefaultCloseOperation(EditKurir.EXIT_ON_CLOSE);
+        SLM.setResizable(false);
     }//GEN-LAST:event_CancelButtonActionPerformed
 
     private void InputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputButtonActionPerformed
@@ -175,9 +174,9 @@ public class EditKurir extends javax.swing.JFrame {
     }//GEN-LAST:event_InputButtonActionPerformed
 
     private void NameEditFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NameEditFieldFocusGained
-        if(NameEditField.getText().equalsIgnoreCase(CurrentNama)){
-            NameEditField.setText("");
-        }
+//        if(NameEditField.getText().equalsIgnoreCase(CurrentNama)){
+//            NameEditField.setText("");
+//        }
     }//GEN-LAST:event_NameEditFieldFocusGained
 
     private void NameEditFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NameEditFieldFocusLost
@@ -187,9 +186,9 @@ public class EditKurir extends javax.swing.JFrame {
     }//GEN-LAST:event_NameEditFieldFocusLost
 
     private void UsernameEditFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UsernameEditFieldFocusGained
-        if(UsernameEditField.getText().equalsIgnoreCase(CurrentUsername)){
-            UsernameEditField.setText("");
-        }
+//        if(UsernameEditField.getText().equalsIgnoreCase(CurrentUsername)){
+//            UsernameEditField.setText("");
+//        }
     }//GEN-LAST:event_UsernameEditFieldFocusGained
 
     private void UsernameEditFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UsernameEditFieldFocusLost
@@ -245,7 +244,6 @@ public class EditKurir extends javax.swing.JFrame {
     private javax.swing.JLabel BG_EditKurir;
     private javax.swing.JButton CancelButton;
     private javax.swing.JButton InputButton;
-    private javax.swing.JButton KeluarButton;
     private javax.swing.JTextField NameEditField;
     private javax.swing.JTextField PasswordEditField;
     private javax.swing.JTextField UsernameEditField;

@@ -3,13 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dnfapp;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Frans
  */
-public class Kurir extends Account{
+public class Kurir extends Account implements Serializable{
     
     private String Nama;
     
