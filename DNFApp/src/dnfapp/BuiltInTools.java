@@ -10,4 +10,6 @@ package dnfapp;
  */
 public interface BuiltInTools {
     public void ArrangePass();
+    public void save();
+    public void load();
 }

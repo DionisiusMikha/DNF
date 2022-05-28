@@ -58,9 +58,9 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         inputNamaPenerima = new javax.swing.JTextField();
         inputDaerahTujuan = new javax.swing.JTextField();
         inputBeratBarang = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         keluarButton = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        extraPack = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,7 +68,8 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         inputNamaPenerima.setBackground(new java.awt.Color(62, 97, 155));
-        inputNamaPenerima.setForeground(new java.awt.Color(0, 0, 0));
+        inputNamaPenerima.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        inputNamaPenerima.setForeground(new java.awt.Color(255, 255, 255));
         inputNamaPenerima.setText("Masukan nama");
         inputNamaPenerima.setBorder(null);
         inputNamaPenerima.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -84,10 +85,11 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 inputNamaPenerimaActionPerformed(evt);
             }
         });
-        jPanel1.add(inputNamaPenerima, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, -1, 10));
+        jPanel1.add(inputNamaPenerima, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 390, 30));
 
         inputDaerahTujuan.setBackground(new java.awt.Color(62, 97, 155));
-        inputDaerahTujuan.setForeground(new java.awt.Color(0, 0, 0));
+        inputDaerahTujuan.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        inputDaerahTujuan.setForeground(new java.awt.Color(255, 255, 255));
         inputDaerahTujuan.setText("Masukan daerah tujuan");
         inputDaerahTujuan.setBorder(null);
         inputDaerahTujuan.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -103,10 +105,11 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 inputDaerahTujuanActionPerformed(evt);
             }
         });
-        jPanel1.add(inputDaerahTujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, -1, -1));
+        jPanel1.add(inputDaerahTujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 390, 30));
 
         inputBeratBarang.setBackground(new java.awt.Color(62, 97, 155));
-        inputBeratBarang.setForeground(new java.awt.Color(0, 0, 0));
+        inputBeratBarang.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        inputBeratBarang.setForeground(new java.awt.Color(255, 255, 255));
         inputBeratBarang.setText("Masukan berat barang");
         inputBeratBarang.setBorder(null);
         inputBeratBarang.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -122,16 +125,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 inputBeratBarangActionPerformed(evt);
             }
         });
-        jPanel1.add(inputBeratBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, -1, -1));
-
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, -1, -1));
+        jPanel1.add(inputBeratBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 420, 30));
 
         keluarButton.setBackground(new java.awt.Color(4, 37, 107));
         keluarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5_minisize.png"))); // NOI18N
@@ -143,6 +137,12 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
             }
         });
         jPanel1.add(keluarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, -1, -1));
+
+        extraPack.setText("extraPack");
+        jPanel1.add(extraPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 510, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Masukan_Pengiriman.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -280,13 +280,13 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox extraPack;
     private javax.swing.JTextField inputBeratBarang;
     private javax.swing.JTextField inputDaerahTujuan;
     private javax.swing.JTextField inputNamaPenerima;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton keluarButton;
     // End of variables declaration//GEN-END:variables
 }
