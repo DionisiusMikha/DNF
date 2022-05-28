@@ -180,25 +180,14 @@ public class SeeListKurir extends javax.swing.JFrame {
     }//GEN-LAST:event_JListKurirMouseClicked
 
     private void KeluarSeeListKurirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KeluarSeeListKurirActionPerformed
-        // TODO add your handling code here:
-        int userAmount = userlist.size();
-        if (userAmount==0) {
-            AdminMenu AM = new AdminMenu();
-            dispose();
-            AM.setVisible(true);
-            AM.pack();
-            AM.setResizable(false);
-            AM.setLocationRelativeTo(null);
-            AM.setDefaultCloseOperation(AdminMenu.EXIT_ON_CLOSE);
-        } else if (userAmount > 0) {
-            AdminMenu AM = new AdminMenu(userlist, DeliveryList, ListKurir, usedEmail);
-            dispose();
-            AM.setVisible(true);
-            AM.pack();
-            AM.setResizable(false);
-            AM.setLocationRelativeTo(null);
-            AM.setDefaultCloseOperation(AdminMenu.EXIT_ON_CLOSE);
-        }
+        AdminMenu AM = new AdminMenu(userlist, DeliveryList, ListKurir, usedEmail);
+        dispose();
+        AM.setVisible(true);
+        AM.pack();
+        AM.setResizable(false);
+        AM.setLocationRelativeTo(null);
+        AM.setDefaultCloseOperation(AdminMenu.EXIT_ON_CLOSE);
+        
     }//GEN-LAST:event_KeluarSeeListKurirActionPerformed
 
     private void displayNamaKurirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayNamaKurirActionPerformed

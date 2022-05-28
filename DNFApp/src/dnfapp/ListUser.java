@@ -4,19 +4,55 @@
  */
 package dnfapp;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author Frans
  */
 public class ListUser extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ListUser
-     */
+    private HashMap<String, User> userlist = new HashMap<String, User>();
+    private HashMap<String, String> usedEmail = new HashMap<String, String>();
+    private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
+    private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
+    private ArrayList<User> ARRListUser = new ArrayList<User>();
+    private Integer SelectedObj;
+    
     public ListUser() {
         initComponents();
     }
+    
+    public ListUser(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir){
+        initComponents();
+        this.userlist = userlist;
+        this.usedEmail = usedEmail;
+        this.DeliveryList = DeliveryList;
+        this.ListKurir = ListKurir;
+        if (userlist.size() != 0) {
+            
+        }
+        this.SelectedObj=null;
+    }
 
+    private void generateElement() {
+        DefaultListModel listModel = new DefaultListModel();
+        for (int i = 0; i < ARRListUser.size(); i++) {
+            String container = ARRListUser.get(i).getUsername() + " - " + ARRListUser.get(i).getEmail();
+            listModel.addElement(container);
+        }
+        JListUser.setModel(listModel);
+    }
+
+    private void generate() {
+        for (Map.Entry<String, User> set : userlist.entrySet()) {
+            this.ARRListUser.add(set.getValue());
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,22 +63,23 @@ public class ListUser extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        JListUser = new javax.swing.JList<>();
         HapusButton = new javax.swing.JButton();
         EditButton = new javax.swing.JButton();
+        BackButton = new javax.swing.JButton();
         BG_ListUser = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jList1.setBackground(new java.awt.Color(255, 255, 255));
-        jList1.setForeground(new java.awt.Color(0, 0, 0));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        JListUser.setBackground(new java.awt.Color(255, 255, 255));
+        JListUser.setForeground(new java.awt.Color(0, 0, 0));
+        JListUser.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Registered Users will appear here." };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(JListUser);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 400, 380));
 
@@ -56,11 +93,31 @@ public class ListUser extends javax.swing.JFrame {
         EditButton.setContentAreaFilled(false);
         getContentPane().add(EditButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 480, 165, 43));
 
+        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5_minisize.png"))); // NOI18N
+        BackButton.setBorderPainted(false);
+        BackButton.setContentAreaFilled(false);
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 584, 80, -1));
+
         BG_ListUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/List_User.png"))); // NOI18N
         getContentPane().add(BG_ListUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        AdminMenu AM = new AdminMenu(userlist, DeliveryList, ListKurir, usedEmail);
+        dispose();
+        AM.setVisible(true);
+        AM.pack();
+        AM.setResizable(false);
+        AM.setLocationRelativeTo(null);
+        AM.setDefaultCloseOperation(AdminMenu.EXIT_ON_CLOSE);
+    }//GEN-LAST:event_BackButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,9 +156,10 @@ public class ListUser extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG_ListUser;
+    private javax.swing.JButton BackButton;
     private javax.swing.JButton EditButton;
     private javax.swing.JButton HapusButton;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> JListUser;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

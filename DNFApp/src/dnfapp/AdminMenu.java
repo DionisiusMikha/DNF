@@ -165,27 +165,23 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_LogOutButtonActionPerformed
 
     private void DaftarKurirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaftarKurirButtonActionPerformed
-        if (ListKurir.size() == 0) {
-            SeeListKurir SLM = new SeeListKurir(userlist, usedEmail, DeliveryList, ListKurir);
-            dispose();
-            SLM.setVisible(true);
-            SLM.pack();
-            SLM.setLocationRelativeTo(null);
-            SLM.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
-            SLM.setResizable(false);
-        } else {
-            SeeListKurir SLM = new SeeListKurir(userlist, usedEmail, DeliveryList, ListKurir);
-            dispose();
-            SLM.setVisible(true);
-            SLM.pack();
-            SLM.setLocationRelativeTo(null);
-            SLM.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
-            SLM.setResizable(false);
-        }
+        SeeListKurir SLM = new SeeListKurir(userlist, usedEmail, DeliveryList, ListKurir);
+        dispose();
+        SLM.setVisible(true);
+        SLM.pack();
+        SLM.setLocationRelativeTo(null);
+        SLM.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+        SLM.setResizable(false);
     }//GEN-LAST:event_DaftarKurirButtonActionPerformed
 
     private void ListSemuaUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListSemuaUserButtonActionPerformed
-
+        ListUser LU = new ListUser(userlist, usedEmail, DeliveryList, ListKurir);
+        dispose();
+        LU.setVisible(true);
+        LU.pack();
+        LU.setLocationRelativeTo(null);
+        LU.setDefaultCloseOperation(ListUser.EXIT_ON_CLOSE);
+        LU.setResizable(false);
     }//GEN-LAST:event_ListSemuaUserButtonActionPerformed
 
     private void MasukanPengirimanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MasukanPengirimanButtonActionPerformed
