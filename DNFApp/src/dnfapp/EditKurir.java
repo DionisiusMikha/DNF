@@ -25,6 +25,7 @@ public class EditKurir extends javax.swing.JFrame {
     
     public EditKurir() {
         initComponents();
+        BG_EditKurir.requestFocus();
     }
     
     public EditKurir(HashMap<String, User> userlist, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir, HashMap<String, String> usedEmail, ArrayList<Kurir> KurirARRList, int objIndex){
@@ -41,6 +42,7 @@ public class EditKurir extends javax.swing.JFrame {
         NameEditField.setText(CurrentNama);
         UsernameEditField.setText(CurrentUsername);
         PasswordEditField.setText(CurrentPassword);
+        BG_EditKurir.requestFocus();
     }
 
     @SuppressWarnings("unchecked")
@@ -108,21 +110,25 @@ public class EditKurir extends javax.swing.JFrame {
         });
         getContentPane().add(PasswordEditField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 380, 30));
 
-        InputButton.setText("Input(PlaceHolder)");
+        InputButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_4.png"))); // NOI18N
+        InputButton.setBorderPainted(false);
+        InputButton.setContentAreaFilled(false);
         InputButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InputButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(InputButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 500, -1, -1));
+        getContentPane().add(InputButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 483, 190, 50));
 
-        CancelButton.setText("CancelBtn(PlaceHolder)");
+        CancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_2.png"))); // NOI18N
+        CancelButton.setBorderPainted(false);
+        CancelButton.setContentAreaFilled(false);
         CancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, -1, -1));
+        getContentPane().add(CancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, 120, 30));
 
         BG_EditKurir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Profile_Kurir.png"))); // NOI18N
         getContentPane().add(BG_EditKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

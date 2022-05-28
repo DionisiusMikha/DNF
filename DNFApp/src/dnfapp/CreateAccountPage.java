@@ -36,6 +36,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         Background_Frame.requestFocus();
         this.userlist = userlist;
         this.usedEmail = usedEmail;
+        Background_Frame.requestFocus();
     }
 
     //situational, for compatibility issues.
@@ -46,6 +47,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         this.userlist = userlist;
         this.usedEmail = usedEmail;
         this.DeliveryList = DeliveryList;
+        Background_Frame.requestFocus();
     }
 
     //main cons
@@ -57,6 +59,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         this.usedEmail = usedEmail;
         this.DeliveryList = DeliveryList;
         this.ListKurir = ListKurir;
+        Background_Frame.requestFocus();
     }
 
     //generate email list, to add use put method to VALID_DOMAIN HashMap. Put Method requires String(domain name) and Integer(domain name str length)

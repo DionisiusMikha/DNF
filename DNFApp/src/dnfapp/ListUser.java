@@ -28,6 +28,8 @@ public class ListUser extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        HapusButton = new javax.swing.JButton();
+        EditButton = new javax.swing.JButton();
         BG_ListUser = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,6 +45,16 @@ public class ListUser extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jList1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 400, 380));
+
+        HapusButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_6.png"))); // NOI18N
+        HapusButton.setBorderPainted(false);
+        HapusButton.setContentAreaFilled(false);
+        getContentPane().add(HapusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 480, 163, 43));
+
+        EditButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_5.png"))); // NOI18N
+        EditButton.setBorderPainted(false);
+        EditButton.setContentAreaFilled(false);
+        getContentPane().add(EditButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 480, 165, 43));
 
         BG_ListUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/List_User.png"))); // NOI18N
         getContentPane().add(BG_ListUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -87,6 +99,8 @@ public class ListUser extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG_ListUser;
+    private javax.swing.JButton EditButton;
+    private javax.swing.JButton HapusButton;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

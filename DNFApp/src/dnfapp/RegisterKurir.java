@@ -40,6 +40,7 @@ public class RegisterKurir extends javax.swing.JFrame {
         this.DeliveryList = DeliveryList;
         this.ListKurir = ListKurir;
         this.usedEmail = usedEmail;
+        jLabel1.requestFocus();
     }
     
     //static global char arr to generate random string
@@ -59,7 +60,6 @@ public class RegisterKurir extends javax.swing.JFrame {
     
     //testing tool.
     public void GenerateTestObject(){
-
         System.out.println("Called Generator Method");
         for(int i = 0;i<100;i++){
             String randUsername = randomString(7);
@@ -87,6 +87,8 @@ public class RegisterKurir extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -177,7 +179,7 @@ public class RegisterKurir extends javax.swing.JFrame {
         getContentPane().add(PasswordKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 395, 445, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Regis_kurir.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 730));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
