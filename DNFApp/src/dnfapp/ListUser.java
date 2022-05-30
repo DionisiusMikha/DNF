@@ -33,23 +33,28 @@ public class ListUser extends javax.swing.JFrame {
         this.DeliveryList = DeliveryList;
         this.ListKurir = ListKurir;
         if (userlist.size() != 0) {
-            
+            generate();
+            generateElement();
         }
         this.SelectedObj=null;
     }
 
     private void generateElement() {
-        DefaultListModel listModel = new DefaultListModel();
-        for (int i = 0; i < ARRListUser.size(); i++) {
-            String container = ARRListUser.get(i).getUsername() + " - " + ARRListUser.get(i).getEmail();
-            listModel.addElement(container);
+        if(this.ARRListUser.size()!=0){
+            DefaultListModel listModel = new DefaultListModel();
+            for (int i = 0; i < ARRListUser.size(); i++) {
+                String container = ARRListUser.get(i).getUsername() + " - " + ARRListUser.get(i).getEmail();
+                listModel.addElement(container);
+            }
+            JListUser.setModel(listModel);
         }
-        JListUser.setModel(listModel);
     }
 
     private void generate() {
         for (Map.Entry<String, User> set : userlist.entrySet()) {
-            this.ARRListUser.add(set.getValue());
+            if(!set.getKey().equals("admin")){
+                this.ARRListUser.add(set.getValue());
+            }
         }
     }
     
@@ -67,6 +72,9 @@ public class ListUser extends javax.swing.JFrame {
         HapusButton = new javax.swing.JButton();
         EditButton = new javax.swing.JButton();
         BackButton = new javax.swing.JButton();
+        displayUsernameField = new javax.swing.JLabel();
+        displayEmailField = new javax.swing.JLabel();
+        displayPasswordField = new javax.swing.JLabel();
         BG_ListUser = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,6 +86,11 @@ public class ListUser extends javax.swing.JFrame {
             String[] strings = { "Registered Users will appear here." };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        JListUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JListUserMouseClicked(evt);
+            }
         });
         jScrollPane1.setViewportView(JListUser);
 
@@ -102,6 +115,9 @@ public class ListUser extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 584, 80, -1));
+        getContentPane().add(displayUsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 200, 250, 20));
+        getContentPane().add(displayEmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 260, 210, 20));
+        getContentPane().add(displayPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 320, 260, 20));
 
         BG_ListUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/List_User.png"))); // NOI18N
         getContentPane().add(BG_ListUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -118,6 +134,15 @@ public class ListUser extends javax.swing.JFrame {
         AM.setLocationRelativeTo(null);
         AM.setDefaultCloseOperation(AdminMenu.EXIT_ON_CLOSE);
     }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void JListUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JListUserMouseClicked
+        if (evt.getClickCount() == 2 && evt.getButton() == evt.BUTTON1) {
+            SelectedObj=JListUser.getSelectedIndex();
+            displayUsernameField.setText(ARRListUser.get(SelectedObj).getUsername());
+            displayEmailField.setText(ARRListUser.get(SelectedObj).getEmail());
+            displayPasswordField.setText(ARRListUser.get(SelectedObj).getPassword());
+        }
+    }//GEN-LAST:event_JListUserMouseClicked
 
     /**
      * @param args the command line arguments
@@ -160,6 +185,9 @@ public class ListUser extends javax.swing.JFrame {
     private javax.swing.JButton EditButton;
     private javax.swing.JButton HapusButton;
     private javax.swing.JList<String> JListUser;
+    private javax.swing.JLabel displayEmailField;
+    private javax.swing.JLabel displayPasswordField;
+    private javax.swing.JLabel displayUsernameField;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,26 +15,7 @@ import java.util.HashMap;
  */
 public class DNFApp {
     
-    /**
-     * @param args the command line arguments
-     */
-    
     public static void main(String[] args) {
-//        HashMap<String, User> userlist = new HashMap<String, User>();
-//        HashMap<String, String> usedEmail = new HashMap<String, String>();
-//        HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
-//        HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
-//        
-//        try {
-//            FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir") + "\\kurir.ser");
-//            ObjectInputStream objIn = new ObjectInputStream(fileIn);            
-//            ListKurir = (HashMap<String, Kurir>)objIn.readObject();            
-//            fileIn.close();
-//            objIn.close();   
-//        } catch (Exception e) {
-//            System.out.println("error : belum ada kurir");
-//        }
-        
         LoginMenu LM = new LoginMenu(true);
         LM.setVisible(true);
         LM.pack();

@@ -5,6 +5,7 @@
 package dnfapp;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class LoginMenu extends javax.swing.JFrame {
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
+    
 
     /**
      * Creates new form LoginMenu
@@ -82,6 +84,7 @@ public class LoginMenu extends javax.swing.JFrame {
         SignInButton = new javax.swing.JButton();
         usernamefield = new javax.swing.JTextField();
         PasswordField = new javax.swing.JPasswordField();
+        ToggleShowPassword = new javax.swing.JToggleButton();
         LoginBG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -154,6 +157,27 @@ public class LoginMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 335, 320, 20));
+
+        ToggleShowPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye.png"))); // NOI18N
+        ToggleShowPassword.setSelected(true);
+        ToggleShowPassword.setBorderPainted(false);
+        ToggleShowPassword.setContentAreaFilled(false);
+        ToggleShowPassword.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ToggleShowPasswordStateChanged(evt);
+            }
+        });
+        ToggleShowPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ToggleShowPasswordMouseClicked(evt);
+            }
+        });
+        ToggleShowPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ToggleShowPasswordActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ToggleShowPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 330, 30, -1));
 
         LoginBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Login_Menu.png"))); // NOI18N
         getContentPane().add(LoginBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -190, -1, 1100));
@@ -263,6 +287,27 @@ public class LoginMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_PasswordFieldFocusLost
 
+    private void ToggleShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ToggleShowPasswordActionPerformed
+        
+    }//GEN-LAST:event_ToggleShowPasswordActionPerformed
+
+    private void ToggleShowPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ToggleShowPasswordMouseClicked
+        
+    }//GEN-LAST:event_ToggleShowPasswordMouseClicked
+
+    private void ToggleShowPasswordStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ToggleShowPasswordStateChanged
+       if(this.ToggleShowPassword.isSelected()){
+            this.ToggleShowPassword.setSelected(false);
+            System.out.println("Was Selected, now unselected");
+        }
+        else{
+            this.ToggleShowPassword.setSelected(true);
+            System.out.println("Was Unselected, now selected");
+        }
+    }//GEN-LAST:event_ToggleShowPasswordStateChanged
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -304,6 +349,7 @@ public class LoginMenu extends javax.swing.JFrame {
     private javax.swing.JLabel LoginBG;
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JButton SignInButton;
+    private javax.swing.JToggleButton ToggleShowPassword;
     private javax.swing.JTextField usernamefield;
     // End of variables declaration//GEN-END:variables
 }
