@@ -29,8 +29,8 @@ public class CreateAccountPage extends javax.swing.JFrame {
         initComponents();
         GenerateList();
         Background_Frame.requestFocus();
-        this.ShowPass=false;
-        this.ShowConfirm=false;
+        this.ShowPass = false;
+        this.ShowConfirm = false;
     }
 
     //situational, for compatibility issues.
@@ -41,8 +41,8 @@ public class CreateAccountPage extends javax.swing.JFrame {
         this.userlist = userlist;
         this.usedEmail = usedEmail;
         Background_Frame.requestFocus();
-        this.ShowPass=false;
-        this.ShowConfirm=false;
+        this.ShowPass = false;
+        this.ShowConfirm = false;
     }
 
     //situational, for compatibility issues.
@@ -54,8 +54,8 @@ public class CreateAccountPage extends javax.swing.JFrame {
         this.usedEmail = usedEmail;
         this.DeliveryList = DeliveryList;
         Background_Frame.requestFocus();
-        this.ShowPass=false;
-        this.ShowConfirm=false;
+        this.ShowPass = false;
+        this.ShowConfirm = false;
     }
 
     //main cons
@@ -68,8 +68,8 @@ public class CreateAccountPage extends javax.swing.JFrame {
         this.DeliveryList = DeliveryList;
         this.ListKurir = ListKurir;
         Background_Frame.requestFocus();
-        this.ShowPass=false;
-        this.ShowConfirm=false;
+        this.ShowPass = false;
+        this.ShowConfirm = false;
     }
 
     //generate email list, to add use put method to VALID_DOMAIN HashMap. Put Method requires String(domain name) and Integer(domain name str length)
@@ -81,24 +81,22 @@ public class CreateAccountPage extends javax.swing.JFrame {
         VALID_DOMAIN.put("live.com", 9);
         VALID_DOMAIN.put("aol.com", 8);
         VALID_DOMAIN.put("icloud.com", 11);
-        this.ShowPass=false;
-        this.ShowConfirm=false;
+        this.ShowPass = false;
+        this.ShowConfirm = false;
     }
 
-    private void switchSee(){
-        if(this.ShowPass==false){
+    private void switchSee() {
+        if (this.ShowPass == false) {
             RegPassField.setEchoChar('*');
-        }
-        else{
+        } else {
             RegPassField.setEchoChar((char) 0);
         }
     }
-    
-    private void switchSeeConfirm(){
-        if(this.ShowConfirm==false){
+
+    private void switchSeeConfirm() {
+        if (this.ShowConfirm == false) {
             ConfirmPassField.setEchoChar('*');
-        }
-        else{
+        } else {
             ConfirmPassField.setEchoChar((char) 0);
         }
     }

@@ -22,6 +22,11 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
     private ArrayList<String> kategori = new ArrayList<>();
+    private boolean flammable;
+    private boolean fragile;
+    private boolean keepdry;
+    private boolean protectfromheat;
+    private boolean extraprotect;
 
     public MasukkanPengiriman() {
         initComponents();
@@ -30,6 +35,11 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         this.kategori.add("Pecah belah");
         this.kategori.add("Elektronik");
         this.kategori.add("Lain-lain");
+        boolean flammable = false;
+        boolean fragile = false;
+        boolean keepdry = false;
+        boolean protectfromheat = false;
+        boolean extraprotect = false;
     }
 
     public MasukkanPengiriman(HashMap<String, User> userlist, HashMap<String, Package> DeliveryList, HashMap<String, String> usedEmail, HashMap<String, Kurir> ListKurir) {
@@ -43,6 +53,11 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         this.kategori.add("Pecah belah");
         this.kategori.add("Elektronik");
         this.kategori.add("Lain-lain");
+        boolean flammable = false;
+        boolean fragile = false;
+        boolean keepdry = false;
+        boolean protectfromheat = false;
+        boolean extraprotect = false;
     }
 
     /**
@@ -60,7 +75,12 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         inputBeratBarang = new javax.swing.JTextField();
         keluarButton = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
-        extraPack = new javax.swing.JCheckBox();
+        flammableButton = new javax.swing.JButton();
+        fragileButton = new javax.swing.JButton();
+        keepdryButton = new javax.swing.JButton();
+        protectfromheatButton = new javax.swing.JButton();
+        extraProtectButton = new javax.swing.JButton();
+        inputButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,7 +89,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
 
         inputNamaPenerima.setBackground(new java.awt.Color(62, 97, 155));
         inputNamaPenerima.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        inputNamaPenerima.setForeground(new java.awt.Color(255, 255, 255));
+        inputNamaPenerima.setForeground(new java.awt.Color(0, 0, 0));
         inputNamaPenerima.setText("Masukan nama");
         inputNamaPenerima.setBorder(null);
         inputNamaPenerima.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -85,11 +105,11 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 inputNamaPenerimaActionPerformed(evt);
             }
         });
-        jPanel1.add(inputNamaPenerima, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 390, 30));
+        jPanel1.add(inputNamaPenerima, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 390, 30));
 
         inputDaerahTujuan.setBackground(new java.awt.Color(62, 97, 155));
         inputDaerahTujuan.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        inputDaerahTujuan.setForeground(new java.awt.Color(255, 255, 255));
+        inputDaerahTujuan.setForeground(new java.awt.Color(0, 0, 0));
         inputDaerahTujuan.setText("Masukan daerah tujuan");
         inputDaerahTujuan.setBorder(null);
         inputDaerahTujuan.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -105,11 +125,11 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 inputDaerahTujuanActionPerformed(evt);
             }
         });
-        jPanel1.add(inputDaerahTujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 390, 30));
+        jPanel1.add(inputDaerahTujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 390, 30));
 
         inputBeratBarang.setBackground(new java.awt.Color(62, 97, 155));
         inputBeratBarang.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        inputBeratBarang.setForeground(new java.awt.Color(255, 255, 255));
+        inputBeratBarang.setForeground(new java.awt.Color(0, 0, 0));
         inputBeratBarang.setText("Masukan berat barang");
         inputBeratBarang.setBorder(null);
         inputBeratBarang.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -125,7 +145,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 inputBeratBarangActionPerformed(evt);
             }
         });
-        jPanel1.add(inputBeratBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 420, 30));
+        jPanel1.add(inputBeratBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 380, 30));
 
         keluarButton.setBackground(new java.awt.Color(4, 37, 107));
         keluarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5_minisize.png"))); // NOI18N
@@ -139,10 +159,97 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         jPanel1.add(keluarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, -1, -1));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, -1, -1));
 
-        extraPack.setText("extraPack");
-        jPanel1.add(extraPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 510, -1, -1));
+        flammableButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Flammable.png"))); // NOI18N
+        flammableButton.setBorderPainted(false);
+        flammableButton.setContentAreaFilled(false);
+        flammableButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                flammableButtonMouseClicked(evt);
+            }
+        });
+        flammableButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                flammableButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(flammableButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, -1, -1));
+
+        fragileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Fragile.png"))); // NOI18N
+        fragileButton.setBorderPainted(false);
+        fragileButton.setContentAreaFilled(false);
+        fragileButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fragileButtonMouseClicked(evt);
+            }
+        });
+        jPanel1.add(fragileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, -1, -1));
+
+        keepdryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Keep_Dry.png"))); // NOI18N
+        keepdryButton.setBorderPainted(false);
+        keepdryButton.setContentAreaFilled(false);
+        keepdryButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                keepdryButtonMouseClicked(evt);
+            }
+        });
+        keepdryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keepdryButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(keepdryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, -1, -1));
+
+        protectfromheatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Protect.png"))); // NOI18N
+        protectfromheatButton.setBorderPainted(false);
+        protectfromheatButton.setContentAreaFilled(false);
+        protectfromheatButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                protectfromheatButtonMouseClicked(evt);
+            }
+        });
+        protectfromheatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                protectfromheatButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(protectfromheatButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 440, -1, -1));
+
+        extraProtectButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Box-alt_no.png"))); // NOI18N
+        extraProtectButton.setBorderPainted(false);
+        extraProtectButton.setContentAreaFilled(false);
+        extraProtectButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                extraProtectButtonMouseClicked(evt);
+            }
+        });
+        extraProtectButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                extraProtectButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(extraProtectButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 460, -1, -1));
+
+        inputButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_4.png"))); // NOI18N
+        inputButton.setBorderPainted(false);
+        inputButton.setContentAreaFilled(false);
+        inputButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                inputButtonMouseClicked(evt);
+            }
+        });
+        inputButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(inputButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 480, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Masukan_Pengiriman.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -244,6 +351,88 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_keluarButtonActionPerformed
 
+    private void protectfromheatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_protectfromheatButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_protectfromheatButtonActionPerformed
+
+    private void keepdryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keepdryButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_keepdryButtonActionPerformed
+
+    private void flammableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flammableButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_flammableButtonActionPerformed
+
+    private void flammableButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_flammableButtonMouseClicked
+        if (this.flammable == true) {
+            this.flammable = false;
+            this.flammableButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Flammable.png")));
+        } else {
+            this.flammable = true;
+            this.flammableButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Flammable_Click.png")));
+        }
+    }//GEN-LAST:event_flammableButtonMouseClicked
+
+    private void fragileButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fragileButtonMouseClicked
+        // TODO add your handling code here:
+        if (this.fragile == true) {
+            this.fragile = false;
+            this.fragileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Fragile.png")));
+        } else {
+            this.fragile = true;
+            this.fragileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Fragile_Click.png")));
+        }
+    }//GEN-LAST:event_fragileButtonMouseClicked
+
+    private void keepdryButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_keepdryButtonMouseClicked
+        // TODO add your handling code here:
+        if (this.keepdry == true) {
+            this.keepdry = false;
+            this.keepdryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Keep_Dry.png")));
+        } else {
+            this.keepdry = true;
+            this.keepdryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Keep_Dry_Click.png")));
+        }
+    }//GEN-LAST:event_keepdryButtonMouseClicked
+
+    private void protectfromheatButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_protectfromheatButtonMouseClicked
+        // TODO add your handling code here:
+        if (this.protectfromheat == true) {
+            this.protectfromheat = false;
+            this.protectfromheatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Protect.png")));
+        } else {
+            this.protectfromheat = true;
+            this.protectfromheatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Protect_Click.png")));
+        }
+    }//GEN-LAST:event_protectfromheatButtonMouseClicked
+
+    private void extraProtectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_extraProtectButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_extraProtectButtonActionPerformed
+
+    private void extraProtectButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_extraProtectButtonMouseClicked
+        // TODO add your handling code here:
+        if (this.extraprotect == true) {
+            this.extraprotect = false;
+            this.extraProtectButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Box-alt_no.png")));
+        } else {
+            this.extraprotect = true;
+            this.extraProtectButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Box-alt_yes.png")));
+        }
+    }//GEN-LAST:event_extraProtectButtonMouseClicked
+
+    private void inputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputButtonActionPerformed
+
+    private void inputButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputButtonMouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -280,13 +469,18 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox extraPack;
+    private javax.swing.JButton extraProtectButton;
+    private javax.swing.JButton flammableButton;
+    private javax.swing.JButton fragileButton;
     private javax.swing.JTextField inputBeratBarang;
+    private javax.swing.JButton inputButton;
     private javax.swing.JTextField inputDaerahTujuan;
     private javax.swing.JTextField inputNamaPenerima;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton keepdryButton;
     private javax.swing.JButton keluarButton;
+    private javax.swing.JButton protectfromheatButton;
     // End of variables declaration//GEN-END:variables
 }

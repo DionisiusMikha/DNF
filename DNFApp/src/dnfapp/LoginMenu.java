@@ -31,7 +31,7 @@ public class LoginMenu extends javax.swing.JFrame {
     public LoginMenu() {
         initComponents();
         LoginBG.requestFocus();
-        this.ShowPass=false;
+        this.ShowPass = false;
     }
 
     //initial constructor, used to generate admin account.
@@ -42,7 +42,7 @@ public class LoginMenu extends javax.swing.JFrame {
             User admin = new User("admin", "admin", "CustomerService@DNF.co.id");
             userlist.put("admin", admin);
             System.out.println(userlist);
-            this.ShowPass=false;
+            this.ShowPass = false;
         }
     }
 
@@ -52,7 +52,7 @@ public class LoginMenu extends javax.swing.JFrame {
         LoginBG.requestFocus();
         this.userlist = userlist;
         this.usedEmail = usedEmail;
-        this.ShowPass=false;
+        this.ShowPass = false;
     }
 
     //situational, for compatibility issues.
@@ -62,7 +62,7 @@ public class LoginMenu extends javax.swing.JFrame {
         this.userlist = userlist;
         this.usedEmail = usedEmail;
         this.DeliveryList = DeliveryList;
-        this.ShowPass=false;
+        this.ShowPass = false;
     }
 
     //main cons
@@ -73,7 +73,7 @@ public class LoginMenu extends javax.swing.JFrame {
         this.usedEmail = usedEmail;
         this.DeliveryList = DeliveryList;
         this.ListKurir = ListKurir;
-        this.ShowPass=false;
+        this.ShowPass = false;
     }
 
     /**
@@ -161,7 +161,7 @@ public class LoginMenu extends javax.swing.JFrame {
                 PasswordFieldFocusLost(evt);
             }
         });
-        getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 335, 320, 20));
+        getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 335, 280, 20));
 
         ShowPassButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye.png"))); // NOI18N
         ShowPassButton.setBorderPainted(false);
@@ -171,7 +171,12 @@ public class LoginMenu extends javax.swing.JFrame {
                 ShowPassButtonMouseClicked(evt);
             }
         });
-        getContentPane().add(ShowPassButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 330, 20, 18));
+        ShowPassButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowPassButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ShowPassButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 328, -1, 30));
 
         LoginBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Login_Menu.png"))); // NOI18N
         getContentPane().add(LoginBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -190, -1, 1100));
@@ -282,28 +287,29 @@ public class LoginMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_PasswordFieldFocusLost
 
     private void ShowPassButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowPassButtonMouseClicked
-        if(this.ShowPass==true){
-            this.ShowPass=false;
+        if (this.ShowPass == true) {
+            this.ShowPass = false;
             this.ShowPassButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye_crossed.png")));
             switchSee();
-        }
-        else{
-            this.ShowPass=true;
+        } else {
+            this.ShowPass = true;
             ShowPassButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye.png")));
             switchSee();
         }
     }//GEN-LAST:event_ShowPassButtonMouseClicked
-    
-    private void switchSee(){
-        if(this.ShowPass==false){
+
+    private void ShowPassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPassButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ShowPassButtonActionPerformed
+
+    private void switchSee() {
+        if (this.ShowPass == false) {
             PasswordField.setEchoChar('*');
-        }
-        else{
+        } else {
             PasswordField.setEchoChar((char) 0);
         }
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */
