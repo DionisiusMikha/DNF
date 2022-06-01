@@ -285,13 +285,23 @@ public class LoginMenu extends javax.swing.JFrame {
         if(this.ShowPass==true){
             this.ShowPass=false;
             this.ShowPassButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye_crossed.png")));
+            switchSee();
         }
         else{
             this.ShowPass=true;
             ShowPassButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye.png")));
+            switchSee();
         }
     }//GEN-LAST:event_ShowPassButtonMouseClicked
     
+    private void switchSee(){
+        if(this.ShowPass==false){
+            PasswordField.setEchoChar('*');
+        }
+        else{
+            PasswordField.setEchoChar((char) 0);
+        }
+    }
     
     
     /**
