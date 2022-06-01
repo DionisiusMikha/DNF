@@ -142,7 +142,7 @@
     <Component class="javax.swing.JButton" name="ShowPassButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/eye.png"/>
+          <Image iconType="3" name="/images/eye_crossed.png"/>
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>

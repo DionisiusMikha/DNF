@@ -85,22 +85,6 @@ public class CreateAccountPage extends javax.swing.JFrame {
         this.ShowConfirm = false;
     }
 
-    private void switchSee() {
-        if (this.ShowPass == false) {
-            RegPassField.setEchoChar('*');
-        } else {
-            RegPassField.setEchoChar((char) 0);
-        }
-    }
-
-    private void switchSeeConfirm() {
-        if (this.ShowConfirm == false) {
-            ConfirmPassField.setEchoChar('*');
-        } else {
-            ConfirmPassField.setEchoChar((char) 0);
-        }
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,6 +100,8 @@ public class CreateAccountPage extends javax.swing.JFrame {
         ConfirmPassField = new javax.swing.JPasswordField();
         CancelButton = new javax.swing.JButton();
         SubmitButton = new javax.swing.JButton();
+        ShowRegPassButton = new javax.swing.JButton();
+        ShowConfirmPassButton = new javax.swing.JButton();
         Background_Frame = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -189,7 +175,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
                 RegPassFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(RegPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 325, 322, 20));
+        getContentPane().add(RegPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 325, 260, 20));
 
         ConfirmPassField.setBackground(new java.awt.Color(62, 97, 155));
         ConfirmPassField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -213,7 +199,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
                 ConfirmPassFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(ConfirmPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 378, 322, 20));
+        getContentPane().add(ConfirmPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 378, 260, 20));
 
         CancelButton.setBackground(new java.awt.Color(62, 97, 155));
         CancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_2.png"))); // NOI18N
@@ -234,6 +220,31 @@ public class CreateAccountPage extends javax.swing.JFrame {
             }
         });
         getContentPane().add(SubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, 180, 40));
+
+        ShowRegPassButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye_crossed.png"))); // NOI18N
+        ShowRegPassButton.setBorderPainted(false);
+        ShowRegPassButton.setContentAreaFilled(false);
+        ShowRegPassButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ShowRegPassButtonMouseClicked(evt);
+            }
+        });
+        getContentPane().add(ShowRegPassButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 323, 30, -1));
+
+        ShowConfirmPassButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye_crossed.png"))); // NOI18N
+        ShowConfirmPassButton.setBorderPainted(false);
+        ShowConfirmPassButton.setContentAreaFilled(false);
+        ShowConfirmPassButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ShowConfirmPassButtonMouseClicked(evt);
+            }
+        });
+        ShowConfirmPassButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowConfirmPassButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ShowConfirmPassButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 375, 30, -1));
 
         Background_Frame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Create_Acc.png"))); // NOI18N
         getContentPane().add(Background_Frame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -230, -1, 1170));
@@ -282,19 +293,18 @@ public class CreateAccountPage extends javax.swing.JFrame {
     }//GEN-LAST:event_RegEmailFieldFocusLost
 
     private void RegPassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegPassFieldFocusGained
-        RegPassField.setEchoChar('*');
-        String password = String.valueOf(RegPassField.getPassword());
-
-        if (password.toLowerCase().equals("password")) {
-            RegPassField.setText("");
-            RegPassField.setForeground(new Color(255, 255, 255));
+        if(!ShowPass){
+            RegPassField.setEchoChar('*');
+            String password = String.valueOf(RegPassField.getPassword());
+            if (password.toLowerCase().equals("password")) {
+                RegPassField.setText("");
+                RegPassField.setForeground(new Color(255, 255, 255));
+            }
         }
-
     }//GEN-LAST:event_RegPassFieldFocusGained
 
     private void RegPassFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegPassFieldFocusLost
         String password = String.valueOf(RegPassField.getPassword());
-//
         if (password.toLowerCase().equals("password") || password.toLowerCase().equals("")) {
             RegPassField.setText("Password");
             RegPassField.setEchoChar((char) 0);
@@ -303,18 +313,26 @@ public class CreateAccountPage extends javax.swing.JFrame {
     }//GEN-LAST:event_RegPassFieldFocusLost
 
     private void ConfirmPassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ConfirmPassFieldFocusGained
-        ConfirmPassField.setEchoChar('*');
-        String password = String.valueOf(ConfirmPassField.getPassword());
-
-        if (password.toLowerCase().equals("confirm password")) {
-            ConfirmPassField.setText("");
-            ConfirmPassField.setForeground(new Color(255, 255, 255));
+        if(!ShowConfirm){
+            ConfirmPassField.setEchoChar('*');
+            String password = String.valueOf(ConfirmPassField.getPassword());
+            if (password.toLowerCase().equals("confirm password")) {
+                ConfirmPassField.setText("");
+                ConfirmPassField.setForeground(new Color(255, 255, 255));
+            }
         }
     }//GEN-LAST:event_ConfirmPassFieldFocusGained
 
+    private void ConfirmSetVisible(){
+        
+    }
+    
+    private void RegSetVisible(){
+        
+    }
+    
     private void ConfirmPassFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ConfirmPassFieldFocusLost
         String password = String.valueOf(ConfirmPassField.getPassword());
-//
         if (password.toLowerCase().equals("password") || password.toLowerCase().equals("")) {
             ConfirmPassField.setText("Confirm Password");
             ConfirmPassField.setEchoChar((char) 0);
@@ -403,9 +421,67 @@ public class CreateAccountPage extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelButtonActionPerformed
 
     private void RegEmailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegEmailFieldActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_RegEmailFieldActionPerformed
 
+    private void ShowConfirmPassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowConfirmPassButtonActionPerformed
+        
+    }//GEN-LAST:event_ShowConfirmPassButtonActionPerformed
+
+    private void ShowRegPassButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowRegPassButtonMouseClicked
+        if(this.ShowPass==false){
+            this.ShowPass=true;
+            ShowRegPassButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye.png")));
+        }
+        else{
+            this.ShowPass=false;
+            ShowRegPassButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye_crossed.png")));
+        }
+        switchSee();
+    }//GEN-LAST:event_ShowRegPassButtonMouseClicked
+
+    private void ShowConfirmPassButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowConfirmPassButtonMouseClicked
+         if(this.ShowConfirm==false){
+            this.ShowConfirm=true;
+            ShowConfirmPassButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye.png")));
+        }
+        else{
+            this.ShowConfirm=false;
+            ShowConfirmPassButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye_crossed.png")));
+        }
+        switchSeeConfirm();
+    }//GEN-LAST:event_ShowConfirmPassButtonMouseClicked
+
+    private void switchSee() {
+        String currentVal = String.valueOf(this.RegPassField.getPassword());
+        if (this.ShowPass == false) {
+            if(currentVal.equalsIgnoreCase("")){
+                this.RegPassField.setText("Password");
+            }
+            RegPassField.setEchoChar('*');
+        } else {
+            if(currentVal.equalsIgnoreCase("password")){
+                this.RegPassField.setText("");
+            }
+            RegPassField.setEchoChar((char) 0);
+        }
+    }
+    
+    private void switchSeeConfirm() {
+        String currentVal = String.valueOf(this.ConfirmPassField.getPassword());
+        if (this.ShowConfirm == false) {
+            if(currentVal.equalsIgnoreCase("")){
+                this.ConfirmPassField.setText("Confirm Password");
+            }
+            ConfirmPassField.setEchoChar('*');
+        } else {
+            if(currentVal.equalsIgnoreCase("confirm password")){
+                this.ConfirmPassField.setText("");
+            }
+            ConfirmPassField.setEchoChar((char) 0);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -448,6 +524,8 @@ public class CreateAccountPage extends javax.swing.JFrame {
     private javax.swing.JTextField RegEmailField;
     private javax.swing.JPasswordField RegPassField;
     private javax.swing.JTextField RegUsernameField;
+    private javax.swing.JButton ShowConfirmPassButton;
+    private javax.swing.JButton ShowRegPassButton;
     private javax.swing.JButton SubmitButton;
     // End of variables declaration//GEN-END:variables
 }

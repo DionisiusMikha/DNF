@@ -163,7 +163,7 @@ public class LoginMenu extends javax.swing.JFrame {
         });
         getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 335, 280, 20));
 
-        ShowPassButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye.png"))); // NOI18N
+        ShowPassButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye_crossed.png"))); // NOI18N
         ShowPassButton.setBorderPainted(false);
         ShowPassButton.setContentAreaFilled(false);
         ShowPassButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -268,12 +268,13 @@ public class LoginMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_usernamefieldFocusLost
 
     private void PasswordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFieldFocusGained
-        PasswordField.setEchoChar('*');
-        String password = String.valueOf(PasswordField.getPassword());
-
-        if (password.toLowerCase().equals("password")) {
-            PasswordField.setText("");
-            PasswordField.setForeground(new Color(255, 255, 255));
+        if(!ShowPass){
+            PasswordField.setEchoChar('*');
+            String password = String.valueOf(PasswordField.getPassword());
+            if (password.toLowerCase().equals("password")) {
+                PasswordField.setText("");
+                PasswordField.setForeground(new Color(255, 255, 255));
+            }
         }
     }//GEN-LAST:event_PasswordFieldFocusGained
 
@@ -290,12 +291,11 @@ public class LoginMenu extends javax.swing.JFrame {
         if (this.ShowPass == true) {
             this.ShowPass = false;
             this.ShowPassButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye_crossed.png")));
-            switchSee();
         } else {
             this.ShowPass = true;
             ShowPassButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye.png")));
-            switchSee();
         }
+        switchSee();
     }//GEN-LAST:event_ShowPassButtonMouseClicked
 
     private void ShowPassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPassButtonActionPerformed
@@ -303,9 +303,13 @@ public class LoginMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_ShowPassButtonActionPerformed
 
     private void switchSee() {
+        String currentString = String.valueOf(this.PasswordField.getPassword());
         if (this.ShowPass == false) {
             PasswordField.setEchoChar('*');
         } else {
+            if(currentString.equalsIgnoreCase("password")){
+                PasswordField.setText("");
+            }
             PasswordField.setEchoChar((char) 0);
         }
     }
