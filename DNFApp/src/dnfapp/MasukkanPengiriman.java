@@ -70,7 +70,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
             kategoriBarang.addItem(kategori.get(i));
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -430,7 +430,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
 
     private void inputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputButtonActionPerformed
         LocalDateTime date = LocalDateTime.now();
-        String temp = (String)kategoriBarang.getSelectedItem();
+        String temp = (String) kategoriBarang.getSelectedItem();
         String namaPenerima = inputNamaPenerima.getText();
         String daerahPenerima = inputDaerahTujuan.getText();
         String tempBeratBarang = inputBeratBarang.getText();
@@ -441,26 +441,34 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         int tahun = (int) date.getYear();
         int jam = (int) date.getHour();
         int menit = (int) date.getMinute();
+        int detik = (int) date.getSecond();
         String month = String.valueOf(bulan);
         String det = String.valueOf(tanggal);
         String year = String.valueOf(tahun);
         String timea = String.valueOf(jam);
         String timeb = String.valueOf(menit);
-        resi += timea + timeb + det + month + year;
+        String timec = String.valueOf(detik);
+        resi += timea + timeb + timec + det + month + year;
         System.out.println(resi);
-        
-        if(temp.equals("Food and Beverages")){
-            DeliveryList.put(resi, new FnB())
-        } else if(temp.equals("Sports")){
-            
-        } else if(temp.equals("Electronic")){
-            
-        } else if(temp.equals("Beauty and Fashion")){
-            
-        } else if(temp.equals("Hobby and Collections")){
-            
+
+        if (temp.equals("Food and Beverages")) {
+            Package paket = new FnB(1, resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, keepdry, protectfromheat);
+            DeliveryList.put(resi, paket);
+        } else if (temp.equals("Sports")) {
+            Package paket = new Sports(resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, keepdry, protectfromheat);
+            DeliveryList.put(resi, paket);
+        } else if (temp.equals("Electronic")) {
+            Package paket = new Electronic(resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat);
+            DeliveryList.put(resi, paket);
+        } else if (temp.equals("Beauty and Fashion")) {
+            Package paket = new BnF(resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat);
+            DeliveryList.put(resi, paket);
+        } else if (temp.equals("Hobby and Collections")) {
+            Package paket = new HnC(resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat);
+            DeliveryList.put(resi, paket);
         } else {
-            
+            Package paket = new Others("ini barang apa", resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat);
+            DeliveryList.put(resi, paket);
         }
     }//GEN-LAST:event_inputButtonActionPerformed
 
@@ -469,8 +477,8 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     }//GEN-LAST:event_inputButtonMouseClicked
 
     private void kategoriBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kategoriBarangActionPerformed
-        String temp = (String)kategoriBarang.getSelectedItem();
-        if(temp.equals("Food and Beverages") || temp.equals("Sports") || temp.equals("Hobby and Collections")){
+        String temp = (String) kategoriBarang.getSelectedItem();
+        if (temp.equals("Food and Beverages") || temp.equals("Sports") || temp.equals("Hobby and Collections")) {
             flammableButton.setVisible(false);
             fragileButton.setVisible(true);
             keepdryButton.setVisible(true);
@@ -516,7 +524,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 new MasukkanPengiriman().setVisible(true);
             }
         });
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
