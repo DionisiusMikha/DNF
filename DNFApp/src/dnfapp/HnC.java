@@ -10,17 +10,9 @@ package dnfapp;
  */
 //HOBBY AND COLLECTIONS
 public class HnC extends Package{
-    private boolean extraPack; //mau tambah pelindung apa ga
+//    private boolean extraPack; //mau tambah pelindung apa ga
     private boolean danger; //yang ada batere ne
-
-    public boolean isExtraPack() {
-        return extraPack;
-    }
-
-    public void setExtraPack(boolean extraPack) {
-        this.extraPack = extraPack;
-    }
-
+    
     public boolean isDanger() {
         return danger;
     }
@@ -29,9 +21,8 @@ public class HnC extends Package{
         this.danger = danger;
     }
 
-    public HnC(boolean extraPack, boolean danger, String resi, String sender, String receiver, String from, String destination, int weight, boolean delivered, boolean fragile) {
-        super(resi, sender, receiver, from, destination, weight, delivered, fragile);
-        this.extraPack = extraPack;
+    public HnC(boolean extraPack, boolean danger, String resi, String sender, String receiver, String from, String destination, int weight, boolean fragile,  boolean keepdry, boolean protectfromheat) {
+        super(resi, sender, receiver, from, destination, weight, fragile, false, keepdry, protectfromheat);
         this.danger = danger;
     }
 

@@ -12,8 +12,8 @@ package dnfapp;
 public class FnB extends Package{
     private int exp; //dalam bulan
 
-    public FnB(int exp, String resi, String sender, String receiver, String from, String destination, int weight, boolean delivered, boolean fragile) {
-        super(resi, sender, receiver, from, destination, weight, delivered, fragile);
+    public FnB(int exp, String resi, String sender, String receiver, String from, String destination, int weight, boolean fragile, boolean keepdry, boolean protectfromheat) {
+        super(resi, sender, receiver, from, destination, weight, fragile, false, keepdry, protectfromheat);
         this.exp = exp;
     }
 

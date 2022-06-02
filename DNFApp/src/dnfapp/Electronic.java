@@ -12,11 +12,10 @@ public class Electronic extends Package{
     private boolean danger; //rawan mbledos apa ga
     //false = gk mbledos - true = duar
 
-    public Electronic(boolean danger, String resi, String sender, String receiver, String from, String destination, int weight, boolean delivered, boolean fragile) {
-        super(resi, sender, receiver, from, destination, weight, delivered, fragile);
+    public Electronic(boolean danger, String resi, String sender, String receiver, String from, String destination, int weight, boolean fragile, boolean flammable, boolean keepdry, boolean protectfromheat) {
+        super(resi, sender, receiver, from, destination, weight, fragile, flammable, keepdry, protectfromheat);
         this.danger = danger;
     }
-
     
     
     public boolean isDanger() {

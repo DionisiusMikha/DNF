@@ -10,8 +10,9 @@ package dnfapp;
  */
 public class Sports extends Package{
 
-    public Sports(String resi, String sender, String receiver, String from, String destination, int weight, boolean delivered, boolean fragile) {
-        super(resi, sender, receiver, from, destination, weight, delivered, fragile);
+    public Sports(String resi, String sender, String receiver, String from, String destination, int weight, boolean fragile, boolean keepdry, boolean protectfromheat) {
+        super(resi, sender, receiver, from, destination, weight, fragile, false, keepdry, protectfromheat);
     }
+
 
 }

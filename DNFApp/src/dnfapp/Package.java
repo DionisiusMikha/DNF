@@ -18,9 +18,12 @@ public abstract class Package {
     private ArrayList<String> track = new ArrayList<String>();
     private boolean delivered; //false = belum kekirim, true = kekirim
     private boolean fragile; //tahan banting atau ga
+    private boolean flammable; 
+    private boolean keepdry; 
+    private boolean protectfromheat; 
     //false = bukan barang pecah belah - true = iya
 
-    public Package(String resi, String sender, String receiver, String from, String destination, int weight, boolean delivered, boolean fragile) {
+    public Package(String resi, String sender, String receiver, String from, String destination, int weight, boolean fragile, boolean flammable, boolean keepdry, boolean protectfromheat) {
         this.resi = resi;
         this.sender = sender;
         this.receiver = receiver;
@@ -29,7 +32,15 @@ public abstract class Package {
         this.weight = weight;
         this.delivered = false;
         this.fragile = fragile;
+        this.flammable = flammable;
+        this.keepdry = keepdry;
+        this.protectfromheat = protectfromheat;
         this.track = new ArrayList<>();
+    }
+
+    @Override
+    public String toString() {
+        return "Paket telah diserahakan oleh " + sender + " dari " + from;
     }
 
     public int getWeight() {

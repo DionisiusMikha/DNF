@@ -5,8 +5,11 @@
 package dnfapp;
 
 import java.awt.Color;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -30,16 +33,20 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
 
     public MasukkanPengiriman() {
         initComponents();
-        this.kategori.add("Makanan dan minuman");
-        this.kategori.add("Pakaian");
-        this.kategori.add("Pecah belah");
-        this.kategori.add("Elektronik");
-        this.kategori.add("Lain-lain");
+        this.kategori.add("Food and Beverages");
+        this.kategori.add("Beauty and Fashion");
+        this.kategori.add("Hobby and Collections");
+        this.kategori.add("Electronic");
+        this.kategori.add("Sports");
+        this.kategori.add("Others");
         boolean flammable = false;
         boolean fragile = false;
         boolean keepdry = false;
         boolean protectfromheat = false;
         boolean extraprotect = false;
+        for (int i = 0; i < kategori.size(); i++) {
+            kategoriBarang.addItem(kategori.get(i));
+        }
     }
 
     public MasukkanPengiriman(HashMap<String, User> userlist, HashMap<String, Package> DeliveryList, HashMap<String, String> usedEmail, HashMap<String, Kurir> ListKurir) {
@@ -48,18 +55,22 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         this.usedEmail = usedEmail;
         this.DeliveryList = DeliveryList;
         this.ListKurir = ListKurir;
-        this.kategori.add("Makanan dan minuman");
-        this.kategori.add("Pakaian");
-        this.kategori.add("Pecah belah");
-        this.kategori.add("Elektronik");
-        this.kategori.add("Lain-lain");
+        this.kategori.add("Food and Beverages");
+        this.kategori.add("Beauty and Fashion");
+        this.kategori.add("Hobby and Collections");
+        this.kategori.add("Electronic");
+        this.kategori.add("Sports");
+        this.kategori.add("Others");
         boolean flammable = false;
         boolean fragile = false;
         boolean keepdry = false;
         boolean protectfromheat = false;
         boolean extraprotect = false;
+        for (int i = 0; i < kategori.size(); i++) {
+            kategoriBarang.addItem(kategori.get(i));
+        }
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,7 +85,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         inputDaerahTujuan = new javax.swing.JTextField();
         inputBeratBarang = new javax.swing.JTextField();
         keluarButton = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        kategoriBarang = new javax.swing.JComboBox<>();
         flammableButton = new javax.swing.JButton();
         fragileButton = new javax.swing.JButton();
         keepdryButton = new javax.swing.JButton();
@@ -89,7 +100,6 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
 
         inputNamaPenerima.setBackground(new java.awt.Color(62, 97, 155));
         inputNamaPenerima.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        inputNamaPenerima.setForeground(new java.awt.Color(0, 0, 0));
         inputNamaPenerima.setText("Masukan nama");
         inputNamaPenerima.setBorder(null);
         inputNamaPenerima.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -109,7 +119,6 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
 
         inputDaerahTujuan.setBackground(new java.awt.Color(62, 97, 155));
         inputDaerahTujuan.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        inputDaerahTujuan.setForeground(new java.awt.Color(0, 0, 0));
         inputDaerahTujuan.setText("Masukan daerah tujuan");
         inputDaerahTujuan.setBorder(null);
         inputDaerahTujuan.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -129,7 +138,6 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
 
         inputBeratBarang.setBackground(new java.awt.Color(62, 97, 155));
         inputBeratBarang.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        inputBeratBarang.setForeground(new java.awt.Color(0, 0, 0));
         inputBeratBarang.setText("Masukan berat barang");
         inputBeratBarang.setBorder(null);
         inputBeratBarang.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -158,13 +166,12 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         });
         jPanel1.add(keluarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        kategoriBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                kategoriBarangActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, -1, -1));
+        jPanel1.add(kategoriBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, -1, -1));
 
         flammableButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Flammable.png"))); // NOI18N
         flammableButton.setBorderPainted(false);
@@ -422,16 +429,59 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     }//GEN-LAST:event_extraProtectButtonMouseClicked
 
     private void inputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputButtonActionPerformed
-        // TODO add your handling code here:
+        LocalDateTime date = LocalDateTime.now();
+        String temp = (String)kategoriBarang.getSelectedItem();
+        String namaPenerima = inputNamaPenerima.getText();
+        String daerahPenerima = inputDaerahTujuan.getText();
+        String tempBeratBarang = inputBeratBarang.getText();
+        int beratBarang = Integer.parseInt(tempBeratBarang);
+        String resi = "DF";
+        int bulan = (int) date.getMonthValue();
+        int tanggal = (int) date.getDayOfMonth();
+        int tahun = (int) date.getYear();
+        int jam = (int) date.getHour();
+        int menit = (int) date.getMinute();
+        String month = String.valueOf(bulan);
+        String det = String.valueOf(tanggal);
+        String year = String.valueOf(tahun);
+        String timea = String.valueOf(jam);
+        String timeb = String.valueOf(menit);
+        resi += timea + timeb + det + month + year;
+        System.out.println(resi);
+        
+        if(temp.equals("Food and Beverages")){
+            DeliveryList.put(resi, new FnB())
+        } else if(temp.equals("Sports")){
+            
+        } else if(temp.equals("Electronic")){
+            
+        } else if(temp.equals("Beauty and Fashion")){
+            
+        } else if(temp.equals("Hobby and Collections")){
+            
+        } else {
+            
+        }
     }//GEN-LAST:event_inputButtonActionPerformed
 
     private void inputButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputButtonMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_inputButtonMouseClicked
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void kategoriBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kategoriBarangActionPerformed
+        String temp = (String)kategoriBarang.getSelectedItem();
+        if(temp.equals("Food and Beverages") || temp.equals("Sports") || temp.equals("Hobby and Collections")){
+            flammableButton.setVisible(false);
+            fragileButton.setVisible(true);
+            keepdryButton.setVisible(true);
+            protectfromheatButton.setVisible(true);
+        } else {
+            flammableButton.setVisible(true);
+            fragileButton.setVisible(true);
+            keepdryButton.setVisible(true);
+            protectfromheatButton.setVisible(true);
+        }
+    }//GEN-LAST:event_kategoriBarangActionPerformed
 
     /**
      * @param args the command line arguments
@@ -466,6 +516,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 new MasukkanPengiriman().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -476,9 +527,9 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     private javax.swing.JButton inputButton;
     private javax.swing.JTextField inputDaerahTujuan;
     private javax.swing.JTextField inputNamaPenerima;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> kategoriBarang;
     private javax.swing.JButton keepdryButton;
     private javax.swing.JButton keluarButton;
     private javax.swing.JButton protectfromheatButton;

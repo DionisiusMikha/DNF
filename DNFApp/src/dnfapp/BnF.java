@@ -20,9 +20,11 @@ public class BnF extends Package{
         this.danger = danger;
     }
 
-    public BnF(boolean danger, String resi, String sender, String receiver, String from, String destination, int weight, boolean delivered, boolean fragile) {
-        super(resi, sender, receiver, from, destination, weight, delivered, fragile);
+    public BnF(boolean danger, String resi, String sender, String receiver, String from, String destination, int weight, boolean fragile, boolean flammable, boolean keepdry, boolean protectfromheat) {
+        super(resi, sender, receiver, from, destination, weight, fragile, flammable, keepdry, protectfromheat);
         this.danger = danger;
     }
+
+    
 
 }
