@@ -47,7 +47,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="16" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Masukan nama"/>
+            <Property name="text" type="java.lang.String" value="Masukan Nama Penerima"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -71,7 +71,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="16" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Masukan daerah tujuan"/>
+            <Property name="text" type="java.lang.String" value="Masukan Daerah tujuan"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -95,7 +95,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="16" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Masukan berat barang"/>
+            <Property name="text" type="java.lang.String" value="Masukan Berat barang"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>

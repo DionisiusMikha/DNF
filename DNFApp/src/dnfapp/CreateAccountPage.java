@@ -295,11 +295,11 @@ public class CreateAccountPage extends javax.swing.JFrame {
     private void RegPassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegPassFieldFocusGained
         if(!ShowPass){
             RegPassField.setEchoChar('*');
-            String password = String.valueOf(RegPassField.getPassword());
-            if (password.toLowerCase().equals("password")) {
-                RegPassField.setText("");
-                RegPassField.setForeground(new Color(255, 255, 255));
-            }
+        }
+        String password = String.valueOf(RegPassField.getPassword());
+        if (password.toLowerCase().equals("password")) {
+            RegPassField.setText("");
+            RegPassField.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_RegPassFieldFocusGained
 
@@ -314,23 +314,15 @@ public class CreateAccountPage extends javax.swing.JFrame {
 
     private void ConfirmPassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ConfirmPassFieldFocusGained
         if(!ShowConfirm){
-            ConfirmPassField.setEchoChar('*');
-            String password = String.valueOf(ConfirmPassField.getPassword());
-            if (password.toLowerCase().equals("confirm password")) {
-                ConfirmPassField.setText("");
-                ConfirmPassField.setForeground(new Color(255, 255, 255));
-            }
+            ConfirmPassField.setEchoChar('*'); 
+        }
+        String password = String.valueOf(ConfirmPassField.getPassword());
+        if (password.toLowerCase().equals("confirm password")) {
+            ConfirmPassField.setText("");
+            ConfirmPassField.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_ConfirmPassFieldFocusGained
-
-    private void ConfirmSetVisible(){
-        
-    }
-    
-    private void RegSetVisible(){
-        
-    }
-    
+   
     private void ConfirmPassFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ConfirmPassFieldFocusLost
         String password = String.valueOf(ConfirmPassField.getPassword());
         if (password.toLowerCase().equals("password") || password.toLowerCase().equals("")) {

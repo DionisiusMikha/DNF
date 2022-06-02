@@ -279,11 +279,13 @@ public class LoginMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_PasswordFieldFocusGained
 
     private void PasswordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFieldFocusLost
-        String password = String.valueOf(PasswordField.getPassword());
-        if (password.toLowerCase().equals("password") || password.toLowerCase().equals("")) {
-            PasswordField.setText("Password");
-            PasswordField.setEchoChar((char) 0);
-            PasswordField.setForeground(new Color(255, 255, 255));
+        if(!ShowPass){
+            String password = String.valueOf(PasswordField.getPassword());
+            if (password.toLowerCase().equals("password") || password.toLowerCase().equals("")) {
+                PasswordField.setText("Password");
+                PasswordField.setEchoChar((char) 0);
+                PasswordField.setForeground(new Color(255, 255, 255));
+            }
         }
     }//GEN-LAST:event_PasswordFieldFocusLost
 
@@ -306,6 +308,13 @@ public class LoginMenu extends javax.swing.JFrame {
         String currentString = String.valueOf(this.PasswordField.getPassword());
         if (this.ShowPass == false) {
             PasswordField.setEchoChar('*');
+            String password = String.valueOf(PasswordField.getPassword());
+            if (password.toLowerCase().equals("password") || password.toLowerCase().equals("")) {
+                PasswordField.setText("Password");
+                PasswordField.setEchoChar((char) 0);
+                PasswordField.setForeground(new Color(255, 255, 255));
+            }
+            
         } else {
             if(currentString.equalsIgnoreCase("password")){
                 PasswordField.setText("");

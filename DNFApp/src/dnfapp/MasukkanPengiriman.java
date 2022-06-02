@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -100,7 +101,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
 
         inputNamaPenerima.setBackground(new java.awt.Color(62, 97, 155));
         inputNamaPenerima.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        inputNamaPenerima.setText("Masukan nama");
+        inputNamaPenerima.setText("Masukan Nama Penerima");
         inputNamaPenerima.setBorder(null);
         inputNamaPenerima.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -119,7 +120,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
 
         inputDaerahTujuan.setBackground(new java.awt.Color(62, 97, 155));
         inputDaerahTujuan.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        inputDaerahTujuan.setText("Masukan daerah tujuan");
+        inputDaerahTujuan.setText("Masukan Daerah tujuan");
         inputDaerahTujuan.setBorder(null);
         inputDaerahTujuan.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -138,7 +139,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
 
         inputBeratBarang.setBackground(new java.awt.Color(62, 97, 155));
         inputBeratBarang.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        inputBeratBarang.setText("Masukan berat barang");
+        inputBeratBarang.setText("Masukan Berat barang");
         inputBeratBarang.setBorder(null);
         inputBeratBarang.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -290,7 +291,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
 
     private void inputNamaPenerimaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputNamaPenerimaFocusGained
         // TODO add your handling code here:
-        if (inputNamaPenerima.getText().equals("Masukan nama")) {
+        if (inputNamaPenerima.getText().equalsIgnoreCase("Masukan nama penerima")) {
             inputNamaPenerima.setText("");
             inputNamaPenerima.setForeground(new Color(0, 0, 0));
         }
@@ -299,14 +300,14 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     private void inputNamaPenerimaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputNamaPenerimaFocusLost
         // TODO add your handling code here:
         if (inputNamaPenerima.getText().equals("")) {
-            inputNamaPenerima.setText("Masukan nama");
+            inputNamaPenerima.setText("Masukan nama penerima");
             inputNamaPenerima.setForeground(new Color(0, 0, 0));
         }
     }//GEN-LAST:event_inputNamaPenerimaFocusLost
 
     private void inputDaerahTujuanFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputDaerahTujuanFocusGained
         // TODO add your handling code here:
-        if (inputDaerahTujuan.getText().equals("Masukan daerah tujuan")) {
+        if (inputDaerahTujuan.getText().equalsIgnoreCase("Masukan daerah tujuan")) {
             inputDaerahTujuan.setText("");
             inputDaerahTujuan.setForeground(new Color(0, 0, 0));
         }
@@ -322,7 +323,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
 
     private void inputBeratBarangFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputBeratBarangFocusGained
         // TODO add your handling code here:
-        if (inputBeratBarang.getText().equals("Masukan berat barang")) {
+        if (inputBeratBarang.getText().equalsIgnoreCase("Masukan berat barang")) {
             inputBeratBarang.setText("");
             inputBeratBarang.setForeground(new Color(0, 0, 0));
         }
@@ -330,7 +331,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
 
     private void inputBeratBarangFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputBeratBarangFocusLost
         // TODO add your handling code here:
-        if (inputBeratBarang.getText().equals("")) {
+        if (inputBeratBarang.getText().equalsIgnoreCase("")) {
             inputBeratBarang.setText("Masukan berat barang");
             inputBeratBarang.setForeground(new Color(0, 0, 0));
         }
@@ -428,6 +429,11 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_extraProtectButtonMouseClicked
 
+    private void resetField(){
+        inputBeratBarang.setText("Masukan berat barang");
+        inputDaerahTujuan.setText("Masukan daerah tujuan");
+        inputNamaPenerima.setText("Masukan nama penerima");
+    }    
     private void inputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputButtonActionPerformed
         LocalDateTime date = LocalDateTime.now();
         String temp = (String) kategoriBarang.getSelectedItem();
@@ -470,6 +476,10 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
             Package paket = new Others("ini barang apa", resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat);
             DeliveryList.put(resi, paket);
         }
+                
+        resetField();
+        
+        JOptionPane.showMessageDialog(null, "Entry Paket Berhasil! Nomor Resi : "+resi, "DNF App", 1);
     }//GEN-LAST:event_inputButtonActionPerformed
 
     private void inputButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputButtonMouseClicked
