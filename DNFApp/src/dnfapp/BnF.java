@@ -11,9 +11,10 @@ package dnfapp;
 //BEAUTY AND FASHION
 public class BnF extends Package {
 
-    public BnF(String resi, String sender, String receiver, String from, String destination, int weight, boolean fragile, boolean flammable, boolean keepdry, boolean protectfromheat) {
-        super(resi, sender, receiver, from, destination, weight, fragile, flammable, keepdry, protectfromheat);
+    public BnF(String resi, String sender, String receiver, String from, String destination, int weight, boolean fragile, boolean flammable, boolean keepdry, boolean protectfromheat, boolean extraprotection) {
+        super(resi, sender, receiver, from, destination, weight, fragile, flammable, keepdry, protectfromheat, extraprotection);
     }
+
 //    private boolean danger; //beauty tahan panas atau gak
 //
 //    public boolean isDanger() {
@@ -23,5 +24,4 @@ public class BnF extends Package {
 //    public void setDanger(boolean danger) {
 //        this.danger = danger;
 //    }
-
 }

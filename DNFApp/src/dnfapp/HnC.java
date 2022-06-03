@@ -11,9 +11,10 @@ package dnfapp;
 //HOBBY AND COLLECTIONS
 public class HnC extends Package {
 
-    public HnC(String resi, String sender, String receiver, String from, String destination, int weight, boolean fragile, boolean flammable, boolean keepdry, boolean protectfromheat) {
-        super(resi, sender, receiver, from, destination, weight, fragile, flammable, keepdry, protectfromheat);
+    public HnC(String resi, String sender, String receiver, String from, String destination, int weight, boolean fragile, boolean flammable, boolean keepdry, boolean protectfromheat, boolean extraprotection) {
+        super(resi, sender, receiver, from, destination, weight, fragile, flammable, keepdry, protectfromheat, extraprotection);
     }
+
 //    private boolean extraPack; //mau tambah pelindung apa ga
 //    private boolean danger; //yang ada batere ne
 //    
@@ -24,5 +25,4 @@ public class HnC extends Package {
 //    public void setDanger(boolean danger) {
 //        this.danger = danger;
 //    }
-
 }

@@ -268,7 +268,7 @@ public class LoginMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_usernamefieldFocusLost
 
     private void PasswordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFieldFocusGained
-        if(!ShowPass){
+        if (!ShowPass) {
             PasswordField.setEchoChar('*');
             String password = String.valueOf(PasswordField.getPassword());
             if (password.toLowerCase().equals("password")) {
@@ -279,7 +279,7 @@ public class LoginMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_PasswordFieldFocusGained
 
     private void PasswordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFieldFocusLost
-        if(!ShowPass){
+        if (!ShowPass) {
             String password = String.valueOf(PasswordField.getPassword());
             if (password.toLowerCase().equals("password") || password.toLowerCase().equals("")) {
                 PasswordField.setText("Password");
@@ -314,9 +314,9 @@ public class LoginMenu extends javax.swing.JFrame {
                 PasswordField.setEchoChar((char) 0);
                 PasswordField.setForeground(new Color(255, 255, 255));
             }
-            
+
         } else {
-            if(currentString.equalsIgnoreCase("password")){
+            if (currentString.equalsIgnoreCase("password")) {
                 PasswordField.setText("");
             }
             PasswordField.setEchoChar((char) 0);

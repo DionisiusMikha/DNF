@@ -202,6 +202,13 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void HapusPengirimanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusPengirimanButtonActionPerformed
         // TODO add your handling code here:
+        HapusPengiriman HP = new HapusPengiriman(userlist, usedEmail, DeliveryList, ListKurir);
+        dispose();
+        HP.setVisible(true);
+        HP.pack();
+        HP.setLocationRelativeTo(null);
+        HP.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+        HP.setResizable(false);
     }//GEN-LAST:event_HapusPengirimanButtonActionPerformed
 
     /**

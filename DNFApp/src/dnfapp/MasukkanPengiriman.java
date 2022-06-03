@@ -26,6 +26,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
     private ArrayList<String> kategori = new ArrayList<>();
+    private Gudang<Package> gudang = new Gudang<>();
     private boolean flammable;
     private boolean fragile;
     private boolean keepdry;
@@ -429,18 +430,18 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_extraProtectButtonMouseClicked
 
-    private void resetField(){
+    private void resetField() {
         inputBeratBarang.setText("Masukan berat barang");
         inputDaerahTujuan.setText("Masukan daerah tujuan");
         inputNamaPenerima.setText("Masukan nama penerima");
-    }    
+    }
     private void inputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputButtonActionPerformed
         LocalDateTime date = LocalDateTime.now();
         String temp = (String) kategoriBarang.getSelectedItem();
         String namaPenerima = inputNamaPenerima.getText();
         String daerahPenerima = inputDaerahTujuan.getText();
         String tempBeratBarang = inputBeratBarang.getText();
-        int beratBarang = Integer.parseInt(tempBeratBarang);
+
         String resi = "DF";
         int bulan = (int) date.getMonthValue();
         int tanggal = (int) date.getDayOfMonth();
@@ -454,32 +455,51 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         String timea = String.valueOf(jam);
         String timeb = String.valueOf(menit);
         String timec = String.valueOf(detik);
+        char[] charberat = tempBeratBarang.toCharArray();
         resi += timea + timeb + timec + det + month + year;
         System.out.println(resi);
 
-        if (temp.equals("Food and Beverages")) {
-            Package paket = new FnB(1, resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, keepdry, protectfromheat);
-            DeliveryList.put(resi, paket);
-        } else if (temp.equals("Sports")) {
-            Package paket = new Sports(resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, keepdry, protectfromheat);
-            DeliveryList.put(resi, paket);
-        } else if (temp.equals("Electronic")) {
-            Package paket = new Electronic(resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat);
-            DeliveryList.put(resi, paket);
-        } else if (temp.equals("Beauty and Fashion")) {
-            Package paket = new BnF(resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat);
-            DeliveryList.put(resi, paket);
-        } else if (temp.equals("Hobby and Collections")) {
-            Package paket = new HnC(resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat);
-            DeliveryList.put(resi, paket);
-        } else {
-            Package paket = new Others("ini barang apa", resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat);
-            DeliveryList.put(resi, paket);
+        if (inputBeratBarang.getText().equals("0")) {
+            JOptionPane.showMessageDialog(null, "Berat tidak valid!");
+        } else if (!(inputBeratBarang.getText().equals("0"))) {
+            for (int i = 0; i < charberat.length; i++) {
+                if (charberat[i] >= 65 && charberat[i] <= 122) {
+                    JOptionPane.showMessageDialog(null, "Berat tidak valid!");
+                } else if (charberat[i] >= 48 && charberat[i] <= 57) {
+                    int beratBarang = Integer.parseInt(tempBeratBarang);
+                    if (temp.equals("Food and Beverages")) {
+                        Package paket = new FnB(1, resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
+                        DeliveryList.put(resi, paket);
+                        gudang.add(paket);
+                    } else if (temp.equals("Sports")) {
+                        Package paket = new Sports(resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
+                        DeliveryList.put(resi, paket);
+                        gudang.add(paket);
+                    } else if (temp.equals("Electronic")) {
+                        Package paket = new Electronic(resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                        DeliveryList.put(resi, paket);
+                        gudang.add(paket);
+                    } else if (temp.equals("Beauty and Fashion")) {
+                        Package paket = new BnF(resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                        DeliveryList.put(resi, paket);
+                        gudang.add(paket);
+                    } else if (temp.equals("Hobby and Collections")) {
+                        Package paket = new HnC(resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                        DeliveryList.put(resi, paket);
+                        gudang.add(paket);
+                    } else {
+                        Package paket = new Others("ini barang apa", resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                        DeliveryList.put(resi, paket);
+                        gudang.add(paket);
+                    }
+
+                    resetField();
+
+                    JOptionPane.showMessageDialog(null, "Entry Paket Berhasil! Nomor Resi : " + resi, "DNF App", 1);
+                    break;
+                }
+            }
         }
-                
-        resetField();
-        
-        JOptionPane.showMessageDialog(null, "Entry Paket Berhasil! Nomor Resi : "+resi, "DNF App", 1);
     }//GEN-LAST:event_inputButtonActionPerformed
 
     private void inputButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputButtonMouseClicked

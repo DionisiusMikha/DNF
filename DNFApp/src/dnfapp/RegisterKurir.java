@@ -22,12 +22,10 @@ public class RegisterKurir extends javax.swing.JFrame {
     /**
      * Creates new form RegisterKurir
      */
-    
     private HashMap<String, User> userlist = new HashMap<String, User>();
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
-
 
     public RegisterKurir() {
         initComponents();
@@ -42,11 +40,11 @@ public class RegisterKurir extends javax.swing.JFrame {
         this.usedEmail = usedEmail;
         jLabel1.requestFocus();
     }
-    
+
     //static global char arr to generate random string
-    private static char[] chars = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'q', 'w', 'e', 'r', 't', 'z', 'u', 'i', 'o', 'p', 'a', 's',
+    private static char[] chars = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'q', 'w', 'e', 'r', 't', 'z', 'u', 'i', 'o', 'p', 'a', 's',
         'd', 'f', 'g', 'h', 'j', 'k', 'l', 'y', 'x', 'c', 'v', 'b', 'n', 'm', 'Q', 'W', 'E', 'R', 'T', 'Z', 'U', 'I', 'O', 'P', 'A',
-        'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Y', 'X', 'C', 'V', 'B', 'N', 'M' };
+        'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Y', 'X', 'C', 'V', 'B', 'N', 'M'};
 
     //randomString generator procedure
     private static String randomString(int length) {
@@ -57,13 +55,13 @@ public class RegisterKurir extends javax.swing.JFrame {
         }
         return stringBuilder.toString();
     }
-    
+
     //testing tool.
-    public void GenerateTestObject(){
+    public void GenerateTestObject() {
         System.out.println("Called Generator Method");
-        for(int i = 0;i<100;i++){
+        for (int i = 0; i < 100; i++) {
             String randUsername = randomString(7);
-            Kurir generatedKurir = new Kurir(randUsername,randomString(7),randomString(7));
+            Kurir generatedKurir = new Kurir(randUsername, randomString(7), randomString(7));
             this.ListKurir.put(randUsername, generatedKurir);
         }
     }
@@ -191,13 +189,11 @@ public class RegisterKurir extends javax.swing.JFrame {
         boolean jadiKurir = false;
         if (namaKurir.equals("Nama Kurir")) {
             JOptionPane.showMessageDialog(null, "Nama Kurir diisi terlebih dahulu!");
-        } 
-        else {
-            if (unameKurir.equals("Username Kurir")||unameKurir.equals("")) {
+        } else {
+            if (unameKurir.equals("Username Kurir") || unameKurir.equals("")) {
                 JOptionPane.showMessageDialog(null, "Username Kurir diisi terlebih dahulu!");
-            }
-            //method Test JList.
-            else if(unameKurir.equalsIgnoreCase("TESTFILL")||namaKurir.equalsIgnoreCase("TESTFILL")){
+            } //method Test JList.
+            else if (unameKurir.equalsIgnoreCase("TESTFILL") || namaKurir.equalsIgnoreCase("TESTFILL")) {
                 GenerateTestObject();
                 AdminMenu AM = new AdminMenu(userlist, DeliveryList, ListKurir, usedEmail);
                 dispose();
@@ -206,18 +202,16 @@ public class RegisterKurir extends javax.swing.JFrame {
                 AM.setLocationRelativeTo(null);
                 AM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
                 JOptionPane.showMessageDialog(null, "Generated 100 Test Object of Class Kurir!", "DNF App", 1);
-            }
-            else {
-                if (passwordKurir.equals("Password Kurir")||passwordKurir.equals("")) {
+            } else {
+                if (passwordKurir.equals("Password Kurir") || passwordKurir.equals("")) {
                     JOptionPane.showMessageDialog(null, "Password Kurir diisi terlebih dahulu!");
-                } 
-                else {
+                } else {
                     if (ListKurir.containsKey(unameKurir)) {
                         jadiKurir = true;
                     }
-                    
-                    if(!jadiKurir){
-                        Kurir newKurir = new Kurir(namaKurir,unameKurir, passwordKurir);
+
+                    if (!jadiKurir) {
+                        Kurir newKurir = new Kurir(namaKurir, unameKurir, passwordKurir);
                         ListKurir.put(unameKurir, newKurir);
                         AdminMenu AM = new AdminMenu(userlist, DeliveryList, ListKurir, usedEmail);
                         dispose();
@@ -226,13 +220,13 @@ public class RegisterKurir extends javax.swing.JFrame {
                         AM.setLocationRelativeTo(null);
                         AM.setDefaultCloseOperation(LoginMenu.EXIT_ON_CLOSE);
                         JOptionPane.showMessageDialog(null, "Berhasil mendafatarkan " + namaKurir + " !", "DNF App", 1);
-                    } else{
-                        JOptionPane.showMessageDialog(null, "Kurir sudah terdaftar!", "DNF App", 2);   
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Kurir sudah terdaftar!", "DNF App", 2);
                     }
                 }
             }
         }
-        
+
 //        try {
 //            FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir") + "\\kurir.ser");
 //            ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
@@ -261,7 +255,7 @@ public class RegisterKurir extends javax.swing.JFrame {
             NamaKurir.setText("Nama Kurir");
             NamaKurir.setForeground(new Color(255, 255, 255));
         }
-        
+
     }//GEN-LAST:event_NamaKurirFocusLost
 
     private void PasswordKurirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordKurirActionPerformed

@@ -3,12 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dnfapp;
+
 import java.util.ArrayList;
+
 /**
  *
  * @author Frans
  */
 public abstract class Package {
+
     private String resi;
     private String sender;
     private String receiver;
@@ -18,12 +21,13 @@ public abstract class Package {
     private ArrayList<String> track = new ArrayList<String>();
     private boolean delivered; //false = belum kekirim, true = kekirim
     private boolean fragile; //tahan banting atau ga
-    private boolean flammable; 
-    private boolean keepdry; 
-    private boolean protectfromheat; 
+    private boolean flammable;
+    private boolean keepdry;
+    private boolean protectfromheat;
+    private boolean extraprotection;
     //false = bukan barang pecah belah - true = iya
 
-    public Package(String resi, String sender, String receiver, String from, String destination, int weight, boolean fragile, boolean flammable, boolean keepdry, boolean protectfromheat) {
+    public Package(String resi, String sender, String receiver, String from, String destination, int weight, boolean fragile, boolean flammable, boolean keepdry, boolean protectfromheat, boolean extraprotection) {
         this.resi = resi;
         this.sender = sender;
         this.receiver = receiver;
@@ -35,7 +39,7 @@ public abstract class Package {
         this.flammable = flammable;
         this.keepdry = keepdry;
         this.protectfromheat = protectfromheat;
-        this.track = new ArrayList<>();
+        this.extraprotection = extraprotection;
     }
 
     @Override
@@ -78,13 +82,13 @@ public abstract class Package {
     public void setDelivered(boolean delivered) {
         this.delivered = delivered;
     }
-    
-    public void updateTrack(String s){
+
+    public void updateTrack(String s) {
         track.add(s);
     }
-    
-    public void changeResi (String resi){
-        this.resi=resi;
+
+    public void changeResi(String resi) {
+        this.resi = resi;
     }
 
     public String getResi() {
@@ -114,7 +118,45 @@ public abstract class Package {
     public boolean isDelivered() {
         return delivered;
     }
-    
-    
-    
+
+    public boolean isFragile() {
+        return fragile;
+    }
+
+    public void setFragile(boolean fragile) {
+        this.fragile = fragile;
+    }
+
+    public boolean isFlammable() {
+        return flammable;
+    }
+
+    public void setFlammable(boolean flammable) {
+        this.flammable = flammable;
+    }
+
+    public boolean isKeepdry() {
+        return keepdry;
+    }
+
+    public void setKeepdry(boolean keepdry) {
+        this.keepdry = keepdry;
+    }
+
+    public boolean isProtectfromheat() {
+        return protectfromheat;
+    }
+
+    public void setProtectfromheat(boolean protectfromheat) {
+        this.protectfromheat = protectfromheat;
+    }
+
+    public boolean isExtraprotection() {
+        return extraprotection;
+    }
+
+    public void setExtraprotection(boolean extraprotection) {
+        this.extraprotection = extraprotection;
+    }
+
 }
