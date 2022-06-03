@@ -62,7 +62,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 RegisKurirButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(RegisKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, -1, -1));
+        getContentPane().add(RegisKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
 
         MasukanPengirimanButton.setBackground(new java.awt.Color(233, 233, 255));
         MasukanPengirimanButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_1.png"))); // NOI18N
@@ -74,7 +74,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 MasukanPengirimanButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(MasukanPengirimanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, -1, -1));
+        getContentPane().add(MasukanPengirimanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, -1, -1));
 
         HapusPengirimanButton.setBackground(new java.awt.Color(233, 233, 255));
         HapusPengirimanButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_2.png"))); // NOI18N
@@ -98,7 +98,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 DaftarKurirButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(DaftarKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, 170, -1));
+        getContentPane().add(DaftarKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 170, -1));
 
         ListPengirimanButton.setBackground(new java.awt.Color(233, 233, 255));
         ListPengirimanButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_4.png"))); // NOI18N
@@ -110,7 +110,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 ListPengirimanButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(ListPengirimanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, -1, -1));
+        getContentPane().add(ListPengirimanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, -1, -1));
 
         LogOutButton.setBackground(new java.awt.Color(192, 196, 220));
         LogOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5.png"))); // NOI18N

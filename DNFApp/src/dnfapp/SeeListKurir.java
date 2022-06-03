@@ -107,10 +107,11 @@ public class SeeListKurir extends javax.swing.JFrame {
                 KeluarSeeListKurirActionPerformed(evt);
             }
         });
-        getContentPane().add(KeluarSeeListKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 584, 80, -1));
+        getContentPane().add(KeluarSeeListKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 600, 80, -1));
 
         displayNamaKurir.setBackground(new java.awt.Color(62, 97, 155));
         displayNamaKurir.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        displayNamaKurir.setForeground(new java.awt.Color(255, 255, 255));
         displayNamaKurir.setBorder(null);
         displayNamaKurir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +122,7 @@ public class SeeListKurir extends javax.swing.JFrame {
 
         displayUsernameKurir.setBackground(new java.awt.Color(62, 97, 155));
         displayUsernameKurir.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        displayUsernameKurir.setForeground(new java.awt.Color(255, 255, 255));
         displayUsernameKurir.setBorder(null);
         displayUsernameKurir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,6 +133,7 @@ public class SeeListKurir extends javax.swing.JFrame {
 
         displayPasswordKurir.setBackground(new java.awt.Color(62, 97, 155));
         displayPasswordKurir.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        displayPasswordKurir.setForeground(new java.awt.Color(255, 255, 255));
         displayPasswordKurir.setBorder(null);
         displayPasswordKurir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

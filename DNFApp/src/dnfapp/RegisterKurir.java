@@ -86,7 +86,6 @@ public class RegisterKurir extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -114,7 +113,7 @@ public class RegisterKurir extends javax.swing.JFrame {
                 NamaKurirActionPerformed(evt);
             }
         });
-        getContentPane().add(NamaKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 225, 492, 30));
+        getContentPane().add(NamaKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 492, 30));
 
         UsernameKurir.setBackground(new java.awt.Color(62, 97, 155));
         UsernameKurir.setFont(new java.awt.Font("Dialog", 3, 16)); // NOI18N
@@ -134,7 +133,7 @@ public class RegisterKurir extends javax.swing.JFrame {
                 UsernameKurirActionPerformed(evt);
             }
         });
-        getContentPane().add(UsernameKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 310, 445, 30));
+        getContentPane().add(UsernameKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 445, 30));
 
         DaftarKurirButton.setBackground(new java.awt.Color(62, 97, 155));
         DaftarKurirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_3.png"))); // NOI18N
@@ -144,17 +143,18 @@ public class RegisterKurir extends javax.swing.JFrame {
                 DaftarKurirButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(DaftarKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 480, 260, 70));
+        getContentPane().add(DaftarKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 480, 260, 70));
 
         cancelDaftarKurir.setBackground(new java.awt.Color(62, 97, 155));
-        cancelDaftarKurir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_2.png"))); // NOI18N
+        cancelDaftarKurir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5_minisize.png"))); // NOI18N
         cancelDaftarKurir.setBorder(null);
+        cancelDaftarKurir.setContentAreaFilled(false);
         cancelDaftarKurir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelDaftarKurirActionPerformed(evt);
             }
         });
-        getContentPane().add(cancelDaftarKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 490, 200, 60));
+        getContentPane().add(cancelDaftarKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 600, 80, -1));
 
         PasswordKurir.setBackground(new java.awt.Color(62, 97, 155));
         PasswordKurir.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -174,7 +174,7 @@ public class RegisterKurir extends javax.swing.JFrame {
                 PasswordKurirActionPerformed(evt);
             }
         });
-        getContentPane().add(PasswordKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 395, 445, 30));
+        getContentPane().add(PasswordKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 445, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Regis_kurir.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));

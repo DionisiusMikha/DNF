@@ -60,6 +60,8 @@ public class EditKurir extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         NameEditField.setBackground(new java.awt.Color(62, 97, 155));
+        NameEditField.setFont(new java.awt.Font("Dialog", 3, 16)); // NOI18N
+        NameEditField.setForeground(new java.awt.Color(255, 255, 255));
         NameEditField.setBorder(null);
         NameEditField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -77,6 +79,8 @@ public class EditKurir extends javax.swing.JFrame {
         getContentPane().add(NameEditField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 212, 380, 30));
 
         UsernameEditField.setBackground(new java.awt.Color(62, 97, 155));
+        UsernameEditField.setFont(new java.awt.Font("Dialog", 3, 16)); // NOI18N
+        UsernameEditField.setForeground(new java.awt.Color(255, 255, 255));
         UsernameEditField.setBorder(null);
         UsernameEditField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -94,6 +98,8 @@ public class EditKurir extends javax.swing.JFrame {
         getContentPane().add(UsernameEditField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 281, 380, 30));
 
         PasswordEditField.setBackground(new java.awt.Color(62, 97, 155));
+        PasswordEditField.setFont(new java.awt.Font("Dialog", 3, 16)); // NOI18N
+        PasswordEditField.setForeground(new java.awt.Color(255, 255, 255));
         PasswordEditField.setBorder(null);
         PasswordEditField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -118,9 +124,9 @@ public class EditKurir extends javax.swing.JFrame {
                 InputButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(InputButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 483, 190, 50));
+        getContentPane().add(InputButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 470, 190, 50));
 
-        CancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_2.png"))); // NOI18N
+        CancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5_minisize.png"))); // NOI18N
         CancelButton.setBorderPainted(false);
         CancelButton.setContentAreaFilled(false);
         CancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -128,7 +134,7 @@ public class EditKurir extends javax.swing.JFrame {
                 CancelButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, 120, 30));
+        getContentPane().add(CancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 595, 80, 80));
 
         BG_EditKurir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Profile_Kurir.png"))); // NOI18N
         getContentPane().add(BG_EditKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

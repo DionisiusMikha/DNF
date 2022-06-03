@@ -92,7 +92,7 @@ public class HapusPengiriman extends javax.swing.JFrame {
                 keluarButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(keluarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 580, -1, -1));
+        jPanel1.add(keluarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 595, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Hapus_Pengiriman.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

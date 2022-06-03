@@ -102,6 +102,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
 
         inputNamaPenerima.setBackground(new java.awt.Color(62, 97, 155));
         inputNamaPenerima.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        inputNamaPenerima.setForeground(new java.awt.Color(255, 255, 255));
         inputNamaPenerima.setText("Masukan Nama Penerima");
         inputNamaPenerima.setBorder(null);
         inputNamaPenerima.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -117,10 +118,11 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 inputNamaPenerimaActionPerformed(evt);
             }
         });
-        jPanel1.add(inputNamaPenerima, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 390, 30));
+        jPanel1.add(inputNamaPenerima, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 320, 30));
 
         inputDaerahTujuan.setBackground(new java.awt.Color(62, 97, 155));
         inputDaerahTujuan.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        inputDaerahTujuan.setForeground(new java.awt.Color(255, 255, 255));
         inputDaerahTujuan.setText("Masukan Daerah tujuan");
         inputDaerahTujuan.setBorder(null);
         inputDaerahTujuan.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -136,10 +138,11 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 inputDaerahTujuanActionPerformed(evt);
             }
         });
-        jPanel1.add(inputDaerahTujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 390, 30));
+        jPanel1.add(inputDaerahTujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 307, 330, 30));
 
         inputBeratBarang.setBackground(new java.awt.Color(62, 97, 155));
         inputBeratBarang.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        inputBeratBarang.setForeground(new java.awt.Color(255, 255, 255));
         inputBeratBarang.setText("Masukan Berat barang");
         inputBeratBarang.setBorder(null);
         inputBeratBarang.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -155,7 +158,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 inputBeratBarangActionPerformed(evt);
             }
         });
-        jPanel1.add(inputBeratBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 380, 30));
+        jPanel1.add(inputBeratBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 356, 320, 30));
 
         keluarButton.setBackground(new java.awt.Color(4, 37, 107));
         keluarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5_minisize.png"))); // NOI18N
@@ -166,14 +169,14 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 keluarButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(keluarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, -1, -1));
+        jPanel1.add(keluarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 598, -1, -1));
 
         kategoriBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kategoriBarangActionPerformed(evt);
             }
         });
-        jPanel1.add(kategoriBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, -1, -1));
+        jPanel1.add(kategoriBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 403, -1, -1));
 
         flammableButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Flammable.png"))); // NOI18N
         flammableButton.setBorderPainted(false);
@@ -188,7 +191,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 flammableButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(flammableButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, -1, -1));
+        jPanel1.add(flammableButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 490, -1, -1));
 
         fragileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Fragile.png"))); // NOI18N
         fragileButton.setBorderPainted(false);
@@ -198,7 +201,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 fragileButtonMouseClicked(evt);
             }
         });
-        jPanel1.add(fragileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, -1, -1));
+        jPanel1.add(fragileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 490, -1, -1));
 
         keepdryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Keep_Dry.png"))); // NOI18N
         keepdryButton.setBorderPainted(false);
@@ -213,7 +216,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 keepdryButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(keepdryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, -1, -1));
+        jPanel1.add(keepdryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 490, -1, -1));
 
         protectfromheatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Protect.png"))); // NOI18N
         protectfromheatButton.setBorderPainted(false);
@@ -228,7 +231,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 protectfromheatButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(protectfromheatButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 440, -1, -1));
+        jPanel1.add(protectfromheatButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 490, -1, -1));
 
         extraProtectButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Box-alt_no.png"))); // NOI18N
         extraProtectButton.setBorderPainted(false);
@@ -243,7 +246,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 extraProtectButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(extraProtectButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 460, -1, -1));
+        jPanel1.add(extraProtectButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, -1, -1));
 
         inputButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_4.png"))); // NOI18N
         inputButton.setBorderPainted(false);
@@ -258,7 +261,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 inputButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(inputButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 480, -1, -1));
+        jPanel1.add(inputButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 480, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Masukan_Pengiriman.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

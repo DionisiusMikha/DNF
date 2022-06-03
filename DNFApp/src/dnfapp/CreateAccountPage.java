@@ -106,7 +106,6 @@ public class CreateAccountPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         RegUsernameField.setBackground(new java.awt.Color(62, 97, 155));
@@ -247,7 +246,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         getContentPane().add(ShowConfirmPassButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 375, 30, -1));
 
         Background_Frame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Create_Acc.png"))); // NOI18N
-        getContentPane().add(Background_Frame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -230, -1, 1170));
+        getContentPane().add(Background_Frame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -114,10 +114,19 @@ public class ListUser extends javax.swing.JFrame {
                 BackButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 584, 80, -1));
-        getContentPane().add(displayUsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 200, 250, 20));
-        getContentPane().add(displayEmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 260, 210, 20));
-        getContentPane().add(displayPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 320, 260, 20));
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 595, 80, 80));
+
+        displayUsernameField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        displayUsernameField.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(displayUsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(785, 190, 320, 30));
+
+        displayEmailField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        displayEmailField.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(displayEmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 250, 360, 30));
+
+        displayPasswordField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        displayPasswordField.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(displayPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 310, 330, 30));
 
         BG_ListUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/List_User.png"))); // NOI18N
         getContentPane().add(BG_ListUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
