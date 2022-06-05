@@ -52,6 +52,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         for (int i = 0; i < kategori.size(); i++) {
             kategoriBarang.addItem(kategori.get(i));
         }
+        BG_InputPengiriman.requestFocus();
     }
 
     public MasukkanPengiriman(HashMap<String, User> userlist, HashMap<String, Package> DeliveryList, HashMap<String, String> usedEmail, HashMap<String, Kurir> ListKurir) {
@@ -75,6 +76,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         for (int i = 0; i < kategori.size(); i++) {
             kategoriBarang.addItem(kategori.get(i));
         }
+         BG_InputPengiriman.requestFocus();
     }
 
     /**
@@ -103,7 +105,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         tiputipu = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         keteranganBarang = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
+        BG_InputPengiriman = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -147,7 +149,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 inputDaerahTujuanActionPerformed(evt);
             }
         });
-        jPanel1.add(inputDaerahTujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 307, 330, 30));
+        jPanel1.add(inputDaerahTujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 307, 205, 30));
 
         inputBeratBarang.setBackground(new java.awt.Color(62, 97, 155));
         inputBeratBarang.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -257,7 +259,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 extraProtectButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(extraProtectButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, -1, -1));
+        jPanel1.add(extraProtectButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(623, 510, 49, 49));
 
         inputButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_4.png"))); // NOI18N
         inputButton.setBorderPainted(false);
@@ -313,7 +315,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 alamatPengirimActionPerformed(evt);
             }
         });
-        jPanel1.add(alamatPengirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 265, 310, 30));
+        jPanel1.add(alamatPengirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 265, 190, 30));
 
         tiputipu.setBackground(new java.awt.Color(62, 97, 155));
 
@@ -321,14 +323,14 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         tiputipu.setLayout(tiputipuLayout);
         tiputipuLayout.setHorizontalGroup(
             tiputipuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+            .addGap(0, 180, Short.MAX_VALUE)
         );
         tiputipuLayout.setVerticalGroup(
             tiputipuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 270, Short.MAX_VALUE)
         );
 
-        jPanel1.add(tiputipu, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, 220, 270));
+        jPanel1.add(tiputipu, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, 180, 270));
 
         keteranganBarang.setBackground(new java.awt.Color(4, 27, 107));
         keteranganBarang.setColumns(20);
@@ -349,10 +351,10 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(keteranganBarang);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, 200, 250));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 190, 170, 250));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Masukan_Pengiriman.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        BG_InputPengiriman.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Masukan_Pengiriman.png"))); // NOI18N
+        jPanel1.add(BG_InputPengiriman, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -369,20 +371,20 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inputBeratBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputBeratBarangActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_inputBeratBarangActionPerformed
 
     private void inputNamaPenerimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNamaPenerimaActionPerformed
-        // TODO add your handling code here:
+
 
     }//GEN-LAST:event_inputNamaPenerimaActionPerformed
 
     private void inputDaerahTujuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDaerahTujuanActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_inputDaerahTujuanActionPerformed
 
     private void inputNamaPenerimaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputNamaPenerimaFocusGained
-        // TODO add your handling code here:
+
         if (inputNamaPenerima.getText().equalsIgnoreCase("Masukan nama penerima")) {
             inputNamaPenerima.setText("");
             inputNamaPenerima.setForeground(new Color(255, 255, 255));
@@ -390,7 +392,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     }//GEN-LAST:event_inputNamaPenerimaFocusGained
 
     private void inputNamaPenerimaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputNamaPenerimaFocusLost
-        // TODO add your handling code here:
+
         if (inputNamaPenerima.getText().equals("")) {
             inputNamaPenerima.setText("Masukan nama penerima");
             inputNamaPenerima.setForeground(new Color(255, 255, 255));
@@ -398,7 +400,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     }//GEN-LAST:event_inputNamaPenerimaFocusLost
 
     private void inputDaerahTujuanFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputDaerahTujuanFocusGained
-        // TODO add your handling code here:
+
         if (inputDaerahTujuan.getText().equalsIgnoreCase("Masukan daerah tujuan")) {
             inputDaerahTujuan.setText("");
             inputDaerahTujuan.setForeground(new Color(255, 255, 255));
@@ -406,7 +408,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     }//GEN-LAST:event_inputDaerahTujuanFocusGained
 
     private void inputDaerahTujuanFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputDaerahTujuanFocusLost
-        // TODO add your handling code here:
+
         if (inputDaerahTujuan.getText().equals("")) {
             inputDaerahTujuan.setText("Masukan daerah tujuan");
             inputDaerahTujuan.setForeground(new Color(255, 255, 255));
@@ -414,7 +416,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     }//GEN-LAST:event_inputDaerahTujuanFocusLost
 
     private void inputBeratBarangFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputBeratBarangFocusGained
-        // TODO add your handling code here:
+
         if (inputBeratBarang.getText().equalsIgnoreCase("Masukan berat barang")) {
             inputBeratBarang.setText("");
             inputBeratBarang.setForeground(new Color(255, 255, 255));
@@ -422,7 +424,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     }//GEN-LAST:event_inputBeratBarangFocusGained
 
     private void inputBeratBarangFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputBeratBarangFocusLost
-        // TODO add your handling code here:
+
         if (inputBeratBarang.getText().equalsIgnoreCase("")) {
             inputBeratBarang.setText("Masukan berat barang");
             inputBeratBarang.setForeground(new Color(255, 255, 255));
@@ -430,7 +432,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     }//GEN-LAST:event_inputBeratBarangFocusLost
 
     private void keluarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarButtonActionPerformed
-        // TODO add your handling code here:
+
         int userAmount = userlist.size();
         if (userAmount == 0) {
             AdminMenu AM = new AdminMenu();
@@ -534,6 +536,27 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         Date date = new Date();
         String s = dateFormat.format(date);
         return s;
+    }
+    
+    private void generateKota(){
+        ArrayList<String> listkota = new ArrayList<>();
+        listkota.add( " Ambon " );
+        listkota.add( " Balikpapan " );
+        listkota.add( " Banda Aceh " );
+        listkota.add( " Bandar Lampung " );
+        listkota.add( " Bandung " );
+        listkota.add( " Banjar " );
+        listkota.add( " Banjarbaru " );
+        listkota.add( " Banjarmasin " );
+        listkota.add( " Batam " );
+        listkota.add( " Batu " );
+        listkota.add( " Bekasi " );
+        listkota.add( " Bengkulu " );
+        listkota.add( " Binjai " );
+        listkota.add( " Bitung " );
+        listkota.add( " Blitar " );
+        listkota.add( " Bogor " );
+        listkota.add( " Bukittinggi " );
     }
     
     private void inputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputButtonActionPerformed
@@ -751,6 +774,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BG_InputPengiriman;
     private javax.swing.JTextField alamatPengirim;
     private javax.swing.JButton extraProtectButton;
     private javax.swing.JButton flammableButton;
@@ -759,7 +783,6 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     private javax.swing.JButton inputButton;
     private javax.swing.JTextField inputDaerahTujuan;
     private javax.swing.JTextField inputNamaPenerima;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> kategoriBarang;
