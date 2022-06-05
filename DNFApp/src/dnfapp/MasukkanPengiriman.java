@@ -35,12 +35,12 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
 
     public MasukkanPengiriman() {
         initComponents();
+        this.kategori.add("Others");
         this.kategori.add("Food and Beverages");
         this.kategori.add("Beauty and Fashion");
         this.kategori.add("Hobby and Collections");
         this.kategori.add("Electronic");
         this.kategori.add("Sports");
-        this.kategori.add("Others");
         boolean flammable = false;
         boolean fragile = false;
         boolean keepdry = false;
@@ -57,12 +57,12 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         this.usedEmail = usedEmail;
         this.DeliveryList = DeliveryList;
         this.ListKurir = ListKurir;
+        this.kategori.add("Others");
         this.kategori.add("Food and Beverages");
         this.kategori.add("Beauty and Fashion");
         this.kategori.add("Hobby and Collections");
         this.kategori.add("Electronic");
         this.kategori.add("Sports");
-        this.kategori.add("Others");
         boolean flammable = false;
         boolean fragile = false;
         boolean keepdry = false;
@@ -94,6 +94,11 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         protectfromheatButton = new javax.swing.JButton();
         extraProtectButton = new javax.swing.JButton();
         inputButton = new javax.swing.JButton();
+        namaPengirim = new javax.swing.JTextField();
+        alamatPengirim = new javax.swing.JTextField();
+        tiputipu = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        keteranganBarang = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -103,7 +108,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         inputNamaPenerima.setBackground(new java.awt.Color(62, 97, 155));
         inputNamaPenerima.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         inputNamaPenerima.setForeground(new java.awt.Color(255, 255, 255));
-        inputNamaPenerima.setText("Masukan Nama Penerima");
+        inputNamaPenerima.setText("Masukan nama penerima");
         inputNamaPenerima.setBorder(null);
         inputNamaPenerima.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -118,12 +123,12 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 inputNamaPenerimaActionPerformed(evt);
             }
         });
-        jPanel1.add(inputNamaPenerima, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 320, 30));
+        jPanel1.add(inputNamaPenerima, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 180, 320, 30));
 
         inputDaerahTujuan.setBackground(new java.awt.Color(62, 97, 155));
         inputDaerahTujuan.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         inputDaerahTujuan.setForeground(new java.awt.Color(255, 255, 255));
-        inputDaerahTujuan.setText("Masukan Daerah tujuan");
+        inputDaerahTujuan.setText("Masukan daerah tujuan");
         inputDaerahTujuan.setBorder(null);
         inputDaerahTujuan.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -138,12 +143,12 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 inputDaerahTujuanActionPerformed(evt);
             }
         });
-        jPanel1.add(inputDaerahTujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 307, 330, 30));
+        jPanel1.add(inputDaerahTujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 307, 330, 30));
 
         inputBeratBarang.setBackground(new java.awt.Color(62, 97, 155));
         inputBeratBarang.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         inputBeratBarang.setForeground(new java.awt.Color(255, 255, 255));
-        inputBeratBarang.setText("Masukan Berat barang");
+        inputBeratBarang.setText("Masukan berat barang");
         inputBeratBarang.setBorder(null);
         inputBeratBarang.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -158,7 +163,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 inputBeratBarangActionPerformed(evt);
             }
         });
-        jPanel1.add(inputBeratBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 356, 320, 30));
+        jPanel1.add(inputBeratBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 355, 310, 30));
 
         keluarButton.setBackground(new java.awt.Color(4, 37, 107));
         keluarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5_minisize.png"))); // NOI18N
@@ -171,12 +176,14 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         });
         jPanel1.add(keluarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 598, -1, -1));
 
+        kategoriBarang.setBackground(new java.awt.Color(4, 37, 107));
+        kategoriBarang.setForeground(new java.awt.Color(255, 255, 255));
         kategoriBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kategoriBarangActionPerformed(evt);
             }
         });
-        jPanel1.add(kategoriBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 403, -1, -1));
+        jPanel1.add(kategoriBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 405, -1, -1));
 
         flammableButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Flammable.png"))); // NOI18N
         flammableButton.setBorderPainted(false);
@@ -263,6 +270,83 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         });
         jPanel1.add(inputButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 480, -1, -1));
 
+        namaPengirim.setBackground(new java.awt.Color(62, 97, 155));
+        namaPengirim.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        namaPengirim.setForeground(new java.awt.Color(255, 255, 255));
+        namaPengirim.setText("Masukkan nama pengirim");
+        namaPengirim.setBorder(null);
+        namaPengirim.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                namaPengirimFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                namaPengirimFocusLost(evt);
+            }
+        });
+        namaPengirim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                namaPengirimActionPerformed(evt);
+            }
+        });
+        jPanel1.add(namaPengirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 320, 30));
+
+        alamatPengirim.setBackground(new java.awt.Color(62, 97, 155));
+        alamatPengirim.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        alamatPengirim.setForeground(new java.awt.Color(255, 255, 255));
+        alamatPengirim.setText("Masukkan alamat pengirim");
+        alamatPengirim.setToolTipText("");
+        alamatPengirim.setBorder(null);
+        alamatPengirim.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                alamatPengirimFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                alamatPengirimFocusLost(evt);
+            }
+        });
+        alamatPengirim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alamatPengirimActionPerformed(evt);
+            }
+        });
+        jPanel1.add(alamatPengirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 265, 310, 30));
+
+        tiputipu.setBackground(new java.awt.Color(62, 97, 155));
+
+        javax.swing.GroupLayout tiputipuLayout = new javax.swing.GroupLayout(tiputipu);
+        tiputipu.setLayout(tiputipuLayout);
+        tiputipuLayout.setHorizontalGroup(
+            tiputipuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 220, Short.MAX_VALUE)
+        );
+        tiputipuLayout.setVerticalGroup(
+            tiputipuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 270, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(tiputipu, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, 220, 270));
+
+        keteranganBarang.setBackground(new java.awt.Color(4, 27, 107));
+        keteranganBarang.setColumns(20);
+        keteranganBarang.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        keteranganBarang.setForeground(new java.awt.Color(255, 255, 255));
+        keteranganBarang.setLineWrap(true);
+        keteranganBarang.setRows(5);
+        keteranganBarang.setText("Masukkan Keterangan");
+        keteranganBarang.setWrapStyleWord(true);
+        keteranganBarang.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Keterangan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 16), new java.awt.Color(239, 75, 76))); // NOI18N
+        keteranganBarang.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                keteranganBarangFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                keteranganBarangFocusLost(evt);
+            }
+        });
+        jScrollPane1.setViewportView(keteranganBarang);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, 200, 250));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Masukan_Pengiriman.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -297,7 +381,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (inputNamaPenerima.getText().equalsIgnoreCase("Masukan nama penerima")) {
             inputNamaPenerima.setText("");
-            inputNamaPenerima.setForeground(new Color(0, 0, 0));
+            inputNamaPenerima.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_inputNamaPenerimaFocusGained
 
@@ -305,7 +389,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (inputNamaPenerima.getText().equals("")) {
             inputNamaPenerima.setText("Masukan nama penerima");
-            inputNamaPenerima.setForeground(new Color(0, 0, 0));
+            inputNamaPenerima.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_inputNamaPenerimaFocusLost
 
@@ -313,7 +397,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (inputDaerahTujuan.getText().equalsIgnoreCase("Masukan daerah tujuan")) {
             inputDaerahTujuan.setText("");
-            inputDaerahTujuan.setForeground(new Color(0, 0, 0));
+            inputDaerahTujuan.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_inputDaerahTujuanFocusGained
 
@@ -321,7 +405,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (inputDaerahTujuan.getText().equals("")) {
             inputDaerahTujuan.setText("Masukan daerah tujuan");
-            inputDaerahTujuan.setForeground(new Color(0, 0, 0));
+            inputDaerahTujuan.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_inputDaerahTujuanFocusLost
 
@@ -329,7 +413,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (inputBeratBarang.getText().equalsIgnoreCase("Masukan berat barang")) {
             inputBeratBarang.setText("");
-            inputBeratBarang.setForeground(new Color(0, 0, 0));
+            inputBeratBarang.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_inputBeratBarangFocusGained
 
@@ -337,7 +421,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (inputBeratBarang.getText().equalsIgnoreCase("")) {
             inputBeratBarang.setText("Masukan berat barang");
-            inputBeratBarang.setForeground(new Color(0, 0, 0));
+            inputBeratBarang.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_inputBeratBarangFocusLost
 
@@ -437,6 +521,8 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         inputBeratBarang.setText("Masukan berat barang");
         inputDaerahTujuan.setText("Masukan daerah tujuan");
         inputNamaPenerima.setText("Masukan nama penerima");
+        namaPengirim.setText("Masukkan nama pengirim");
+        alamatPengirim.setText("Masukkan alamat pengirim");
     }
     private void inputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputButtonActionPerformed
         LocalDateTime date = LocalDateTime.now();
@@ -444,6 +530,9 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         String namaPenerima = inputNamaPenerima.getText();
         String daerahPenerima = inputDaerahTujuan.getText();
         String tempBeratBarang = inputBeratBarang.getText();
+        String nmPengirim = namaPengirim.getText();
+        String daerahPengirim = alamatPengirim.getText();
+        String keterangan = keteranganBarang.getText();
 
         String resi = "DF";
         int bulan = (int) date.getMonthValue();
@@ -461,39 +550,57 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         char[] charberat = tempBeratBarang.toCharArray();
         resi += timea + timeb + timec + det + month + year;
         System.out.println(resi);
-
-        if (inputBeratBarang.getText().equals("0")) {
-            JOptionPane.showMessageDialog(null, "Berat tidak valid!");
-        } else if (!(inputBeratBarang.getText().equals("0"))) {
+        
+        boolean lulusGede = true;
+        if((namaPenerima.equals("Masukkan nama penerima") || daerahPenerima.equals("Masukkan daerah tujuan") || nmPengirim.equals("Masukkan nama pengirim") || daerahPengirim.equals("Masukkan alamat pengirim"))){
+            lulusGede = false;
+            JOptionPane.showMessageDialog(this, "Input tidak valid!", "DnF", 2);
+        }
+        
+        boolean lulusCilik = true;
+        String tempMinus = inputBeratBarang.getText().substring(0,1);
+        if (inputBeratBarang.getText().equals("0") || tempMinus.equals("-")) {
+            JOptionPane.showMessageDialog(this, "Berat tidak valid!", "DnF", 2);
+            lulusCilik = false;
+        }
+        
+        if(lulusGede==true && lulusCilik==true){ //lulus semua
             for (int i = 0; i < charberat.length; i++) {
                 if (charberat[i] >= 65 && charberat[i] <= 122) {
-                    JOptionPane.showMessageDialog(null, "Berat tidak valid!");
+                    JOptionPane.showMessageDialog(this, "Berat tidak valid!", "DnF", 2);
                 } else if (charberat[i] >= 48 && charberat[i] <= 57) {
                     int beratBarang = Integer.parseInt(tempBeratBarang);
                     if (temp.equals("Food and Beverages")) {
-                        Package paket = new FnB(1, resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
+                        Package paket = new FnB(1, resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
                         DeliveryList.put(resi, paket);
                         gudang.add(paket);
                     } else if (temp.equals("Sports")) {
-                        Package paket = new Sports(resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
+                        Package paket = new Sports(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
                         DeliveryList.put(resi, paket);
                         gudang.add(paket);
                     } else if (temp.equals("Electronic")) {
-                        Package paket = new Electronic(resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                        Package paket = new Electronic(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
                         DeliveryList.put(resi, paket);
                         gudang.add(paket);
                     } else if (temp.equals("Beauty and Fashion")) {
-                        Package paket = new BnF(resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                        Package paket = new BnF(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
                         DeliveryList.put(resi, paket);
                         gudang.add(paket);
                     } else if (temp.equals("Hobby and Collections")) {
-                        Package paket = new HnC(resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                        Package paket = new HnC(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
                         DeliveryList.put(resi, paket);
                         gudang.add(paket);
                     } else {
-                        Package paket = new Others("ini barang apa", resi, "felix", namaPenerima, "surabaya", daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
-                        DeliveryList.put(resi, paket);
-                        gudang.add(paket);
+                        if(keterangan.equals("Masukkan keterangan")){
+                            Package paket = new Others("-", resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                            DeliveryList.put(resi, paket);
+                            gudang.add(paket);
+                        } else {
+                            Package paket = new Others(keterangan, resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                            DeliveryList.put(resi, paket);
+                            gudang.add(paket);
+                            
+                        }
                     }
 
                     resetField();
@@ -503,6 +610,9 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 }
             }
         }
+        
+                
+        
     }//GEN-LAST:event_inputButtonActionPerformed
 
     private void inputButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputButtonMouseClicked
@@ -516,13 +626,75 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
             fragileButton.setVisible(true);
             keepdryButton.setVisible(true);
             protectfromheatButton.setVisible(true);
+            tiputipu.setVisible(true);
+
+        } else if(temp.equals("Others")){
+            flammableButton.setVisible(true);
+            fragileButton.setVisible(true);
+            keepdryButton.setVisible(true);
+            protectfromheatButton.setVisible(true);
+            keteranganBarang.setVisible(true);
+            tiputipu.setVisible(false);
         } else {
             flammableButton.setVisible(true);
             fragileButton.setVisible(true);
             keepdryButton.setVisible(true);
             protectfromheatButton.setVisible(true);
+            tiputipu.setVisible(true);
         }
     }//GEN-LAST:event_kategoriBarangActionPerformed
+
+    private void namaPengirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaPengirimActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_namaPengirimActionPerformed
+
+    private void namaPengirimFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_namaPengirimFocusGained
+
+       
+        if (namaPengirim.getText().equalsIgnoreCase("Masukkan nama pengirim")) {
+            namaPengirim.setText("");
+            namaPengirim.setForeground(new Color(255, 255, 255));
+        }
+    }//GEN-LAST:event_namaPengirimFocusGained
+
+    private void namaPengirimFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_namaPengirimFocusLost
+        if (namaPengirim.getText().equalsIgnoreCase("")) {
+            namaPengirim.setText("Masukan nama pengirim");
+            namaPengirim.setForeground(new Color(255, 255, 255));
+        }
+    }//GEN-LAST:event_namaPengirimFocusLost
+
+    private void alamatPengirimFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_alamatPengirimFocusGained
+        if (alamatPengirim.getText().equalsIgnoreCase("Masukkan alamat pengirim")) {
+            alamatPengirim.setText("");
+            alamatPengirim.setForeground(new Color(255, 255, 255));
+        }
+    }//GEN-LAST:event_alamatPengirimFocusGained
+
+    private void alamatPengirimFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_alamatPengirimFocusLost
+        if (alamatPengirim.getText().equalsIgnoreCase("")) {
+            alamatPengirim.setText("Masukkan alamat pengirim");
+            alamatPengirim.setForeground(new Color(255, 255, 255));
+        }
+    }//GEN-LAST:event_alamatPengirimFocusLost
+
+    private void alamatPengirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alamatPengirimActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alamatPengirimActionPerformed
+
+    private void keteranganBarangFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_keteranganBarangFocusGained
+        if (keteranganBarang.getText().equalsIgnoreCase("Masukkan Keterangan")) {
+            keteranganBarang.setText("");
+            keteranganBarang.setForeground(new Color(255, 255, 255));
+        }
+    }//GEN-LAST:event_keteranganBarangFocusGained
+
+    private void keteranganBarangFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_keteranganBarangFocusLost
+        if (keteranganBarang.getText().equalsIgnoreCase("")) {
+            keteranganBarang.setText("Masukkan Keterangan");
+            keteranganBarang.setForeground(new Color(255, 255, 255));
+        }
+    }//GEN-LAST:event_keteranganBarangFocusLost
 
     /**
      * @param args the command line arguments
@@ -561,6 +733,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField alamatPengirim;
     private javax.swing.JButton extraProtectButton;
     private javax.swing.JButton flammableButton;
     private javax.swing.JButton fragileButton;
@@ -570,9 +743,13 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     private javax.swing.JTextField inputNamaPenerima;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> kategoriBarang;
     private javax.swing.JButton keepdryButton;
     private javax.swing.JButton keluarButton;
+    private javax.swing.JTextArea keteranganBarang;
+    private javax.swing.JTextField namaPengirim;
     private javax.swing.JButton protectfromheatButton;
+    private javax.swing.JPanel tiputipu;
     // End of variables declaration//GEN-END:variables
 }
