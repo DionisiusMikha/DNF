@@ -39,8 +39,10 @@ public class LoginMenu extends javax.swing.JFrame {
         if (generate) {
             initComponents();
             LoginBG.requestFocus();
-            User admin = new User("admin", "admin", "CustomerService@DNF.co.id");
+            User admin = new User("admin", "admin", "CustomerService@DNF.co.id"); //generate admin user.
+            User a = new User("a","a","a@gmail.com"); //generate test unit user.
             userlist.put("admin", admin);
+            userlist.put("a", a);
             System.out.println(userlist);
             this.ShowPass = false;
         }

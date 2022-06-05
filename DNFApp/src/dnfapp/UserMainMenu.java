@@ -13,12 +13,13 @@ import javax.swing.JOptionPane;
  * @author Frans
  */
 public class UserMainMenu extends javax.swing.JFrame {
-    
+    //boolean state
     private boolean cek_resi;
     private boolean home_menu;
     private boolean setting;
-    
+    //current user obj
     private User currentUser;
+    //HashMaps to Pass.
     private HashMap<String, User> userlist = new HashMap<String, User>();
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Integer> VALID_DOMAIN = new HashMap<String, Integer>();
@@ -64,6 +65,8 @@ public class UserMainMenu extends javax.swing.JFrame {
         SettingButton = new javax.swing.JButton();
         WelcomeLabel = new javax.swing.JLabel();
         LogOutButton = new javax.swing.JButton();
+        SearchButton = new javax.swing.JButton();
+        SearchBarBG = new javax.swing.JLabel();
         UserMenuBG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -109,7 +112,22 @@ public class UserMainMenu extends javax.swing.JFrame {
         LogOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Logout.png"))); // NOI18N
         LogOutButton.setBorderPainted(false);
         LogOutButton.setContentAreaFilled(false);
+        LogOutButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogOutButtonMouseClicked(evt);
+            }
+        });
         getContentPane().add(LogOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 595, 70, 70));
+
+        SearchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Search.png"))); // NOI18N
+        SearchButton.setBorderPainted(false);
+        SearchButton.setContentAreaFilled(false);
+        getContentPane().add(SearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 329, 111, 49));
+        SearchButton.setVisible(false);
+
+        SearchBarBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_TextField_Search.png"))); // NOI18N
+        getContentPane().add(SearchBarBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, -1, -1));
+        SearchBarBG.setVisible(false);
 
         UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_Home.png"))); // NOI18N
         getContentPane().add(UserMenuBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -135,6 +153,16 @@ public class UserMainMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SettingButtonMouseClicked
 
+    private void LogOutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutButtonMouseClicked
+        LoginMenu LM = new LoginMenu(userlist, usedEmail, DeliveryList, ListKurir);
+        dispose();
+        LM.setVisible(true);
+        LM.pack();
+        LM.setLocationRelativeTo(null);
+        LM.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+        LM.setResizable(false);
+    }//GEN-LAST:event_LogOutButtonMouseClicked
+
     private void UpdateState(boolean setting, boolean home, boolean cek){
         this.cek_resi=cek;
         this.home_menu=home;
@@ -143,13 +171,18 @@ public class UserMainMenu extends javax.swing.JFrame {
     
     private void UpdateVisibility(int x){
         if(x==1){
-            
+            this.UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_Home.png")));
+            this.SearchBarBG.setVisible(false);
+            this.SearchButton.setVisible(false);
         }
         else if(x==2){
-            
+            this.UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_CekResi.png")));
+            this.SearchBarBG.setVisible(true);
+            this.SearchButton.setVisible(true);
         }
         else if(x==3){
-            
+            this.SearchBarBG.setVisible(false);
+            this.SearchButton.setVisible(false);
         }
     }
     
@@ -165,13 +198,14 @@ public class UserMainMenu extends javax.swing.JFrame {
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_1.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
-            
+            UpdateVisibility(1);
         }
         else if(!setting&&!home&&cek){
             UpdateState(setting,home,cek);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_1.png")));
+            UpdateVisibility(2);
         }
     }
     
@@ -214,6 +248,8 @@ public class UserMainMenu extends javax.swing.JFrame {
     private javax.swing.JButton CekResiButton;
     private javax.swing.JButton HomeButton;
     private javax.swing.JButton LogOutButton;
+    private javax.swing.JLabel SearchBarBG;
+    private javax.swing.JButton SearchButton;
     private javax.swing.JButton SettingButton;
     private javax.swing.JLabel UserMenuBG;
     private javax.swing.JLabel WelcomeLabel;

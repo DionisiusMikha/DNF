@@ -27,6 +27,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
+    private HashMap<String, Kota> ListKota = new HashMap<String, Kota>();
     private ArrayList<String> kategori = new ArrayList<>();
     private Gudang<Package> gudang = new Gudang<>();
     private boolean flammable;
