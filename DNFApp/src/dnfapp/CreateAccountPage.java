@@ -30,6 +30,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         GenerateList();
         Background_Frame.requestFocus();
         this.ShowPass = false;
+        this.setResizable(false);
         this.ShowConfirm = false;
     }
 
@@ -43,6 +44,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         Background_Frame.requestFocus();
         this.ShowPass = false;
         this.ShowConfirm = false;
+        this.setResizable(false);
     }
 
     //situational, for compatibility issues.
@@ -56,6 +58,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         Background_Frame.requestFocus();
         this.ShowPass = false;
         this.ShowConfirm = false;
+        this.setResizable(false);
     }
 
     //main cons
@@ -70,6 +73,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         Background_Frame.requestFocus();
         this.ShowPass = false;
         this.ShowConfirm = false;
+        this.setResizable(false);
     }
 
     //generate email list, to add use put method to VALID_DOMAIN HashMap. Put Method requires String(domain name) and Integer(domain name str length)
@@ -83,6 +87,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
         VALID_DOMAIN.put("icloud.com", 11);
         this.ShowPass = false;
         this.ShowConfirm = false;
+        this.setResizable(false);
     }
 
     /**

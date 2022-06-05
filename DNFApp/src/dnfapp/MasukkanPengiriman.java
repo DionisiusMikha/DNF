@@ -11,6 +11,8 @@ import java.util.Date;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -36,6 +38,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     public MasukkanPengiriman() {
         initComponents();
         this.kategori.add("Others");
+        this.setResizable(false);
         this.kategori.add("Food and Beverages");
         this.kategori.add("Beauty and Fashion");
         this.kategori.add("Hobby and Collections");
@@ -54,6 +57,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     public MasukkanPengiriman(HashMap<String, User> userlist, HashMap<String, Package> DeliveryList, HashMap<String, String> usedEmail, HashMap<String, Kurir> ListKurir) {
         initComponents();
         this.userlist = userlist;
+        this.setResizable(false);
         this.usedEmail = usedEmail;
         this.DeliveryList = DeliveryList;
         this.ListKurir = ListKurir;
@@ -524,6 +528,14 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         namaPengirim.setText("Masukkan nama pengirim");
         alamatPengirim.setText("Masukkan alamat pengirim");
     }
+    
+    private String getWaktu(){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        String s = dateFormat.format(date);
+        return s;
+    }
+    
     private void inputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputButtonActionPerformed
         LocalDateTime date = LocalDateTime.now();
         String temp = (String) kategoriBarang.getSelectedItem();
@@ -564,7 +576,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
             lulusCilik = false;
         }
         
-        if(lulusGede==true && lulusCilik==true){ //lulus semua
+        if(lulusGede==true && lulusCilik==true){ //lulus semua 
             for (int i = 0; i < charberat.length; i++) {
                 if (charberat[i] >= 65 && charberat[i] <= 122) {
                     JOptionPane.showMessageDialog(this, "Berat tidak valid!", "DnF", 2);
@@ -572,34 +584,40 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                     int beratBarang = Integer.parseInt(tempBeratBarang);
                     if (temp.equals("Food and Beverages")) {
                         Package paket = new FnB(1, resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
+                        paket.updateTrack("Barang diterima pada "+getWaktu());
                         DeliveryList.put(resi, paket);
                         gudang.add(paket);
                     } else if (temp.equals("Sports")) {
                         Package paket = new Sports(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
+                        paket.updateTrack(getWaktu());
                         DeliveryList.put(resi, paket);
                         gudang.add(paket);
                     } else if (temp.equals("Electronic")) {
                         Package paket = new Electronic(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                        paket.updateTrack(getWaktu());
                         DeliveryList.put(resi, paket);
                         gudang.add(paket);
                     } else if (temp.equals("Beauty and Fashion")) {
                         Package paket = new BnF(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                        paket.updateTrack(getWaktu());
                         DeliveryList.put(resi, paket);
                         gudang.add(paket);
                     } else if (temp.equals("Hobby and Collections")) {
                         Package paket = new HnC(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                        paket.updateTrack(getWaktu());
                         DeliveryList.put(resi, paket);
                         gudang.add(paket);
                     } else {
                         if(keterangan.equals("Masukkan keterangan")){
                             Package paket = new Others("-", resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                            paket.updateTrack(getWaktu());
                             DeliveryList.put(resi, paket);
                             gudang.add(paket);
                         } else {
                             Package paket = new Others(keterangan, resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                            paket.updateTrack(getWaktu());
                             DeliveryList.put(resi, paket);
                             gudang.add(paket);
-                            
                         }
                     }
 

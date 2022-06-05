@@ -44,7 +44,11 @@ public abstract class Package {
 
     @Override
     public String toString() {
-        return "Paket telah diserahakan oleh " + sender + " dari " + from;
+        return "Paket telah diserahkan oleh " + sender + " dari " + from + " kepada "+ receiver;
+    }
+    
+    public void updateTrack(String s){
+        track.add(s);
     }
 
     public int getWeight() {
@@ -81,10 +85,6 @@ public abstract class Package {
 
     public void setDelivered(boolean delivered) {
         this.delivered = delivered;
-    }
-
-    public void updateTrack(String s) {
-        track.add(s);
     }
 
     public void changeResi(String resi) {

@@ -208,11 +208,12 @@ public class LoginMenu extends javax.swing.JFrame {
     private void SignInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonActionPerformed
         boolean verifyUsername = true;
         boolean verifyPassword = true;
+        User loggedAs = null;
         String logUsername = usernamefield.getText();
         String logPass = String.valueOf(PasswordField.getPassword());
         if (userlist.containsKey(logUsername)) {
-            User yangLogin = userlist.get(logUsername);
-            String passCheck = yangLogin.getPassword();
+            loggedAs = userlist.get(logUsername);
+            String passCheck = loggedAs.getPassword();
             if (!passCheck.equals(logPass)) {
                 verifyPassword = false;
             }
@@ -238,7 +239,7 @@ public class LoginMenu extends javax.swing.JFrame {
                 adminMenu.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
                 adminMenu.setResizable(false);
             } else {
-                UserMainMenu UserMenu = new UserMainMenu(userlist, usedEmail);
+                UserMainMenu UserMenu = new UserMainMenu(userlist, usedEmail, DeliveryList,ListKurir,loggedAs);
                 dispose();
                 UserMenu.setVisible(true);
                 UserMenu.pack();

@@ -13,9 +13,17 @@ import javax.swing.JOptionPane;
  * @author Frans
  */
 public class UserMainMenu extends javax.swing.JFrame {
-
+    
+    private boolean cek_resi;
+    private boolean home_menu;
+    private boolean setting;
+    
+    private User currentUser;
     private HashMap<String, User> userlist = new HashMap<String, User>();
-    private HashMap<String, String> usedEmail = new HashMap<String, String>();  
+    private HashMap<String, String> usedEmail = new HashMap<String, String>();
+    private HashMap<String, Integer> VALID_DOMAIN = new HashMap<String, Integer>();
+    private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
+    private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
     
     public UserMainMenu() {
         initComponents();
@@ -25,6 +33,21 @@ public class UserMainMenu extends javax.swing.JFrame {
         initComponents();
         this.userlist=userlist;
         this.usedEmail=usedEmail;
+    }
+    
+    public UserMainMenu(HashMap<String, User> userlist,HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList,  HashMap<String, Kurir> ListKurir, User currentUser){
+        initComponents();
+        this.userlist=userlist;
+        this.usedEmail=usedEmail;
+        this.DeliveryList=DeliveryList;
+        this.ListKurir=ListKurir;
+        this.currentUser=currentUser;
+        this.setResizable(false);
+        UserMenuBG.requestFocus();
+        WelcomeLabel.setText("Welcome, "+currentUser.getUsername());
+        this.cek_resi=false;
+        this.home_menu=true;
+        this.setting=false;
     }
 
     /**
@@ -36,17 +59,122 @@ public class UserMainMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        UserMainMenuBG = new javax.swing.JLabel();
+        HomeButton = new javax.swing.JButton();
+        CekResiButton = new javax.swing.JButton();
+        SettingButton = new javax.swing.JButton();
+        WelcomeLabel = new javax.swing.JLabel();
+        LogOutButton = new javax.swing.JButton();
+        UserMenuBG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1920, 1080));
-        setSize(new java.awt.Dimension(1920, 1080));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(UserMainMenuBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
+        HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_1.png"))); // NOI18N
+        HomeButton.setBorderPainted(false);
+        HomeButton.setContentAreaFilled(false);
+        HomeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HomeButtonMouseClicked(evt);
+            }
+        });
+        getContentPane().add(HomeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 186, 53));
+
+        CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png"))); // NOI18N
+        CekResiButton.setBorderPainted(false);
+        CekResiButton.setContentAreaFilled(false);
+        CekResiButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CekResiButtonMouseClicked(evt);
+            }
+        });
+        getContentPane().add(CekResiButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 186, 53));
+
+        SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png"))); // NOI18N
+        SettingButton.setBorderPainted(false);
+        SettingButton.setContentAreaFilled(false);
+        SettingButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SettingButtonMouseClicked(evt);
+            }
+        });
+        getContentPane().add(SettingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 186, 53));
+
+        WelcomeLabel.setFont(new java.awt.Font("Fira Sans", 3, 18)); // NOI18N
+        WelcomeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        WelcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(WelcomeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 180, 215, 40));
+
+        LogOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Logout.png"))); // NOI18N
+        LogOutButton.setBorderPainted(false);
+        LogOutButton.setContentAreaFilled(false);
+        getContentPane().add(LogOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 595, 70, 70));
+
+        UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_Home.png"))); // NOI18N
+        getContentPane().add(UserMenuBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void CekResiButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CekResiButtonMouseClicked
+        if(!cek_resi){
+            ButtonController(false,false,true);
+        }
+    }//GEN-LAST:event_CekResiButtonMouseClicked
+
+    private void HomeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeButtonMouseClicked
+        if(!home_menu){
+            ButtonController(false,true,false);
+        }
+    }//GEN-LAST:event_HomeButtonMouseClicked
+
+    private void SettingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingButtonMouseClicked
+        if(!setting){
+            ButtonController(true,false,false);
+        }
+    }//GEN-LAST:event_SettingButtonMouseClicked
+
+    private void UpdateState(boolean setting, boolean home, boolean cek){
+        this.cek_resi=cek;
+        this.home_menu=home;
+        this.setting=setting;
+    }
+    
+    private void UpdateVisibility(int x){
+        if(x==1){
+            
+        }
+        else if(x==2){
+            
+        }
+        else if(x==3){
+            
+        }
+    }
+    
+    private void ButtonController(boolean setting, boolean home, boolean cek){
+        if(setting&&!home&&!cek){
+            UpdateState(setting,home,cek);
+            this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_1.png")));
+            this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
+            this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
+        }
+        else if(!setting&&home&&!cek){
+            UpdateState(setting,home,cek);
+            this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
+            this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_1.png")));
+            this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
+            
+        }
+        else if(!setting&&!home&&cek){
+            UpdateState(setting,home,cek);
+            this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
+            this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
+            this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_1.png")));
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -83,6 +211,11 @@ public class UserMainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel UserMainMenuBG;
+    private javax.swing.JButton CekResiButton;
+    private javax.swing.JButton HomeButton;
+    private javax.swing.JButton LogOutButton;
+    private javax.swing.JButton SettingButton;
+    private javax.swing.JLabel UserMenuBG;
+    private javax.swing.JLabel WelcomeLabel;
     // End of variables declaration//GEN-END:variables
 }

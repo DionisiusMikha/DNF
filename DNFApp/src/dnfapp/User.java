@@ -13,10 +13,40 @@ import java.util.HashMap;
 public class User extends Account{
 
     private String email;
+    private ArrayList<Package> History;
 
     public User(String username, String password,String email) {
         super(username, password);
         this.email = email;
+        this.History = new ArrayList<Package>();
+    }
+
+    public ArrayList<Package> getHistory() {
+        return History;
+    }
+    
+    public void addToHistory(Package paket){
+        History.add(paket);
+    }
+
+    public void setHistory(ArrayList<Package> History) {
+        this.History = History;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
