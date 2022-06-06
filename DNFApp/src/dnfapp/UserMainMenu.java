@@ -77,6 +77,7 @@ public class UserMainMenu extends javax.swing.JFrame {
         HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_1.png"))); // NOI18N
         HomeButton.setBorderPainted(false);
         HomeButton.setContentAreaFilled(false);
+        HomeButton.setPreferredSize(new java.awt.Dimension(144, 39));
         HomeButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 HomeButtonMouseClicked(evt);
