@@ -13,7 +13,7 @@ import javax.swing.DefaultListModel;
  *
  * @author Frans
  */
-public class ListUser extends javax.swing.JFrame {
+public class ListUser extends javax.swing.JFrame{
 
     private HashMap<String, User> userlist = new HashMap<String, User>();
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
@@ -39,7 +39,7 @@ public class ListUser extends javax.swing.JFrame {
         this.SelectedObj=null;
     }
 
-    private void generateElement() {
+    public void generateElement() {
         if(this.ARRListUser.size()!=0){
             DefaultListModel listModel = new DefaultListModel();
             for (int i = 0; i < ARRListUser.size(); i++) {
@@ -50,7 +50,7 @@ public class ListUser extends javax.swing.JFrame {
         }
     }
 
-    private void generate() {
+    public void generate() {
         for (Map.Entry<String, User> set : userlist.entrySet()) {
             if(!set.getKey().equals("admin")){
                 this.ARRListUser.add(set.getValue());

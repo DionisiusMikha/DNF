@@ -3,27 +3,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package dnfapp;
+
 import java.util.HashMap;
-import java.util.Map;
-import java.util.ArrayList;
 
 /**
  *
  * @author Frans
  */
-public class DeliveryFeeCalculator extends javax.swing.JFrame implements GenerateCity{
+public class ListPengiriman extends javax.swing.JFrame {
 
     private HashMap<String, User> userlist = new HashMap<String, User>();
-    private HashMap<String, String> usedEmail = new HashMap<String, String>();
-    private HashMap<String, Integer> VALID_DOMAIN = new HashMap<String, Integer>();
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
+    private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
     
-    
-    public DeliveryFeeCalculator() {
+    /**
+     * Creates new form ListPengiriman
+     */
+    public ListPengiriman() {
         initComponents();
-        generateCity();
     }
+    
+    public ListPengiriman(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir){
+        initComponents();
+        this.userlist = userlist;
+        this.usedEmail = usedEmail;
+        this.DeliveryList = DeliveryList;
+        this.ListKurir = ListKurir;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,36 +43,23 @@ public class DeliveryFeeCalculator extends javax.swing.JFrame implements Generat
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Asal = new javax.swing.JComboBox<>();
-        Tujuan = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        DaftarPengiriman = new javax.swing.JList<>();
+        BG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        getContentPane().add(Asal, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 105, 120, -1));
+        jScrollPane1.setViewportView(DaftarPengiriman);
 
-        Tujuan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TujuanActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Tujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 120, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 370, 360));
+
+        BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Daftar_Pengiriman.png"))); // NOI18N
+        getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TujuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TujuanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TujuanActionPerformed
-    
-    private void generateCity(){
-        ArrayList<String> listkota = new ArrayList<>();
-        listkota=GenerateCity.generateCity(listkota);
-        for(int i =0;i<listkota.size();i++){
-            Asal.addItem(listkota.get(i));
-            Tujuan.addItem(listkota.get(i));
-        }
-    }
     /**
      * @param args the command line arguments
      */
@@ -81,26 +77,27 @@ public class DeliveryFeeCalculator extends javax.swing.JFrame implements Generat
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DeliveryFeeCalculator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListPengiriman.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DeliveryFeeCalculator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListPengiriman.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DeliveryFeeCalculator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListPengiriman.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DeliveryFeeCalculator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListPengiriman.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DeliveryFeeCalculator().setVisible(true);
+                new ListPengiriman().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Asal;
-    private javax.swing.JComboBox<String> Tujuan;
+    private javax.swing.JLabel BG;
+    private javax.swing.JList<String> DaftarPengiriman;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

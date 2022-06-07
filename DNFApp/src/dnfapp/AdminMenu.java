@@ -197,7 +197,7 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_MasukanPengirimanButtonActionPerformed
 
     private void ListPengirimanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListPengirimanButtonActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_ListPengirimanButtonActionPerformed
 
     private void HapusPengirimanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusPengirimanButtonActionPerformed

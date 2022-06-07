@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
  *
  * @author Lenovo
  */
-public class MasukkanPengiriman extends javax.swing.JFrame {
+public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCity{
 
     /**
      * Creates new form MasukkanPengiriman
@@ -27,9 +27,9 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
-    private HashMap<String, Kota> ListKota = new HashMap<String, Kota>();
     private ArrayList<String> kategori = new ArrayList<>();
     private Gudang<Package> gudang = new Gudang<>();
+    private ArrayList<Kota> dataKota = new ArrayList<Kota>();
     private boolean flammable;
     private boolean fragile;
     private boolean keepdry;
@@ -54,6 +54,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
             kategoriBarang.addItem(kategori.get(i));
         }
         BG_InputPengiriman.requestFocus();
+        generateKota();
     }
 
     public MasukkanPengiriman(HashMap<String, User> userlist, HashMap<String, Package> DeliveryList, HashMap<String, String> usedEmail, HashMap<String, Kurir> ListKurir) {
@@ -78,6 +79,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
             kategoriBarang.addItem(kategori.get(i));
         }
          BG_InputPengiriman.requestFocus();
+         generateKota();
     }
 
     /**
@@ -106,6 +108,8 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         tiputipu = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         keteranganBarang = new javax.swing.JTextArea();
+        Asal = new javax.swing.JComboBox<>();
+        Tujuan = new javax.swing.JComboBox<>();
         BG_InputPengiriman = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -130,7 +134,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 inputNamaPenerimaActionPerformed(evt);
             }
         });
-        jPanel1.add(inputNamaPenerima, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 180, 320, 30));
+        jPanel1.add(inputNamaPenerima, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 180, 370, 30));
 
         inputDaerahTujuan.setBackground(new java.awt.Color(62, 97, 155));
         inputDaerahTujuan.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -150,7 +154,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 inputDaerahTujuanActionPerformed(evt);
             }
         });
-        jPanel1.add(inputDaerahTujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 307, 205, 30));
+        jPanel1.add(inputDaerahTujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 307, 270, 30));
 
         inputBeratBarang.setBackground(new java.awt.Color(62, 97, 155));
         inputBeratBarang.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -170,7 +174,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 inputBeratBarangActionPerformed(evt);
             }
         });
-        jPanel1.add(inputBeratBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 355, 310, 30));
+        jPanel1.add(inputBeratBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 390, 30));
 
         keluarButton.setBackground(new java.awt.Color(4, 37, 107));
         keluarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5_minisize.png"))); // NOI18N
@@ -190,7 +194,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 kategoriBarangActionPerformed(evt);
             }
         });
-        jPanel1.add(kategoriBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 405, -1, -1));
+        jPanel1.add(kategoriBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, -1, -1));
 
         flammableButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Flammable.png"))); // NOI18N
         flammableButton.setBorderPainted(false);
@@ -295,7 +299,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 namaPengirimActionPerformed(evt);
             }
         });
-        jPanel1.add(namaPengirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 320, 30));
+        jPanel1.add(namaPengirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 370, 30));
 
         alamatPengirim.setBackground(new java.awt.Color(62, 97, 155));
         alamatPengirim.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -316,7 +320,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
                 alamatPengirimActionPerformed(evt);
             }
         });
-        jPanel1.add(alamatPengirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 265, 190, 30));
+        jPanel1.add(alamatPengirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 265, 250, 30));
 
         tiputipu.setBackground(new java.awt.Color(62, 97, 155));
 
@@ -324,14 +328,14 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         tiputipu.setLayout(tiputipuLayout);
         tiputipuLayout.setHorizontalGroup(
             tiputipuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         tiputipuLayout.setVerticalGroup(
             tiputipuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 270, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel1.add(tiputipu, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, 180, 270));
+        jPanel1.add(tiputipu, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 440, 160, 160));
 
         keteranganBarang.setBackground(new java.awt.Color(4, 27, 107));
         keteranganBarang.setColumns(20);
@@ -352,7 +356,11 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(keteranganBarang);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 190, 170, 250));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 440, 160, 150));
+
+        jPanel1.add(Asal, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 270, 105, -1));
+
+        jPanel1.add(Tujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 310, 105, -1));
 
         BG_InputPengiriman.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Masukan_Pengiriman.png"))); // NOI18N
         jPanel1.add(BG_InputPengiriman, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -539,146 +547,30 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
         return s;
     }
     
+    private void generateKotaDetails(){
+        
+    }
+    
+    
     private void generateKota(){
         ArrayList<String> listkota = new ArrayList<>();
-        listkota.add( "Agam" );
-        listkota.add( "Alor" );
-        listkota.add( "Ambon" );
-        listkota.add( "Asahan" );
-        listkota.add( "Asmat" );
-        listkota.add( "Balikpapan" );
-        listkota.add( "Banda Aceh" );
-        listkota.add( "Bandar Lampung" );
-        listkota.add( "Bandung" );
-        listkota.add( "Banjar" );
-        listkota.add( "Banjarbaru" );
-        listkota.add( "Banjarmasin" );
-        listkota.add( "Batam" );
-        listkota.add( "Batu" );
-        listkota.add( "Bekasi" );
-        listkota.add( "Bengkulu" );
-        listkota.add( "Binjai" );
-        listkota.add( "Bitung" );
-        listkota.add( "Blitar" );
-        listkota.add( "Bogor" );
-        listkota.add( "Bukittinggi" );
-        listkota.add( "Calang" );
-        listkota.add( "Cepu" );
-        listkota.add( "Ciamis" );
-        listkota.add( "Cianjur" );
-        listkota.add( "Ciawi" );
-        listkota.add( "Cibubur" );
-        listkota.add( "Cilegon" );
-        listkota.add( "Cileungsi" );
-        listkota.add( "Cimahi" );
-        listkota.add( "Cirebon" );
-        listkota.add( "Dairi" );
-        listkota.add( "Darmasraya" );
-        listkota.add( "Deliserdang" );
-        listkota.add( "Demak" );
-        listkota.add( "Denpasar" );
-        listkota.add( "Depok" );
-        listkota.add( "Dogiyai" );
-        listkota.add( "Dompu" );
-        listkota.add( "Donggala" );
-        listkota.add( "Dumai" );
-        listkota.add( "Ende" );
-        listkota.add( "Enkerang" );
-        listkota.add( "Fakfak" );
-        listkota.add( "Flores Timur" );
-        listkota.add( "Garut" );
-        listkota.add( "Gayo Lues" );
-        listkota.add( "Gianyar" );
-        listkota.add( "Gorontalo" );
-        listkota.add( "Gowa" );
-        listkota.add( "Gresik" );
-        listkota.add( "Grobokan" );
-        listkota.add( "Gunung Kidul" );
-        listkota.add( "Gunung Mas" );
-        listkota.add( "Gunung Sitoli" );
-        listkota.add( "Halmahera Tengah" );
-        listkota.add( "Hulu Sungai Selatan" );
-        listkota.add( "Humbang Hasundutan" );
-        listkota.add( "Indragiri" );
-        listkota.add( "Indramayu" );
-        listkota.add( "Jailolo" );
-        listkota.add( "Jakarta Barat" );
-        listkota.add( "Jakarta Pusat" );
-        listkota.add( "Jakarta Selatan" );
-        listkota.add( "Jakarta Timur" );
-        listkota.add( "Jakarta Utara" );
-        listkota.add( "Jambi" );
-        listkota.add( "Jayapura" );
-        listkota.add( "Jember" );
-        listkota.add( "Jepara" );
-        listkota.add( "Jombang" );
-        listkota.add( "Karo" );
-        listkota.add( "Kediri" );
-        listkota.add( "Kuningan" );
-        listkota.add( "Kupang" );
-        listkota.add( "Langsa" );
-        listkota.add( "Lhokseumawe" );
-        listkota.add( "Lubuklinggau" );
-        listkota.add( "Madiun" );
-        listkota.add( "Magelang" );
-        listkota.add( "Makassar" );
-        listkota.add( "Malang " );
-        listkota.add( "Manado" );
-        listkota.add( "Manokwari" );
-        listkota.add( "Mataram" );
-        listkota.add( "Medan" );
-        listkota.add( "Metro" );
-        listkota.add( "Mojokerto" );
-        listkota.add( "Nabire" );
-        listkota.add( "Nduga" );
-        listkota.add( "Nias" );
-        listkota.add( "Padang" );
-        listkota.add( "Padang Panjang" );
-        listkota.add( "Padang Sidempuan" );
-        listkota.add( "Pagar Alam" );
-        listkota.add( "Palangka Raya" );
-        listkota.add( "Palembang" );
-        listkota.add( "Palopo" );
-        listkota.add( "Palu" );
-        listkota.add( "Pangkalpinang" );
-        listkota.add( "Parepare" );
-        listkota.add( "Pariaman" );
-        listkota.add( "Pasuruan" );
-        listkota.add( "Payakumbuh" );
-        listkota.add( "Pekalongan" );
-        listkota.add( "Pekanbaru" );
-        listkota.add( "Pematangsiantar" );
-        listkota.add( "Pontianak" );
-        listkota.add( "Prabumulih" );
-        listkota.add( "Probolinggo" );
-        listkota.add( "Raha" );
-        listkota.add( "Ransiki" );
-        listkota.add( "Rengat" );
-        listkota.add( "Ruteng" );
-        listkota.add( "Sabang" );
-        listkota.add( "Salatiga" );
-        listkota.add( "Tangerang" );
-        listkota.add( "Tanjung Pinang" );
-        listkota.add( "Tarakan" );
-        listkota.add( "Tasikmalaya" );
-        listkota.add( "Tegal" );
-        listkota.add( "Ternate" );
-        listkota.add( "Tulungagung" );
-        listkota.add( "Wakatobi" );
-        listkota.add( "Waropen" );
-        listkota.add( "Wonogiri" );
-        listkota.add( "Wonosobo" );
-        listkota.add( "Yogyakarta" );
+        listkota=GenerateCity.generateCity(listkota);
+        for(int i =0;i<listkota.size();i++){
+            Asal.addItem(listkota.get(i));
+            Tujuan.addItem(listkota.get(i));
+        }
     }
     
     private void inputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputButtonActionPerformed
         LocalDateTime date = LocalDateTime.now();
         String temp = (String) kategoriBarang.getSelectedItem();
+        String KotaAsal = (String) Asal.getSelectedItem();
+        String KotaTujuan = (String) Tujuan.getSelectedItem();
         String namaPenerima = inputNamaPenerima.getText();
-        String daerahPenerima = inputDaerahTujuan.getText();
+        String daerahPenerima = inputDaerahTujuan.getText()+", "+KotaTujuan;
         String tempBeratBarang = inputBeratBarang.getText();
         String nmPengirim = namaPengirim.getText();
-        String daerahPengirim = alamatPengirim.getText();
+        String daerahPengirim = alamatPengirim.getText()+", "+KotaAsal;
         String keterangan = keteranganBarang.getText();
 
         String resi = "DF";
@@ -886,7 +778,9 @@ public class MasukkanPengiriman extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> Asal;
     private javax.swing.JLabel BG_InputPengiriman;
+    private javax.swing.JComboBox<String> Tujuan;
     private javax.swing.JTextField alamatPengirim;
     private javax.swing.JButton extraProtectButton;
     private javax.swing.JButton flammableButton;
