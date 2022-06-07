@@ -18,4 +18,8 @@ public class Others extends Package {
         this.keterangan = keterangan;
     }
 
+    public String getKeterangan() {
+        return keterangan;
+    }
+
 }

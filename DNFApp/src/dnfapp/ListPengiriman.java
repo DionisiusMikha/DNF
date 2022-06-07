@@ -19,7 +19,7 @@ public class ListPengiriman extends javax.swing.JFrame {
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
     private ArrayList<Package> ARRListPackage = new ArrayList<>();
-    
+    private Integer SelectedObj = null;
     /**
      * Creates new form ListPengiriman
      */
@@ -65,20 +65,83 @@ public class ListPengiriman extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         DaftarPengiriman = new javax.swing.JList<>();
+        ExitButton = new javax.swing.JButton();
+        ReceiverField = new javax.swing.JLabel();
+        SenderField = new javax.swing.JLabel();
+        LabelAsal = new javax.swing.JLabel();
+        LabelTujuan = new javax.swing.JLabel();
+        LabelBerat = new javax.swing.JLabel();
+        LabelKeterangan = new javax.swing.JLabel();
+        BGKeterangan = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        DaftarPengiriman.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DaftarPengirimanMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(DaftarPengiriman);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 370, 360));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 400, 380));
+
+        ExitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5_minisize.png"))); // NOI18N
+        ExitButton.setBorderPainted(false);
+        ExitButton.setContentAreaFilled(false);
+        ExitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ExitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, 75, 75));
+        getContentPane().add(ReceiverField, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 200, 260, 30));
+        getContentPane().add(SenderField, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 250, 270, 20));
+        getContentPane().add(LabelAsal, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, 260, 20));
+        getContentPane().add(LabelTujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 340, 280, 20));
+        getContentPane().add(LabelBerat, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 380, 270, 20));
+
+        LabelKeterangan.setFont(new java.awt.Font("Fira Sans", 3, 11)); // NOI18N
+        LabelKeterangan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        getContentPane().add(LabelKeterangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 470, 280, 80));
+
+        BGKeterangan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BG_Keterangan_Pengiriman.png"))); // NOI18N
+        getContentPane().add(BGKeterangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, 340, 120));
 
         BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Daftar_Pengiriman.png"))); // NOI18N
         getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void DaftarPengirimanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DaftarPengirimanMouseClicked
+        SelectedObj=DaftarPengiriman.getSelectedIndex();
+        ReceiverField.setText(ARRListPackage.get(SelectedObj).getReceiver());
+        SenderField.setText(ARRListPackage.get(SelectedObj).getSender());
+        LabelAsal.setText(ARRListPackage.get(SelectedObj).getFrom());
+        LabelTujuan.setText(ARRListPackage.get(SelectedObj).getDestination());
+        LabelBerat.setText(Integer.toString(ARRListPackage.get(SelectedObj).getWeight()));
+        if(ARRListPackage.get(SelectedObj) instanceof Others){
+            Others tempObj = (Others) ARRListPackage.get(SelectedObj);
+            String text = tempObj.getKeterangan();
+            LabelKeterangan.setText(text);
+        }
+        else{
+            String text = ARRListPackage.get(SelectedObj).getClassName();
+            LabelKeterangan.setText(text);
+        }
+    }//GEN-LAST:event_DaftarPengirimanMouseClicked
+
+    private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButtonActionPerformed
+        AdminMenu AM = new AdminMenu(userlist, DeliveryList, ListKurir, usedEmail);
+        dispose();
+        AM.setVisible(true);
+        AM.pack();
+        AM.setResizable(false);
+        AM.setLocationRelativeTo(null);
+        AM.setDefaultCloseOperation(AdminMenu.EXIT_ON_CLOSE);
+    }//GEN-LAST:event_ExitButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,7 +180,15 @@ public class ListPengiriman extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG;
+    private javax.swing.JLabel BGKeterangan;
     private javax.swing.JList<String> DaftarPengiriman;
+    private javax.swing.JButton ExitButton;
+    private javax.swing.JLabel LabelAsal;
+    private javax.swing.JLabel LabelBerat;
+    private javax.swing.JLabel LabelKeterangan;
+    private javax.swing.JLabel LabelTujuan;
+    private javax.swing.JLabel ReceiverField;
+    private javax.swing.JLabel SenderField;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

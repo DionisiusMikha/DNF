@@ -40,6 +40,12 @@ public abstract class Package {
         this.keepdry = keepdry;
         this.protectfromheat = protectfromheat;
         this.extraprotection = extraprotection;
+        String s = "Paket telah diterima dari "+sender+" dan sedang diproses.";
+        track.add(s);
+    }
+    
+    public String getClassName(){
+        return this.getClass().getSimpleName();
     }
 
     @Override
