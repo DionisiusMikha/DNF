@@ -5,7 +5,9 @@
 package dnfapp;
 
 import java.util.HashMap;
-
+import java.util.Map;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 /**
  *
  * @author Frans
@@ -16,6 +18,7 @@ public class ListPengiriman extends javax.swing.JFrame {
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
+    private ArrayList<Package> ARRListPackage = new ArrayList<>();
     
     /**
      * Creates new form ListPengiriman
@@ -30,9 +33,26 @@ public class ListPengiriman extends javax.swing.JFrame {
         this.usedEmail = usedEmail;
         this.DeliveryList = DeliveryList;
         this.ListKurir = ListKurir;
+        generateElement();
     }
     
+    private void generateList(){
+        for (Map.Entry<String, Package> set : DeliveryList.entrySet()) {
+            this.ARRListPackage.add(set.getValue());
+        }
+    }
     
+    private void generateElement(){
+        generateList();
+        if(this.ARRListPackage.size()!=0){
+            DefaultListModel listModel = new DefaultListModel();
+            for (int i = 0; i < ARRListPackage.size(); i++) {
+                String container = ARRListPackage.get(i).getResi() + " - " + ARRListPackage.get(i).getSender()+" - " +ARRListPackage.get(i).getReceiver();
+                listModel.addElement(container);
+            }
+            DaftarPengiriman.setModel(listModel);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

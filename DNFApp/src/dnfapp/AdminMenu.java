@@ -197,7 +197,13 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_MasukanPengirimanButtonActionPerformed
 
     private void ListPengirimanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListPengirimanButtonActionPerformed
-        
+        ListPengiriman LP = new ListPengiriman(userlist, usedEmail, DeliveryList, ListKurir);
+        dispose();
+        LP.setVisible(true);
+        LP.pack();
+        LP.setLocationRelativeTo(null);
+        LP.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+        LP.setResizable(false);
     }//GEN-LAST:event_ListPengirimanButtonActionPerformed
 
     private void HapusPengirimanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusPengirimanButtonActionPerformed
