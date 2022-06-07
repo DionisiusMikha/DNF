@@ -67,6 +67,8 @@ public class UserMainMenu extends javax.swing.JFrame {
         LogOutButton = new javax.swing.JButton();
         SearchButton = new javax.swing.JButton();
         SearchBarBG = new javax.swing.JLabel();
+        Vector = new javax.swing.JLabel();
+        Profile = new javax.swing.JLabel();
         UserMenuBG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -103,7 +105,7 @@ public class UserMainMenu extends javax.swing.JFrame {
                 SettingButtonMouseClicked(evt);
             }
         });
-        getContentPane().add(SettingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 186, 53));
+        getContentPane().add(SettingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 370, 186, 53));
 
         WelcomeLabel.setFont(new java.awt.Font("Fira Sans", 3, 18)); // NOI18N
         WelcomeLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -129,6 +131,12 @@ public class UserMainMenu extends javax.swing.JFrame {
         SearchBarBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_TextField_Search.png"))); // NOI18N
         getContentPane().add(SearchBarBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, -1, -1));
         SearchBarBG.setVisible(false);
+
+        Vector.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Vector.gif"))); // NOI18N
+        getContentPane().add(Vector, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 370, -1, -1));
+
+        Profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Profile.png"))); // NOI18N
+        getContentPane().add(Profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 90, -1, -1));
 
         UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_Home.png"))); // NOI18N
         getContentPane().add(UserMenuBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -175,15 +183,18 @@ public class UserMainMenu extends javax.swing.JFrame {
             this.UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_Home.png")));
             this.SearchBarBG.setVisible(false);
             this.SearchButton.setVisible(false);
+            this.Vector.setVisible(true);
         }
         else if(x==2){
             this.UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_CekResi.png")));
             this.SearchBarBG.setVisible(true);
             this.SearchButton.setVisible(true);
+            this.Vector.setVisible(false);
         }
         else if(x==3){
             this.SearchBarBG.setVisible(false);
             this.SearchButton.setVisible(false);
+            this.Vector.setVisible(false);
         }
     }
     
@@ -249,10 +260,12 @@ public class UserMainMenu extends javax.swing.JFrame {
     private javax.swing.JButton CekResiButton;
     private javax.swing.JButton HomeButton;
     private javax.swing.JButton LogOutButton;
+    private javax.swing.JLabel Profile;
     private javax.swing.JLabel SearchBarBG;
     private javax.swing.JButton SearchButton;
     private javax.swing.JButton SettingButton;
     private javax.swing.JLabel UserMenuBG;
+    private javax.swing.JLabel Vector;
     private javax.swing.JLabel WelcomeLabel;
     // End of variables declaration//GEN-END:variables
 }
