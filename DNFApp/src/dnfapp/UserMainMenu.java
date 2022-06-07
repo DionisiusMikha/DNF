@@ -49,6 +49,8 @@ public class UserMainMenu extends javax.swing.JFrame {
         this.cek_resi=false;
         this.home_menu=true;
         this.setting=false;
+        this.SearchBar.setVisible(false);
+        this.SearchBar.setEditable(false);
     }
 
     /**
@@ -66,9 +68,12 @@ public class UserMainMenu extends javax.swing.JFrame {
         WelcomeLabel = new javax.swing.JLabel();
         LogOutButton = new javax.swing.JButton();
         SearchButton = new javax.swing.JButton();
-        SearchBarBG = new javax.swing.JLabel();
         Vector = new javax.swing.JLabel();
         Profile = new javax.swing.JLabel();
+        CekHistoryButton = new javax.swing.JButton();
+        SendPackageButton = new javax.swing.JButton();
+        SearchBar = new javax.swing.JTextField();
+        SearchBarBG = new javax.swing.JLabel();
         UserMenuBG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -125,18 +130,42 @@ public class UserMainMenu extends javax.swing.JFrame {
         SearchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Search.png"))); // NOI18N
         SearchButton.setBorderPainted(false);
         SearchButton.setContentAreaFilled(false);
+        SearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(SearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 329, 111, 49));
         SearchButton.setVisible(false);
-
-        SearchBarBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_TextField_Search.png"))); // NOI18N
-        getContentPane().add(SearchBarBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, -1, -1));
-        SearchBarBG.setVisible(false);
 
         Vector.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Vector.gif"))); // NOI18N
         getContentPane().add(Vector, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 370, -1, -1));
 
         Profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Profile.png"))); // NOI18N
         getContentPane().add(Profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 90, -1, -1));
+
+        CekHistoryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_ShippingHistory.png"))); // NOI18N
+        CekHistoryButton.setBorderPainted(false);
+        CekHistoryButton.setContentAreaFilled(false);
+        CekHistoryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CekHistoryButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CekHistoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 380, 150));
+
+        SendPackageButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage.png"))); // NOI18N
+        SendPackageButton.setBorderPainted(false);
+        SendPackageButton.setContentAreaFilled(false);
+        getContentPane().add(SendPackageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 380, 150));
+
+        SearchBar.setToolTipText("");
+        SearchBar.setBorder(null);
+        getContentPane().add(SearchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 324, 430, 57));
+
+        SearchBarBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_TextField_Search.png"))); // NOI18N
+        getContentPane().add(SearchBarBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, -1, -1));
+        SearchBarBG.setVisible(false);
 
         UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_Home.png"))); // NOI18N
         getContentPane().add(UserMenuBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -172,6 +201,20 @@ public class UserMainMenu extends javax.swing.JFrame {
         LM.setResizable(false);
     }//GEN-LAST:event_LogOutButtonMouseClicked
 
+    private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
+        String RESI = this.SearchBar.getText();
+        if(RESI.equals("")){
+            JOptionPane.showMessageDialog(null, "Tolong masukkan resi yang ingin dicari terlebih dahulu", "Invalid Input!",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            
+        }
+    }//GEN-LAST:event_SearchButtonActionPerformed
+
+    private void CekHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CekHistoryButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CekHistoryButtonActionPerformed
+
     private void UpdateState(boolean setting, boolean home, boolean cek){
         this.cek_resi=cek;
         this.home_menu=home;
@@ -184,17 +227,38 @@ public class UserMainMenu extends javax.swing.JFrame {
             this.SearchBarBG.setVisible(false);
             this.SearchButton.setVisible(false);
             this.Vector.setVisible(true);
+            this.SearchBar.setVisible(false);
+            this.SearchBar.setEditable(false);
+            this.SearchButton.setEnabled(false);
+            this.CekHistoryButton.setVisible(true);
+            this.CekHistoryButton.setEnabled(true);
+            this.SendPackageButton.setVisible(true);
+            this.SendPackageButton.setEnabled(true);
         }
         else if(x==2){
             this.UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_CekResi.png")));
             this.SearchBarBG.setVisible(true);
             this.SearchButton.setVisible(true);
             this.Vector.setVisible(false);
+            this.SearchBar.setVisible(true);
+            this.SearchBar.setEditable(true);
+            this.SearchButton.setEnabled(true);
+            this.CekHistoryButton.setVisible(false);
+            this.CekHistoryButton.setEnabled(false);
+            this.SendPackageButton.setVisible(false);
+            this.SendPackageButton.setEnabled(false);
         }
         else if(x==3){
             this.SearchBarBG.setVisible(false);
             this.SearchButton.setVisible(false);
             this.Vector.setVisible(false);
+            this.SearchBar.setVisible(false);
+            this.SearchBar.setEditable(false);
+            this.SearchButton.setEnabled(false);
+            this.CekHistoryButton.setVisible(false);
+            this.CekHistoryButton.setEnabled(false);
+            this.SendPackageButton.setVisible(false);
+            this.SendPackageButton.setEnabled(false);
         }
     }
     
@@ -257,12 +321,15 @@ public class UserMainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CekHistoryButton;
     private javax.swing.JButton CekResiButton;
     private javax.swing.JButton HomeButton;
     private javax.swing.JButton LogOutButton;
     private javax.swing.JLabel Profile;
+    private javax.swing.JTextField SearchBar;
     private javax.swing.JLabel SearchBarBG;
     private javax.swing.JButton SearchButton;
+    private javax.swing.JButton SendPackageButton;
     private javax.swing.JButton SettingButton;
     private javax.swing.JLabel UserMenuBG;
     private javax.swing.JLabel Vector;
