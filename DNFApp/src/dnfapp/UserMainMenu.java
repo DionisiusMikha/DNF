@@ -100,6 +100,11 @@ public class UserMainMenu extends javax.swing.JFrame {
                 CekResiButtonMouseClicked(evt);
             }
         });
+        CekResiButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CekResiButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(CekResiButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 186, 53));
 
         SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png"))); // NOI18N
@@ -159,8 +164,14 @@ public class UserMainMenu extends javax.swing.JFrame {
         SendPackageButton.setContentAreaFilled(false);
         getContentPane().add(SendPackageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 380, 150));
 
+        SearchBar.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         SearchBar.setToolTipText("");
         SearchBar.setBorder(null);
+        SearchBar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchBarActionPerformed(evt);
+            }
+        });
         getContentPane().add(SearchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 324, 430, 57));
 
         SearchBarBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_TextField_Search.png"))); // NOI18N
@@ -214,6 +225,14 @@ public class UserMainMenu extends javax.swing.JFrame {
     private void CekHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CekHistoryButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CekHistoryButtonActionPerformed
+
+    private void CekResiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CekResiButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CekResiButtonActionPerformed
+
+    private void SearchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SearchBarActionPerformed
 
     private void UpdateState(boolean setting, boolean home, boolean cek){
         this.cek_resi=cek;

@@ -188,13 +188,14 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
         jPanel1.add(keluarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 598, -1, -1));
 
         kategoriBarang.setBackground(new java.awt.Color(4, 37, 107));
+        kategoriBarang.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         kategoriBarang.setForeground(new java.awt.Color(255, 255, 255));
         kategoriBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kategoriBarangActionPerformed(evt);
             }
         });
-        jPanel1.add(kategoriBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, -1, -1));
+        jPanel1.add(kategoriBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, 180, -1));
 
         flammableButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Flammable.png"))); // NOI18N
         flammableButton.setBorderPainted(false);
@@ -209,7 +210,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
                 flammableButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(flammableButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 490, -1, -1));
+        jPanel1.add(flammableButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, -1, -1));
 
         fragileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Fragile.png"))); // NOI18N
         fragileButton.setBorderPainted(false);
@@ -219,7 +220,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
                 fragileButtonMouseClicked(evt);
             }
         });
-        jPanel1.add(fragileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 490, -1, -1));
+        jPanel1.add(fragileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 480, -1, -1));
 
         keepdryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Keep_Dry.png"))); // NOI18N
         keepdryButton.setBorderPainted(false);
@@ -234,7 +235,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
                 keepdryButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(keepdryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 490, -1, -1));
+        jPanel1.add(keepdryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, -1, -1));
 
         protectfromheatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Protect.png"))); // NOI18N
         protectfromheatButton.setBorderPainted(false);
@@ -249,7 +250,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
                 protectfromheatButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(protectfromheatButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 490, -1, -1));
+        jPanel1.add(protectfromheatButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 480, -1, -1));
 
         extraProtectButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Box-alt_no.png"))); // NOI18N
         extraProtectButton.setBorderPainted(false);
@@ -264,7 +265,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
                 extraProtectButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(extraProtectButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(623, 510, 49, 49));
+        jPanel1.add(extraProtectButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 500, 49, 49));
 
         inputButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_4.png"))); // NOI18N
         inputButton.setBorderPainted(false);
@@ -335,7 +336,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel1.add(tiputipu, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 440, 160, 160));
+        jPanel1.add(tiputipu, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 440, 180, 160));
 
         keteranganBarang.setBackground(new java.awt.Color(4, 27, 107));
         keteranganBarang.setColumns(20);
@@ -343,7 +344,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
         keteranganBarang.setForeground(new java.awt.Color(255, 255, 255));
         keteranganBarang.setLineWrap(true);
         keteranganBarang.setRows(5);
-        keteranganBarang.setText("Masukkan Keterangan");
+        keteranganBarang.setText("Masukkan keterangan");
         keteranganBarang.setWrapStyleWord(true);
         keteranganBarang.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Keterangan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 16), new java.awt.Color(239, 75, 76))); // NOI18N
         keteranganBarang.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -356,11 +357,17 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
         });
         jScrollPane1.setViewportView(keteranganBarang);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 440, 160, 150));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 450, 180, 140));
 
-        jPanel1.add(Asal, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 270, 105, -1));
+        Asal.setBackground(new java.awt.Color(4, 37, 107));
+        Asal.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        Asal.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(Asal, new org.netbeans.lib.awtextra.AbsoluteConstraints(658, 270, 120, -1));
 
-        jPanel1.add(Tujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 310, 105, -1));
+        Tujuan.setBackground(new java.awt.Color(4, 37, 107));
+        Tujuan.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        Tujuan.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(Tujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(658, 310, 120, -1));
 
         BG_InputPengiriman.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Masukan_Pengiriman.png"))); // NOI18N
         jPanel1.add(BG_InputPengiriman, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

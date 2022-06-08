@@ -71,7 +71,8 @@ public class ListPengiriman extends javax.swing.JFrame {
         LabelAsal = new javax.swing.JLabel();
         LabelTujuan = new javax.swing.JLabel();
         LabelBerat = new javax.swing.JLabel();
-        LabelKeterangan = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ketBarang = new javax.swing.JTextArea();
         BGKeterangan = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
 
@@ -96,15 +97,41 @@ public class ListPengiriman extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ExitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, 75, 75));
-        getContentPane().add(ReceiverField, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 200, 260, 30));
-        getContentPane().add(SenderField, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 250, 270, 20));
-        getContentPane().add(LabelAsal, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, 260, 20));
-        getContentPane().add(LabelTujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 340, 280, 20));
-        getContentPane().add(LabelBerat, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 380, 270, 20));
 
-        LabelKeterangan.setFont(new java.awt.Font("Fira Sans", 3, 11)); // NOI18N
-        LabelKeterangan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        getContentPane().add(LabelKeterangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 470, 280, 80));
+        ReceiverField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        ReceiverField.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(ReceiverField, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 200, 260, 30));
+
+        SenderField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        SenderField.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(SenderField, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 250, 270, 20));
+
+        LabelAsal.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        LabelAsal.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(LabelAsal, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, 260, 20));
+
+        LabelTujuan.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        LabelTujuan.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(LabelTujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 330, 280, 30));
+
+        LabelBerat.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        LabelBerat.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(LabelBerat, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 370, 270, 30));
+
+        ketBarang.setBackground(new java.awt.Color(4, 37, 107));
+        ketBarang.setColumns(20);
+        ketBarang.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        ketBarang.setForeground(new java.awt.Color(255, 255, 255));
+        ketBarang.setLineWrap(true);
+        ketBarang.setRows(5);
+        ketBarang.setWrapStyleWord(true);
+        ketBarang.setBorder(null);
+        ketBarang.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        ketBarang.setMargin(new java.awt.Insets(2, 5, 2, 5));
+        ketBarang.setMinimumSize(new java.awt.Dimension(1, 18));
+        jScrollPane2.setViewportView(ketBarang);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 470, 320, 80));
 
         BGKeterangan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BG_Keterangan_Pengiriman.png"))); // NOI18N
         getContentPane().add(BGKeterangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, 340, 120));
@@ -125,11 +152,11 @@ public class ListPengiriman extends javax.swing.JFrame {
         if(ARRListPackage.get(SelectedObj) instanceof Others){
             Others tempObj = (Others) ARRListPackage.get(SelectedObj);
             String text = tempObj.getKeterangan();
-            LabelKeterangan.setText(text);
+            ketBarang.setText(text);
         }
         else{
-            String text = ARRListPackage.get(SelectedObj).getClassName();
-            LabelKeterangan.setText(text);
+//            String text = ARRListPackage.get(SelectedObj).getClassName();
+//            ketBarang.setText(text);
         }
     }//GEN-LAST:event_DaftarPengirimanMouseClicked
 
@@ -185,10 +212,11 @@ public class ListPengiriman extends javax.swing.JFrame {
     private javax.swing.JButton ExitButton;
     private javax.swing.JLabel LabelAsal;
     private javax.swing.JLabel LabelBerat;
-    private javax.swing.JLabel LabelKeterangan;
     private javax.swing.JLabel LabelTujuan;
     private javax.swing.JLabel ReceiverField;
     private javax.swing.JLabel SenderField;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea ketBarang;
     // End of variables declaration//GEN-END:variables
 }
