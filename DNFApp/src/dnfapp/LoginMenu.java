@@ -43,6 +43,9 @@ public class LoginMenu extends javax.swing.JFrame {
             User a = new User("a","a","a@gmail.com"); //generate test unit user.
             userlist.put("admin", admin);
             userlist.put("a", a);
+            Package TestPackage = new Others("a","a","a","a","a","a",1,false,false,false,false,false);
+            DeliveryList.put("a", TestPackage);
+            System.out.println(DeliveryList);
             System.out.println(userlist);
             this.ShowPass = false;
         }

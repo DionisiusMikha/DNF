@@ -16,8 +16,6 @@ public interface GenerateCity {
     
     HashMap<String, Kota> MapKota = new HashMap<>();
     
-    
-    
     static HashMap<String, Kota>generateCityMap(HashMap<String, Kota> MapKota){
         Kota Agam = new Kota(100.1703,0.2209);
         Kota Alor = new Kota(124.5528,8.2928);

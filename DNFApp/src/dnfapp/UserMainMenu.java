@@ -22,7 +22,6 @@ public class UserMainMenu extends javax.swing.JFrame {
     //HashMaps to Pass.
     private HashMap<String, User> userlist = new HashMap<String, User>();
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
-    private HashMap<String, Integer> VALID_DOMAIN = new HashMap<String, Integer>();
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
     
@@ -223,7 +222,19 @@ public class UserMainMenu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Tolong masukkan resi yang ingin dicari terlebih dahulu", "Invalid Input!",JOptionPane.WARNING_MESSAGE);
         }
         else{
-            
+            if (DeliveryList.containsKey(RESI)){
+                Package selected = DeliveryList.get(RESI);
+                DetailPackage DP = new DetailPackage(userlist,usedEmail,DeliveryList,ListKurir, selected);
+                dispose();
+                DP.setVisible(true);
+                DP.pack();
+                DP.setLocationRelativeTo(null);
+                DP.setDefaultCloseOperation(DetailPackage.EXIT_ON_CLOSE);
+                DP.setResizable(false);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Resi tidak ditemukan!", "Resi Invalid!",JOptionPane.WARNING_MESSAGE);
+            }
         }
     }//GEN-LAST:event_SearchButtonActionPerformed
 
@@ -232,7 +243,7 @@ public class UserMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_CekHistoryButtonActionPerformed
 
     private void CekResiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CekResiButtonActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_CekResiButtonActionPerformed
 
     private void SearchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBarActionPerformed
