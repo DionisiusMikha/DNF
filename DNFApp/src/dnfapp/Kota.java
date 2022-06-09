@@ -13,7 +13,7 @@ public class Kota {
     private double lat;
     private double lon;
 
-    public Kota(double lat, double lon) {
+    public Kota(double lon,double lat) {
         this.lat = lat;
         this.lon = lon;
     }

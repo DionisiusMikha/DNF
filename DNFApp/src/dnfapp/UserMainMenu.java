@@ -157,12 +157,17 @@ public class UserMainMenu extends javax.swing.JFrame {
                 CekHistoryButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CekHistoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 380, 150));
+        getContentPane().add(CekHistoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 380, 150));
 
         SendPackageButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage.png"))); // NOI18N
         SendPackageButton.setBorderPainted(false);
         SendPackageButton.setContentAreaFilled(false);
-        getContentPane().add(SendPackageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 380, 150));
+        SendPackageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SendPackageButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(SendPackageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 380, 150));
 
         SearchBar.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         SearchBar.setToolTipText("");
@@ -233,6 +238,10 @@ public class UserMainMenu extends javax.swing.JFrame {
     private void SearchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchBarActionPerformed
+
+    private void SendPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendPackageButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SendPackageButtonActionPerformed
 
     private void UpdateState(boolean setting, boolean home, boolean cek){
         this.cek_resi=cek;
