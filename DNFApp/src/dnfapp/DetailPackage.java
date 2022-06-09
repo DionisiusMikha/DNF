@@ -32,16 +32,16 @@ public class DetailPackage extends javax.swing.JFrame {
     }
     
     public DetailPackage(HashMap<String, User> userlist,HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList,  HashMap<String, Kurir> ListKurir, Package CurrentPackage){
+        initComponents();
         this.userlist=userlist;
         this.usedEmail=usedEmail;
         this.DeliveryList=DeliveryList;
         this.ListKurir=ListKurir;
         this.CurrentPackage=CurrentPackage;
-//        System.out.println(CurrentPackage.getResi());
-//        NamaPengirim.setText(CurrentPackage.getSender());
-//        NamaPenerima.setText(CurrentPackage.getReceiver());
-//        LabelAlamatPengirim.setText(CurrentPackage.getFrom());
-//        LabelAlamatPenerima.setText(CurrentPackage.getDestination());
+        NamaPengirim.setText(CurrentPackage.getSender());
+        NamaPenerima.setText(CurrentPackage.getReceiver());
+        LabelAlamatPengirim.setText(CurrentPackage.getFrom());
+        LabelAlamatPenerima.setText(CurrentPackage.getDestination());
         
         if(!CurrentPackage.getTrack().isEmpty()){
             DefaultListModel listModel = new DefaultListModel();
