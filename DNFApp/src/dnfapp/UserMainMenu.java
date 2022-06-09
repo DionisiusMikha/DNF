@@ -17,6 +17,7 @@ public class UserMainMenu extends javax.swing.JFrame {
     private boolean cek_resi;
     private boolean home_menu;
     private boolean setting;
+    private boolean history;
     //current user obj
     private User currentUser;
     //HashMaps to Pass.
@@ -48,8 +49,11 @@ public class UserMainMenu extends javax.swing.JFrame {
         this.cek_resi=false;
         this.home_menu=true;
         this.setting=false;
+        this.history=false;
         this.SearchBar.setVisible(false);
         this.SearchBar.setEditable(false);
+        this.HistoryList.setEnabled(false);
+        this.HistoryList.setVisible(false);
     }
 
     /**
@@ -74,6 +78,9 @@ public class UserMainMenu extends javax.swing.JFrame {
         SearchBar = new javax.swing.JTextField();
         SearchBarBG = new javax.swing.JLabel();
         UserMenuBG = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        HistoryList = new javax.swing.JList<>();
+        BGHistory = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -185,6 +192,13 @@ public class UserMainMenu extends javax.swing.JFrame {
         UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_Home.png"))); // NOI18N
         getContentPane().add(UserMenuBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        jScrollPane1.setViewportView(HistoryList);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 440, 380));
+
+        BGHistory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_ShippingHistory.png"))); // NOI18N
+        getContentPane().add(BGHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -224,7 +238,7 @@ public class UserMainMenu extends javax.swing.JFrame {
         else{
             if (DeliveryList.containsKey(RESI)){
                 Package selected = DeliveryList.get(RESI);
-                DetailPackage DP = new DetailPackage(userlist,usedEmail,DeliveryList,ListKurir, selected);
+                DetailPackage DP = new DetailPackage(userlist,usedEmail,DeliveryList,ListKurir, selected,currentUser);
                 dispose();
                 DP.setVisible(true);
                 DP.pack();
@@ -239,7 +253,8 @@ public class UserMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_SearchButtonActionPerformed
 
     private void CekHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CekHistoryButtonActionPerformed
-        // TODO add your handling code here:
+        UpdateState(false,false,false,true);
+        ButtonController(false,false,false);
     }//GEN-LAST:event_CekHistoryButtonActionPerformed
 
     private void CekResiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CekResiButtonActionPerformed
@@ -254,10 +269,11 @@ public class UserMainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SendPackageButtonActionPerformed
 
-    private void UpdateState(boolean setting, boolean home, boolean cek){
+    private void UpdateState(boolean setting, boolean home, boolean cek, boolean history){
         this.cek_resi=cek;
         this.home_menu=home;
         this.setting=setting;
+        this.history=history;
     }
     
     private void UpdateVisibility(int x){
@@ -273,6 +289,9 @@ public class UserMainMenu extends javax.swing.JFrame {
             this.CekHistoryButton.setEnabled(true);
             this.SendPackageButton.setVisible(true);
             this.SendPackageButton.setEnabled(true);
+            this.HistoryList.setEnabled(false);
+            this.HistoryList.setVisible(false);
+            this.UserMenuBG.setVisible(true);
         }
         else if(x==2){
             this.UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_CekResi.png")));
@@ -286,6 +305,9 @@ public class UserMainMenu extends javax.swing.JFrame {
             this.CekHistoryButton.setEnabled(false);
             this.SendPackageButton.setVisible(false);
             this.SendPackageButton.setEnabled(false);
+            this.HistoryList.setEnabled(false);
+            this.HistoryList.setVisible(false);
+            this.UserMenuBG.setVisible(true);
         }
         else if(x==3){
             this.SearchBarBG.setVisible(false);
@@ -298,29 +320,54 @@ public class UserMainMenu extends javax.swing.JFrame {
             this.CekHistoryButton.setEnabled(false);
             this.SendPackageButton.setVisible(false);
             this.SendPackageButton.setEnabled(false);
+            this.HistoryList.setEnabled(false);
+            this.HistoryList.setVisible(false);
+            this.UserMenuBG.setVisible(true);
+        }
+        else if(x==4){
+            this.UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_ShippingHistory.png")));
+            this.SearchBarBG.setVisible(false);
+            this.SearchButton.setVisible(false);
+            this.Vector.setVisible(false);
+            this.SearchBar.setVisible(false);
+            this.SearchBar.setEditable(false);
+            this.SearchButton.setEnabled(false);
+            this.CekHistoryButton.setVisible(false);
+            this.CekHistoryButton.setEnabled(false);
+            this.SendPackageButton.setVisible(false);
+            this.SendPackageButton.setEnabled(false);
+            this.HistoryList.setEnabled(false);
+            this.HistoryList.setVisible(false);
+            this.UserMenuBG.setVisible(false);
         }
     }
     
     private void ButtonController(boolean setting, boolean home, boolean cek){
         if(setting&&!home&&!cek){
-            UpdateState(setting,home,cek);
+            UpdateState(setting,home,cek,false);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_1.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
         }
         else if(!setting&&home&&!cek){
-            UpdateState(setting,home,cek);
+            UpdateState(setting,home,cek,false);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_1.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
             UpdateVisibility(1);
         }
         else if(!setting&&!home&&cek){
-            UpdateState(setting,home,cek);
+            UpdateState(setting,home,cek,false);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_1.png")));
             UpdateVisibility(2);
+        }
+        else if(!setting&&!home&&!cek){
+            this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
+            this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
+            this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
+            UpdateVisibility(4);
         }
     }
     
@@ -360,8 +407,10 @@ public class UserMainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BGHistory;
     private javax.swing.JButton CekHistoryButton;
     private javax.swing.JButton CekResiButton;
+    private javax.swing.JList<String> HistoryList;
     private javax.swing.JButton HomeButton;
     private javax.swing.JButton LogOutButton;
     private javax.swing.JLabel Profile;
@@ -373,5 +422,6 @@ public class UserMainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel UserMenuBG;
     private javax.swing.JLabel Vector;
     private javax.swing.JLabel WelcomeLabel;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

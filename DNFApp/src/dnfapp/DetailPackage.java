@@ -18,31 +18,30 @@ public class DetailPackage extends javax.swing.JFrame {
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
     private Package CurrentPackage;
+    private User CurrentUser;
     
     public DetailPackage() {
         initComponents();
-        if(!CurrentPackage.getTrack().isEmpty()){
-            DefaultListModel listModel = new DefaultListModel();
-            for (int i = 0; i < CurrentPackage.getTrack().size(); i++) {
-                String container = CurrentPackage.getTrack().get(i);
-                listModel.addElement(container);
-            }
-            DetailList.setModel(listModel);
-        }
+        generate();
     }
     
-    public DetailPackage(HashMap<String, User> userlist,HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList,  HashMap<String, Kurir> ListKurir, Package CurrentPackage){
+    public DetailPackage(HashMap<String, User> userlist,HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList,  HashMap<String, Kurir> ListKurir, Package CurrentPackage, User CurrentUser){
         initComponents();
         this.userlist=userlist;
         this.usedEmail=usedEmail;
         this.DeliveryList=DeliveryList;
         this.ListKurir=ListKurir;
         this.CurrentPackage=CurrentPackage;
+        this.CurrentUser=CurrentUser;
         NamaPengirim.setText(CurrentPackage.getSender());
         NamaPenerima.setText(CurrentPackage.getReceiver());
         LabelAlamatPengirim.setText(CurrentPackage.getFrom());
         LabelAlamatPenerima.setText(CurrentPackage.getDestination());
+        generate();
         
+    }
+    
+    public void generate(){
         if(!CurrentPackage.getTrack().isEmpty()){
             DefaultListModel listModel = new DefaultListModel();
             for (int i = 0; i < CurrentPackage.getTrack().size(); i++) {
@@ -51,11 +50,6 @@ public class DetailPackage extends javax.swing.JFrame {
             }
             DetailList.setModel(listModel);
         }
-    }
-    
-    public void generate(){
-        
-        
     }
 
     /**
@@ -74,6 +68,7 @@ public class DetailPackage extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         DetailList = new javax.swing.JList<>();
         LabelResi = new javax.swing.JLabel();
+        ButtonKeluar = new javax.swing.JButton();
         BG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -94,11 +89,31 @@ public class DetailPackage extends javax.swing.JFrame {
         LabelResi.setText("jLabel1");
         getContentPane().add(LabelResi, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 410, 40));
 
+        ButtonKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5.png"))); // NOI18N
+        ButtonKeluar.setBorderPainted(false);
+        ButtonKeluar.setContentAreaFilled(false);
+        ButtonKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonKeluarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ButtonKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 610, 112, 112));
+
         BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_ShippingDetail.png"))); // NOI18N
         getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonKeluarActionPerformed
+        UserMainMenu UserMenu = new UserMainMenu(userlist, usedEmail, DeliveryList,ListKurir,CurrentUser);
+        dispose();
+        UserMenu.setVisible(true);
+        UserMenu.pack();
+        UserMenu.setLocationRelativeTo(null);
+        UserMenu.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+        UserMenu.setResizable(false);
+    }//GEN-LAST:event_ButtonKeluarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,6 +152,7 @@ public class DetailPackage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG;
+    private javax.swing.JButton ButtonKeluar;
     private javax.swing.JList<String> DetailList;
     private javax.swing.JLabel LabelAlamatPenerima;
     private javax.swing.JLabel LabelAlamatPengirim;
