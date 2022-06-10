@@ -27,6 +27,9 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="NamaPengirim">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Fira Sans" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value=" "/>
       </Properties>
       <Constraints>
@@ -37,6 +40,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="LabelAlamatPengirim">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Fira Sans" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value=" "/>
       </Properties>
       <Constraints>
@@ -46,6 +52,11 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="NamaPenerima">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Fira Sans" size="12" style="0"/>
+        </Property>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="230" y="490" width="170" height="30"/>
@@ -53,6 +64,11 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="LabelAlamatPenerima">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Fira Sans" size="12" style="0"/>
+        </Property>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="90" y="560" width="390" height="40"/>
@@ -85,18 +101,21 @@
     </Container>
     <Component class="javax.swing.JLabel" name="LabelResi">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Fira Sans" size="18" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="100" y="200" width="410" height="40"/>
+          <AbsoluteConstraints x="100" y="190" width="410" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="ButtonKeluar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/Icon_5.png"/>
+          <Image iconType="3" name="/images/User_Button_Back.png"/>
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>

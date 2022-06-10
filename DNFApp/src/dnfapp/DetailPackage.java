@@ -74,22 +74,29 @@ public class DetailPackage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        NamaPengirim.setFont(new java.awt.Font("Fira Sans", 0, 12)); // NOI18N
         NamaPengirim.setText(" ");
         getContentPane().add(NamaPengirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 160, 30));
 
+        LabelAlamatPengirim.setFont(new java.awt.Font("Fira Sans", 0, 12)); // NOI18N
         LabelAlamatPengirim.setText(" ");
         getContentPane().add(LabelAlamatPengirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, 390, 40));
+
+        NamaPenerima.setFont(new java.awt.Font("Fira Sans", 0, 12)); // NOI18N
         getContentPane().add(NamaPenerima, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, 170, 30));
+
+        LabelAlamatPenerima.setFont(new java.awt.Font("Fira Sans", 0, 12)); // NOI18N
         getContentPane().add(LabelAlamatPenerima, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 560, 390, 40));
 
         jScrollPane1.setViewportView(DetailList);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 250, 420, 380));
 
+        LabelResi.setFont(new java.awt.Font("Fira Sans", 1, 18)); // NOI18N
         LabelResi.setText("jLabel1");
-        getContentPane().add(LabelResi, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 410, 40));
+        getContentPane().add(LabelResi, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 410, 40));
 
-        ButtonKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5.png"))); // NOI18N
+        ButtonKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Back.png"))); // NOI18N
         ButtonKeluar.setBorderPainted(false);
         ButtonKeluar.setContentAreaFilled(false);
         ButtonKeluar.addActionListener(new java.awt.event.ActionListener() {

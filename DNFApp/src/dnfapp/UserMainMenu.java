@@ -175,7 +175,7 @@ public class UserMainMenu extends javax.swing.JFrame {
         });
         getContentPane().add(SendPackageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 380, 150));
 
-        SearchBar.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
+        SearchBar.setFont(new java.awt.Font("Fira Sans", 1, 20)); // NOI18N
         SearchBar.setToolTipText("");
         SearchBar.setBorder(null);
         SearchBar.addActionListener(new java.awt.event.ActionListener() {
