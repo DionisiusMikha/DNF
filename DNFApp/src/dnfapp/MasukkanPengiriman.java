@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
  *
  * @author Lenovo
  */
-public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCity{
+public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCity {
 
     /**
      * Creates new form MasukkanPengiriman
@@ -78,8 +78,8 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
         for (int i = 0; i < kategori.size(); i++) {
             kategoriBarang.addItem(kategori.get(i));
         }
-         BG_InputPengiriman.requestFocus();
-         generateKota();
+        BG_InputPengiriman.requestFocus();
+        generateKota();
     }
 
     /**
@@ -392,7 +392,6 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
 
     private void inputNamaPenerimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNamaPenerimaActionPerformed
 
-
     }//GEN-LAST:event_inputNamaPenerimaActionPerformed
 
     private void inputDaerahTujuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDaerahTujuanActionPerformed
@@ -546,38 +545,37 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
         namaPengirim.setText("Masukkan nama pengirim");
         alamatPengirim.setText("Masukkan alamat pengirim");
     }
-    
-    private String getWaktu(){
+
+    private String getWaktu() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         String s = dateFormat.format(date);
         return s;
     }
-    
-    private void generateKotaDetails(){
-        
+
+    private void generateKotaDetails() {
+
     }
-    
-    
-    private void generateKota(){
+
+    private void generateKota() {
         ArrayList<String> listkota = new ArrayList<>();
-        listkota=GenerateCity.generateCity(listkota);
-        for(int i =0;i<listkota.size();i++){
+        listkota = GenerateCity.generateCity(listkota);
+        for (int i = 0; i < listkota.size(); i++) {
             Asal.addItem(listkota.get(i));
             Tujuan.addItem(listkota.get(i));
         }
     }
-    
+
     private void inputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputButtonActionPerformed
         LocalDateTime date = LocalDateTime.now();
         String temp = (String) kategoriBarang.getSelectedItem();
         String KotaAsal = (String) Asal.getSelectedItem();
         String KotaTujuan = (String) Tujuan.getSelectedItem();
         String namaPenerima = inputNamaPenerima.getText();
-        String daerahPenerima = inputDaerahTujuan.getText()+", "+KotaTujuan;
+        String daerahPenerima = inputDaerahTujuan.getText() + ", " + KotaTujuan;
         String tempBeratBarang = inputBeratBarang.getText();
         String nmPengirim = namaPengirim.getText();
-        String daerahPengirim = alamatPengirim.getText()+", "+KotaAsal;
+        String daerahPengirim = alamatPengirim.getText() + ", " + KotaAsal;
         String keterangan = keteranganBarang.getText();
 
         String resi = "DF";
@@ -596,21 +594,21 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
         char[] charberat = tempBeratBarang.toCharArray();
         resi += timea + timeb + timec + det + month + year;
         System.out.println(resi);
-        
+
         boolean lulusGede = true;
-        if((namaPenerima.equals("Masukkan nama penerima") || daerahPenerima.equals("Masukkan daerah tujuan") || nmPengirim.equals("Masukkan nama pengirim") || daerahPengirim.equals("Masukkan alamat pengirim"))){
+        if ((namaPenerima.equals("Masukkan nama penerima") || daerahPenerima.equals("Masukkan daerah tujuan") || nmPengirim.equals("Masukkan nama pengirim") || daerahPengirim.equals("Masukkan alamat pengirim"))) {
             lulusGede = false;
             JOptionPane.showMessageDialog(this, "Input tidak valid!", "DnF", 2);
         }
-        
+
         boolean lulusCilik = true;
-        String tempMinus = inputBeratBarang.getText().substring(0,1);
+        String tempMinus = inputBeratBarang.getText().substring(0, 1);
         if (inputBeratBarang.getText().equals("0") || tempMinus.equals("-")) {
             JOptionPane.showMessageDialog(this, "Berat tidak valid!", "DnF", 2);
             lulusCilik = false;
         }
-        
-        if(lulusGede==true && lulusCilik==true){ //lulus semua 
+
+        if (lulusGede == true && lulusCilik == true) { //lulus semua 
             for (int i = 0; i < charberat.length; i++) {
                 if (charberat[i] >= 65 && charberat[i] <= 122) {
                     JOptionPane.showMessageDialog(this, "Berat tidak valid!", "DnF", 2);
@@ -618,7 +616,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
                     int beratBarang = Integer.parseInt(tempBeratBarang);
                     if (temp.equals("Food and Beverages")) {
                         Package paket = new FnB(1, resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
-                        paket.updateTrack("Barang diterima pada "+getWaktu());
+                        paket.updateTrack("Barang diterima pada " + getWaktu());
                         DeliveryList.put(resi, paket);
                         gudang.add(paket);
                     } else if (temp.equals("Sports")) {
@@ -642,7 +640,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
                         DeliveryList.put(resi, paket);
                         gudang.add(paket);
                     } else {
-                        if(keterangan.equals("Masukkan keterangan")){
+                        if (keterangan.equals("Masukkan keterangan")) {
                             Package paket = new Others("-", resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
                             paket.updateTrack(getWaktu());
                             DeliveryList.put(resi, paket);
@@ -662,9 +660,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
                 }
             }
         }
-        
-                
-        
+
     }//GEN-LAST:event_inputButtonActionPerformed
 
     private void inputButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputButtonMouseClicked
@@ -680,7 +676,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
             protectfromheatButton.setVisible(true);
             tiputipu.setVisible(true);
 
-        } else if(temp.equals("Others")){
+        } else if (temp.equals("Others")) {
             flammableButton.setVisible(true);
             fragileButton.setVisible(true);
             keepdryButton.setVisible(true);
@@ -702,7 +698,6 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
 
     private void namaPengirimFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_namaPengirimFocusGained
 
-       
         if (namaPengirim.getText().equalsIgnoreCase("Masukkan nama pengirim")) {
             namaPengirim.setText("");
             namaPengirim.setForeground(new Color(255, 255, 255));
@@ -711,7 +706,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
 
     private void namaPengirimFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_namaPengirimFocusLost
         if (namaPengirim.getText().equalsIgnoreCase("")) {
-            namaPengirim.setText("Masukan nama pengirim");
+            namaPengirim.setText("Masukkan nama pengirim");
             namaPengirim.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_namaPengirimFocusLost
