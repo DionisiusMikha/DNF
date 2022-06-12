@@ -4,6 +4,7 @@
  */
 package dnfapp;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -12,12 +13,13 @@ import javax.swing.JOptionPane;
  *
  * @author Frans
  */
-public class UserMainMenu extends javax.swing.JFrame {
+public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,CityCalc{
     //boolean state
     private boolean cek_resi;
     private boolean home_menu;
     private boolean setting;
     private boolean history;
+    private boolean send;
     //current user obj
     private User currentUser;
     //HashMaps to Pass.
@@ -26,14 +28,20 @@ public class UserMainMenu extends javax.swing.JFrame {
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
     
+    //private Generated HashMaps&ArrayList for City Index
+    private HashMap<String, Kota> MapKota = new HashMap<String, Kota>();
+    private ArrayList<String> listkota = new ArrayList<>();
+    
     public UserMainMenu() {
         initComponents();
+        generateCityCalc();
     }
     
     public UserMainMenu(HashMap<String, User> userlist, HashMap<String, String> usedEmail){
         initComponents();
         this.userlist=userlist;
         this.usedEmail=usedEmail;
+        generateCityCalc();
     }
     
     public UserMainMenu(HashMap<String, User> userlist,HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList,  HashMap<String, Kurir> ListKurir, User currentUser){
@@ -50,10 +58,9 @@ public class UserMainMenu extends javax.swing.JFrame {
         this.home_menu=true;
         this.setting=false;
         this.history=false;
-        this.SearchBar.setVisible(false);
-        this.SearchBar.setEditable(false);
-        this.HistoryList.setEnabled(false);
-        this.HistoryList.setVisible(false);
+        this.send=false;
+        ButtonController(false,true,false,false,false);
+        generateCityCalc();
     }
 
     /**
@@ -65,19 +72,28 @@ public class UserMainMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Profile = new javax.swing.JLabel();
+        LogOutButton = new javax.swing.JButton();
         HomeButton = new javax.swing.JButton();
+        WelcomeLabel = new javax.swing.JLabel();
+        SendBeratField = new javax.swing.JTextField();
+        AsalField = new javax.swing.JTextField();
         CekResiButton = new javax.swing.JButton();
         SettingButton = new javax.swing.JButton();
-        WelcomeLabel = new javax.swing.JLabel();
-        LogOutButton = new javax.swing.JButton();
+        CalculateBtn = new javax.swing.JButton();
+        PriceLabel = new javax.swing.JLabel();
+        TujuanField = new javax.swing.JTextField();
+        TujuanCombobox = new javax.swing.JComboBox<>();
+        AsalCombobox = new javax.swing.JComboBox<>();
+        SendPackageBG = new javax.swing.JLabel();
         SearchButton = new javax.swing.JButton();
         Vector = new javax.swing.JLabel();
-        Profile = new javax.swing.JLabel();
         CekHistoryButton = new javax.swing.JButton();
         SendPackageButton = new javax.swing.JButton();
         SearchBar = new javax.swing.JTextField();
         SearchBarBG = new javax.swing.JLabel();
         UserMenuBG = new javax.swing.JLabel();
+        SeeDetailButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         HistoryList = new javax.swing.JList<>();
         BGHistory = new javax.swing.JLabel();
@@ -86,6 +102,19 @@ public class UserMainMenu extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Profile.png"))); // NOI18N
+        getContentPane().add(Profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 90, -1, -1));
+
+        LogOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Logout.png"))); // NOI18N
+        LogOutButton.setBorderPainted(false);
+        LogOutButton.setContentAreaFilled(false);
+        LogOutButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogOutButtonMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LogOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 595, 70, 70));
 
         HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_1.png"))); // NOI18N
         HomeButton.setBorderPainted(false);
@@ -97,6 +126,13 @@ public class UserMainMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(HomeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 186, 53));
+
+        WelcomeLabel.setFont(new java.awt.Font("Fira Sans", 3, 18)); // NOI18N
+        WelcomeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        WelcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(WelcomeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 180, 215, 40));
+        getContentPane().add(SendBeratField, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, 280, 40));
+        getContentPane().add(AsalField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 250, 40));
 
         CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png"))); // NOI18N
         CekResiButton.setBorderPainted(false);
@@ -123,20 +159,33 @@ public class UserMainMenu extends javax.swing.JFrame {
         });
         getContentPane().add(SettingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 370, 186, 53));
 
-        WelcomeLabel.setFont(new java.awt.Font("Fira Sans", 3, 18)); // NOI18N
-        WelcomeLabel.setForeground(new java.awt.Color(255, 255, 255));
-        WelcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(WelcomeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 180, 215, 40));
-
-        LogOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Logout.png"))); // NOI18N
-        LogOutButton.setBorderPainted(false);
-        LogOutButton.setContentAreaFilled(false);
-        LogOutButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LogOutButtonMouseClicked(evt);
+        CalculateBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Hitung.png"))); // NOI18N
+        CalculateBtn.setBorderPainted(false);
+        CalculateBtn.setContentAreaFilled(false);
+        CalculateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CalculateBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(LogOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 595, 70, 70));
+        getContentPane().add(CalculateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, 135, 35));
+
+        PriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(PriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 460, 390, 120));
+        getContentPane().add(TujuanField, new org.netbeans.lib.awtextra.AbsoluteConstraints(875, 240, 240, 40));
+
+        TujuanCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Kota-" }));
+        TujuanCombobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TujuanComboboxActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TujuanCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(1115, 240, 90, 40));
+
+        AsalCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Kota-" }));
+        getContentPane().add(AsalCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 100, 40));
+
+        SendPackageBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_SendPackage.png"))); // NOI18N
+        getContentPane().add(SendPackageBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         SearchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Search.png"))); // NOI18N
         SearchButton.setBorderPainted(false);
@@ -151,9 +200,6 @@ public class UserMainMenu extends javax.swing.JFrame {
 
         Vector.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Vector.gif"))); // NOI18N
         getContentPane().add(Vector, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 370, -1, -1));
-
-        Profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Profile.png"))); // NOI18N
-        getContentPane().add(Profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 90, -1, -1));
 
         CekHistoryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_ShippingHistory.png"))); // NOI18N
         CekHistoryButton.setBorderPainted(false);
@@ -192,6 +238,11 @@ public class UserMainMenu extends javax.swing.JFrame {
         UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_Home.png"))); // NOI18N
         getContentPane().add(UserMenuBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        SeeDetailButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_LihatDetail.png"))); // NOI18N
+        SeeDetailButton.setBorderPainted(false);
+        SeeDetailButton.setContentAreaFilled(false);
+        getContentPane().add(SeeDetailButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 640, 154, 78));
+
         jScrollPane1.setViewportView(HistoryList);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 440, 380));
@@ -204,19 +255,19 @@ public class UserMainMenu extends javax.swing.JFrame {
 
     private void CekResiButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CekResiButtonMouseClicked
         if(!cek_resi){
-            ButtonController(false,false,true);
+            ButtonController(false,false,true,false,false);
         }
     }//GEN-LAST:event_CekResiButtonMouseClicked
 
     private void HomeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeButtonMouseClicked
         if(!home_menu){
-            ButtonController(false,true,false);
+            ButtonController(false,true,false,false,false);
         }
     }//GEN-LAST:event_HomeButtonMouseClicked
 
     private void SettingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingButtonMouseClicked
         if(!setting){
-            ButtonController(true,false,false);
+            ButtonController(true,false,false,false,false);
         }
     }//GEN-LAST:event_SettingButtonMouseClicked
 
@@ -253,8 +304,8 @@ public class UserMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_SearchButtonActionPerformed
 
     private void CekHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CekHistoryButtonActionPerformed
-        UpdateState(false,false,false,true);
-        ButtonController(false,false,false);
+        UpdateState(false,false,false,true,false);
+        ButtonController(false,false,false,true,false);
     }//GEN-LAST:event_CekHistoryButtonActionPerformed
 
     private void CekResiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CekResiButtonActionPerformed
@@ -266,18 +317,38 @@ public class UserMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_SearchBarActionPerformed
 
     private void SendPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendPackageButtonActionPerformed
-        // TODO add your handling code here:
+        if(!send){
+            ButtonController(false,false,false,false,true);
+        }
     }//GEN-LAST:event_SendPackageButtonActionPerformed
 
-    private void UpdateState(boolean setting, boolean home, boolean cek, boolean history){
+    private void CalculateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalculateBtnActionPerformed
+        
+    }//GEN-LAST:event_CalculateBtnActionPerformed
+
+    private void TujuanComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TujuanComboboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TujuanComboboxActionPerformed
+
+    public void generateCityCalc(){
+        MapKota = GenerateCity.generateCityMap(MapKota);
+        listkota = GenerateCity.generateCity(listkota);
+        for(int i =0;i<listkota.size();i++){
+            AsalCombobox.addItem(listkota.get(i));
+            TujuanCombobox.addItem(listkota.get(i));
+        }
+    }
+    
+    private void UpdateState(boolean setting, boolean home, boolean cek, boolean history, boolean send){
         this.cek_resi=cek;
         this.home_menu=home;
         this.setting=setting;
         this.history=history;
+        this.send=send;
     }
     
     private void UpdateVisibility(int x){
-        if(x==1){
+        if(x==1){ // Home Mode
             this.UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_Home.png")));
             this.SearchBarBG.setVisible(false);
             this.SearchButton.setVisible(false);
@@ -292,8 +363,24 @@ public class UserMainMenu extends javax.swing.JFrame {
             this.HistoryList.setEnabled(false);
             this.HistoryList.setVisible(false);
             this.UserMenuBG.setVisible(true);
+            this.AsalField.setVisible(false);
+            this.AsalField.setEditable(false);
+            this.TujuanField.setVisible(false);
+            this.TujuanField.setEditable(false);
+            this.TujuanCombobox.setVisible(false);
+            this.TujuanCombobox.setEditable(false);
+            this.SendPackageBG.setVisible(false);
+            this.SendBeratField.setVisible(false);
+            this.SendBeratField.setEditable(false);
+            this.PriceLabel.setVisible(false);
+            this.CalculateBtn.setVisible(false);
+            this.CalculateBtn.setEnabled(false);
+            this.AsalCombobox.setVisible(false);
+            this.AsalCombobox.setEditable(false);
+            this.SeeDetailButton.setVisible(false);
+            this.SeeDetailButton.setEnabled(false);
         }
-        else if(x==2){
+        else if(x==2){ //Cek Resi Mode
             this.UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_CekResi.png")));
             this.SearchBarBG.setVisible(true);
             this.SearchButton.setVisible(true);
@@ -308,8 +395,24 @@ public class UserMainMenu extends javax.swing.JFrame {
             this.HistoryList.setEnabled(false);
             this.HistoryList.setVisible(false);
             this.UserMenuBG.setVisible(true);
+            this.AsalField.setVisible(false);
+            this.AsalField.setEditable(false);
+            this.TujuanField.setVisible(false);
+            this.TujuanField.setEditable(false);
+            this.TujuanCombobox.setVisible(false);
+            this.TujuanCombobox.setEditable(false);
+            this.SendPackageBG.setVisible(false);
+            this.SendBeratField.setVisible(false);
+            this.SendBeratField.setEditable(false);
+            this.PriceLabel.setVisible(false);
+            this.CalculateBtn.setVisible(false);
+            this.CalculateBtn.setEnabled(false);
+            this.AsalCombobox.setVisible(false);
+            this.AsalCombobox.setEditable(false);
+            this.SeeDetailButton.setVisible(false);
+            this.SeeDetailButton.setEnabled(false);
         }
-        else if(x==3){
+        else if(x==3){ //Settings Mode
             this.SearchBarBG.setVisible(false);
             this.SearchButton.setVisible(false);
             this.Vector.setVisible(false);
@@ -323,9 +426,24 @@ public class UserMainMenu extends javax.swing.JFrame {
             this.HistoryList.setEnabled(false);
             this.HistoryList.setVisible(false);
             this.UserMenuBG.setVisible(true);
+            this.AsalField.setVisible(false);
+            this.AsalField.setEditable(false);
+            this.TujuanField.setVisible(false);
+            this.TujuanField.setEditable(false);
+            this.TujuanCombobox.setVisible(false);
+            this.TujuanCombobox.setEditable(false);
+            this.SendPackageBG.setVisible(false);
+            this.SendBeratField.setVisible(false);
+            this.SendBeratField.setEditable(false);
+            this.PriceLabel.setVisible(false);
+            this.CalculateBtn.setVisible(false);
+            this.CalculateBtn.setEnabled(false);
+            this.AsalCombobox.setVisible(false);
+            this.AsalCombobox.setEditable(false);
+            this.SeeDetailButton.setVisible(false);
+            this.SeeDetailButton.setEnabled(false);
         }
-        else if(x==4){
-            this.UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_ShippingHistory.png")));
+        else if(x==4){ //See History Mode
             this.SearchBarBG.setVisible(false);
             this.SearchButton.setVisible(false);
             this.Vector.setVisible(false);
@@ -339,35 +457,97 @@ public class UserMainMenu extends javax.swing.JFrame {
             this.HistoryList.setEnabled(false);
             this.HistoryList.setVisible(false);
             this.UserMenuBG.setVisible(false);
+            this.BGHistory.setVisible(true);
+            this.AsalField.setVisible(false);
+            this.AsalField.setEditable(false);
+            this.TujuanField.setVisible(false);
+            this.TujuanField.setEditable(false);
+            this.TujuanCombobox.setVisible(false);
+            this.TujuanCombobox.setEditable(false);
+            this.SendPackageBG.setVisible(false);
+            this.SendBeratField.setVisible(false);
+            this.SendBeratField.setEditable(false);
+            this.PriceLabel.setVisible(false);
+            this.CalculateBtn.setVisible(false);
+            this.CalculateBtn.setEnabled(false);
+            this.AsalCombobox.setVisible(false);
+            this.AsalCombobox.setEditable(false);
+            this.SeeDetailButton.setVisible(false);
+            this.SeeDetailButton.setEnabled(false);
+            this.SeeDetailButton.setVisible(true);
+            this.SeeDetailButton.setEnabled(true);
+        }
+        else if(x==5){ //Send Package Mode
+            this.SearchBarBG.setVisible(false);
+            this.SearchButton.setVisible(false);
+            this.Vector.setVisible(false);
+            this.SearchBar.setVisible(false);
+            this.SearchBar.setEditable(false);
+            this.SearchButton.setEnabled(false);
+            this.CekHistoryButton.setVisible(false);
+            this.CekHistoryButton.setEnabled(false);
+            this.SendPackageButton.setVisible(false);
+            this.SendPackageButton.setEnabled(false);
+            this.HistoryList.setEnabled(false);
+            this.HistoryList.setVisible(false);
+            this.UserMenuBG.setVisible(false);
+            this.BGHistory.setVisible(false);
+            this.AsalField.setVisible(true);
+            this.AsalField.setEditable(true);
+            this.TujuanField.setVisible(true);
+            this.TujuanField.setEditable(true);
+            this.TujuanCombobox.setVisible(true);
+            this.TujuanCombobox.setEditable(true);
+            this.SendPackageBG.setVisible(true);
+            this.SendBeratField.setVisible(true);
+            this.SendBeratField.setEditable(true);
+            this.PriceLabel.setVisible(true);
+            this.CalculateBtn.setVisible(true);
+            this.CalculateBtn.setEnabled(true);
+            this.AsalCombobox.setVisible(true);
+            this.AsalCombobox.setEditable(true);
+            this.SeeDetailButton.setVisible(true);
+            this.SeeDetailButton.setEnabled(true);
+            this.SeeDetailButton.setVisible(false);
+            this.SeeDetailButton.setEnabled(false);
         }
     }
     
-    private void ButtonController(boolean setting, boolean home, boolean cek){
-        if(setting&&!home&&!cek){
-            UpdateState(setting,home,cek,false);
+    private void ButtonController(boolean setting, boolean home, boolean cek,boolean history, boolean send){
+        if(setting&&!home&&!cek&&!history&&!send){ //Settings Mode
+            UpdateState(setting,home,cek,false,false);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_1.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
+            UpdateVisibility(3);
         }
-        else if(!setting&&home&&!cek){
-            UpdateState(setting,home,cek,false);
+        else if(!setting&&home&&!cek&&!history&&!send){ //Home MOde
+            UpdateState(setting,home,cek,false,false);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_1.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
             UpdateVisibility(1);
         }
-        else if(!setting&&!home&&cek){
-            UpdateState(setting,home,cek,false);
+        else if(!setting&&!home&&cek&&!history&&!send){ //Cek Resi Mode
+            UpdateState(setting,home,cek,false,false);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_1.png")));
             UpdateVisibility(2);
         }
-        else if(!setting&&!home&&!cek){
+        else if(!setting&&!home&&!cek&&history&&!send){ //See History Mode
+            UpdateState(setting,home,cek,history,send);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
             UpdateVisibility(4);
+        }
+        else if(!setting&&!home&&!cek&&!history&&send){ //Send Package Mode
+            UpdateState(setting,home,cek,history,send);
+            this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
+            this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
+            this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
+            UpdateVisibility(5);
         }
     }
     
@@ -407,18 +587,27 @@ public class UserMainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> AsalCombobox;
+    private javax.swing.JTextField AsalField;
     private javax.swing.JLabel BGHistory;
+    private javax.swing.JButton CalculateBtn;
     private javax.swing.JButton CekHistoryButton;
     private javax.swing.JButton CekResiButton;
     private javax.swing.JList<String> HistoryList;
     private javax.swing.JButton HomeButton;
     private javax.swing.JButton LogOutButton;
+    private javax.swing.JLabel PriceLabel;
     private javax.swing.JLabel Profile;
     private javax.swing.JTextField SearchBar;
     private javax.swing.JLabel SearchBarBG;
     private javax.swing.JButton SearchButton;
+    private javax.swing.JButton SeeDetailButton;
+    private javax.swing.JTextField SendBeratField;
+    private javax.swing.JLabel SendPackageBG;
     private javax.swing.JButton SendPackageButton;
     private javax.swing.JButton SettingButton;
+    private javax.swing.JComboBox<String> TujuanCombobox;
+    private javax.swing.JTextField TujuanField;
     private javax.swing.JLabel UserMenuBG;
     private javax.swing.JLabel Vector;
     private javax.swing.JLabel WelcomeLabel;
