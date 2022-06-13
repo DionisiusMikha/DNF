@@ -114,6 +114,11 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 LogOutButtonMouseClicked(evt);
             }
         });
+        LogOutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogOutButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(LogOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 595, 70, 70));
 
         HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_1.png"))); // NOI18N
@@ -329,6 +334,10 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     private void TujuanComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TujuanComboboxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TujuanComboboxActionPerformed
+
+    private void LogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LogOutButtonActionPerformed
 
     public void generateCityCalc(){
         MapKota = GenerateCity.generateCityMap(MapKota);

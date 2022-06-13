@@ -5,6 +5,7 @@
 package dnfapp;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.DefaultListModel;
@@ -46,6 +47,7 @@ public class ListUser extends javax.swing.JFrame{
                 String container = ARRListUser.get(i).getUsername() + " - " + ARRListUser.get(i).getEmail();
                 listModel.addElement(container);
             }
+            Collections.sort(ARRListUser, new SortNamaUser());
             JListUser.setModel(listModel);
         }
     }

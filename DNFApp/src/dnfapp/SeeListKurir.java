@@ -5,6 +5,8 @@
 package dnfapp;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
@@ -14,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author Frans
  */
-public class SeeListKurir extends javax.swing.JFrame {
+public class SeeListKurir extends javax.swing.JFrame{
 
     private HashMap<String, User> userlist = new HashMap<String, User>();
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
@@ -50,6 +52,7 @@ public class SeeListKurir extends javax.swing.JFrame {
             String container = ARRListKurir.get(i).getNama() + " - " + ARRListKurir.get(i).getUsername();
             listModel.addElement(container);
         }
+        Collections.sort(ARRListKurir, new SortNamaKurir());
         JListKurir.setModel(listModel);
     }
 

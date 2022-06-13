@@ -81,7 +81,7 @@ public class ListPengiriman extends javax.swing.JFrame {
             } else if (set.getValue() instanceof Sports && kategoriSports == true) {
                 this.ARRListPackage.add(set.getValue());
                 System.out.println("sports");
-            }
+            } 
         }
     }
 
@@ -273,6 +273,137 @@ public class ListPengiriman extends javax.swing.JFrame {
     private void filterKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterKategoriActionPerformed
         // TODO add your handling code here:
 //        
+         String temp = (String) filterKategori.getSelectedItem();
+         int cek = 0;
+         
+        if (temp.equals("Food and Beverages")) {
+//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
+//            listModel.removeAllElements();
+//            DaftarPengiriman.setModel(listModel);
+            for (int i = 0; i < ARRListPackage.size(); i++) {
+                if(ARRListPackage.get(i) instanceof FnB){
+                    cek = 1;
+                }
+            }
+            if(cek==1){
+                this.kategoriOthers = false;
+                this.kategoriBnF = false;
+                this.kategoriHnC = false;
+                this.kategoriElectronic = false;
+                this.kategoriSports = false;
+                this.kategoriFnB = true;
+                generateElementv2();
+            } else {
+                DaftarPengiriman.removeAll();
+                ARRListPackage.removeAll(ARRListPackage);
+            }
+
+        } else if (temp.equals("Others")) {
+            for (int i = 0; i < ARRListPackage.size(); i++) {
+                if(ARRListPackage.get(i) instanceof Others){
+                    cek = 1;
+                }
+            }
+//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
+//            listModel.removeAllElements();
+//            DaftarPengiriman.setModel(listModel);
+            if(cek==1){
+                this.kategoriOthers = true;
+                this.kategoriBnF = false;
+                this.kategoriHnC = false;
+                this.kategoriElectronic = false;
+                this.kategoriSports = false;
+                this.kategoriFnB = false;
+                generateElementv2();
+            } else {
+                DaftarPengiriman.removeAll();
+                ARRListPackage.removeAll(ARRListPackage);
+            }
+        } else if (temp.equals("Beauty and Fashion")) {
+            for (int i = 0; i < ARRListPackage.size(); i++) {
+                if(ARRListPackage.get(i) instanceof BnF){
+                    cek = 1;
+                }
+            }
+//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
+//            listModel.removeAllElements();
+//            DaftarPengiriman.setModel(listModel);
+            if(cek==1){
+                this.kategoriOthers = false;
+                this.kategoriBnF = true;
+                this.kategoriHnC = false;
+                this.kategoriElectronic = false;
+                this.kategoriSports = false;
+                this.kategoriFnB = false;
+                generateElementv2();
+            } else {
+                DaftarPengiriman.removeAll();
+                ARRListPackage.removeAll(ARRListPackage);
+            }
+        } else if (temp.equals("Hobby and Collections")) {
+            for (int i = 0; i < ARRListPackage.size(); i++) {
+                if(ARRListPackage.get(i) instanceof HnC){
+                    cek = 1;
+                }
+            }
+//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
+//            listModel.removeAllElements();
+//            DaftarPengiriman.setModel(listModel);
+            if(cek==1){
+                this.kategoriHnC = true;
+                this.kategoriOthers = false;
+                this.kategoriBnF = false;
+                this.kategoriElectronic = false;
+                this.kategoriSports = false;
+                this.kategoriFnB = false;
+                generateElementv2();
+            } else {
+                DaftarPengiriman.removeAll();
+                ARRListPackage.removeAll(ARRListPackage);
+            }
+        } else if (temp.equals("Electronic")) {
+            for (int i = 0; i < ARRListPackage.size(); i++) {
+                if(ARRListPackage.get(i) instanceof Electronic){
+                    cek = 1;
+                }
+            }
+//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
+//            listModel.removeAllElements();
+//            DaftarPengiriman.setModel(listModel);
+            if(cek==1){
+                this.kategoriElectronic = true;
+                this.kategoriHnC = false;
+                this.kategoriOthers = false;
+                this.kategoriBnF = false;
+                this.kategoriSports = false;
+                this.kategoriFnB = false;
+                generateElementv2();
+            } else {
+                DaftarPengiriman.removeAll();
+                ARRListPackage.removeAll(ARRListPackage);
+            }
+        } else if (temp.equals("Sports")) {
+            for (int i = 0; i < ARRListPackage.size(); i++) {
+                if(ARRListPackage.get(i) instanceof Sports){
+                    cek = 1;
+                }
+            }
+//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
+//            listModel.removeAllElements();
+//            DaftarPengiriman.setModel(listModel);
+            if(cek==1){
+                this.kategoriSports = true;
+                this.kategoriElectronic = false;
+                this.kategoriHnC = false;
+                this.kategoriOthers = false;
+                this.kategoriBnF = false;
+                this.kategoriFnB = false;
+                generateElementv2();
+            } else {
+                DaftarPengiriman.removeAll();
+                ARRListPackage.removeAll(ARRListPackage);
+            }
+        } 
     }//GEN-LAST:event_filterKategoriActionPerformed
 
     private void filterKategoriMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filterKategoriMouseClicked
@@ -284,75 +415,75 @@ public class ListPengiriman extends javax.swing.JFrame {
 //        filterKategori.addItem("Electronic");
 //        filterKategori.addItem("Sports");
 
-        String temp = (String) filterKategori.getSelectedItem();
-        if (temp.equals("Food and Beverages")) {
-//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
-//            listModel.removeAllElements();
-//            DaftarPengiriman.setModel(listModel);
-            this.kategoriOthers = false;
-            this.kategoriBnF = false;
-            this.kategoriHnC = false;
-            this.kategoriElectronic = false;
-            this.kategoriSports = false;
-            this.kategoriFnB = true;
-            generateElementv2();
-
-        } else if (temp.equals("Others")) {
-//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
-//            listModel.removeAllElements();
-//            DaftarPengiriman.setModel(listModel);
-            this.kategoriOthers = true;
-            this.kategoriBnF = false;
-            this.kategoriHnC = false;
-            this.kategoriElectronic = false;
-            this.kategoriSports = false;
-            this.kategoriFnB = false;
-            generateElementv2();
-        } else if (temp.equals("Beauty and Fashion")) {
-//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
-//            listModel.removeAllElements();
-//            DaftarPengiriman.setModel(listModel);
-            this.kategoriOthers = false;
-            this.kategoriBnF = true;
-            this.kategoriHnC = false;
-            this.kategoriElectronic = false;
-            this.kategoriSports = false;
-            this.kategoriFnB = false;
-            generateElementv2();
-        } else if (temp.equals("Hobby and Collections")) {
-//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
-//            listModel.removeAllElements();
-//            DaftarPengiriman.setModel(listModel);
-            this.kategoriHnC = true;
-            this.kategoriOthers = false;
-            this.kategoriBnF = false;
-            this.kategoriElectronic = false;
-            this.kategoriSports = false;
-            this.kategoriFnB = false;
-            generateElementv2();
-        } else if (temp.equals("Electronic")) {
-//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
-//            listModel.removeAllElements();
-//            DaftarPengiriman.setModel(listModel);
-            this.kategoriElectronic = true;
-            this.kategoriHnC = false;
-            this.kategoriOthers = false;
-            this.kategoriBnF = false;
-            this.kategoriSports = false;
-            this.kategoriFnB = false;
-            generateElementv2();
-        } else if (temp.equals("Sports")) {
-//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
-//            listModel.removeAllElements();
-//            DaftarPengiriman.setModel(listModel);
-            this.kategoriSports = true;
-            this.kategoriElectronic = false;
-            this.kategoriHnC = false;
-            this.kategoriOthers = false;
-            this.kategoriBnF = false;
-            this.kategoriFnB = false;
-            generateElementv2();
-        }
+//        String temp = (String) filterKategori.getSelectedItem();
+//        if (temp.equals("Food and Beverages")) {
+////            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
+////            listModel.removeAllElements();
+////            DaftarPengiriman.setModel(listModel);
+//            this.kategoriOthers = false;
+//            this.kategoriBnF = false;
+//            this.kategoriHnC = false;
+//            this.kategoriElectronic = false;
+//            this.kategoriSports = false;
+//            this.kategoriFnB = true;
+//            generateElementv2();
+//
+//        } else if (temp.equals("Others")) {
+////            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
+////            listModel.removeAllElements();
+////            DaftarPengiriman.setModel(listModel);
+//            this.kategoriOthers = true;
+//            this.kategoriBnF = false;
+//            this.kategoriHnC = false;
+//            this.kategoriElectronic = false;
+//            this.kategoriSports = false;
+//            this.kategoriFnB = false;
+//            generateElementv2();
+//        } else if (temp.equals("Beauty and Fashion")) {
+////            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
+////            listModel.removeAllElements();
+////            DaftarPengiriman.setModel(listModel);
+//            this.kategoriOthers = false;
+//            this.kategoriBnF = true;
+//            this.kategoriHnC = false;
+//            this.kategoriElectronic = false;
+//            this.kategoriSports = false;
+//            this.kategoriFnB = false;
+//            generateElementv2();
+//        } else if (temp.equals("Hobby and Collections")) {
+////            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
+////            listModel.removeAllElements();
+////            DaftarPengiriman.setModel(listModel);
+//            this.kategoriHnC = true;
+//            this.kategoriOthers = false;
+//            this.kategoriBnF = false;
+//            this.kategoriElectronic = false;
+//            this.kategoriSports = false;
+//            this.kategoriFnB = false;
+//            generateElementv2();
+//        } else if (temp.equals("Electronic")) {
+////            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
+////            listModel.removeAllElements();
+////            DaftarPengiriman.setModel(listModel);
+//            this.kategoriElectronic = true;
+//            this.kategoriHnC = false;
+//            this.kategoriOthers = false;
+//            this.kategoriBnF = false;
+//            this.kategoriSports = false;
+//            this.kategoriFnB = false;
+//            generateElementv2();
+//        } else if (temp.equals("Sports")) {
+////            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
+////            listModel.removeAllElements();
+////            DaftarPengiriman.setModel(listModel);
+//            this.kategoriSports = true;
+//            this.kategoriElectronic = false;
+//            this.kategoriHnC = false;
+//            this.kategoriOthers = false;
+//            this.kategoriBnF = false;
+//            this.kategoriFnB = false;
+//            generateElementv2();
+//        }
     }//GEN-LAST:event_filterKategoriMouseClicked
 
     /**

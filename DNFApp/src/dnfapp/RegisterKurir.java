@@ -95,7 +95,7 @@ public class RegisterKurir extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 726, -1, -1));
 
         NamaKurir.setBackground(new java.awt.Color(62, 97, 155));
-        NamaKurir.setFont(new java.awt.Font("Dialog", 3, 16)); // NOI18N
+        NamaKurir.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         NamaKurir.setForeground(new java.awt.Color(255, 255, 255));
         NamaKurir.setBorder(null);
         NamaKurir.setCaretColor(new Color(255,255,255));
@@ -116,7 +116,7 @@ public class RegisterKurir extends javax.swing.JFrame {
         getContentPane().add(NamaKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 492, 30));
 
         UsernameKurir.setBackground(new java.awt.Color(62, 97, 155));
-        UsernameKurir.setFont(new java.awt.Font("Dialog", 3, 16)); // NOI18N
+        UsernameKurir.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         UsernameKurir.setForeground(new java.awt.Color(255, 255, 255));
         UsernameKurir.setBorder(null);
         UsernameKurir.setCaretColor(new Color(255,255,255));
