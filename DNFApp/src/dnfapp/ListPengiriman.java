@@ -15,7 +15,7 @@ import javax.swing.DefaultListModel;
  * @author Frans
  */
 public class ListPengiriman extends javax.swing.JFrame {
-
+    
     private HashMap<String, User> userlist = new HashMap<String, User>();
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
@@ -35,7 +35,7 @@ public class ListPengiriman extends javax.swing.JFrame {
     public ListPengiriman() {
         initComponents();
     }
-
+    
     public ListPengiriman(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir) {
         initComponents();
         this.userlist = userlist;
@@ -51,15 +51,15 @@ public class ListPengiriman extends javax.swing.JFrame {
         generateElement();
         inputKategoriBox();
     }
-
+    
     private void generateList() {
         for (Map.Entry<String, Package> set : DeliveryList.entrySet()) {
             this.ARRListPackage.add(set.getValue());
         }
     }
-
+    
     private void generateListv2() {
-
+        
         DaftarPengiriman.removeAll();
         ARRListPackage.removeAll(ARRListPackage);
         for (Map.Entry<String, Package> set : DeliveryList.entrySet()) {
@@ -81,10 +81,10 @@ public class ListPengiriman extends javax.swing.JFrame {
             } else if (set.getValue() instanceof Sports && kategoriSports == true) {
                 this.ARRListPackage.add(set.getValue());
                 System.out.println("sports");
-            } 
+            }
         }
     }
-
+    
     private void generateElement() {
         generateList();
         if (this.ARRListPackage.size() != 0) {
@@ -96,9 +96,9 @@ public class ListPengiriman extends javax.swing.JFrame {
             DaftarPengiriman.setModel(listModel);
         }
     }
-
+    
     private void generateElementv2() {
-
+        
         generateListv2();
         if (this.ARRListPackage.size() != 0) {
             DefaultListModel listModel = new DefaultListModel();
@@ -107,18 +107,23 @@ public class ListPengiriman extends javax.swing.JFrame {
                 listModel.addElement(container);
             }
             DaftarPengiriman.setModel(listModel);
+        } else if (this.ARRListPackage.size() == 0) {
+            DefaultListModel listModel = new DefaultListModel();
+            listModel.removeAllElements();
+            DaftarPengiriman.setModel(listModel);
+            ARRListPackage.removeAll(ARRListPackage);
         }
     }
-
+    
     private void inputKategoriBox() {
-
+        
         filterKategori.addItem("Others");
         filterKategori.addItem("Food and Beverages");
         filterKategori.addItem("Beauty and Fashion");
         filterKategori.addItem("Hobby and Collections");
         filterKategori.addItem("Electronic");
         filterKategori.addItem("Sports");
-
+        
     }
 
     /**
@@ -259,7 +264,7 @@ public class ListPengiriman extends javax.swing.JFrame {
 //            ketBarang.setText(text);
         }
     }//GEN-LAST:event_DaftarPengirimanMouseClicked
-
+    
     private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButtonActionPerformed
         AdminMenu AM = new AdminMenu(userlist, DeliveryList, ListKurir, usedEmail);
         dispose();
@@ -269,143 +274,94 @@ public class ListPengiriman extends javax.swing.JFrame {
         AM.setLocationRelativeTo(null);
         AM.setDefaultCloseOperation(AdminMenu.EXIT_ON_CLOSE);
     }//GEN-LAST:event_ExitButtonActionPerformed
-
+    
     private void filterKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterKategoriActionPerformed
         // TODO add your handling code here:
 //        
-         String temp = (String) filterKategori.getSelectedItem();
-         int cek = 0;
-         
+        String temp = (String) filterKategori.getSelectedItem();
+        int cek = 0;
+        
         if (temp.equals("Food and Beverages")) {
 //            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
 //            listModel.removeAllElements();
 //            DaftarPengiriman.setModel(listModel);
-            for (int i = 0; i < ARRListPackage.size(); i++) {
-                if(ARRListPackage.get(i) instanceof FnB){
-                    cek = 1;
-                }
-            }
-            if(cek==1){
-                this.kategoriOthers = false;
-                this.kategoriBnF = false;
-                this.kategoriHnC = false;
-                this.kategoriElectronic = false;
-                this.kategoriSports = false;
-                this.kategoriFnB = true;
-                generateElementv2();
-            } else {
-                DaftarPengiriman.removeAll();
-                ARRListPackage.removeAll(ARRListPackage);
-            }
 
+            this.kategoriOthers = false;
+            this.kategoriBnF = false;
+            this.kategoriHnC = false;
+            this.kategoriElectronic = false;
+            this.kategoriSports = false;
+            this.kategoriFnB = true;
+            generateElementv2();
+            
         } else if (temp.equals("Others")) {
-            for (int i = 0; i < ARRListPackage.size(); i++) {
-                if(ARRListPackage.get(i) instanceof Others){
-                    cek = 1;
-                }
-            }
-//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
-//            listModel.removeAllElements();
-//            DaftarPengiriman.setModel(listModel);
-            if(cek==1){
-                this.kategoriOthers = true;
-                this.kategoriBnF = false;
-                this.kategoriHnC = false;
-                this.kategoriElectronic = false;
-                this.kategoriSports = false;
-                this.kategoriFnB = false;
-                generateElementv2();
-            } else {
-                DaftarPengiriman.removeAll();
-                ARRListPackage.removeAll(ARRListPackage);
-            }
-        } else if (temp.equals("Beauty and Fashion")) {
-            for (int i = 0; i < ARRListPackage.size(); i++) {
-                if(ARRListPackage.get(i) instanceof BnF){
-                    cek = 1;
-                }
-            }
-//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
-//            listModel.removeAllElements();
-//            DaftarPengiriman.setModel(listModel);
-            if(cek==1){
-                this.kategoriOthers = false;
-                this.kategoriBnF = true;
-                this.kategoriHnC = false;
-                this.kategoriElectronic = false;
-                this.kategoriSports = false;
-                this.kategoriFnB = false;
-                generateElementv2();
-            } else {
-                DaftarPengiriman.removeAll();
-                ARRListPackage.removeAll(ARRListPackage);
-            }
-        } else if (temp.equals("Hobby and Collections")) {
-            for (int i = 0; i < ARRListPackage.size(); i++) {
-                if(ARRListPackage.get(i) instanceof HnC){
-                    cek = 1;
-                }
-            }
-//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
-//            listModel.removeAllElements();
-//            DaftarPengiriman.setModel(listModel);
-            if(cek==1){
-                this.kategoriHnC = true;
-                this.kategoriOthers = false;
-                this.kategoriBnF = false;
-                this.kategoriElectronic = false;
-                this.kategoriSports = false;
-                this.kategoriFnB = false;
-                generateElementv2();
-            } else {
-                DaftarPengiriman.removeAll();
-                ARRListPackage.removeAll(ARRListPackage);
-            }
-        } else if (temp.equals("Electronic")) {
-            for (int i = 0; i < ARRListPackage.size(); i++) {
-                if(ARRListPackage.get(i) instanceof Electronic){
-                    cek = 1;
-                }
-            }
-//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
-//            listModel.removeAllElements();
-//            DaftarPengiriman.setModel(listModel);
-            if(cek==1){
-                this.kategoriElectronic = true;
-                this.kategoriHnC = false;
-                this.kategoriOthers = false;
-                this.kategoriBnF = false;
-                this.kategoriSports = false;
-                this.kategoriFnB = false;
-                generateElementv2();
-            } else {
-                DaftarPengiriman.removeAll();
-                ARRListPackage.removeAll(ARRListPackage);
-            }
-        } else if (temp.equals("Sports")) {
-            for (int i = 0; i < ARRListPackage.size(); i++) {
-                if(ARRListPackage.get(i) instanceof Sports){
-                    cek = 1;
-                }
-            }
-//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
-//            listModel.removeAllElements();
-//            DaftarPengiriman.setModel(listModel);
-            if(cek==1){
-                this.kategoriSports = true;
-                this.kategoriElectronic = false;
-                this.kategoriHnC = false;
-                this.kategoriOthers = false;
-                this.kategoriBnF = false;
-                this.kategoriFnB = false;
-                generateElementv2();
-            } else {
-                DaftarPengiriman.removeAll();
-                ARRListPackage.removeAll(ARRListPackage);
-            }
-        } 
-    }//GEN-LAST:event_filterKategoriActionPerformed
 
+//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
+//            listModel.removeAllElements();
+//            DaftarPengiriman.setModel(listModel);
+            this.kategoriOthers = true;
+            this.kategoriBnF = false;
+            this.kategoriHnC = false;
+            this.kategoriElectronic = false;
+            this.kategoriSports = false;
+            this.kategoriFnB = false;
+            generateElementv2();
+            
+        } else if (temp.equals("Beauty and Fashion")) {
+
+//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
+//            listModel.removeAllElements();
+//            DaftarPengiriman.setModel(listModel);
+            this.kategoriOthers = false;
+            this.kategoriBnF = true;
+            this.kategoriHnC = false;
+            this.kategoriElectronic = false;
+            this.kategoriSports = false;
+            this.kategoriFnB = false;
+            generateElementv2();
+            
+        } else if (temp.equals("Hobby and Collections")) {
+
+//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
+//            listModel.removeAllElements();
+//            DaftarPengiriman.setModel(listModel);
+            this.kategoriHnC = true;
+            this.kategoriOthers = false;
+            this.kategoriBnF = false;
+            this.kategoriElectronic = false;
+            this.kategoriSports = false;
+            this.kategoriFnB = false;
+            generateElementv2();
+            
+        } else if (temp.equals("Electronic")) {
+
+//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
+//            listModel.removeAllElements();
+//            DaftarPengiriman.setModel(listModel);
+            this.kategoriElectronic = true;
+            this.kategoriHnC = false;
+            this.kategoriOthers = false;
+            this.kategoriBnF = false;
+            this.kategoriSports = false;
+            this.kategoriFnB = false;
+            generateElementv2();
+            
+        } else if (temp.equals("Sports")) {
+
+//            DefaultListModel listModel = (DefaultListModel) DaftarPengiriman.getModel();
+//            listModel.removeAllElements();
+//            DaftarPengiriman.setModel(listModel);
+            this.kategoriSports = true;
+            this.kategoriElectronic = false;
+            this.kategoriHnC = false;
+            this.kategoriOthers = false;
+            this.kategoriBnF = false;
+            this.kategoriFnB = false;
+            generateElementv2();
+            
+        }
+    }//GEN-LAST:event_filterKategoriActionPerformed
+    
     private void filterKategoriMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filterKategoriMouseClicked
         // TODO add your handling code here:
 //        filterKategori.addItem("Others");

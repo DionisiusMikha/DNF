@@ -26,16 +26,16 @@ public class ListPaketKurir extends javax.swing.JFrame {
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
     private ArrayList<Package> ARRPackageList = new ArrayList<>();
-    
+
     //private Generated HashMaps&ArrayList for City Index
     private HashMap<String, Kota> MapKota = new HashMap<String, Kota>();
     private ArrayList<String> listkota = new ArrayList<>();
-    
+
     private void generateElement() {
         generate();
         DefaultListModel listModel = new DefaultListModel();
         for (int i = 0; i < ARRPackageList.size(); i++) {
-            String container = ARRPackageList.get(i).getResi() + ARRPackageList.get(i).getReceiver() + " - " + ARRPackageList.get(i).getDestination();
+            String container = ARRPackageList.get(i).getResi() + " - " + ARRPackageList.get(i).getReceiver() + " - " + ARRPackageList.get(i).getDestination();
             listModel.addElement(container);
         }
         listPaket.setModel(listModel);
@@ -47,33 +47,31 @@ public class ListPaketKurir extends javax.swing.JFrame {
         }
         System.out.println(ARRPackageList.get(0));
     }
-    
-     public ListPaketKurir() {
+
+    public ListPaketKurir() {
         initComponents();
         bgListPaket.requestFocus();
         generateElement();
-     }
-     
-    public ListPaketKurir(HashMap<String, User> userlist, HashMap<String, String> usedEmail){
+    }
+
+    public ListPaketKurir(HashMap<String, User> userlist, HashMap<String, String> usedEmail) {
         initComponents();
-        this.userlist=userlist;
-        this.usedEmail=usedEmail;
+        this.userlist = userlist;
+        this.usedEmail = usedEmail;
         generateElement();
     }
-    
-    public ListPaketKurir(HashMap<String, User> userlist,HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList,  HashMap<String, Kurir> ListKurir, Kurir currentKurir){
+
+    public ListPaketKurir(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir, Kurir currentKurir) {
         initComponents();
-        this.userlist=userlist;
-        this.usedEmail=usedEmail;
-        this.DeliveryList=DeliveryList;
-        this.ListKurir=ListKurir;
-        this.currentKurir=currentKurir;
+        this.userlist = userlist;
+        this.usedEmail = usedEmail;
+        this.DeliveryList = DeliveryList;
+        this.ListKurir = ListKurir;
+        this.currentKurir = currentKurir;
         this.setResizable(false);
         generateElement();
         bgListPaket.requestFocus();
     }
-    
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,22 +99,42 @@ public class ListPaketKurir extends javax.swing.JFrame {
         namaPengirim.setBackground(new java.awt.Color(62, 97, 155));
         namaPengirim.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         namaPengirim.setBorder(null);
+        namaPengirim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                namaPengirimActionPerformed(evt);
+            }
+        });
         jPanel1.add(namaPengirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 250, 270, -1));
 
         alamatPengirim.setBackground(new java.awt.Color(62, 97, 155));
         alamatPengirim.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         alamatPengirim.setBorder(null);
+        alamatPengirim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alamatPengirimActionPerformed(evt);
+            }
+        });
         jPanel1.add(alamatPengirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 310, 260, -1));
 
         namaPenerima.setBackground(new java.awt.Color(62, 97, 155));
         namaPenerima.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         namaPenerima.setBorder(null);
+        namaPenerima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                namaPenerimaActionPerformed(evt);
+            }
+        });
         jPanel1.add(namaPenerima, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 370, 270, -1));
 
         alamatPenerima.setBackground(new java.awt.Color(62, 97, 155));
         alamatPenerima.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         alamatPenerima.setBorder(null);
-        jPanel1.add(alamatPenerima, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, 260, -1));
+        alamatPenerima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alamatPenerimaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(alamatPenerima, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 431, 260, 20));
 
         btnKluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5_minisize.png"))); // NOI18N
         btnKluar.setBorderPainted(false);
@@ -129,6 +147,11 @@ public class ListPaketKurir extends javax.swing.JFrame {
         jPanel1.add(btnKluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 510, -1, -1));
 
         listPaket.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        listPaket.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listPaketMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(listPaket);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 400, 380));
@@ -160,6 +183,32 @@ public class ListPaketKurir extends javax.swing.JFrame {
         LM.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
         LM.setResizable(false);
     }//GEN-LAST:event_btnKluarMouseClicked
+
+    private void listPaketMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listPaketMouseClicked
+        // TODO add your handling code here:
+        int SelectedObj = listPaket.getSelectedIndex();
+        namaPenerima.setText(ARRPackageList.get(SelectedObj).getReceiver());
+        namaPengirim.setText(ARRPackageList.get(SelectedObj).getSender());
+        alamatPengirim.setText(ARRPackageList.get(SelectedObj).getFrom());
+        alamatPenerima.setText(ARRPackageList.get(SelectedObj).getDestination());
+
+    }//GEN-LAST:event_listPaketMouseClicked
+
+    private void namaPengirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaPengirimActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_namaPengirimActionPerformed
+
+    private void alamatPengirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alamatPengirimActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alamatPengirimActionPerformed
+
+    private void namaPenerimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaPenerimaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_namaPenerimaActionPerformed
+
+    private void alamatPenerimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alamatPenerimaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alamatPenerimaActionPerformed
 
     /**
      * @param args the command line arguments
