@@ -85,11 +85,12 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         TujuanField = new javax.swing.JTextField();
         TujuanCombobox = new javax.swing.JComboBox<>();
         AsalCombobox = new javax.swing.JComboBox<>();
+        PriceCalcButton = new javax.swing.JButton();
+        CekHistoryButton = new javax.swing.JButton();
+        SendPackageButton = new javax.swing.JButton();
         SendPackageBG = new javax.swing.JLabel();
         SearchButton = new javax.swing.JButton();
         Vector = new javax.swing.JLabel();
-        CekHistoryButton = new javax.swing.JButton();
-        SendPackageButton = new javax.swing.JButton();
         SearchBar = new javax.swing.JTextField();
         SearchBarBG = new javax.swing.JLabel();
         UserMenuBG = new javax.swing.JLabel();
@@ -189,6 +190,36 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         AsalCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Kota-" }));
         getContentPane().add(AsalCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 100, 40));
 
+        PriceCalcButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CalcCost.png"))); // NOI18N
+        PriceCalcButton.setBorderPainted(false);
+        PriceCalcButton.setContentAreaFilled(false);
+        PriceCalcButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PriceCalcButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PriceCalcButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 450, 383, 145));
+
+        CekHistoryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_ShippingHistory.png"))); // NOI18N
+        CekHistoryButton.setBorderPainted(false);
+        CekHistoryButton.setContentAreaFilled(false);
+        CekHistoryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CekHistoryButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CekHistoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 380, 150));
+
+        SendPackageButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage.png"))); // NOI18N
+        SendPackageButton.setBorderPainted(false);
+        SendPackageButton.setContentAreaFilled(false);
+        SendPackageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SendPackageButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(SendPackageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 380, 150));
+
         SendPackageBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_SendPackage.png"))); // NOI18N
         getContentPane().add(SendPackageBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
@@ -205,26 +236,6 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
 
         Vector.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Vector.gif"))); // NOI18N
         getContentPane().add(Vector, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 370, -1, -1));
-
-        CekHistoryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_ShippingHistory.png"))); // NOI18N
-        CekHistoryButton.setBorderPainted(false);
-        CekHistoryButton.setContentAreaFilled(false);
-        CekHistoryButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CekHistoryButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(CekHistoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 380, 150));
-
-        SendPackageButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage.png"))); // NOI18N
-        SendPackageButton.setBorderPainted(false);
-        SendPackageButton.setContentAreaFilled(false);
-        SendPackageButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SendPackageButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(SendPackageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 380, 150));
 
         SearchBar.setFont(new java.awt.Font("Fira Sans", 1, 20)); // NOI18N
         SearchBar.setToolTipText("");
@@ -338,6 +349,10 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     private void LogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_LogOutButtonActionPerformed
+
+    private void PriceCalcButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceCalcButtonActionPerformed
+        
+    }//GEN-LAST:event_PriceCalcButtonActionPerformed
 
     public void generateCityCalc(){
         MapKota = GenerateCity.generateCityMap(MapKota);
@@ -605,6 +620,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     private javax.swing.JList<String> HistoryList;
     private javax.swing.JButton HomeButton;
     private javax.swing.JButton LogOutButton;
+    private javax.swing.JButton PriceCalcButton;
     private javax.swing.JLabel PriceLabel;
     private javax.swing.JLabel Profile;
     private javax.swing.JTextField SearchBar;

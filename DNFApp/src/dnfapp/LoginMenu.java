@@ -265,9 +265,7 @@ public class LoginMenu extends javax.swing.JFrame {
                 adminMenu.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
                 adminMenu.setResizable(false);
             } else { //user/ kurir
-                System.out.println("DUARRRRAAAAAAAAA");
                 if(ListKurir.containsKey(logUsername)){ //kurir, ex: kurir01
-                    System.out.println("DUARRRRBBBBBBBBB");
                     KurirMainMenu KurirMenu = new KurirMainMenu(userlist, usedEmail, DeliveryList,ListKurir,loggedAsKurir);
                     dispose();
                     KurirMenu.setVisible(true);
@@ -276,7 +274,6 @@ public class LoginMenu extends javax.swing.JFrame {
                     KurirMenu.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
                     KurirMenu.setResizable(false);
                 } else { //user
-                    System.out.println("DUARRRRCCCCCC");
                     UserMainMenu UserMenu = new UserMainMenu(userlist, usedEmail, DeliveryList,ListKurir,loggedAs);
                     dispose();
                     UserMenu.setVisible(true);
