@@ -20,6 +20,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     private boolean setting;
     private boolean history;
     private boolean send;
+    private boolean calc;
     //current user obj
     private User currentUser;
     //HashMaps to Pass.
@@ -59,7 +60,8 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         this.setting=false;
         this.history=false;
         this.send=false;
-        ButtonController(false,true,false,false,false);
+        this.calc=false;
+        ButtonController(false,true,false,false,false,false);
         generateCityCalc();
     }
 
@@ -74,6 +76,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
 
         Profile = new javax.swing.JLabel();
         LogOutButton = new javax.swing.JButton();
+        KirimButton = new javax.swing.JButton();
         HomeButton = new javax.swing.JButton();
         WelcomeLabel = new javax.swing.JLabel();
         SendBeratField = new javax.swing.JTextField();
@@ -85,6 +88,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         TujuanField = new javax.swing.JTextField();
         TujuanCombobox = new javax.swing.JComboBox<>();
         AsalCombobox = new javax.swing.JComboBox<>();
+        CostCalcBG = new javax.swing.JLabel();
         PriceCalcButton = new javax.swing.JButton();
         CekHistoryButton = new javax.swing.JButton();
         SendPackageButton = new javax.swing.JButton();
@@ -121,6 +125,16 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
             }
         });
         getContentPane().add(LogOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 595, 70, 70));
+
+        KirimButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Kirim.png"))); // NOI18N
+        KirimButton.setBorderPainted(false);
+        KirimButton.setContentAreaFilled(false);
+        KirimButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                KirimButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(KirimButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 610, 135, 35));
 
         HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_1.png"))); // NOI18N
         HomeButton.setBorderPainted(false);
@@ -189,6 +203,9 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
 
         AsalCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Kota-" }));
         getContentPane().add(AsalCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 100, 40));
+
+        CostCalcBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_CalcCost.png"))); // NOI18N
+        getContentPane().add(CostCalcBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         PriceCalcButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CalcCost.png"))); // NOI18N
         PriceCalcButton.setBorderPainted(false);
@@ -271,19 +288,19 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
 
     private void CekResiButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CekResiButtonMouseClicked
         if(!cek_resi){
-            ButtonController(false,false,true,false,false);
+            ButtonController(false,false,true,false,false,false);
         }
     }//GEN-LAST:event_CekResiButtonMouseClicked
 
     private void HomeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeButtonMouseClicked
         if(!home_menu){
-            ButtonController(false,true,false,false,false);
+            ButtonController(false,true,false,false,false,false);
         }
     }//GEN-LAST:event_HomeButtonMouseClicked
 
     private void SettingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingButtonMouseClicked
         if(!setting){
-            ButtonController(true,false,false,false,false);
+            ButtonController(true,false,false,false,false,false);
         }
     }//GEN-LAST:event_SettingButtonMouseClicked
 
@@ -320,8 +337,8 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     }//GEN-LAST:event_SearchButtonActionPerformed
 
     private void CekHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CekHistoryButtonActionPerformed
-        UpdateState(false,false,false,true,false);
-        ButtonController(false,false,false,true,false);
+        UpdateState(false,false,false,true,false,false);
+        ButtonController(false,false,false,true,false,false);
     }//GEN-LAST:event_CekHistoryButtonActionPerformed
 
     private void CekResiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CekResiButtonActionPerformed
@@ -334,12 +351,42 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
 
     private void SendPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendPackageButtonActionPerformed
         if(!send){
-            ButtonController(false,false,false,false,true);
+            ButtonController(false,false,false,false,true,false);
         }
     }//GEN-LAST:event_SendPackageButtonActionPerformed
 
     private void CalculateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalculateBtnActionPerformed
-        
+        try {
+            Kota A = MapKota.get(listkota.get(AsalCombobox.getSelectedIndex()));
+            Kota B = MapKota.get(listkota.get(TujuanCombobox.getSelectedIndex()));
+            double weight = Integer.parseInt(SendBeratField.getText());
+            int price = CityCalc.CalcHarga(A, B, weight);
+            PriceLabel.setText("Rp. "+Integer.toString(price));
+            if(AsalCombobox.getSelectedIndex()==0){
+                throw new Exception("Tolong masukkan Kota Asal yang valid.");
+            }
+            else if(TujuanCombobox.getSelectedIndex()==0){
+                throw new Exception("Tolong masukkan Kota Tujuan yang valid.");
+            }
+            else if(weight==0.0){
+                throw new Exception("Berat Tidak bisa 0 Kg.");
+            }
+            else{
+                if(send){
+                    KirimButton.setVisible(true);
+                    KirimButton.setEnabled(true);
+                }
+            }
+        } catch (Exception e){
+            String AlamatAsal = AsalField.getText();
+            String TujuanAsal = TujuanField.getText();
+            if(AlamatAsal.equals("")||TujuanAsal.equals("")){
+                JOptionPane.showMessageDialog(null, "Input Alamat Invalid!", "DNF App", 2);
+            }else{
+                System.out.println(e.getMessage()); //debugging purposes.
+                JOptionPane.showMessageDialog(null, e.getMessage(), "DNF App", 2);
+            }
+        } 
     }//GEN-LAST:event_CalculateBtnActionPerformed
 
     private void TujuanComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TujuanComboboxActionPerformed
@@ -351,8 +398,16 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     }//GEN-LAST:event_LogOutButtonActionPerformed
 
     private void PriceCalcButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceCalcButtonActionPerformed
-        
+        if(!calc){
+            ButtonController(false,false,false,false,false,true);
+        }
     }//GEN-LAST:event_PriceCalcButtonActionPerformed
+
+    private void KirimButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KirimButtonActionPerformed
+        String alamatAsal = AsalField.getText()+", "+listkota.get(AsalCombobox.getSelectedIndex());
+        String alamatTujuan = AsalField.getText()+", "+listkota.get(TujuanCombobox.getSelectedIndex());
+        
+    }//GEN-LAST:event_KirimButtonActionPerformed
 
     public void generateCityCalc(){
         MapKota = GenerateCity.generateCityMap(MapKota);
@@ -363,215 +418,294 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         }
     }
     
-    private void UpdateState(boolean setting, boolean home, boolean cek, boolean history, boolean send){
+    private void UpdateState(boolean setting, boolean home, boolean cek, boolean history, boolean send, boolean calc){
         this.cek_resi=cek;
         this.home_menu=home;
         this.setting=setting;
         this.history=history;
         this.send=send;
+        this.calc=calc;
     }
     
     private void UpdateVisibility(int x){
-        if(x==1){ // Home Mode
-            this.UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_Home.png")));
-            this.SearchBarBG.setVisible(false);
-            this.SearchButton.setVisible(false);
-            this.Vector.setVisible(true);
-            this.SearchBar.setVisible(false);
-            this.SearchBar.setEditable(false);
-            this.SearchButton.setEnabled(false);
-            this.CekHistoryButton.setVisible(true);
-            this.CekHistoryButton.setEnabled(true);
-            this.SendPackageButton.setVisible(true);
-            this.SendPackageButton.setEnabled(true);
-            this.HistoryList.setEnabled(false);
-            this.HistoryList.setVisible(false);
-            this.UserMenuBG.setVisible(true);
-            this.AsalField.setVisible(false);
-            this.AsalField.setEditable(false);
-            this.TujuanField.setVisible(false);
-            this.TujuanField.setEditable(false);
-            this.TujuanCombobox.setVisible(false);
-            this.TujuanCombobox.setEditable(false);
-            this.SendPackageBG.setVisible(false);
-            this.SendBeratField.setVisible(false);
-            this.SendBeratField.setEditable(false);
-            this.PriceLabel.setVisible(false);
-            this.CalculateBtn.setVisible(false);
-            this.CalculateBtn.setEnabled(false);
-            this.AsalCombobox.setVisible(false);
-            this.AsalCombobox.setEditable(false);
-            this.SeeDetailButton.setVisible(false);
-            this.SeeDetailButton.setEnabled(false);
-        }
-        else if(x==2){ //Cek Resi Mode
-            this.UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_CekResi.png")));
-            this.SearchBarBG.setVisible(true);
-            this.SearchButton.setVisible(true);
-            this.Vector.setVisible(false);
-            this.SearchBar.setVisible(true);
-            this.SearchBar.setEditable(true);
-            this.SearchButton.setEnabled(true);
-            this.CekHistoryButton.setVisible(false);
-            this.CekHistoryButton.setEnabled(false);
-            this.SendPackageButton.setVisible(false);
-            this.SendPackageButton.setEnabled(false);
-            this.HistoryList.setEnabled(false);
-            this.HistoryList.setVisible(false);
-            this.UserMenuBG.setVisible(true);
-            this.AsalField.setVisible(false);
-            this.AsalField.setEditable(false);
-            this.TujuanField.setVisible(false);
-            this.TujuanField.setEditable(false);
-            this.TujuanCombobox.setVisible(false);
-            this.TujuanCombobox.setEditable(false);
-            this.SendPackageBG.setVisible(false);
-            this.SendBeratField.setVisible(false);
-            this.SendBeratField.setEditable(false);
-            this.PriceLabel.setVisible(false);
-            this.CalculateBtn.setVisible(false);
-            this.CalculateBtn.setEnabled(false);
-            this.AsalCombobox.setVisible(false);
-            this.AsalCombobox.setEditable(false);
-            this.SeeDetailButton.setVisible(false);
-            this.SeeDetailButton.setEnabled(false);
-        }
-        else if(x==3){ //Settings Mode
-            this.SearchBarBG.setVisible(false);
-            this.SearchButton.setVisible(false);
-            this.Vector.setVisible(false);
-            this.SearchBar.setVisible(false);
-            this.SearchBar.setEditable(false);
-            this.SearchButton.setEnabled(false);
-            this.CekHistoryButton.setVisible(false);
-            this.CekHistoryButton.setEnabled(false);
-            this.SendPackageButton.setVisible(false);
-            this.SendPackageButton.setEnabled(false);
-            this.HistoryList.setEnabled(false);
-            this.HistoryList.setVisible(false);
-            this.UserMenuBG.setVisible(true);
-            this.AsalField.setVisible(false);
-            this.AsalField.setEditable(false);
-            this.TujuanField.setVisible(false);
-            this.TujuanField.setEditable(false);
-            this.TujuanCombobox.setVisible(false);
-            this.TujuanCombobox.setEditable(false);
-            this.SendPackageBG.setVisible(false);
-            this.SendBeratField.setVisible(false);
-            this.SendBeratField.setEditable(false);
-            this.PriceLabel.setVisible(false);
-            this.CalculateBtn.setVisible(false);
-            this.CalculateBtn.setEnabled(false);
-            this.AsalCombobox.setVisible(false);
-            this.AsalCombobox.setEditable(false);
-            this.SeeDetailButton.setVisible(false);
-            this.SeeDetailButton.setEnabled(false);
-        }
-        else if(x==4){ //See History Mode
-            this.SearchBarBG.setVisible(false);
-            this.SearchButton.setVisible(false);
-            this.Vector.setVisible(false);
-            this.SearchBar.setVisible(false);
-            this.SearchBar.setEditable(false);
-            this.SearchButton.setEnabled(false);
-            this.CekHistoryButton.setVisible(false);
-            this.CekHistoryButton.setEnabled(false);
-            this.SendPackageButton.setVisible(false);
-            this.SendPackageButton.setEnabled(false);
-            this.HistoryList.setEnabled(false);
-            this.HistoryList.setVisible(false);
-            this.UserMenuBG.setVisible(false);
-            this.BGHistory.setVisible(true);
-            this.AsalField.setVisible(false);
-            this.AsalField.setEditable(false);
-            this.TujuanField.setVisible(false);
-            this.TujuanField.setEditable(false);
-            this.TujuanCombobox.setVisible(false);
-            this.TujuanCombobox.setEditable(false);
-            this.SendPackageBG.setVisible(false);
-            this.SendBeratField.setVisible(false);
-            this.SendBeratField.setEditable(false);
-            this.PriceLabel.setVisible(false);
-            this.CalculateBtn.setVisible(false);
-            this.CalculateBtn.setEnabled(false);
-            this.AsalCombobox.setVisible(false);
-            this.AsalCombobox.setEditable(false);
-            this.SeeDetailButton.setVisible(false);
-            this.SeeDetailButton.setEnabled(false);
-            this.SeeDetailButton.setVisible(true);
-            this.SeeDetailButton.setEnabled(true);
-        }
-        else if(x==5){ //Send Package Mode
-            this.SearchBarBG.setVisible(false);
-            this.SearchButton.setVisible(false);
-            this.Vector.setVisible(false);
-            this.SearchBar.setVisible(false);
-            this.SearchBar.setEditable(false);
-            this.SearchButton.setEnabled(false);
-            this.CekHistoryButton.setVisible(false);
-            this.CekHistoryButton.setEnabled(false);
-            this.SendPackageButton.setVisible(false);
-            this.SendPackageButton.setEnabled(false);
-            this.HistoryList.setEnabled(false);
-            this.HistoryList.setVisible(false);
-            this.UserMenuBG.setVisible(false);
-            this.BGHistory.setVisible(false);
-            this.AsalField.setVisible(true);
-            this.AsalField.setEditable(true);
-            this.TujuanField.setVisible(true);
-            this.TujuanField.setEditable(true);
-            this.TujuanCombobox.setVisible(true);
-            this.TujuanCombobox.setEditable(true);
-            this.SendPackageBG.setVisible(true);
-            this.SendBeratField.setVisible(true);
-            this.SendBeratField.setEditable(true);
-            this.PriceLabel.setVisible(true);
-            this.CalculateBtn.setVisible(true);
-            this.CalculateBtn.setEnabled(true);
-            this.AsalCombobox.setVisible(true);
-            this.AsalCombobox.setEditable(true);
-            this.SeeDetailButton.setVisible(true);
-            this.SeeDetailButton.setEnabled(true);
-            this.SeeDetailButton.setVisible(false);
-            this.SeeDetailButton.setEnabled(false);
+        switch(x){
+            case 1: //Home Mode
+                this.UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_Home.png")));
+                this.SearchBarBG.setVisible(false);
+                this.SearchButton.setVisible(false);
+                this.Vector.setVisible(true);
+                this.SearchBar.setVisible(false);
+                this.SearchBar.setEditable(false);
+                this.SearchButton.setEnabled(false);
+                this.CekHistoryButton.setVisible(true);
+                this.CekHistoryButton.setEnabled(true);
+                this.SendPackageButton.setVisible(true);
+                this.SendPackageButton.setEnabled(true);
+                this.HistoryList.setEnabled(false);
+                this.HistoryList.setVisible(false);
+                this.UserMenuBG.setVisible(true);
+                this.AsalField.setVisible(false);
+                this.AsalField.setEditable(false);
+                this.TujuanField.setVisible(false);
+                this.TujuanField.setEditable(false);
+                this.TujuanCombobox.setVisible(false);
+                this.TujuanCombobox.setEditable(false);
+                this.SendPackageBG.setVisible(false);
+                this.SendBeratField.setVisible(false);
+                this.SendBeratField.setEditable(false);
+                this.PriceLabel.setVisible(false);
+                this.CalculateBtn.setVisible(false);
+                this.CalculateBtn.setEnabled(false);
+                this.AsalCombobox.setVisible(false);
+                this.AsalCombobox.setEditable(false);
+                this.SeeDetailButton.setVisible(false);
+                this.SeeDetailButton.setEnabled(false);
+                this.PriceCalcButton.setVisible(true);
+                this.PriceCalcButton.setEnabled(true);
+                this.CostCalcBG.setVisible(false);
+                KirimButton.setVisible(false);
+                KirimButton.setEnabled(false);
+                break;
+        
+            case 2: //Cek Resi Mode
+                this.UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_CekResi.png")));
+                this.SearchBarBG.setVisible(true);
+                this.SearchButton.setVisible(true);
+                this.Vector.setVisible(false);
+                this.SearchBar.setVisible(true);
+                this.SearchBar.setEditable(true);
+                this.SearchButton.setEnabled(true);
+                this.CekHistoryButton.setVisible(false);
+                this.CekHistoryButton.setEnabled(false);
+                this.SendPackageButton.setVisible(false);
+                this.SendPackageButton.setEnabled(false);
+                this.HistoryList.setEnabled(false);
+                this.HistoryList.setVisible(false);
+                this.UserMenuBG.setVisible(true);
+                this.AsalField.setVisible(false);
+                this.AsalField.setEditable(false);
+                this.TujuanField.setVisible(false);
+                this.TujuanField.setEditable(false);
+                this.TujuanCombobox.setVisible(false);
+                this.TujuanCombobox.setEditable(false);
+                this.SendPackageBG.setVisible(false);
+                this.SendBeratField.setVisible(false);
+                this.SendBeratField.setEditable(false);
+                this.PriceLabel.setVisible(false);
+                this.CalculateBtn.setVisible(false);
+                this.CalculateBtn.setEnabled(false);
+                this.AsalCombobox.setVisible(false);
+                this.AsalCombobox.setEditable(false);
+                this.SeeDetailButton.setVisible(false);
+                this.SeeDetailButton.setEnabled(false);
+                this.PriceCalcButton.setVisible(false);
+                this.PriceCalcButton.setEnabled(false);
+                this.CostCalcBG.setVisible(false);
+                KirimButton.setVisible(false);
+                KirimButton.setEnabled(false);
+                break;
+        
+            case 3: //Settings Mode
+                this.SearchBarBG.setVisible(false);
+                this.SearchButton.setVisible(false);
+                this.Vector.setVisible(false);
+                this.SearchBar.setVisible(false);
+                this.SearchBar.setEditable(false);
+                this.SearchButton.setEnabled(false);
+                this.CekHistoryButton.setVisible(false);
+                this.CekHistoryButton.setEnabled(false);
+                this.SendPackageButton.setVisible(false);
+                this.SendPackageButton.setEnabled(false);
+                this.HistoryList.setEnabled(false);
+                this.HistoryList.setVisible(false);
+                this.UserMenuBG.setVisible(true);
+                this.AsalField.setVisible(false);
+                this.AsalField.setEditable(false);
+                this.TujuanField.setVisible(false);
+                this.TujuanField.setEditable(false);
+                this.TujuanCombobox.setVisible(false);
+                this.TujuanCombobox.setEditable(false);
+                this.SendPackageBG.setVisible(false);
+                this.SendBeratField.setVisible(false);
+                this.SendBeratField.setEditable(false);
+                this.PriceLabel.setVisible(false);
+                this.CalculateBtn.setVisible(false);
+                this.CalculateBtn.setEnabled(false);
+                this.AsalCombobox.setVisible(false);
+                this.AsalCombobox.setEditable(false);
+                this.SeeDetailButton.setVisible(false);
+                this.SeeDetailButton.setEnabled(false);
+                this.PriceCalcButton.setVisible(false);
+                this.PriceCalcButton.setEnabled(false);
+                this.CostCalcBG.setVisible(false);
+                KirimButton.setVisible(false);
+                KirimButton.setEnabled(false);
+                break;
+
+            case 4: //See History Mode
+                this.SearchBarBG.setVisible(false);
+                this.SearchButton.setVisible(false);
+                this.Vector.setVisible(false);
+                this.SearchBar.setVisible(false);
+                this.SearchBar.setEditable(false);
+                this.SearchButton.setEnabled(false);
+                this.CekHistoryButton.setVisible(false);
+                this.CekHistoryButton.setEnabled(false);
+                this.SendPackageButton.setVisible(false);
+                this.SendPackageButton.setEnabled(false);
+                this.HistoryList.setEnabled(false);
+                this.HistoryList.setVisible(false);
+                this.UserMenuBG.setVisible(false);
+                this.BGHistory.setVisible(true);
+                this.AsalField.setVisible(false);
+                this.AsalField.setEditable(false);
+                this.TujuanField.setVisible(false);
+                this.TujuanField.setEditable(false);
+                this.TujuanCombobox.setVisible(false);
+                this.TujuanCombobox.setEditable(false);
+                this.SendPackageBG.setVisible(false);
+                this.SendBeratField.setVisible(false);
+                this.SendBeratField.setEditable(false);
+                this.PriceLabel.setVisible(false);
+                this.CalculateBtn.setVisible(false);
+                this.CalculateBtn.setEnabled(false);
+                this.AsalCombobox.setVisible(false);
+                this.AsalCombobox.setEditable(false);
+                this.SeeDetailButton.setVisible(false);
+                this.SeeDetailButton.setEnabled(false);
+                this.SeeDetailButton.setVisible(true);
+                this.SeeDetailButton.setEnabled(true);
+                this.PriceCalcButton.setVisible(false);
+                this.PriceCalcButton.setEnabled(false);
+                this.CostCalcBG.setVisible(false);
+                KirimButton.setVisible(false);
+                KirimButton.setEnabled(false);
+                break;
+        
+            case 5: //Send Package Mode
+                this.SearchBarBG.setVisible(false);
+                this.SearchButton.setVisible(false);
+                this.Vector.setVisible(false);
+                this.SearchBar.setVisible(false);
+                this.SearchBar.setEditable(false);
+                this.SearchButton.setEnabled(false);
+                this.CekHistoryButton.setVisible(false);
+                this.CekHistoryButton.setEnabled(false);
+                this.SendPackageButton.setVisible(false);
+                this.SendPackageButton.setEnabled(false);
+                this.HistoryList.setEnabled(false);
+                this.HistoryList.setVisible(false);
+                this.UserMenuBG.setVisible(false);
+                this.BGHistory.setVisible(false);
+                this.AsalField.setVisible(true);
+                this.AsalField.setEditable(true);
+                this.TujuanField.setVisible(true);
+                this.TujuanField.setEditable(true);
+                this.TujuanCombobox.setVisible(true);
+                this.TujuanCombobox.setEditable(true);
+                this.SendPackageBG.setVisible(true);
+                this.SendBeratField.setVisible(true);
+                this.SendBeratField.setEditable(true);
+                this.PriceLabel.setVisible(true);
+                this.CalculateBtn.setVisible(true);
+                this.CalculateBtn.setEnabled(true);
+                this.AsalCombobox.setVisible(true);
+                this.AsalCombobox.setEditable(true);
+                this.SeeDetailButton.setVisible(true);
+                this.SeeDetailButton.setEnabled(true);
+                this.SeeDetailButton.setVisible(false);
+                this.SeeDetailButton.setEnabled(false);
+                this.PriceCalcButton.setVisible(false);
+                this.PriceCalcButton.setEnabled(false);
+                this.CostCalcBG.setVisible(false);
+                KirimButton.setVisible(false);
+                KirimButton.setEnabled(false);
+                break;
+        
+            case 6: //Cost Calculator Mode
+                this.SearchBarBG.setVisible(false);
+                this.SearchButton.setVisible(false);
+                this.Vector.setVisible(false);
+                this.SearchBar.setVisible(false);
+                this.SearchBar.setEditable(false);
+                this.SearchButton.setEnabled(false);
+                this.CekHistoryButton.setVisible(false);
+                this.CekHistoryButton.setEnabled(false);
+                this.SendPackageButton.setVisible(false);
+                this.SendPackageButton.setEnabled(false);
+                this.HistoryList.setEnabled(false);
+                this.HistoryList.setVisible(false);
+                this.UserMenuBG.setVisible(false);
+                this.BGHistory.setVisible(false);
+                this.AsalField.setVisible(true);
+                this.AsalField.setEditable(true);
+                this.TujuanField.setVisible(true);
+                this.TujuanField.setEditable(true);
+                this.TujuanCombobox.setVisible(true);
+                this.TujuanCombobox.setEditable(true);
+                this.SendPackageBG.setVisible(false);
+                this.SendBeratField.setVisible(true);
+                this.SendBeratField.setEditable(true);
+                this.PriceLabel.setVisible(true);
+                this.CalculateBtn.setVisible(true);
+                this.CalculateBtn.setEnabled(true);
+                this.AsalCombobox.setVisible(true);
+                this.AsalCombobox.setEditable(true);
+                this.SeeDetailButton.setVisible(true);
+                this.SeeDetailButton.setEnabled(true);
+                this.SeeDetailButton.setVisible(false);
+                this.SeeDetailButton.setEnabled(false);
+                this.PriceCalcButton.setVisible(false);
+                this.PriceCalcButton.setEnabled(false);
+                this.CostCalcBG.setVisible(true);
+                KirimButton.setVisible(false);
+                KirimButton.setEnabled(false);
+                break;
         }
     }
     
-    private void ButtonController(boolean setting, boolean home, boolean cek,boolean history, boolean send){
-        if(setting&&!home&&!cek&&!history&&!send){ //Settings Mode
-            UpdateState(setting,home,cek,false,false);
+    private void ButtonController(boolean setting, boolean home, boolean cek,boolean history, boolean send, boolean calc){
+        if(setting&&!home&&!cek&&!history&&!send&&!calc){ //Settings Mode
+            UpdateState(setting,home,cek,false,false,false);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_1.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
             UpdateVisibility(3);
         }
-        else if(!setting&&home&&!cek&&!history&&!send){ //Home MOde
-            UpdateState(setting,home,cek,false,false);
+        else if(!setting&&home&&!cek&&!history&&!send&&!calc){ //Home MOde
+            UpdateState(setting,home,cek,false,false,false);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_1.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
             UpdateVisibility(1);
         }
-        else if(!setting&&!home&&cek&&!history&&!send){ //Cek Resi Mode
-            UpdateState(setting,home,cek,false,false);
+        else if(!setting&&!home&&cek&&!history&&!send&&!calc){ //Cek Resi Mode
+            UpdateState(setting,home,cek,false,false,false);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_1.png")));
             UpdateVisibility(2);
         }
-        else if(!setting&&!home&&!cek&&history&&!send){ //See History Mode
-            UpdateState(setting,home,cek,history,send);
+        else if(!setting&&!home&&!cek&&history&&!send&&!calc){ //See History Mode
+            UpdateState(setting,home,cek,history,send,false);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
             UpdateVisibility(4);
         }
-        else if(!setting&&!home&&!cek&&!history&&send){ //Send Package Mode
-            UpdateState(setting,home,cek,history,send);
+        else if(!setting&&!home&&!cek&&!history&&send&&!calc){ //Send Package Mode
+            UpdateState(setting,home,cek,history,send,false);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
             UpdateVisibility(5);
+        }
+        else if(!setting&&!home&&!cek&&!history&&!send&&calc){ //Calc Cost Mode
+            UpdateState(setting,home,cek,history,send,calc);
+            this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
+            this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
+            this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
+            UpdateVisibility(6);
         }
     }
     
@@ -617,8 +751,10 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     private javax.swing.JButton CalculateBtn;
     private javax.swing.JButton CekHistoryButton;
     private javax.swing.JButton CekResiButton;
+    private javax.swing.JLabel CostCalcBG;
     private javax.swing.JList<String> HistoryList;
     private javax.swing.JButton HomeButton;
+    private javax.swing.JButton KirimButton;
     private javax.swing.JButton LogOutButton;
     private javax.swing.JButton PriceCalcButton;
     private javax.swing.JLabel PriceLabel;
