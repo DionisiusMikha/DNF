@@ -4,11 +4,13 @@
  */
 package dnfapp;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Frans
  */
-public class Account {
+public class Account implements Serializable{
     protected String username;
     protected String password;
 

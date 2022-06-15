@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  *
  * @author Frans
  */
-public class LoginMenu extends javax.swing.JFrame {
+public class LoginMenu extends javax.swing.JFrame implements Serializeation{
 
     private HashMap<String, User> userlist = new HashMap<String, User>();
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
@@ -33,22 +33,34 @@ public class LoginMenu extends javax.swing.JFrame {
         LoginBG.requestFocus();
         this.ShowPass = false;
     }
+    
+    public void regen(ArrayList<User> container){
+        for(int i =0;i<container.size();i++){
+            this.userlist.put(container.get(i).getUsername(), container.get(i));
+        }
+    }
 
     //initial constructor, used to generate admin account.
     public LoginMenu(boolean generate) {
         if (generate) {
             initComponents();
             LoginBG.requestFocus();
+            this.userlist=Serializeation.loadUser();
             User admin = new User("admin", "admin", "CustomerService@DNF.co.id"); //generate admin user.
             User a = new User("a","a","a@gmail.com"); //generate test unit user.
             userlist.put("admin", admin);
             userlist.put("a", a);
+            usedEmail.put("CustomerService@DNF.co.id", "CustomerService@DNF.co.id");
+            usedEmail.put("a@gmail.com","a@gmail.com");
             Package TestPackage = new Others("a","a","a","a","a","a",1,false,false,false,false,false);
             DeliveryList.put("a", TestPackage);
             System.out.println(DeliveryList);
             System.out.println(userlist);
+            System.out.println(usedEmail);
             this.ShowPass = false;
+            
         }
+        System.out.println(usedEmail);
     }
 
     //situational, for compatibility issues.
@@ -58,6 +70,7 @@ public class LoginMenu extends javax.swing.JFrame {
         this.userlist = userlist;
         this.usedEmail = usedEmail;
         this.ShowPass = false;
+        System.out.println(usedEmail);
     }
 
     //situational, for compatibility issues.
@@ -68,6 +81,7 @@ public class LoginMenu extends javax.swing.JFrame {
         this.usedEmail = usedEmail;
         this.DeliveryList = DeliveryList;
         this.ShowPass = false;
+        System.out.println(usedEmail);
     }
 
     //main cons
@@ -79,6 +93,7 @@ public class LoginMenu extends javax.swing.JFrame {
         this.DeliveryList = DeliveryList;
         this.ListKurir = ListKurir;
         this.ShowPass = false;
+        System.out.println(usedEmail);
     }
 
     /**

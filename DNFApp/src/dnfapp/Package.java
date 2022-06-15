@@ -4,13 +4,14 @@
  */
 package dnfapp;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Frans
  */
-public abstract class Package {
+public abstract class Package implements Serializable{
 
     private String resi;
     private String sender;

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dnfapp;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -10,7 +11,7 @@ import java.util.HashMap;
  *
  * @author Frans
  */
-public class User extends Account{
+public class User extends Account implements Serializable{
 
     private String email;
     private ArrayList<Package> History;

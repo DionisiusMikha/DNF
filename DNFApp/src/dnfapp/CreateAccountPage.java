@@ -6,13 +6,15 @@ package dnfapp;
 
 import java.awt.Color;
 import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 /**
  *
  * @author Frans
  */
-public class CreateAccountPage extends javax.swing.JFrame {
+public class CreateAccountPage extends javax.swing.JFrame implements Serializeation{
 
     private HashMap<String, User> userlist = new HashMap<String, User>();
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
@@ -366,6 +368,7 @@ public class CreateAccountPage extends javax.swing.JFrame {
                                 User newUser = new User(newUsername, newPass, newEmail);
                                 userlist.put(newUsername, newUser);
                                 usedEmail.put(newEmail, newUsername);
+                                Serializeation.saveUser(userlist);
                                 LoginMenu LM = new LoginMenu(userlist, usedEmail);
                                 dispose();
                                 LM.setVisible(true);

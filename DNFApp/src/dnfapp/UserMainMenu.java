@@ -74,7 +74,10 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Profile = new javax.swing.JLabel();
+        EditProfileButton = new javax.swing.JButton();
+        AppVerButton = new javax.swing.JButton();
+        ProfileButton = new javax.swing.JButton();
+        SettingGIF = new javax.swing.JLabel();
         LogOutButton = new javax.swing.JButton();
         KirimButton = new javax.swing.JButton();
         HomeButton = new javax.swing.JButton();
@@ -108,8 +111,38 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Profile.png"))); // NOI18N
-        getContentPane().add(Profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 90, -1, -1));
+        EditProfileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_EditProfile.png"))); // NOI18N
+        EditProfileButton.setBorderPainted(false);
+        EditProfileButton.setContentAreaFilled(false);
+        EditProfileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditProfileButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(EditProfileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 301, 71));
+
+        AppVerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_AppVersion.png"))); // NOI18N
+        AppVerButton.setBorderPainted(false);
+        AppVerButton.setContentAreaFilled(false);
+        AppVerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AppVerButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(AppVerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 265, 306, 71));
+
+        ProfileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Profile.png"))); // NOI18N
+        ProfileButton.setBorderPainted(false);
+        ProfileButton.setContentAreaFilled(false);
+        ProfileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProfileButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ProfileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 90, 90, 90));
+
+        SettingGIF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/setting-vector.gif"))); // NOI18N
+        getContentPane().add(SettingGIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, 419, 511));
 
         LogOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Logout.png"))); // NOI18N
         LogOutButton.setBorderPainted(false);
@@ -175,6 +208,11 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         SettingButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SettingButtonMouseClicked(evt);
+            }
+        });
+        SettingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SettingButtonActionPerformed(evt);
             }
         });
         getContentPane().add(SettingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 370, 186, 53));
@@ -409,6 +447,24 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         
     }//GEN-LAST:event_KirimButtonActionPerformed
 
+    private void ProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfileButtonActionPerformed
+        
+    }//GEN-LAST:event_ProfileButtonActionPerformed
+
+    private void SettingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SettingButtonActionPerformed
+        if(!setting){
+            ButtonController(true,false,false,false,false,false);
+        }
+    }//GEN-LAST:event_SettingButtonActionPerformed
+
+    private void EditProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProfileButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EditProfileButtonActionPerformed
+
+    private void AppVerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AppVerButtonActionPerformed
+        JOptionPane.showMessageDialog(null, "DNFApp Product Version 1.0.0.0 Build 2022", "DNF App", 1);
+    }//GEN-LAST:event_AppVerButtonActionPerformed
+
     public void generateCityCalc(){
         MapKota = GenerateCity.generateCityMap(MapKota);
         listkota = GenerateCity.generateCity(listkota);
@@ -465,6 +521,11 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 this.CostCalcBG.setVisible(false);
                 KirimButton.setVisible(false);
                 KirimButton.setEnabled(false);
+                SettingGIF.setVisible(false);
+                EditProfileButton.setVisible(false);
+                EditProfileButton.setEnabled(false);
+                AppVerButton.setEnabled(false);
+                AppVerButton.setVisible(false);
                 break;
         
             case 2: //Cek Resi Mode
@@ -503,9 +564,15 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 this.CostCalcBG.setVisible(false);
                 KirimButton.setVisible(false);
                 KirimButton.setEnabled(false);
+                SettingGIF.setVisible(false);
+                EditProfileButton.setVisible(false);
+                EditProfileButton.setEnabled(false);
+                AppVerButton.setEnabled(false);
+                AppVerButton.setVisible(false);
                 break;
         
             case 3: //Settings Mode
+                this.UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_Setting.png")));
                 this.SearchBarBG.setVisible(false);
                 this.SearchButton.setVisible(false);
                 this.Vector.setVisible(false);
@@ -540,6 +607,11 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 this.CostCalcBG.setVisible(false);
                 KirimButton.setVisible(false);
                 KirimButton.setEnabled(false);
+                SettingGIF.setVisible(true);
+                EditProfileButton.setVisible(true);
+                EditProfileButton.setEnabled(true);
+                AppVerButton.setEnabled(true);
+                AppVerButton.setVisible(true);
                 break;
 
             case 4: //See History Mode
@@ -580,6 +652,11 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 this.CostCalcBG.setVisible(false);
                 KirimButton.setVisible(false);
                 KirimButton.setEnabled(false);
+                SettingGIF.setVisible(false);
+                EditProfileButton.setVisible(false);
+                EditProfileButton.setEnabled(false);
+                AppVerButton.setEnabled(false);
+                AppVerButton.setVisible(false);
                 break;
         
             case 5: //Send Package Mode
@@ -620,6 +697,11 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 this.CostCalcBG.setVisible(false);
                 KirimButton.setVisible(false);
                 KirimButton.setEnabled(false);
+                SettingGIF.setVisible(false);
+                EditProfileButton.setVisible(false);
+                EditProfileButton.setEnabled(false);
+                AppVerButton.setEnabled(false);
+                AppVerButton.setVisible(false);
                 break;
         
             case 6: //Cost Calculator Mode
@@ -660,6 +742,11 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 this.CostCalcBG.setVisible(true);
                 KirimButton.setVisible(false);
                 KirimButton.setEnabled(false);
+                SettingGIF.setVisible(false);
+                EditProfileButton.setVisible(false);
+                EditProfileButton.setEnabled(false);
+                AppVerButton.setEnabled(false);
+                AppVerButton.setVisible(false);
                 break;
         }
     }
@@ -745,6 +832,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AppVerButton;
     private javax.swing.JComboBox<String> AsalCombobox;
     private javax.swing.JTextField AsalField;
     private javax.swing.JLabel BGHistory;
@@ -752,13 +840,14 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     private javax.swing.JButton CekHistoryButton;
     private javax.swing.JButton CekResiButton;
     private javax.swing.JLabel CostCalcBG;
+    private javax.swing.JButton EditProfileButton;
     private javax.swing.JList<String> HistoryList;
     private javax.swing.JButton HomeButton;
     private javax.swing.JButton KirimButton;
     private javax.swing.JButton LogOutButton;
     private javax.swing.JButton PriceCalcButton;
     private javax.swing.JLabel PriceLabel;
-    private javax.swing.JLabel Profile;
+    private javax.swing.JButton ProfileButton;
     private javax.swing.JTextField SearchBar;
     private javax.swing.JLabel SearchBarBG;
     private javax.swing.JButton SearchButton;
@@ -767,6 +856,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     private javax.swing.JLabel SendPackageBG;
     private javax.swing.JButton SendPackageButton;
     private javax.swing.JButton SettingButton;
+    private javax.swing.JLabel SettingGIF;
     private javax.swing.JComboBox<String> TujuanCombobox;
     private javax.swing.JTextField TujuanField;
     private javax.swing.JLabel UserMenuBG;
