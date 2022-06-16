@@ -108,6 +108,11 @@ public class KurirMainMenu extends javax.swing.JFrame {
         cekStatusPaket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kurir_Button_CekStatus.png"))); // NOI18N
         cekStatusPaket.setBorderPainted(false);
         cekStatusPaket.setContentAreaFilled(false);
+        cekStatusPaket.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cekStatusPaketMouseClicked(evt);
+            }
+        });
         cekStatusPaket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cekStatusPaketActionPerformed(evt);
@@ -166,6 +171,17 @@ public class KurirMainMenu extends javax.swing.JFrame {
         LM.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
         LM.setResizable(false);
     }//GEN-LAST:event_listPaketMouseClicked
+
+    private void cekStatusPaketMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cekStatusPaketMouseClicked
+        // TODO add your handling code here:
+        CekStatusKurir LM = new CekStatusKurir(userlist, usedEmail, DeliveryList, ListKurir, currentKurir);
+        dispose();
+        LM.setVisible(true);
+        LM.pack();
+        LM.setLocationRelativeTo(null);
+        LM.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+        LM.setResizable(false);
+    }//GEN-LAST:event_cekStatusPaketMouseClicked
 
     /**
      * @param args the command line arguments

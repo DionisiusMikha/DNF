@@ -82,8 +82,9 @@ public class ListUser extends javax.swing.JFrame{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        JListUser.setBackground(new java.awt.Color(255, 255, 255));
-        JListUser.setForeground(new java.awt.Color(0, 0, 0));
+        JListUser.setBackground(new java.awt.Color(4, 37, 107));
+        JListUser.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        JListUser.setForeground(new java.awt.Color(255, 255, 255));
         JListUser.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Registered Users will appear here." };
             public int getSize() { return strings.length; }

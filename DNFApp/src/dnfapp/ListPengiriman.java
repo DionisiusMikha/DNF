@@ -156,6 +156,9 @@ public class ListPengiriman extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        DaftarPengiriman.setBackground(new java.awt.Color(4, 37, 107));
+        DaftarPengiriman.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        DaftarPengiriman.setForeground(new java.awt.Color(255, 255, 255));
         DaftarPengiriman.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DaftarPengirimanMouseClicked(evt);

@@ -4,6 +4,12 @@
  */
 package dnfapp;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Felicia Pangestu
@@ -15,7 +21,60 @@ public class CekStatusKurir extends javax.swing.JFrame {
      */
     public CekStatusKurir() {
         initComponents();
+        bgCekStatus.requestFocus();
+        generateElement();
     }
+
+    private Kurir currentKurir;
+    //HashMaps to Pass.
+    private HashMap<String, User> userlist = new HashMap<String, User>();
+    private HashMap<String, String> usedEmail = new HashMap<String, String>();
+    private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
+    private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
+    private ArrayList<Package> ARRPackageList = new ArrayList<>();
+
+    //private Generated HashMaps&ArrayList for City Index
+    private HashMap<String, Kota> MapKota = new HashMap<String, Kota>();
+    private ArrayList<String> listkota = new ArrayList<>();
+
+    private void generateElement() {
+        generate();
+        DefaultListModel listModel = new DefaultListModel();
+        for (int i = 0; i < currentKurir.getDeliveredPackages().size(); i++) {
+            String container = currentKurir.getDeliveredPackages().get(i).getResi() + " - " + currentKurir.getDeliveredPackages().get(i).getReceiver() + " - " + currentKurir.getDeliveredPackages().get(i).getDestination();
+            listModel.addElement(container);
+        }
+        listStatus.setModel(listModel);
+    }
+
+    private void generate() {
+        for (Map.Entry<String, Package> set : DeliveryList.entrySet()) {
+            if (set.getValue().getTrack().get(set.getValue().getTrack().size() - 1).equals("Barang diterima DNF")) {
+                this.currentKurir.getDeliveredPackages().add(set.getValue());
+            }
+        }
+//        System.out.println(ARRPackageList.get(0));
+    }
+
+    public CekStatusKurir(HashMap<String, User> userlist, HashMap<String, String> usedEmail) {
+        initComponents();
+        this.userlist = userlist;
+        this.usedEmail = usedEmail;
+        generateElement();
+    }
+
+    public CekStatusKurir(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir, Kurir currentKurir) {
+        initComponents();
+        this.userlist = userlist;
+        this.usedEmail = usedEmail;
+        this.DeliveryList = DeliveryList;
+        this.ListKurir = ListKurir;
+        this.currentKurir = currentKurir;
+        this.setResizable(false);
+        generateElement();
+        bgCekStatus.requestFocus();
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,14 +86,90 @@ public class CekStatusKurir extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        btnKeluar = new javax.swing.JButton();
+        confirmBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listStatus = new javax.swing.JList<>();
+        namaPengirim = new javax.swing.JTextField();
+        alamatPengirim = new javax.swing.JTextField();
+        namaPenerima = new javax.swing.JTextField();
+        alamatPenerima = new javax.swing.JTextField();
+        bgCekStatus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("jLabel2");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, -1, -1));
+        btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5_minisize.png"))); // NOI18N
+        btnKeluar.setBorderPainted(false);
+        btnKeluar.setContentAreaFilled(false);
+        btnKeluar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnKeluarMouseClicked(evt);
+            }
+        });
+        btnKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeluarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 510, -1, -1));
+
+        confirmBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kurir_Button_Konfirmasi.png"))); // NOI18N
+        confirmBtn.setBorderPainted(false);
+        confirmBtn.setContentAreaFilled(false);
+        confirmBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                confirmBtnMouseClicked(evt);
+            }
+        });
+        confirmBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(confirmBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 500, -1, -1));
+
+        listStatus.setBackground(new java.awt.Color(4, 37, 107));
+        listStatus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listStatusMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(listStatus);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 400, 380));
+
+        namaPengirim.setBackground(new java.awt.Color(62, 97, 155));
+        namaPengirim.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        namaPengirim.setForeground(new java.awt.Color(255, 255, 255));
+        namaPengirim.setBorder(null);
+        namaPengirim.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        jPanel1.add(namaPengirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 250, 270, -1));
+
+        alamatPengirim.setBackground(new java.awt.Color(62, 97, 155));
+        alamatPengirim.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        alamatPengirim.setForeground(new java.awt.Color(255, 255, 255));
+        alamatPengirim.setBorder(null);
+        alamatPengirim.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        jPanel1.add(alamatPengirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 310, 260, -1));
+
+        namaPenerima.setBackground(new java.awt.Color(62, 97, 155));
+        namaPenerima.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        namaPenerima.setForeground(new java.awt.Color(255, 255, 255));
+        namaPenerima.setBorder(null);
+        namaPenerima.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        jPanel1.add(namaPenerima, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 370, 270, -1));
+
+        alamatPenerima.setBackground(new java.awt.Color(62, 97, 155));
+        alamatPenerima.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        alamatPenerima.setForeground(new java.awt.Color(255, 255, 255));
+        alamatPenerima.setBorder(null);
+        alamatPenerima.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        jPanel1.add(alamatPenerima, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, 260, -1));
+
+        bgCekStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kurir_BG_CekStatus.png"))); // NOI18N
+        jPanel1.add(bgCekStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -49,6 +184,52 @@ public class CekStatusKurir extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirmBtnActionPerformed
+
+    private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnKeluarActionPerformed
+
+    private void btnKeluarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKeluarMouseClicked
+        // TODO add your handling code here:
+        KurirMainMenu LM = new KurirMainMenu(userlist, usedEmail, DeliveryList, ListKurir, currentKurir);
+        dispose();
+        LM.setVisible(true);
+        LM.pack();
+        LM.setLocationRelativeTo(null);
+        LM.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+        LM.setResizable(false);
+    }//GEN-LAST:event_btnKeluarMouseClicked
+
+    private void listStatusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listStatusMouseClicked
+        // TODO add your handling code here:
+        int SelectedObj = listStatus.getSelectedIndex();
+        namaPenerima.setText(currentKurir.getDeliveredPackages().get(SelectedObj).getReceiver());
+        namaPengirim.setText(currentKurir.getDeliveredPackages().get(SelectedObj).getSender());
+        alamatPengirim.setText(currentKurir.getDeliveredPackages().get(SelectedObj).getFrom());
+        alamatPenerima.setText(currentKurir.getDeliveredPackages().get(SelectedObj).getDestination());
+    }//GEN-LAST:event_listStatusMouseClicked
+
+    private void confirmBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmBtnMouseClicked
+        // TODO add your handling code here:
+        int SelectedObj = listStatus.getSelectedIndex();
+        Package paket;
+        for (Map.Entry<String, Package> set : DeliveryList.entrySet()) {
+            paket = set.getValue();
+            if (set.getValue().getResi().equals(currentKurir.getDeliveredPackages().get(SelectedObj).getResi())) {
+                set.getValue().getTrack().add("Barang sudah tiba");
+                ARRPackageList.clear();
+                listStatus.removeAll();
+                generateElement();
+                currentKurir.getDeliveredPackages().remove(paket);
+                JOptionPane.showMessageDialog(null, "Barang berhasil diselesaikan", "DNF App", 1);
+                break;
+            }
+        }
+    }//GEN-LAST:event_confirmBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -86,7 +267,15 @@ public class CekStatusKurir extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField alamatPenerima;
+    private javax.swing.JTextField alamatPengirim;
+    private javax.swing.JLabel bgCekStatus;
+    private javax.swing.JButton btnKeluar;
+    private javax.swing.JButton confirmBtn;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> listStatus;
+    private javax.swing.JTextField namaPenerima;
+    private javax.swing.JTextField namaPengirim;
     // End of variables declaration//GEN-END:variables
 }

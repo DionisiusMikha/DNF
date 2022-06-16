@@ -102,7 +102,9 @@ public class ListPaketKurir extends javax.swing.JFrame {
 
         namaPengirim.setBackground(new java.awt.Color(62, 97, 155));
         namaPengirim.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        namaPengirim.setForeground(new java.awt.Color(255, 255, 255));
         namaPengirim.setBorder(null);
+        namaPengirim.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         namaPengirim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 namaPengirimActionPerformed(evt);
@@ -112,7 +114,9 @@ public class ListPaketKurir extends javax.swing.JFrame {
 
         alamatPengirim.setBackground(new java.awt.Color(62, 97, 155));
         alamatPengirim.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        alamatPengirim.setForeground(new java.awt.Color(255, 255, 255));
         alamatPengirim.setBorder(null);
+        alamatPengirim.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         alamatPengirim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 alamatPengirimActionPerformed(evt);
@@ -122,7 +126,9 @@ public class ListPaketKurir extends javax.swing.JFrame {
 
         namaPenerima.setBackground(new java.awt.Color(62, 97, 155));
         namaPenerima.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        namaPenerima.setForeground(new java.awt.Color(255, 255, 255));
         namaPenerima.setBorder(null);
+        namaPenerima.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         namaPenerima.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 namaPenerimaActionPerformed(evt);
@@ -132,7 +138,9 @@ public class ListPaketKurir extends javax.swing.JFrame {
 
         alamatPenerima.setBackground(new java.awt.Color(62, 97, 155));
         alamatPenerima.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        alamatPenerima.setForeground(new java.awt.Color(255, 255, 255));
         alamatPenerima.setBorder(null);
+        alamatPenerima.setCaretColor(new java.awt.Color(255, 255, 255));
         alamatPenerima.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 alamatPenerimaActionPerformed(evt);
@@ -148,9 +156,17 @@ public class ListPaketKurir extends javax.swing.JFrame {
                 btnKluarMouseClicked(evt);
             }
         });
+        btnKluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKluarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnKluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 510, -1, -1));
 
+        listPaket.setBackground(new java.awt.Color(4, 37, 107));
+        listPaket.setBorder(null);
         listPaket.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        listPaket.setForeground(new java.awt.Color(255, 255, 255));
         listPaket.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 listPaketMouseClicked(evt);
@@ -245,6 +261,10 @@ public class ListPaketKurir extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_pickupButtonActionPerformed
+
+    private void btnKluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKluarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnKluarActionPerformed
 
     /**
      * @param args the command line arguments
