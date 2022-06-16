@@ -16,8 +16,6 @@ public class KurirMainMenu extends javax.swing.JFrame {
     /**
      * Creates new form LoginMenu
      */
-   
-
     //initial constructor, used to generate admin account.
     private Kurir currentKurir;
     //HashMaps to Pass.
@@ -25,29 +23,29 @@ public class KurirMainMenu extends javax.swing.JFrame {
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
-    
+
     //private Generated HashMaps&ArrayList for City Index
     private HashMap<String, Kota> MapKota = new HashMap<String, Kota>();
     private ArrayList<String> listkota = new ArrayList<>();
-    
-     public KurirMainMenu() {
+
+    public KurirMainMenu() {
         initComponents();
         bgKurir.requestFocus();
-     }
-     
-    public KurirMainMenu(HashMap<String, User> userlist, HashMap<String, String> usedEmail){
-        initComponents();
-        this.userlist=userlist;
-        this.usedEmail=usedEmail;
     }
-    
-    public KurirMainMenu(HashMap<String, User> userlist,HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList,  HashMap<String, Kurir> ListKurir, Kurir currentKurir){
+
+    public KurirMainMenu(HashMap<String, User> userlist, HashMap<String, String> usedEmail) {
         initComponents();
-        this.userlist=userlist;
-        this.usedEmail=usedEmail;
-        this.DeliveryList=DeliveryList;
-        this.ListKurir=ListKurir;
-        this.currentKurir=currentKurir;
+        this.userlist = userlist;
+        this.usedEmail = usedEmail;
+    }
+
+    public KurirMainMenu(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir, Kurir currentKurir) {
+        initComponents();
+        this.userlist = userlist;
+        this.usedEmail = usedEmail;
+        this.DeliveryList = DeliveryList;
+        this.ListKurir = ListKurir;
+        this.currentKurir = currentKurir;
         this.setResizable(false);
         bgKurir.requestFocus();
 //        WelcomeLabel.setText("Welcome, "+currentUser.getUsername());
@@ -63,8 +61,6 @@ public class KurirMainMenu extends javax.swing.JFrame {
     /**
      * Creates new form KurirMainMenu
      */
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -148,6 +144,13 @@ public class KurirMainMenu extends javax.swing.JFrame {
 
     private void listPaketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listPaketActionPerformed
         // TODO add your handling code here:
+        ListPaketKurir LM = new ListPaketKurir(userlist, usedEmail, DeliveryList, ListKurir, currentKurir);
+        dispose();
+        LM.setVisible(true);
+        LM.pack();
+        LM.setLocationRelativeTo(null);
+        LM.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+        LM.setResizable(false);
     }//GEN-LAST:event_listPaketActionPerformed
 
     private void cekStatusPaketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cekStatusPaketActionPerformed

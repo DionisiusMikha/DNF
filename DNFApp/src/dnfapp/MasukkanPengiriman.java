@@ -35,7 +35,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
     private boolean keepdry;
     private boolean protectfromheat;
     private boolean extraprotect;
-    
+
     public MasukkanPengiriman() {
         initComponents();
         this.kategori.add("Others");
@@ -56,7 +56,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
         BG_InputPengiriman.requestFocus();
         generateKota();
     }
-    
+
     public MasukkanPengiriman(HashMap<String, User> userlist, HashMap<String, Package> DeliveryList, HashMap<String, String> usedEmail, HashMap<String, Kurir> ListKurir) {
         initComponents();
         this.userlist = userlist;
@@ -397,67 +397,67 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
     }// </editor-fold>//GEN-END:initComponents
 
     private void inputBeratBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputBeratBarangActionPerformed
-        
+
     }//GEN-LAST:event_inputBeratBarangActionPerformed
-    
+
     private void inputNamaPenerimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNamaPenerimaActionPerformed
-        
+
     }//GEN-LAST:event_inputNamaPenerimaActionPerformed
-    
+
     private void inputDaerahTujuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDaerahTujuanActionPerformed
-        
+
     }//GEN-LAST:event_inputDaerahTujuanActionPerformed
-    
+
     private void inputNamaPenerimaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputNamaPenerimaFocusGained
-        
+
         if (inputNamaPenerima.getText().equalsIgnoreCase("Masukan nama penerima")) {
             inputNamaPenerima.setText("");
             inputNamaPenerima.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_inputNamaPenerimaFocusGained
-    
+
     private void inputNamaPenerimaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputNamaPenerimaFocusLost
-        
+
         if (inputNamaPenerima.getText().equals("")) {
             inputNamaPenerima.setText("Masukan nama penerima");
             inputNamaPenerima.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_inputNamaPenerimaFocusLost
-    
+
     private void inputDaerahTujuanFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputDaerahTujuanFocusGained
-        
+
         if (inputDaerahTujuan.getText().equalsIgnoreCase("Masukan daerah tujuan")) {
             inputDaerahTujuan.setText("");
             inputDaerahTujuan.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_inputDaerahTujuanFocusGained
-    
+
     private void inputDaerahTujuanFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputDaerahTujuanFocusLost
-        
+
         if (inputDaerahTujuan.getText().equals("")) {
             inputDaerahTujuan.setText("Masukan daerah tujuan");
             inputDaerahTujuan.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_inputDaerahTujuanFocusLost
-    
+
     private void inputBeratBarangFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputBeratBarangFocusGained
-        
+
         if (inputBeratBarang.getText().equalsIgnoreCase("Masukan berat barang")) {
             inputBeratBarang.setText("");
             inputBeratBarang.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_inputBeratBarangFocusGained
-    
+
     private void inputBeratBarangFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputBeratBarangFocusLost
-        
+
         if (inputBeratBarang.getText().equalsIgnoreCase("")) {
             inputBeratBarang.setText("Masukan berat barang");
             inputBeratBarang.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_inputBeratBarangFocusLost
-    
+
     private void keluarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarButtonActionPerformed
-        
+
         int userAmount = userlist.size();
         if (userAmount == 0) {
             AdminMenu AM = new AdminMenu();
@@ -477,19 +477,19 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
             AM.setDefaultCloseOperation(AdminMenu.EXIT_ON_CLOSE);
         }
     }//GEN-LAST:event_keluarButtonActionPerformed
-    
+
     private void protectfromheatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_protectfromheatButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_protectfromheatButtonActionPerformed
-    
+
     private void keepdryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keepdryButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_keepdryButtonActionPerformed
-    
+
     private void flammableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flammableButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_flammableButtonActionPerformed
-    
+
     private void flammableButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_flammableButtonMouseClicked
         if (this.flammable == true) {
             this.flammable = false;
@@ -499,7 +499,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
             this.flammableButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Flammable_Click.png")));
         }
     }//GEN-LAST:event_flammableButtonMouseClicked
-    
+
     private void fragileButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fragileButtonMouseClicked
         // TODO add your handling code here:
         if (this.fragile == true) {
@@ -510,7 +510,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
             this.fragileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Fragile_Click.png")));
         }
     }//GEN-LAST:event_fragileButtonMouseClicked
-    
+
     private void keepdryButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_keepdryButtonMouseClicked
         // TODO add your handling code here:
         if (this.keepdry == true) {
@@ -521,7 +521,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
             this.keepdryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Keep_Dry_Click.png")));
         }
     }//GEN-LAST:event_keepdryButtonMouseClicked
-    
+
     private void protectfromheatButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_protectfromheatButtonMouseClicked
         // TODO add your handling code here:
         if (this.protectfromheat == true) {
@@ -532,11 +532,11 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
             this.protectfromheatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Protect_Click.png")));
         }
     }//GEN-LAST:event_protectfromheatButtonMouseClicked
-    
+
     private void extraProtectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_extraProtectButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_extraProtectButtonActionPerformed
-    
+
     private void extraProtectButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_extraProtectButtonMouseClicked
         // TODO add your handling code here:
         if (this.extraprotect == true) {
@@ -547,7 +547,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
             this.extraProtectButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Box-alt_yes.png")));
         }
     }//GEN-LAST:event_extraProtectButtonMouseClicked
-    
+
     private void resetField() {
         inputBeratBarang.setText("Masukan berat barang");
         inputDaerahTujuan.setText("Masukan daerah tujuan");
@@ -563,20 +563,20 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
         Asal.setSelectedIndex(0);
         Tujuan.setSelectedIndex(0);
         keteranganBarang.setText("Masukkan keterangan");
-        
+
     }
-    
+
     private String getWaktu() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         String s = dateFormat.format(date);
         return s;
     }
-    
+
     private void generateKotaDetails() {
-        
+
     }
-    
+
     private void generateKota() {
         ArrayList<String> listkota = new ArrayList<>();
         listkota = GenerateCity.generateCity(listkota);
@@ -585,7 +585,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
             Tujuan.addItem(listkota.get(i));
         }
     }
-    
+
     private void inputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputButtonActionPerformed
         LocalDateTime date = LocalDateTime.now();
         String temp = (String) kategoriBarang.getSelectedItem();
@@ -597,7 +597,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
         String nmPengirim = namaPengirim.getText();
         String daerahPengirim = alamatPengirim.getText() + ", " + KotaAsal;
         String keterangan = keteranganBarang.getText();
-        
+
         String resi = "DF";
         int bulan = (int) date.getMonthValue();
         int tanggal = (int) date.getDayOfMonth();
@@ -614,20 +614,20 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
         char[] charberat = tempBeratBarang.toCharArray();
         resi += timea + timeb + timec + det + month + year;
         System.out.println(resi);
-        
+
         boolean lulusGede = true;
         if ((namaPenerima.equals("Masukkan nama penerima") || daerahPenerima.equals("Masukkan daerah tujuan") || nmPengirim.equals("Masukkan nama pengirim") || daerahPengirim.equals("Masukkan alamat pengirim"))) {
             lulusGede = false;
             JOptionPane.showMessageDialog(this, "Input tidak valid!", "DnF", 2);
         }
-        
+
         boolean lulusCilik = true;
         String tempMinus = inputBeratBarang.getText().substring(0, 1);
         if (inputBeratBarang.getText().equals("0") || tempMinus.equals("-")) {
             JOptionPane.showMessageDialog(this, "Berat tidak valid!", "DnF", 2);
             lulusCilik = false;
         }
-        
+
         if (lulusGede == true && lulusCilik == true) { //lulus semua 
             for (int i = 0; i < charberat.length; i++) {
                 if (charberat[i] >= 65 && charberat[i] <= 122) {
@@ -636,57 +636,57 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
                     int beratBarang = Integer.parseInt(tempBeratBarang);
                     if (temp.equals("Food and Beverages")) {
                         Package paket = new FnB(1, resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
-                        paket.updateTrack("Barang diterima pada " + getWaktu());
+                        paket.updateTrack("Barang diterima DNF");
                         DeliveryList.put(resi, paket);
                         gudang.add(paket);
                     } else if (temp.equals("Sports")) {
                         Package paket = new Sports(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
-                        paket.updateTrack(getWaktu());
+                        paket.updateTrack("Barang diterima DNF");
                         DeliveryList.put(resi, paket);
                         gudang.add(paket);
                     } else if (temp.equals("Electronic")) {
                         Package paket = new Electronic(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
-                        paket.updateTrack(getWaktu());
+                        paket.updateTrack("Barang diterima DNF");
                         DeliveryList.put(resi, paket);
                         gudang.add(paket);
                     } else if (temp.equals("Beauty and Fashion")) {
                         Package paket = new BnF(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
-                        paket.updateTrack(getWaktu());
+                        paket.updateTrack("Barang diterima DNF");
                         DeliveryList.put(resi, paket);
                         gudang.add(paket);
                     } else if (temp.equals("Hobby and Collections")) {
                         Package paket = new HnC(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
-                        paket.updateTrack(getWaktu());
+                        paket.updateTrack("Barang diterima DNF");
                         DeliveryList.put(resi, paket);
                         gudang.add(paket);
                     } else {
                         if (keterangan.equals("Masukkan keterangan")) {
                             Package paket = new Others("-", resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
-                            paket.updateTrack(getWaktu());
+                            paket.updateTrack("Barang diterima DNF");
                             DeliveryList.put(resi, paket);
                             gudang.add(paket);
                         } else {
                             Package paket = new Others(keterangan, resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
-                            paket.updateTrack(getWaktu());
+                            paket.updateTrack("Barang diterima DNF");
                             DeliveryList.put(resi, paket);
                             gudang.add(paket);
                         }
                     }
-                    
+
                     resetField();
-                    
+
                     JOptionPane.showMessageDialog(null, "Entry Paket Berhasil! Nomor Resi : " + resi, "DNF App", 1);
                     break;
                 }
             }
         }
-        
+
     }//GEN-LAST:event_inputButtonActionPerformed
-    
+
     private void inputButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputButtonMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_inputButtonMouseClicked
-    
+
     private void kategoriBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kategoriBarangActionPerformed
         String temp = (String) kategoriBarang.getSelectedItem();
         if (temp.equals("Food and Beverages") || temp.equals("Sports") || temp.equals("Hobby and Collections")) {
@@ -695,7 +695,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
             keepdryButton.setVisible(true);
             protectfromheatButton.setVisible(true);
             tiputipu.setVisible(true);
-            
+
         } else if (temp.equals("Others")) {
             flammableButton.setVisible(true);
             fragileButton.setVisible(true);
@@ -711,62 +711,62 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
             tiputipu.setVisible(true);
         }
     }//GEN-LAST:event_kategoriBarangActionPerformed
-    
+
     private void namaPengirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaPengirimActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_namaPengirimActionPerformed
-    
+
     private void namaPengirimFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_namaPengirimFocusGained
-        
+
         if (namaPengirim.getText().equalsIgnoreCase("Masukkan nama pengirim")) {
             namaPengirim.setText("");
             namaPengirim.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_namaPengirimFocusGained
-    
+
     private void namaPengirimFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_namaPengirimFocusLost
         if (namaPengirim.getText().equalsIgnoreCase("")) {
             namaPengirim.setText("Masukkan nama pengirim");
             namaPengirim.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_namaPengirimFocusLost
-    
+
     private void alamatPengirimFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_alamatPengirimFocusGained
         if (alamatPengirim.getText().equalsIgnoreCase("Masukkan alamat pengirim")) {
             alamatPengirim.setText("");
             alamatPengirim.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_alamatPengirimFocusGained
-    
+
     private void alamatPengirimFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_alamatPengirimFocusLost
         if (alamatPengirim.getText().equalsIgnoreCase("")) {
             alamatPengirim.setText("Masukkan alamat pengirim");
             alamatPengirim.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_alamatPengirimFocusLost
-    
+
     private void alamatPengirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alamatPengirimActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_alamatPengirimActionPerformed
-    
+
     private void keteranganBarangFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_keteranganBarangFocusGained
         if (keteranganBarang.getText().equalsIgnoreCase("Masukkan Keterangan")) {
             keteranganBarang.setText("");
             keteranganBarang.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_keteranganBarangFocusGained
-    
+
     private void keteranganBarangFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_keteranganBarangFocusLost
         if (keteranganBarang.getText().equalsIgnoreCase("")) {
             keteranganBarang.setText("Masukkan Keterangan");
             keteranganBarang.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_keteranganBarangFocusLost
-    
+
     private void AsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AsalActionPerformed
-    
+
     private void TujuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TujuanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TujuanActionPerformed
@@ -804,7 +804,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
                 new MasukkanPengiriman().setVisible(true);
             }
         });
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,9 +44,11 @@ public class ListPaketKurir extends javax.swing.JFrame {
 
     private void generate() {
         for (Map.Entry<String, Package> set : DeliveryList.entrySet()) {
-            this.ARRPackageList.add(set.getValue());
+            if (set.getValue().getTrack().get(set.getValue().getTrack().size() - 1).equals("Barang diterima DNF")) {
+                this.ARRPackageList.add(set.getValue());
+            }
         }
-        System.out.println(ARRPackageList.get(0));
+//        System.out.println(ARRPackageList.get(0));
     }
 
     public ListPaketKurir() {
@@ -90,6 +93,7 @@ public class ListPaketKurir extends javax.swing.JFrame {
         btnKluar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listPaket = new javax.swing.JList<>();
+        pickupButton = new javax.swing.JButton();
         bgListPaket = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -156,6 +160,14 @@ public class ListPaketKurir extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 400, 380));
 
+        pickupButton.setText("Pick-Up");
+        pickupButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pickupButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(pickupButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 490, -1, -1));
+
         bgListPaket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kurir_BG_ListPaket.png"))); // NOI18N
         jPanel1.add(bgListPaket, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -210,6 +222,28 @@ public class ListPaketKurir extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_alamatPenerimaActionPerformed
 
+    private void pickupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickupButtonActionPerformed
+        // TODO add your handling code here:
+        int SelectedObj = listPaket.getSelectedIndex();
+        Package paket;
+        for (Map.Entry<String, Package> set : DeliveryList.entrySet()) {
+//            if (set.getValue().getSender().equalsIgnoreCase(namaPengirim.getText()) && set.getValue().getFrom().equalsIgnoreCase(alamatPengirim.getText()) && set.getValue().getReceiver().equalsIgnoreCase(namaPenerima.getText()) && set.getValue().getDestination().equalsIgnoreCase(alamatPenerima.getText())) {
+//                this.ARRPackageList.add(set.getValue());
+//            }
+            paket = set.getValue();
+            if (set.getValue().getResi().equals(ARRPackageList.get(SelectedObj).getResi())) {
+                set.getValue().getTrack().add("Barang dalam perjalanan");
+                ARRPackageList.clear();
+                listPaket.removeAll();
+                generateElement();
+                currentKurir.getDeliveredPackages().add(paket);
+                JOptionPane.showMessageDialog(null, "Barang berhasil dipick-up", "DNF App", 1);
+                break;
+            }
+        }
+
+    }//GEN-LAST:event_pickupButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -255,5 +289,6 @@ public class ListPaketKurir extends javax.swing.JFrame {
     private javax.swing.JList<String> listPaket;
     private javax.swing.JTextField namaPenerima;
     private javax.swing.JTextField namaPengirim;
+    private javax.swing.JButton pickupButton;
     // End of variables declaration//GEN-END:variables
 }
