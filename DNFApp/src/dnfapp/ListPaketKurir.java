@@ -160,7 +160,9 @@ public class ListPaketKurir extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 400, 380));
 
-        pickupButton.setText("Pick-Up");
+        pickupButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kurir_Button_AmbilPaket.png"))); // NOI18N
+        pickupButton.setBorderPainted(false);
+        pickupButton.setContentAreaFilled(false);
         pickupButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pickupButtonActionPerformed(evt);
