@@ -46,6 +46,9 @@ public class LoginMenu extends javax.swing.JFrame implements Serializeation{
             initComponents();
             LoginBG.requestFocus();
             this.userlist=Serializeation.loadUser();
+            this.usedEmail=Serializeation.loadEmail();
+            this.ListKurir=Serializeation.loadKurir();
+            this.DeliveryList=Serializeation.loadPackage();
             User admin = new User("admin", "admin", "CustomerService@DNF.co.id"); //generate admin user.
             User a = new User("a","a","a@gmail.com"); //generate test unit user.
             userlist.put("admin", admin);

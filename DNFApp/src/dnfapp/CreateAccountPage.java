@@ -259,15 +259,15 @@ public class CreateAccountPage extends javax.swing.JFrame implements Serializeat
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegPassFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegPassFieldActionPerformed
-
+        
     }//GEN-LAST:event_RegPassFieldActionPerformed
 
     private void ConfirmPassFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmPassFieldActionPerformed
-
+        
     }//GEN-LAST:event_ConfirmPassFieldActionPerformed
 
     private void RegUsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegUsernameFieldActionPerformed
-
+        
     }//GEN-LAST:event_RegUsernameFieldActionPerformed
 
     private void RegUsernameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegUsernameFieldFocusGained

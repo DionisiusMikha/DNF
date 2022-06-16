@@ -458,7 +458,13 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     }//GEN-LAST:event_SettingButtonActionPerformed
 
     private void EditProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProfileButtonActionPerformed
-        // TODO add your handling code here:
+        UserEditProfilePage EditMenu = new UserEditProfilePage(userlist, usedEmail, DeliveryList,ListKurir,currentUser);
+        dispose();
+        EditMenu.setVisible(true);
+        EditMenu.pack();
+        EditMenu.setLocationRelativeTo(null);
+        EditMenu.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+        EditMenu.setResizable(false);
     }//GEN-LAST:event_EditProfileButtonActionPerformed
 
     private void AppVerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AppVerButtonActionPerformed
