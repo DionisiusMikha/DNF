@@ -676,6 +676,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
                     resetField();
 
                     JOptionPane.showMessageDialog(null, "Entry Paket Berhasil! Nomor Resi : " + resi, "DNF App", 1);
+                    Serializeation.savePackage(DeliveryList);
                     break;
                 }
             }

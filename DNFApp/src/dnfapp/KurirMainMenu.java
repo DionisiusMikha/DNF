@@ -88,7 +88,7 @@ public class KurirMainMenu extends javax.swing.JFrame {
                 kurirKeluarActionPerformed(evt);
             }
         });
-        jPanel1.add(kurirKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 590, -1, -1));
+        jPanel1.add(kurirKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 590, -1, -1));
 
         listPaket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kurir_Button_ListPaket.png"))); // NOI18N
         listPaket.setBorderPainted(false);

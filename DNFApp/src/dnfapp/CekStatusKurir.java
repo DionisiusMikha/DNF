@@ -38,7 +38,7 @@ public class CekStatusKurir extends javax.swing.JFrame {
     private ArrayList<String> listkota = new ArrayList<>();
 
     private void generateElement() {
-        generate();
+       generate();
         DefaultListModel listModel = new DefaultListModel();
         for (int i = 0; i < currentKurir.getDeliveredPackages().size(); i++) {
             String container = currentKurir.getDeliveredPackages().get(i).getResi() + " - " + currentKurir.getDeliveredPackages().get(i).getReceiver() + " - " + currentKurir.getDeliveredPackages().get(i).getDestination();
@@ -49,7 +49,7 @@ public class CekStatusKurir extends javax.swing.JFrame {
 
     private void generate() {
         for (Map.Entry<String, Package> set : DeliveryList.entrySet()) {
-            if (set.getValue().getTrack().get(set.getValue().getTrack().size() - 1).equals("Barang diterima DNF")) {
+            if (set.getValue().getTrack().get(set.getValue().getTrack().size() - 1).equals("Barang berhasil dipick-up")) {
                 this.currentKurir.getDeliveredPackages().add(set.getValue());
             }
         }
@@ -223,6 +223,7 @@ public class CekStatusKurir extends javax.swing.JFrame {
                 set.getValue().getTrack().add("Barang sudah tiba");
                 ARRPackageList.clear();
                 listStatus.removeAll();
+                currentKurir.getDeliveredPackages().clear();
                 generateElement();
                 currentKurir.getDeliveredPackages().remove(paket);
                 JOptionPane.showMessageDialog(null, "Barang berhasil diselesaikan", "DNF App", 1);
