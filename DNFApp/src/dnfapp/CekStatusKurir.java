@@ -131,6 +131,8 @@ public class CekStatusKurir extends javax.swing.JFrame {
         jPanel1.add(confirmBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 500, -1, -1));
 
         listStatus.setBackground(new java.awt.Color(4, 37, 107));
+        listStatus.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        listStatus.setForeground(new java.awt.Color(255, 255, 255));
         listStatus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 listStatusMouseClicked(evt);
