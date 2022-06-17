@@ -77,7 +77,6 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         EditProfileButton = new javax.swing.JButton();
         AppVerButton = new javax.swing.JButton();
         ProfileButton = new javax.swing.JButton();
-        SettingGIF = new javax.swing.JLabel();
         LogOutButton = new javax.swing.JButton();
         KirimButton = new javax.swing.JButton();
         HomeButton = new javax.swing.JButton();
@@ -91,6 +90,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         TujuanField = new javax.swing.JTextField();
         TujuanCombobox = new javax.swing.JComboBox<>();
         AsalCombobox = new javax.swing.JComboBox<>();
+        TambahanBGKirim = new javax.swing.JLabel();
         CostCalcBG = new javax.swing.JLabel();
         PriceCalcButton = new javax.swing.JButton();
         CekHistoryButton = new javax.swing.JButton();
@@ -104,6 +104,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         SeeDetailButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         HistoryList = new javax.swing.JList<>();
+        SettingGIF = new javax.swing.JLabel();
         BGHistory = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -140,9 +141,6 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
             }
         });
         getContentPane().add(ProfileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 90, 90, 90));
-
-        SettingGIF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/setting-vector.gif"))); // NOI18N
-        getContentPane().add(SettingGIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, 419, 511));
 
         LogOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Logout.png"))); // NOI18N
         LogOutButton.setBorderPainted(false);
@@ -242,6 +240,9 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         AsalCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Kota-" }));
         getContentPane().add(AsalCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 100, 40));
 
+        TambahanBGKirim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_Kategori_SendPackage.png"))); // NOI18N
+        getContentPane().add(TambahanBGKirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(785, 323, -1, -1));
+
         CostCalcBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_CalcCost.png"))); // NOI18N
         getContentPane().add(CostCalcBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
@@ -317,6 +318,9 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         jScrollPane1.setViewportView(HistoryList);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 440, 380));
+
+        SettingGIF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/setting-vector.gif"))); // NOI18N
+        getContentPane().add(SettingGIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, 419, 511));
 
         BGHistory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_ShippingHistory.png"))); // NOI18N
         getContentPane().add(BGHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -863,6 +867,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     private javax.swing.JButton SendPackageButton;
     private javax.swing.JButton SettingButton;
     private javax.swing.JLabel SettingGIF;
+    private javax.swing.JLabel TambahanBGKirim;
     private javax.swing.JComboBox<String> TujuanCombobox;
     private javax.swing.JTextField TujuanField;
     private javax.swing.JLabel UserMenuBG;
