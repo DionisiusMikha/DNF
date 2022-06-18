@@ -21,6 +21,12 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     private boolean history;
     private boolean send;
     private boolean calc;
+    //package boolean
+    private boolean flammable;
+    private boolean fragile;
+    private boolean keepdry;
+    private boolean protectfromheat;
+    private boolean extraprotect;
     //current user obj
     private User currentUser;
     //HashMaps to Pass.
@@ -62,7 +68,13 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         this.send=false;
         this.calc=false;
         ButtonController(false,true,false,false,false,false);
+        boolean flammable = false;
+        boolean fragile = false;
+        boolean keepdry = false;
+        boolean protectfromheat = false;
+        boolean extraprotect = false;
         generateCityCalc();
+        generateKategori();
     }
 
     /**
@@ -825,6 +837,20 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
             UpdateVisibility(6);
+        }
+    }
+    
+    public void generateKategori(){
+        ArrayList<String> kategori = new ArrayList<>();
+        kategori.add("Others");
+        setResizable(false);
+        kategori.add("Food and Beverages");
+        kategori.add("Beauty and Fashion");
+        kategori.add("Hobby and Collections");
+        kategori.add("Electronic");
+        kategori.add("Sports");
+        for (int i = 0; i < kategori.size(); i++) {
+            KategoriCombobox.addItem(kategori.get(i));
         }
     }
     
