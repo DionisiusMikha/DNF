@@ -80,6 +80,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         LogOutButton = new javax.swing.JButton();
         KirimButton = new javax.swing.JButton();
         HomeButton = new javax.swing.JButton();
+        KategoriCombobox = new javax.swing.JComboBox<>();
         WelcomeLabel = new javax.swing.JLabel();
         SendBeratField = new javax.swing.JTextField();
         AsalField = new javax.swing.JTextField();
@@ -97,6 +98,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         SendPackageButton = new javax.swing.JButton();
         SendPackageBG = new javax.swing.JLabel();
         SearchButton = new javax.swing.JButton();
+        SettingGIF = new javax.swing.JLabel();
         Vector = new javax.swing.JLabel();
         SearchBar = new javax.swing.JTextField();
         SearchBarBG = new javax.swing.JLabel();
@@ -104,7 +106,6 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         SeeDetailButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         HistoryList = new javax.swing.JList<>();
-        SettingGIF = new javax.swing.JLabel();
         BGHistory = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -177,6 +178,9 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
             }
         });
         getContentPane().add(HomeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 186, 53));
+
+        KategoriCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Kategori-" }));
+        getContentPane().add(KategoriCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(905, 335, 250, -1));
 
         WelcomeLabel.setFont(new java.awt.Font("Fira Sans", 3, 18)); // NOI18N
         WelcomeLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -290,6 +294,9 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         getContentPane().add(SearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 329, 111, 49));
         SearchButton.setVisible(false);
 
+        SettingGIF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/setting-vector.gif"))); // NOI18N
+        getContentPane().add(SettingGIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, 419, 511));
+
         Vector.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Vector.gif"))); // NOI18N
         getContentPane().add(Vector, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 370, -1, -1));
 
@@ -318,9 +325,6 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         jScrollPane1.setViewportView(HistoryList);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 440, 380));
-
-        SettingGIF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/setting-vector.gif"))); // NOI18N
-        getContentPane().add(SettingGIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, 419, 511));
 
         BGHistory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_ShippingHistory.png"))); // NOI18N
         getContentPane().add(BGHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -446,8 +450,8 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     }//GEN-LAST:event_PriceCalcButtonActionPerformed
 
     private void KirimButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KirimButtonActionPerformed
-        String alamatAsal = AsalField.getText()+", "+listkota.get(AsalCombobox.getSelectedIndex());
-        String alamatTujuan = AsalField.getText()+", "+listkota.get(TujuanCombobox.getSelectedIndex());
+        
+        
         
     }//GEN-LAST:event_KirimButtonActionPerformed
 
@@ -536,6 +540,9 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 EditProfileButton.setEnabled(false);
                 AppVerButton.setEnabled(false);
                 AppVerButton.setVisible(false);
+                TambahanBGKirim.setVisible(false);
+                KategoriCombobox.setVisible(false);
+                KategoriCombobox.setEnabled(false);
                 break;
         
             case 2: //Cek Resi Mode
@@ -579,6 +586,9 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 EditProfileButton.setEnabled(false);
                 AppVerButton.setEnabled(false);
                 AppVerButton.setVisible(false);
+                TambahanBGKirim.setVisible(false);
+                KategoriCombobox.setVisible(false);
+                KategoriCombobox.setEnabled(false);
                 break;
         
             case 3: //Settings Mode
@@ -622,6 +632,9 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 EditProfileButton.setEnabled(true);
                 AppVerButton.setEnabled(true);
                 AppVerButton.setVisible(true);
+                TambahanBGKirim.setVisible(false);
+                KategoriCombobox.setVisible(false);
+                KategoriCombobox.setEnabled(false);
                 break;
 
             case 4: //See History Mode
@@ -667,6 +680,9 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 EditProfileButton.setEnabled(false);
                 AppVerButton.setEnabled(false);
                 AppVerButton.setVisible(false);
+                TambahanBGKirim.setVisible(false);
+                KategoriCombobox.setVisible(false);
+                KategoriCombobox.setEnabled(false);
                 break;
         
             case 5: //Send Package Mode
@@ -712,6 +728,9 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 EditProfileButton.setEnabled(false);
                 AppVerButton.setEnabled(false);
                 AppVerButton.setVisible(false);
+                TambahanBGKirim.setVisible(true);
+                KategoriCombobox.setVisible(true);
+                KategoriCombobox.setEnabled(true);
                 break;
         
             case 6: //Cost Calculator Mode
@@ -757,6 +776,9 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 EditProfileButton.setEnabled(false);
                 AppVerButton.setEnabled(false);
                 AppVerButton.setVisible(false);
+                TambahanBGKirim.setVisible(false);
+                KategoriCombobox.setVisible(false);
+                KategoriCombobox.setEnabled(false);
                 break;
         }
     }
@@ -853,6 +875,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     private javax.swing.JButton EditProfileButton;
     private javax.swing.JList<String> HistoryList;
     private javax.swing.JButton HomeButton;
+    private javax.swing.JComboBox<String> KategoriCombobox;
     private javax.swing.JButton KirimButton;
     private javax.swing.JButton LogOutButton;
     private javax.swing.JButton PriceCalcButton;
