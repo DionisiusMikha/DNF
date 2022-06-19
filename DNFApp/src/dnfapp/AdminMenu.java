@@ -145,7 +145,7 @@ public class AdminMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegisKurirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisKurirButtonActionPerformed
-        RegisterKurir registerkuliah = new RegisterKurir(userlist, DeliveryList, ListKurir, usedEmail);
+        RegisterKurir registerkuliah = new RegisterKurir(userlist, DeliveryList, ListKurir, usedEmail); //bruh nama var jframenya ya lord
         dispose();
         registerkuliah.setVisible(true);
         registerkuliah.pack();

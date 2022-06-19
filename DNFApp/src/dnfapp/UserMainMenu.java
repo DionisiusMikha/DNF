@@ -194,7 +194,6 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         KategoriCombobox.setBackground(new java.awt.Color(237, 238, 254));
         KategoriCombobox.setForeground(new java.awt.Color(76, 76, 76));
         KategoriCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Kategori-" }));
-        KategoriCombobox.setBorder(null);
         getContentPane().add(KategoriCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(905, 329, 250, 40));
 
         WelcomeLabel.setFont(new java.awt.Font("Fira Sans", 3, 18)); // NOI18N

@@ -53,7 +53,6 @@ public class SeeListKurir extends javax.swing.JFrame implements Serializeation{
             String container = ARRListKurir.get(i).getNama() + " - " + ARRListKurir.get(i).getUsername();
             listModel.addElement(container);
         }
-        
         JListKurir.setModel(listModel);
     }
 

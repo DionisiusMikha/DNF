@@ -143,7 +143,7 @@ public class RegisterKurir extends javax.swing.JFrame {
                 DaftarKurirButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(DaftarKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 480, 260, 70));
+        getContentPane().add(DaftarKurirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 500, 165, 43));
 
         cancelDaftarKurir.setBackground(new java.awt.Color(62, 97, 155));
         cancelDaftarKurir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5_minisize.png"))); // NOI18N
@@ -209,6 +209,9 @@ public class RegisterKurir extends javax.swing.JFrame {
                     if (ListKurir.containsKey(unameKurir)) {
                         jadiKurir = true;
                     }
+                    else if(userlist.containsKey(unameKurir)){
+                        jadiKurir= true;
+                    }
 
                     if (!jadiKurir) {
                         Kurir newKurir = new Kurir(namaKurir, unameKurir, passwordKurir);
@@ -222,22 +225,16 @@ public class RegisterKurir extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Berhasil mendafatarkan " + namaKurir + " !", "DNF App", 1);
                         Serializeation.saveKurir(ListKurir);
                     } else {
-                        JOptionPane.showMessageDialog(null, "Kurir sudah terdaftar!", "DNF App", 2);
+                        if(ListKurir.containsKey(unameKurir)){
+                            JOptionPane.showMessageDialog(null, "Kurir sudah terdaftar!", "DNF App", 2);
+                        }
+                        else if(userlist.containsKey(unameKurir)){
+                            JOptionPane.showMessageDialog(null, "Username sudah terpakai!", "DNF App", 2);
+                        }
                     }
                 }
             }
         }
-
-//        try {
-//            FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir") + "\\kurir.ser");
-//            ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
-//            objOut.writeObject(ListKurir);
-//            objOut.close();
-//            fileOut.close();  
-//            System.out.println("SUKSES SIMPEN KURIR");
-//        } catch (Exception e) {
-//            System.out.println("error :" + e.getMessage());
-//        }
     }//GEN-LAST:event_DaftarKurirButtonActionPerformed
 
     private void NamaKurirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamaKurirActionPerformed
