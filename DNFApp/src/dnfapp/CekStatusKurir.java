@@ -113,7 +113,7 @@ public class CekStatusKurir extends javax.swing.JFrame {
                 btnKeluarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 510, -1, -1));
+        jPanel1.add(btnKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 595, -1, -1));
 
         confirmBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kurir_Button_Konfirmasi.png"))); // NOI18N
         confirmBtn.setBorderPainted(false);
@@ -128,7 +128,7 @@ public class CekStatusKurir extends javax.swing.JFrame {
                 confirmBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(confirmBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 500, -1, -1));
+        jPanel1.add(confirmBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 500, -1, -1));
 
         listStatus.setBackground(new java.awt.Color(4, 37, 107));
         listStatus.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -140,7 +140,7 @@ public class CekStatusKurir extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(listStatus);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 400, 380));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 410, 380));
 
         namaPengirim.setBackground(new java.awt.Color(62, 97, 155));
         namaPengirim.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N

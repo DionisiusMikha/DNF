@@ -191,15 +191,28 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         });
         getContentPane().add(HomeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 186, 53));
 
+        KategoriCombobox.setBackground(new java.awt.Color(237, 238, 254));
+        KategoriCombobox.setForeground(new java.awt.Color(76, 76, 76));
         KategoriCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Kategori-" }));
-        getContentPane().add(KategoriCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(905, 335, 250, -1));
+        KategoriCombobox.setBorder(null);
+        getContentPane().add(KategoriCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(905, 329, 250, 40));
 
         WelcomeLabel.setFont(new java.awt.Font("Fira Sans", 3, 18)); // NOI18N
         WelcomeLabel.setForeground(new java.awt.Color(255, 255, 255));
         WelcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(WelcomeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 180, 215, 40));
-        getContentPane().add(SendBeratField, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, 280, 40));
-        getContentPane().add(AsalField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 250, 40));
+
+        SendBeratField.setBackground(new java.awt.Color(237, 238, 254));
+        SendBeratField.setFont(new java.awt.Font("Fira Sans", 0, 23)); // NOI18N
+        SendBeratField.setForeground(new java.awt.Color(76, 76, 76));
+        SendBeratField.setBorder(null);
+        getContentPane().add(SendBeratField, new org.netbeans.lib.awtextra.AbsoluteConstraints(423, 330, 310, 40));
+
+        AsalField.setBackground(new java.awt.Color(237, 238, 254));
+        AsalField.setFont(new java.awt.Font("Fira Sans", 0, 23)); // NOI18N
+        AsalField.setForeground(new java.awt.Color(76, 76, 76));
+        AsalField.setBorder(null);
+        getContentPane().add(AsalField, new org.netbeans.lib.awtextra.AbsoluteConstraints(403, 240, 240, 40));
 
         CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png"))); // NOI18N
         CekResiButton.setBorderPainted(false);
@@ -241,10 +254,20 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         });
         getContentPane().add(CalculateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, 135, 35));
 
+        PriceLabel.setBackground(new java.awt.Color(237, 238, 254));
+        PriceLabel.setFont(new java.awt.Font("Fira Sans", 2, 48)); // NOI18N
+        PriceLabel.setForeground(new java.awt.Color(76, 76, 76));
         PriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(PriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 460, 390, 120));
-        getContentPane().add(TujuanField, new org.netbeans.lib.awtextra.AbsoluteConstraints(875, 240, 240, 40));
 
+        TujuanField.setBackground(new java.awt.Color(237, 238, 254));
+        TujuanField.setFont(new java.awt.Font("Fira Sans", 0, 23)); // NOI18N
+        TujuanField.setForeground(new java.awt.Color(76, 76, 76));
+        TujuanField.setBorder(null);
+        getContentPane().add(TujuanField, new org.netbeans.lib.awtextra.AbsoluteConstraints(878, 240, 230, 40));
+
+        TujuanCombobox.setBackground(new java.awt.Color(237, 238, 254));
+        TujuanCombobox.setForeground(new java.awt.Color(76, 76, 76));
         TujuanCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Kota-" }));
         TujuanCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -253,6 +276,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         });
         getContentPane().add(TujuanCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(1115, 240, 90, 40));
 
+        AsalCombobox.setBackground(new java.awt.Color(237, 238, 254));
         AsalCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Kota-" }));
         getContentPane().add(AsalCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 100, 40));
 

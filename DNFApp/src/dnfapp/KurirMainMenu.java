@@ -80,7 +80,7 @@ public class KurirMainMenu extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        kurirKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5_minisize.png"))); // NOI18N
+        kurirKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5.png"))); // NOI18N
         kurirKeluar.setBorderPainted(false);
         kurirKeluar.setContentAreaFilled(false);
         kurirKeluar.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +88,7 @@ public class KurirMainMenu extends javax.swing.JFrame {
                 kurirKeluarActionPerformed(evt);
             }
         });
-        jPanel1.add(kurirKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 590, -1, -1));
+        jPanel1.add(kurirKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1117, 555, -1, -1));
 
         listPaket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kurir_Button_ListPaket.png"))); // NOI18N
         listPaket.setBorderPainted(false);

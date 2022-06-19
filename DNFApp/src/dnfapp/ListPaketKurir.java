@@ -161,7 +161,7 @@ public class ListPaketKurir extends javax.swing.JFrame {
                 btnKluarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnKluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 510, -1, -1));
+        jPanel1.add(btnKluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 595, -1, -1));
 
         listPaket.setBackground(new java.awt.Color(4, 37, 107));
         listPaket.setBorder(null);
@@ -184,7 +184,7 @@ public class ListPaketKurir extends javax.swing.JFrame {
                 pickupButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(pickupButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 490, -1, -1));
+        jPanel1.add(pickupButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 500, -1, -1));
 
         bgListPaket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kurir_BG_ListPaket.png"))); // NOI18N
         jPanel1.add(bgListPaket, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

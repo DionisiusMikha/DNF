@@ -157,7 +157,7 @@ public class ListPengiriman extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         DaftarPengiriman.setBackground(new java.awt.Color(4, 37, 107));
-        DaftarPengiriman.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        DaftarPengiriman.setFont(new java.awt.Font("Fira Sans", 1, 14)); // NOI18N
         DaftarPengiriman.setForeground(new java.awt.Color(255, 255, 255));
         DaftarPengiriman.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -176,7 +176,7 @@ public class ListPengiriman extends javax.swing.JFrame {
                 ExitButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(ExitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, 75, 75));
+        getContentPane().add(ExitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 598, 75, 75));
 
         ReceiverField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         ReceiverField.setForeground(new java.awt.Color(255, 255, 255));
@@ -240,7 +240,7 @@ public class ListPengiriman extends javax.swing.JFrame {
         });
         jPanel2.add(filterKategori);
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 176, 190, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 190, -1));
 
         jPanel3.setBackground(new java.awt.Color(62, 97, 155));
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 260, 30));

@@ -85,7 +85,10 @@ public class SeeListKurir extends javax.swing.JFrame{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        JListKurir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        JListKurir.setBackground(new java.awt.Color(4, 37, 107));
+        JListKurir.setBorder(null);
+        JListKurir.setFont(new java.awt.Font("Fira Sans", 1, 14)); // NOI18N
+        JListKurir.setForeground(new java.awt.Color(255, 255, 255));
         JListKurir.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Your List of Kurir will be here" };
             public int getSize() { return strings.length; }
@@ -98,7 +101,7 @@ public class SeeListKurir extends javax.swing.JFrame{
         });
         jScrollPane1.setViewportView(JListKurir);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 400, 380));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 410, 380));
 
         KeluarSeeListKurir.setBackground(new java.awt.Color(4, 37, 107));
         KeluarSeeListKurir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5_minisize.png"))); // NOI18N
@@ -110,7 +113,7 @@ public class SeeListKurir extends javax.swing.JFrame{
                 KeluarSeeListKurirActionPerformed(evt);
             }
         });
-        getContentPane().add(KeluarSeeListKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 600, 80, -1));
+        getContentPane().add(KeluarSeeListKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 598, 80, -1));
 
         displayNamaKurir.setBackground(new java.awt.Color(62, 97, 155));
         displayNamaKurir.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N

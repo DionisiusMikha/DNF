@@ -76,6 +76,10 @@ public class UserEditProfilePage extends javax.swing.JFrame {
         });
         getContentPane().add(Keluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 620, 100, 100));
 
+        UsernameField.setBackground(new java.awt.Color(237, 238, 254));
+        UsernameField.setFont(new java.awt.Font("Fira Sans", 0, 23)); // NOI18N
+        UsernameField.setForeground(new java.awt.Color(76, 76, 76));
+        UsernameField.setBorder(null);
         UsernameField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 UsernameFieldFocusGained(evt);
@@ -84,8 +88,12 @@ public class UserEditProfilePage extends javax.swing.JFrame {
                 UsernameFieldFocusLost(evt);
             }
         });
-        getContentPane().add(UsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 305, 248, -1));
+        getContentPane().add(UsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 302, 260, 30));
 
+        EmailField.setBackground(new java.awt.Color(237, 238, 254));
+        EmailField.setFont(new java.awt.Font("Fira Sans", 0, 23)); // NOI18N
+        EmailField.setForeground(new java.awt.Color(76, 76, 76));
+        EmailField.setBorder(null);
         EmailField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 EmailFieldFocusGained(evt);
@@ -99,7 +107,7 @@ public class UserEditProfilePage extends javax.swing.JFrame {
                 EmailFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(EmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, 300, 20));
+        getContentPane().add(EmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 228, 300, 30));
 
         EditButton.setBorderPainted(false);
         EditButton.setContentAreaFilled(false);
@@ -110,6 +118,9 @@ public class UserEditProfilePage extends javax.swing.JFrame {
         });
         getContentPane().add(EditButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(865, 504, 140, 35));
 
+        PasswordField.setBackground(new java.awt.Color(237, 238, 254));
+        PasswordField.setForeground(new java.awt.Color(76, 76, 76));
+        PasswordField.setBorder(null);
         PasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 PasswordFieldFocusGained(evt);
@@ -118,7 +129,7 @@ public class UserEditProfilePage extends javax.swing.JFrame {
                 PasswordFieldFocusLost(evt);
             }
         });
-        getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 260, -1));
+        getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 375, 270, 30));
 
         BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Layout/User_Layout_EditProfile.png"))); // NOI18N
         getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));

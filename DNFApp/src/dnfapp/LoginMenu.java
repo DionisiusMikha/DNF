@@ -117,7 +117,6 @@ public class LoginMenu extends javax.swing.JFrame implements Serializeation{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CreateAccButton.setBackground(new java.awt.Color(62, 97, 155));
@@ -202,7 +201,7 @@ public class LoginMenu extends javax.swing.JFrame implements Serializeation{
         getContentPane().add(ShowPassButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 328, -1, 30));
 
         LoginBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Login_Menu.png"))); // NOI18N
-        getContentPane().add(LoginBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -190, -1, 1100));
+        getContentPane().add(LoginBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

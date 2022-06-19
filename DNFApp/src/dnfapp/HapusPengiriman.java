@@ -54,7 +54,7 @@ public class HapusPengiriman extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         inputResiDihapus.setBackground(new java.awt.Color(62, 97, 155));
-        inputResiDihapus.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        inputResiDihapus.setFont(new java.awt.Font("Fira Sans", 0, 16)); // NOI18N
         inputResiDihapus.setForeground(new java.awt.Color(255, 255, 255));
         inputResiDihapus.setText("Masukan No.Resi yang ingin dihapus");
         inputResiDihapus.setBorder(null);
@@ -71,7 +71,7 @@ public class HapusPengiriman extends javax.swing.JFrame {
                 inputResiDihapusActionPerformed(evt);
             }
         });
-        jPanel1.add(inputResiDihapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 320, 30));
+        jPanel1.add(inputResiDihapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 320, 40));
 
         HapusButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_6.png"))); // NOI18N
         HapusButton.setBorder(null);
@@ -92,7 +92,7 @@ public class HapusPengiriman extends javax.swing.JFrame {
                 keluarButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(keluarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, -1, -1));
+        jPanel1.add(keluarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 592, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Hapus_Pengiriman.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
