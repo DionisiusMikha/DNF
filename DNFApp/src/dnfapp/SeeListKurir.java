@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author Frans
  */
-public class SeeListKurir extends javax.swing.JFrame{
+public class SeeListKurir extends javax.swing.JFrame implements Serializeation{
 
     private HashMap<String, User> userlist = new HashMap<String, User>();
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
@@ -48,11 +48,12 @@ public class SeeListKurir extends javax.swing.JFrame{
     
     private void generateElement() {
         DefaultListModel listModel = new DefaultListModel();
+        Collections.sort(ARRListKurir, new SortNamaKurir());
         for (int i = 0; i < ARRListKurir.size(); i++) {
             String container = ARRListKurir.get(i).getNama() + " - " + ARRListKurir.get(i).getUsername();
             listModel.addElement(container);
         }
-        Collections.sort(ARRListKurir, new SortNamaKurir());
+        
         JListKurir.setModel(listModel);
     }
 
@@ -189,6 +190,7 @@ public class SeeListKurir extends javax.swing.JFrame{
     }//GEN-LAST:event_JListKurirMouseClicked
 
     private void KeluarSeeListKurirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KeluarSeeListKurirActionPerformed
+        Serializeation.saveKurir(ListKurir);
         AdminMenu AM = new AdminMenu(userlist, DeliveryList, ListKurir, usedEmail);
         dispose();
         AM.setVisible(true);
@@ -196,7 +198,6 @@ public class SeeListKurir extends javax.swing.JFrame{
         AM.setResizable(false);
         AM.setLocationRelativeTo(null);
         AM.setDefaultCloseOperation(AdminMenu.EXIT_ON_CLOSE);
-        
     }//GEN-LAST:event_KeluarSeeListKurirActionPerformed
 
     private void displayNamaKurirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayNamaKurirActionPerformed
@@ -212,28 +213,6 @@ public class SeeListKurir extends javax.swing.JFrame{
     }//GEN-LAST:event_displayPasswordKurirActionPerformed
 
     private void EditKurirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditKurirButtonActionPerformed
-//        String newnama = displayNamaKurir.getText();
-//        String newPassword = displayPasswordKurir.getText();
-//        String newUsername = displayUsernameKurir.getText();
-//
-//        if (displayNamaKurir.getText().equals("") && displayPasswordKurir.getText().equals("") && displayUsernameKurir.getText().equals("")) {
-//            JOptionPane.showMessageDialog(null, "Silahkan pilih user yang mau di-edit!", "DNF App", 2);
-//        } 
-//        else {
-//            int ctr = 0;
-//            for (int i = 0; i < ARRListKurir.size(); i++) {
-//                if (ARRListKurir.get(i).getNama().equals(tempNamaLamaKurir)) {
-//                    ctr = i;
-//                    break;
-//                }
-//            }
-//            ARRListKurir.get(ctr).setNama(newnama);
-//            ARRListKurir.get(ctr).setUsername(newUsername);
-//            ARRListKurir.get(ctr).setPassword(newPassword);
-//            resetField();
-//            generateElement();
-//            JOptionPane.showMessageDialog(null, "Berhasil memperbaharui data Kurir!", "DNF App", 1);
-//        }
         if(this.SelectedObj!=null){
             EditKurir EK = new EditKurir(userlist,DeliveryList,ListKurir,usedEmail,ARRListKurir,SelectedObj);
             dispose();
@@ -269,6 +248,7 @@ public class SeeListKurir extends javax.swing.JFrame{
             ((DefaultListModel) JListKurir.getModel()).remove(ctr);
             JOptionPane.showMessageDialog(null, "Berhasil menghapus kurir " + temp + " !", "DNF App", 1);
         }
+        System.out.println(ListKurir);
     }//GEN-LAST:event_DeleteButtonActionPerformed
 
     private void resetField() {
