@@ -217,13 +217,13 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
         getContentPane().add(WelcomeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 180, 215, 40));
 
         SendBeratField.setBackground(new java.awt.Color(237, 238, 254));
-        SendBeratField.setFont(new java.awt.Font("Fira Sans", 0, 23)); // NOI18N
+        SendBeratField.setFont(new java.awt.Font("Fira Sans", 0, 20)); // NOI18N
         SendBeratField.setForeground(new java.awt.Color(76, 76, 76));
         SendBeratField.setBorder(null);
         getContentPane().add(SendBeratField, new org.netbeans.lib.awtextra.AbsoluteConstraints(423, 330, 310, 40));
 
         AsalField.setBackground(new java.awt.Color(237, 238, 254));
-        AsalField.setFont(new java.awt.Font("Fira Sans", 0, 23)); // NOI18N
+        AsalField.setFont(new java.awt.Font("Fira Sans", 0, 20)); // NOI18N
         AsalField.setForeground(new java.awt.Color(76, 76, 76));
         AsalField.setBorder(null);
         getContentPane().add(AsalField, new org.netbeans.lib.awtextra.AbsoluteConstraints(403, 240, 240, 40));
@@ -274,10 +274,15 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
         PriceLabel.setForeground(new java.awt.Color(76, 76, 76));
         PriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(PriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 460, 390, 120));
+
+        PenerimaField.setBackground(new java.awt.Color(237, 238, 254));
+        PenerimaField.setFont(new java.awt.Font("Fira Sans", 0, 20)); // NOI18N
+        PenerimaField.setForeground(new java.awt.Color(76, 76, 76));
+        PenerimaField.setBorder(null);
         getContentPane().add(PenerimaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 419, 240, 40));
 
         TujuanField.setBackground(new java.awt.Color(237, 238, 254));
-        TujuanField.setFont(new java.awt.Font("Fira Sans", 0, 23)); // NOI18N
+        TujuanField.setFont(new java.awt.Font("Fira Sans", 0, 20)); // NOI18N
         TujuanField.setForeground(new java.awt.Color(76, 76, 76));
         TujuanField.setBorder(null);
         getContentPane().add(TujuanField, new org.netbeans.lib.awtextra.AbsoluteConstraints(878, 240, 230, 40));
