@@ -616,7 +616,7 @@ public class MasukkanPengiriman extends javax.swing.JFrame implements GenerateCi
         System.out.println(resi);
 
         boolean lulusGede = true;
-        if ((namaPenerima.equals("Masukkan nama penerima") || daerahPenerima.equals("Masukkan daerah tujuan") || nmPengirim.equals("Masukkan nama pengirim") || daerahPengirim.equals("Masukkan alamat pengirim"))) {
+        if ((namaPenerima.equals("") || daerahPenerima.equals("") || nmPengirim.equals("") || daerahPengirim.equals(""))) {
             lulusGede = false;
             JOptionPane.showMessageDialog(this, "Input tidak valid!", "DnF", 2);
         }

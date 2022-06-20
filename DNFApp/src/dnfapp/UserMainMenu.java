@@ -4,6 +4,7 @@
  */
 package dnfapp;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JFrame;
@@ -13,7 +14,8 @@ import javax.swing.JOptionPane;
  *
  * @author Frans
  */
-public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,CityCalc{
+public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, CityCalc {
+
     //boolean state
     private boolean cek_resi;
     private boolean home_menu;
@@ -34,40 +36,40 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
-    
+
     //private Generated HashMaps&ArrayList for City Index
     private HashMap<String, Kota> MapKota = new HashMap<String, Kota>();
     private ArrayList<String> listkota = new ArrayList<>();
-    
+
     public UserMainMenu() {
         initComponents();
         generateCityCalc();
     }
-    
-    public UserMainMenu(HashMap<String, User> userlist, HashMap<String, String> usedEmail){
+
+    public UserMainMenu(HashMap<String, User> userlist, HashMap<String, String> usedEmail) {
         initComponents();
-        this.userlist=userlist;
-        this.usedEmail=usedEmail;
+        this.userlist = userlist;
+        this.usedEmail = usedEmail;
         generateCityCalc();
     }
-    
-    public UserMainMenu(HashMap<String, User> userlist,HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList,  HashMap<String, Kurir> ListKurir, User currentUser){
+
+    public UserMainMenu(HashMap<String, User> userlist, HashMap<String, String> usedEmail, HashMap<String, Package> DeliveryList, HashMap<String, Kurir> ListKurir, User currentUser) {
         initComponents();
-        this.userlist=userlist;
-        this.usedEmail=usedEmail;
-        this.DeliveryList=DeliveryList;
-        this.ListKurir=ListKurir;
-        this.currentUser=currentUser;
+        this.userlist = userlist;
+        this.usedEmail = usedEmail;
+        this.DeliveryList = DeliveryList;
+        this.ListKurir = ListKurir;
+        this.currentUser = currentUser;
         this.setResizable(false);
         UserMenuBG.requestFocus();
-        WelcomeLabel.setText("Welcome, "+currentUser.getUsername());
-        this.cek_resi=false;
-        this.home_menu=true;
-        this.setting=false;
-        this.history=false;
-        this.send=false;
-        this.calc=false;
-        ButtonController(false,true,false,false,false,false);
+        WelcomeLabel.setText("Welcome, " + currentUser.getUsername());
+        this.cek_resi = false;
+        this.home_menu = true;
+        this.setting = false;
+        this.history = false;
+        this.send = false;
+        this.calc = false;
+        ButtonController(false, true, false, false, false, false);
         boolean flammable = false;
         boolean fragile = false;
         boolean keepdry = false;
@@ -124,6 +126,8 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         jScrollPane1 = new javax.swing.JScrollPane();
         HistoryList = new javax.swing.JList<>();
         BGHistory = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -415,24 +419,30 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         BGHistory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_ShippingHistory.png"))); // NOI18N
         getContentPane().add(BGHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 390, -1, -1));
+
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void CekResiButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CekResiButtonMouseClicked
-        if(!cek_resi){
-            ButtonController(false,false,true,false,false,false);
+        if (!cek_resi) {
+            ButtonController(false, false, true, false, false, false);
         }
     }//GEN-LAST:event_CekResiButtonMouseClicked
 
     private void HomeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeButtonMouseClicked
-        if(!home_menu){
-            ButtonController(false,true,false,false,false,false);
+        if (!home_menu) {
+            ButtonController(false, true, false, false, false, false);
         }
     }//GEN-LAST:event_HomeButtonMouseClicked
 
     private void SettingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingButtonMouseClicked
-        if(!setting){
-            ButtonController(true,false,false,false,false,false);
+        if (!setting) {
+            ButtonController(true, false, false, false, false, false);
         }
     }//GEN-LAST:event_SettingButtonMouseClicked
 
@@ -448,29 +458,27 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
 
     private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
         String RESI = this.SearchBar.getText();
-        if(RESI.equals("")){
-            JOptionPane.showMessageDialog(null, "Tolong masukkan resi yang ingin dicari terlebih dahulu", "Invalid Input!",JOptionPane.WARNING_MESSAGE);
-        }
-        else{
-            if (DeliveryList.containsKey(RESI)){
+        if (RESI.equals("")) {
+            JOptionPane.showMessageDialog(null, "Tolong masukkan resi yang ingin dicari terlebih dahulu", "Invalid Input!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            if (DeliveryList.containsKey(RESI)) {
                 Package selected = DeliveryList.get(RESI);
-                DetailPackage DP = new DetailPackage(userlist,usedEmail,DeliveryList,ListKurir, selected,currentUser);
+                DetailPackage DP = new DetailPackage(userlist, usedEmail, DeliveryList, ListKurir, selected, currentUser);
                 dispose();
                 DP.setVisible(true);
                 DP.pack();
                 DP.setLocationRelativeTo(null);
                 DP.setDefaultCloseOperation(DetailPackage.EXIT_ON_CLOSE);
                 DP.setResizable(false);
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Resi tidak ditemukan!", "Resi Invalid!",JOptionPane.WARNING_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Resi tidak ditemukan!", "Resi Invalid!", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_SearchButtonActionPerformed
 
     private void CekHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CekHistoryButtonActionPerformed
-        UpdateState(false,false,false,true,false,false);
-        ButtonController(false,false,false,true,false,false);
+        UpdateState(false, false, false, true, false, false);
+        ButtonController(false, false, false, true, false, false);
     }//GEN-LAST:event_CekHistoryButtonActionPerformed
 
     private void CekResiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CekResiButtonActionPerformed
@@ -482,8 +490,8 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     }//GEN-LAST:event_SearchBarActionPerformed
 
     private void SendPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendPackageButtonActionPerformed
-        if(!send){
-            ButtonController(false,false,false,false,true,false);
+        if (!send) {
+            ButtonController(false, false, false, false, true, false);
         }
     }//GEN-LAST:event_SendPackageButtonActionPerformed
 
@@ -493,36 +501,38 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
             Kota B = MapKota.get(listkota.get(TujuanCombobox.getSelectedIndex()));
             double weight = Integer.parseInt(SendBeratField.getText());
             int price = CityCalc.CalcHarga(A, B, weight);
-            
-            if(AsalCombobox.getSelectedIndex()==0){
+
+            if (AsalCombobox.getSelectedIndex() == 0) {
                 throw new Exception("Tolong masukkan Kota Asal yang valid.");
-            }
-            else if(TujuanCombobox.getSelectedIndex()==0){
+            } else if (TujuanCombobox.getSelectedIndex() == 0) {
                 throw new Exception("Tolong masukkan Kota Tujuan yang valid.");
-            }
-            else if(weight==0.0){
+            } else if (weight == 0.0) {
                 throw new Exception("Berat Tidak bisa 0 Kg.");
-            }
-            else{
-                if(send){
-                    PriceLabelSend.setText("Rp. "+Integer.toString(price));
+            } else if (AsalField.getText().equals("")) {
+                throw new Exception("Alamat masih kosong");
+            } else if (TujuanField.getText().equals("")) {
+                throw new Exception("Alamat masih kosong");
+            } else if (KategoriCombobox.getSelectedIndex() == 0) {
+                throw new Exception("Silahkan pilih kategori barang");
+            } else {
+                if (send) {
+                    PriceLabelSend.setText("Rp. " + Integer.toString(price));
                     KirimButton.setVisible(true);
                     KirimButton.setEnabled(true);
-                }
-                else{
-                    PriceLabel.setText("Rp. "+Integer.toString(price));
+                } else {
+                    PriceLabel.setText("Rp. " + Integer.toString(price));
                 }
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             String AlamatAsal = AsalField.getText();
             String TujuanAsal = TujuanField.getText();
-            if(AlamatAsal.equals("")||TujuanAsal.equals("")){
+            if (AlamatAsal.equals("") || TujuanAsal.equals("")) {
                 JOptionPane.showMessageDialog(null, "Input Alamat Invalid!", "DNF App", 2);
-            }else{
+            } else {
                 System.out.println(e.getMessage()); //debugging purposes.
                 JOptionPane.showMessageDialog(null, e.getMessage(), "DNF App", 2);
             }
-        } 
+        }
     }//GEN-LAST:event_CalculateBtnActionPerformed
 
     private void TujuanComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TujuanComboboxActionPerformed
@@ -534,29 +544,141 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     }//GEN-LAST:event_LogOutButtonActionPerformed
 
     private void PriceCalcButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceCalcButtonActionPerformed
-        if(!calc){
-            ButtonController(false,false,false,false,false,true);
+        if (!calc) {
+            ButtonController(false, false, false, false, false, true);
         }
     }//GEN-LAST:event_PriceCalcButtonActionPerformed
 
+    private void resetField() {
+        //ini buat resetfield" nya, nama variable nya sesuai in sama punya mu
+//        inputBeratBarang.setText("Masukan berat barang");
+//        inputDaerahTujuan.setText("Masukan daerah tujuan");
+//        inputNamaPenerima.setText("Masukan nama penerima");
+//        namaPengirim.setText("Masukkan nama pengirim");
+//        alamatPengirim.setText("Masukkan alamat pengirim");
+//        this.flammableButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Flammable.png")));
+//        this.protectfromheatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Protect.png")));
+//        this.keepdryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Keep_Dry.png")));
+//        this.fragileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Fragile.png")));
+//        this.extraProtectButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Box-alt_no.png")));
+//        kategoriBarang.setSelectedIndex(0);
+//        Asal.setSelectedIndex(0);
+//        Tujuan.setSelectedIndex(0);
+//        keteranganBarang.setText("Masukkan keterangan");
+
+    }
     private void KirimButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KirimButtonActionPerformed
-        
-        
-        
+        LocalDateTime date = LocalDateTime.now();
+        String temp = (String) KategoriCombobox.getSelectedItem();
+        String KotaAsal = (String) AsalCombobox.getSelectedItem();
+        String KotaTujuan = (String) TujuanCombobox.getSelectedItem();
+        String namaPenerima = "kosongan"; // kurang text field
+        String daerahPenerima = AsalField.getText() + ", " + KotaTujuan;
+        String tempBeratBarang = SendBeratField.getText();
+        String nmPengirim = currentUser.getUsername();
+        String daerahPengirim = TujuanField.getText() + ", " + KotaAsal;
+        String keterangan = "MISC";
+        String tempKategori = (String) KategoriCombobox.getSelectedItem();
+
+        String resi = "DF";
+        int bulan = (int) date.getMonthValue();
+        int tanggal = (int) date.getDayOfMonth();
+        int tahun = (int) date.getYear();
+        int jam = (int) date.getHour();
+        int menit = (int) date.getMinute();
+        int detik = (int) date.getSecond();
+        String month = String.valueOf(bulan);
+        String det = String.valueOf(tanggal);
+        String year = String.valueOf(tahun);
+        String timea = String.valueOf(jam);
+        String timeb = String.valueOf(menit);
+        String timec = String.valueOf(detik);
+        char[] charberat = tempBeratBarang.toCharArray();
+        resi += timea + timeb + timec + det + month + year;
+        System.out.println(resi);
+
+        //pengecekan ada yang kosong ato nda
+        boolean lulusGede = true;
+        if ((namaPenerima.equals("Masukkan nama penerima") || daerahPenerima.equals("Masukkan daerah tujuan") || nmPengirim.equals("Masukkan nama pengirim") || daerahPengirim.equals("Masukkan alamat pengirim") || tempKategori.equals("-Kategori-"))) {
+            lulusGede = false;
+            JOptionPane.showMessageDialog(this, "Input tidak valid!", "DnF", 2);
+        }
+
+        boolean lulusCilik = true;
+        String tempMinus = SendBeratField.getText().substring(0, 1);
+        if (SendBeratField.getText().equals("0") || tempMinus.equals("-")) {
+            JOptionPane.showMessageDialog(this, "Berat tidak valid!", "DnF", 2);
+            lulusCilik = false;
+        }
+
+        if (lulusGede == true && lulusCilik == true) { //lulus semua 
+            for (int i = 0; i < charberat.length; i++) {
+                if (charberat[i] >= 65 && charberat[i] <= 122) {
+                    JOptionPane.showMessageDialog(this, "Berat tidak valid!", "DnF", 2);
+                } else if (charberat[i] >= 48 && charberat[i] <= 57) {
+                    int beratBarang = Integer.parseInt(tempBeratBarang);
+                    if (temp.equals("Food and Beverages")) {
+                        Package paket = new FnB(1, resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
+                        paket.updateTrack("Barang diterima DNF");
+                        DeliveryList.put(resi, paket);
+//                        gudang.add(paket);
+                    } else if (temp.equals("Sports")) {
+                        Package paket = new Sports(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
+                        paket.updateTrack("Barang diterima DNF");
+                        DeliveryList.put(resi, paket);
+//                        gudang.add(paket);
+                    } else if (temp.equals("Electronic")) {
+                        Package paket = new Electronic(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                        paket.updateTrack("Barang diterima DNF");
+                        DeliveryList.put(resi, paket);
+//                        gudang.add(paket);
+                    } else if (temp.equals("Beauty and Fashion")) {
+                        Package paket = new BnF(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                        paket.updateTrack("Barang diterima DNF");
+                        DeliveryList.put(resi, paket);
+//                        gudang.add(paket);
+                    } else if (temp.equals("Hobby and Collections")) {
+                        Package paket = new HnC(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                        paket.updateTrack("Barang diterima DNF");
+                        DeliveryList.put(resi, paket);
+//                        gudang.add(paket);
+                    } else {
+                        if (keterangan.equals("Masukkan keterangan")) {
+                            Package paket = new Others("-", resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                            paket.updateTrack("Barang diterima DNF");
+                            DeliveryList.put(resi, paket);
+//                            gudang.add(paket);
+                        } else {
+                            Package paket = new Others(keterangan, resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                            paket.updateTrack("Barang diterima DNF");
+                            DeliveryList.put(resi, paket);
+//                            gudang.add(paket);
+                        }
+                    }
+
+                    resetField();
+
+                    JOptionPane.showMessageDialog(null, "Entry Paket Berhasil! Nomor Resi : " + resi, "DNF App", 1);
+                    Serializeation.savePackage(DeliveryList);
+                    break;
+                }
+            }
+        }
+
     }//GEN-LAST:event_KirimButtonActionPerformed
 
     private void ProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfileButtonActionPerformed
-        
+
     }//GEN-LAST:event_ProfileButtonActionPerformed
 
     private void SettingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SettingButtonActionPerformed
-        if(!setting){
-            ButtonController(true,false,false,false,false,false);
+        if (!setting) {
+            ButtonController(true, false, false, false, false, false);
         }
     }//GEN-LAST:event_SettingButtonActionPerformed
 
     private void EditProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProfileButtonActionPerformed
-        UserEditProfilePage EditMenu = new UserEditProfilePage(userlist, usedEmail, DeliveryList,ListKurir,currentUser);
+        UserEditProfilePage EditMenu = new UserEditProfilePage(userlist, usedEmail, DeliveryList, ListKurir, currentUser);
         dispose();
         EditMenu.setVisible(true);
         EditMenu.pack();
@@ -574,66 +696,66 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     }//GEN-LAST:event_AsalComboboxActionPerformed
 
     private void KeepDryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KeepDryButtonActionPerformed
-        if(!keepdry){
+        if (!keepdry) {
             keepdry = true;
             this.KeepDryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_KeepDry_Click.png")));
-        }else{
+        } else {
             keepdry = false;
             this.KeepDryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_KeepDry.png")));
         }
     }//GEN-LAST:event_KeepDryButtonActionPerformed
 
     private void FragileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FragileButtonActionPerformed
-        if(!fragile){
+        if (!fragile) {
             fragile = true;
             this.FragileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_Fragile_Click.png")));
-        }else{
+        } else {
             fragile = false;
             this.FragileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_Fragile.png")));
         }
     }//GEN-LAST:event_FragileButtonActionPerformed
 
     private void ProtectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProtectButtonActionPerformed
-        if(!protectfromheat){
+        if (!protectfromheat) {
             protectfromheat = true;
             this.ProtectButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_Protect_Click.png")));
-        }else{
+        } else {
             protectfromheat = false;
             this.ProtectButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_Protect.png")));
         }
     }//GEN-LAST:event_ProtectButtonActionPerformed
 
     private void FlameableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FlameableButtonActionPerformed
-        if(!flammable){
+        if (!flammable) {
             flammable = true;
             this.FlameableButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_Flammable.png")));
-            
-        }else{
+
+        } else {
             flammable = false;
             this.FlameableButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_Flammable_Click.png")));
         }
     }//GEN-LAST:event_FlameableButtonActionPerformed
 
-    public void generateCityCalc(){
+    public void generateCityCalc() {
         MapKota = GenerateCity.generateCityMap(MapKota);
         listkota = GenerateCity.generateCity(listkota);
-        for(int i =0;i<listkota.size();i++){
+        for (int i = 0; i < listkota.size(); i++) {
             AsalCombobox.addItem(listkota.get(i));
             TujuanCombobox.addItem(listkota.get(i));
         }
     }
-    
-    private void UpdateState(boolean setting, boolean home, boolean cek, boolean history, boolean send, boolean calc){
-        this.cek_resi=cek;
-        this.home_menu=home;
-        this.setting=setting;
-        this.history=history;
-        this.send=send;
-        this.calc=calc;
+
+    private void UpdateState(boolean setting, boolean home, boolean cek, boolean history, boolean send, boolean calc) {
+        this.cek_resi = cek;
+        this.home_menu = home;
+        this.setting = setting;
+        this.history = history;
+        this.send = send;
+        this.calc = calc;
     }
-    
-    private void UpdateVisibility(int x){
-        switch(x){
+
+    private void UpdateVisibility(int x) {
+        switch (x) {
             case 1: //Home Mode
                 this.UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_Home.png")));
                 this.SearchBarBG.setVisible(false);
@@ -688,7 +810,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 ProtectButton.setVisible(false);
                 ProtectButton.setEnabled(false);
                 break;
-        
+
             case 2: //Cek Resi Mode
                 this.UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_CekResi.png")));
                 this.SearchBarBG.setVisible(true);
@@ -744,7 +866,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 ProtectButton.setVisible(false);
                 ProtectButton.setEnabled(false);
                 break;
-        
+
             case 3: //Settings Mode
                 this.UserMenuBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_Setting.png")));
                 this.SearchBarBG.setVisible(false);
@@ -856,7 +978,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 ProtectButton.setVisible(false);
                 ProtectButton.setEnabled(false);
                 break;
-        
+
             case 5: //Send Package Mode
                 this.SearchBarBG.setVisible(false);
                 this.SearchButton.setVisible(false);
@@ -922,7 +1044,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 ProtectButton.setVisible(true);
                 ProtectButton.setEnabled(true);
                 break;
-        
+
             case 6: //Cost Calculator Mode
                 this.SearchBarBG.setVisible(false);
                 this.SearchButton.setVisible(false);
@@ -990,53 +1112,48 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 break;
         }
     }
-    
-    private void ButtonController(boolean setting, boolean home, boolean cek,boolean history, boolean send, boolean calc){
-        if(setting&&!home&&!cek&&!history&&!send&&!calc){ //Settings Mode
-            UpdateState(setting,home,cek,false,false,false);
+
+    private void ButtonController(boolean setting, boolean home, boolean cek, boolean history, boolean send, boolean calc) {
+        if (setting && !home && !cek && !history && !send && !calc) { //Settings Mode
+            UpdateState(setting, home, cek, false, false, false);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_1.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
             UpdateVisibility(3);
-        }
-        else if(!setting&&home&&!cek&&!history&&!send&&!calc){ //Home MOde
-            UpdateState(setting,home,cek,false,false,false);
+        } else if (!setting && home && !cek && !history && !send && !calc) { //Home MOde
+            UpdateState(setting, home, cek, false, false, false);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_1.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
             UpdateVisibility(1);
-        }
-        else if(!setting&&!home&&cek&&!history&&!send&&!calc){ //Cek Resi Mode
-            UpdateState(setting,home,cek,false,false,false);
+        } else if (!setting && !home && cek && !history && !send && !calc) { //Cek Resi Mode
+            UpdateState(setting, home, cek, false, false, false);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_1.png")));
             UpdateVisibility(2);
-        }
-        else if(!setting&&!home&&!cek&&history&&!send&&!calc){ //See History Mode
-            UpdateState(setting,home,cek,history,send,false);
+        } else if (!setting && !home && !cek && history && !send && !calc) { //See History Mode
+            UpdateState(setting, home, cek, history, send, false);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
             UpdateVisibility(4);
-        }
-        else if(!setting&&!home&&!cek&&!history&&send&&!calc){ //Send Package Mode
-            UpdateState(setting,home,cek,history,send,false);
+        } else if (!setting && !home && !cek && !history && send && !calc) { //Send Package Mode
+            UpdateState(setting, home, cek, history, send, false);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
             UpdateVisibility(5);
-        }
-        else if(!setting&&!home&&!cek&&!history&&!send&&calc){ //Calc Cost Mode
-            UpdateState(setting,home,cek,history,send,calc);
+        } else if (!setting && !home && !cek && !history && !send && calc) { //Calc Cost Mode
+            UpdateState(setting, home, cek, history, send, calc);
             this.SettingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Setting_0.png")));
             this.HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_0.png")));
             this.CekResiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_CekResi_0.png")));
             UpdateVisibility(6);
         }
     }
-    
-    public void generateKategori(){
+
+    public void generateKategori() {
         ArrayList<String> kategori = new ArrayList<>();
         kategori.add("Others");
         setResizable(false);
@@ -1049,7 +1166,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
             KategoriCombobox.addItem(kategori.get(i));
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -1123,6 +1240,8 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     private javax.swing.JLabel UserMenuBG;
     private javax.swing.JLabel Vector;
     private javax.swing.JLabel WelcomeLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
