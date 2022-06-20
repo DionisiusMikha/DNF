@@ -277,6 +277,11 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
 
         AsalCombobox.setBackground(new java.awt.Color(237, 238, 254));
         AsalCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Kota-" }));
+        AsalCombobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AsalComboboxActionPerformed(evt);
+            }
+        });
         getContentPane().add(AsalCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 100, 40));
 
         TambahanBGKirim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_Kategori_SendPackage.png"))); // NOI18N
@@ -514,6 +519,10 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         JOptionPane.showMessageDialog(null, "DNFApp Product Version 1.0.0.0 Build 2022", "DNF App", 1);
     }//GEN-LAST:event_AppVerButtonActionPerformed
 
+    private void AsalComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsalComboboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AsalComboboxActionPerformed
+
     public void generateCityCalc(){
         MapKota = GenerateCity.generateCityMap(MapKota);
         listkota = GenerateCity.generateCity(listkota);
@@ -624,6 +633,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 TambahanBGKirim.setVisible(false);
                 KategoriCombobox.setVisible(false);
                 KategoriCombobox.setEnabled(false);
+                SearchBar.setText("");
                 break;
         
             case 3: //Settings Mode
@@ -766,6 +776,13 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 TambahanBGKirim.setVisible(true);
                 KategoriCombobox.setVisible(true);
                 KategoriCombobox.setEnabled(true);
+                AsalField.setText("");
+                TujuanField.setText("");
+                TujuanCombobox.setSelectedIndex(0);
+                AsalCombobox.setSelectedIndex(0);
+                KategoriCombobox.setSelectedIndex(0);
+                SendBeratField.setText("");
+                PriceLabel.setText("");
                 break;
         
             case 6: //Cost Calculator Mode
@@ -814,6 +831,13 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 TambahanBGKirim.setVisible(false);
                 KategoriCombobox.setVisible(false);
                 KategoriCombobox.setEnabled(false);
+                AsalField.setText("");
+                TujuanField.setText("");
+                TujuanCombobox.setSelectedIndex(0);
+                AsalCombobox.setSelectedIndex(0);
+                KategoriCombobox.setSelectedIndex(0);
+                SendBeratField.setText("");
+                PriceLabel.setText("");
                 break;
         }
     }

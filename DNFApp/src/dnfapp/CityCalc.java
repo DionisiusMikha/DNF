@@ -27,16 +27,23 @@ public interface CityCalc {
     }
     
     static int CalcHarga(Kota Destinasi, Kota Asal, double weight){
-        double lat_1,lat_2;
-        double lon_1,lon_2;
-        lat_1 = Destinasi.getLat();
-        lon_1 = Destinasi.getLon();
-        lat_2 = Asal.getLat();
-        lon_2 = Asal.getLon();
-        
-        double distance = haversine(lat_1,lon_1,lat_2,lon_2);
-        double price = distance*weight;
-        int rounded = (int)price*10;
-        return rounded;
+        if(Asal.getLat()==Destinasi.getLat()&&Destinasi.getLon()==Asal.getLon()){
+            double lat_1,lat_2;
+            double lon_1,lon_2;
+            lat_1 = Destinasi.getLat();
+            lon_1 = Destinasi.getLon();
+            lat_2 = Asal.getLat();
+            lon_2 = Asal.getLon();
+
+            double distance = haversine(lat_1,lon_1,lat_2,lon_2);
+            double price = distance*weight;
+            int rounded = (int)price*10;
+            return rounded;
+        }
+        else{
+            int hargatetap = 1000;
+            int rounded = (int)weight*hargatetap;
+            return rounded;
+        }
     }
 }
