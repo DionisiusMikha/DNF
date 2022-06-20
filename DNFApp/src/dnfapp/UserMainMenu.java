@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -37,6 +38,12 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
 
+    //Reset History model
+    DefaultListModel resetModel = new DefaultListModel();
+    
+    //Get Target Package on History
+    private int idx = -1;
+    
     //private Generated HashMaps&ArrayList for City Index
     private HashMap<String, Kota> MapKota = new HashMap<String, Kota>();
     private ArrayList<String> listkota = new ArrayList<>();
@@ -124,7 +131,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
         SearchBarBG = new javax.swing.JLabel();
         UserMenuBG = new javax.swing.JLabel();
         SeeDetailButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        HistoryUser = new javax.swing.JScrollPane();
         HistoryList = new javax.swing.JList<>();
         BGHistory = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -422,11 +429,21 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
         SeeDetailButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_LihatDetail.png"))); // NOI18N
         SeeDetailButton.setBorderPainted(false);
         SeeDetailButton.setContentAreaFilled(false);
+        SeeDetailButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SeeDetailButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(SeeDetailButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 640, 154, 78));
 
-        jScrollPane1.setViewportView(HistoryList);
+        HistoryList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HistoryListMouseClicked(evt);
+            }
+        });
+        HistoryUser.setViewportView(HistoryList);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 440, 380));
+        getContentPane().add(HistoryUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 440, 380));
 
         BGHistory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_ShippingHistory.png"))); // NOI18N
         getContentPane().add(BGHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -733,6 +750,26 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
         
     }//GEN-LAST:event_HomeButtonActionPerformed
 
+    private void HistoryListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HistoryListMouseClicked
+       this.idx =HistoryList.getSelectedIndex();
+    }//GEN-LAST:event_HistoryListMouseClicked
+
+    private void SeeDetailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeeDetailButtonActionPerformed
+       if(idx!=1){
+           Package Target = currentUser.getHistory().get(idx);
+            DetailPackage DP = new DetailPackage(userlist, usedEmail, DeliveryList, ListKurir, Target, currentUser);
+            dispose();
+            DP.setVisible(true);
+            DP.pack();
+            DP.setLocationRelativeTo(null);
+            DP.setDefaultCloseOperation(DetailPackage.EXIT_ON_CLOSE);
+            DP.setResizable(false);
+       }
+       else{
+           JOptionPane.showMessageDialog(null, "Tidak ada Paket yang dipilih", "DNF App", 2);
+       }
+    }//GEN-LAST:event_SeeDetailButtonActionPerformed
+
     public void generateCityCalc() {
         MapKota = GenerateCity.generateCityMap(MapKota);
         listkota = GenerateCity.generateCity(listkota);
@@ -808,6 +845,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 ProtectButton.setEnabled(false);
                 PenerimaField.setEditable(false);
                 PenerimaField.setVisible(false);
+                resetHistory();
                 break;
 
             case 2: //Cek Resi Mode
@@ -866,6 +904,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 ProtectButton.setEnabled(false);
                 PenerimaField.setEditable(false);
                 PenerimaField.setVisible(false);
+                resetHistory();
                 break;
 
             case 3: //Settings Mode
@@ -923,6 +962,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 ProtectButton.setEnabled(false);
                 PenerimaField.setEditable(false);
                 PenerimaField.setVisible(false);
+                resetHistory();
                 break;
 
             case 4: //See History Mode
@@ -936,8 +976,8 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 this.CekHistoryButton.setEnabled(false);
                 this.SendPackageButton.setVisible(false);
                 this.SendPackageButton.setEnabled(false);
-                this.HistoryList.setEnabled(false);
-                this.HistoryList.setVisible(false);
+                this.HistoryList.setEnabled(true);
+                this.HistoryList.setVisible(true);
                 this.UserMenuBG.setVisible(false);
                 this.BGHistory.setVisible(true);
                 this.AsalField.setVisible(false);
@@ -982,6 +1022,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 ProtectButton.setEnabled(false);
                 PenerimaField.setEditable(false);
                 PenerimaField.setVisible(false);
+                generateHistory();
                 break;
 
             case 5: //Send Package Mode
@@ -1050,6 +1091,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 ProtectButton.setEnabled(true);
                 PenerimaField.setEditable(true);
                 PenerimaField.setVisible(true);
+                resetHistory();
                 break;
 
             case 6: //Cost Calculator Mode
@@ -1118,6 +1160,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 ProtectButton.setEnabled(false);
                 PenerimaField.setEditable(false);
                 PenerimaField.setVisible(false);
+                resetHistory();
                 break;
         }
     }
@@ -1176,6 +1219,22 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
         }
     }
 
+    public void generateHistory(){
+        ArrayList<Package> ARRListPackage = currentUser.getHistory();
+        if (ARRListPackage.size() != 0) {
+            DefaultListModel listModel = new DefaultListModel();
+            for (int i = 0; i < ARRListPackage.size(); i++) {
+                String container = ARRListPackage.get(i).getResi() + " - " + ARRListPackage.get(i).getSender() + " - " + ARRListPackage.get(i).getReceiver();
+                listModel.addElement(container);
+            }
+            HistoryList.setModel(listModel);
+        }
+    }
+    
+    void resetHistory(){
+        HistoryList.setModel(this.resetModel);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -1224,6 +1283,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
     private javax.swing.JButton FlameableButton;
     private javax.swing.JButton FragileButton;
     private javax.swing.JList<String> HistoryList;
+    private javax.swing.JScrollPane HistoryUser;
     private javax.swing.JButton HomeButton;
     private javax.swing.JComboBox<String> KategoriCombobox;
     private javax.swing.JButton KeepDryButton;
@@ -1252,6 +1312,5 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
     private javax.swing.JLabel WelcomeLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
