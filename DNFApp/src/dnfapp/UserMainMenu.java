@@ -99,8 +99,14 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         CekResiButton = new javax.swing.JButton();
         SettingButton = new javax.swing.JButton();
         CalculateBtn = new javax.swing.JButton();
+        PriceLabelSend = new javax.swing.JLabel();
         PriceLabel = new javax.swing.JLabel();
         TujuanField = new javax.swing.JTextField();
+        KeepDryButton = new javax.swing.JButton();
+        FragileButton = new javax.swing.JButton();
+        FlameableButton = new javax.swing.JButton();
+        ProtectButton = new javax.swing.JButton();
+        SendPackageBG = new javax.swing.JLabel();
         TujuanCombobox = new javax.swing.JComboBox<>();
         AsalCombobox = new javax.swing.JComboBox<>();
         TambahanBGKirim = new javax.swing.JLabel();
@@ -108,7 +114,6 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         PriceCalcButton = new javax.swing.JButton();
         CekHistoryButton = new javax.swing.JButton();
         SendPackageButton = new javax.swing.JButton();
-        SendPackageBG = new javax.swing.JLabel();
         SearchButton = new javax.swing.JButton();
         SettingGIF = new javax.swing.JLabel();
         Vector = new javax.swing.JLabel();
@@ -252,6 +257,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
             }
         });
         getContentPane().add(CalculateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, 135, 35));
+        getContentPane().add(PriceLabelSend, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 550, 380, 60));
 
         PriceLabel.setBackground(new java.awt.Color(237, 238, 254));
         PriceLabel.setFont(new java.awt.Font("Fira Sans", 2, 48)); // NOI18N
@@ -264,6 +270,49 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
         TujuanField.setForeground(new java.awt.Color(76, 76, 76));
         TujuanField.setBorder(null);
         getContentPane().add(TujuanField, new org.netbeans.lib.awtextra.AbsoluteConstraints(878, 240, 230, 40));
+
+        KeepDryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_KeepDry.png"))); // NOI18N
+        KeepDryButton.setBorderPainted(false);
+        KeepDryButton.setContentAreaFilled(false);
+        KeepDryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                KeepDryButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(KeepDryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 410, 70, 71));
+
+        FragileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_Fragile.png"))); // NOI18N
+        FragileButton.setBorderPainted(false);
+        FragileButton.setContentAreaFilled(false);
+        FragileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FragileButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(FragileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 410, 71, 71));
+
+        FlameableButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_Flammable.png"))); // NOI18N
+        FlameableButton.setBorderPainted(false);
+        FlameableButton.setContentAreaFilled(false);
+        FlameableButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FlameableButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(FlameableButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 410, 72, 71));
+
+        ProtectButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_Protect.png"))); // NOI18N
+        ProtectButton.setBorderPainted(false);
+        ProtectButton.setContentAreaFilled(false);
+        ProtectButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProtectButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ProtectButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 410, 72, 71));
+
+        SendPackageBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_SendPackage.png"))); // NOI18N
+        getContentPane().add(SendPackageBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         TujuanCombobox.setBackground(new java.awt.Color(237, 238, 254));
         TujuanCombobox.setForeground(new java.awt.Color(76, 76, 76));
@@ -319,9 +368,6 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
             }
         });
         getContentPane().add(SendPackageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 380, 150));
-
-        SendPackageBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_SendPackage.png"))); // NOI18N
-        getContentPane().add(SendPackageBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         SearchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Search.png"))); // NOI18N
         SearchButton.setBorderPainted(false);
@@ -447,7 +493,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
             Kota B = MapKota.get(listkota.get(TujuanCombobox.getSelectedIndex()));
             double weight = Integer.parseInt(SendBeratField.getText());
             int price = CityCalc.CalcHarga(A, B, weight);
-            PriceLabel.setText("Rp. "+Integer.toString(price));
+            
             if(AsalCombobox.getSelectedIndex()==0){
                 throw new Exception("Tolong masukkan Kota Asal yang valid.");
             }
@@ -459,8 +505,12 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
             }
             else{
                 if(send){
+                    PriceLabelSend.setText("Rp. "+Integer.toString(price));
                     KirimButton.setVisible(true);
                     KirimButton.setEnabled(true);
+                }
+                else{
+                    PriceLabel.setText("Rp. "+Integer.toString(price));
                 }
             }
         } catch (Exception e){
@@ -522,6 +572,47 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     private void AsalComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsalComboboxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AsalComboboxActionPerformed
+
+    private void KeepDryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KeepDryButtonActionPerformed
+        if(!keepdry){
+            keepdry = true;
+            this.KeepDryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_KeepDry_Click.png")));
+        }else{
+            keepdry = false;
+            this.KeepDryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_KeepDry.png")));
+        }
+    }//GEN-LAST:event_KeepDryButtonActionPerformed
+
+    private void FragileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FragileButtonActionPerformed
+        if(!fragile){
+            fragile = true;
+            this.FragileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_Fragile_Click.png")));
+        }else{
+            fragile = false;
+            this.FragileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_Fragile.png")));
+        }
+    }//GEN-LAST:event_FragileButtonActionPerformed
+
+    private void ProtectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProtectButtonActionPerformed
+        if(!protectfromheat){
+            protectfromheat = true;
+            this.ProtectButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_Protect_Click.png")));
+        }else{
+            protectfromheat = false;
+            this.ProtectButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_Protect.png")));
+        }
+    }//GEN-LAST:event_ProtectButtonActionPerformed
+
+    private void FlameableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FlameableButtonActionPerformed
+        if(!flammable){
+            flammable = true;
+            this.FlameableButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_Flammable.png")));
+            
+        }else{
+            flammable = false;
+            this.FlameableButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_Flammable_Click.png")));
+        }
+    }//GEN-LAST:event_FlameableButtonActionPerformed
 
     public void generateCityCalc(){
         MapKota = GenerateCity.generateCityMap(MapKota);
@@ -587,6 +678,15 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 TambahanBGKirim.setVisible(false);
                 KategoriCombobox.setVisible(false);
                 KategoriCombobox.setEnabled(false);
+                PriceLabelSend.setVisible(false);
+                KeepDryButton.setVisible(false);
+                KeepDryButton.setEnabled(false);
+                FragileButton.setVisible(false);
+                FragileButton.setEnabled(false);
+                FlameableButton.setVisible(false);
+                FlameableButton.setEnabled(false);
+                ProtectButton.setVisible(false);
+                ProtectButton.setEnabled(false);
                 break;
         
             case 2: //Cek Resi Mode
@@ -634,6 +734,15 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 KategoriCombobox.setVisible(false);
                 KategoriCombobox.setEnabled(false);
                 SearchBar.setText("");
+                PriceLabelSend.setVisible(false);
+                KeepDryButton.setVisible(false);
+                KeepDryButton.setEnabled(false);
+                FragileButton.setVisible(false);
+                FragileButton.setEnabled(false);
+                FlameableButton.setVisible(false);
+                FlameableButton.setEnabled(false);
+                ProtectButton.setVisible(false);
+                ProtectButton.setEnabled(false);
                 break;
         
             case 3: //Settings Mode
@@ -680,6 +789,15 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 TambahanBGKirim.setVisible(false);
                 KategoriCombobox.setVisible(false);
                 KategoriCombobox.setEnabled(false);
+                PriceLabelSend.setVisible(false);
+                KeepDryButton.setVisible(false);
+                KeepDryButton.setEnabled(false);
+                FragileButton.setVisible(false);
+                FragileButton.setEnabled(false);
+                FlameableButton.setVisible(false);
+                FlameableButton.setEnabled(false);
+                ProtectButton.setVisible(false);
+                ProtectButton.setEnabled(false);
                 break;
 
             case 4: //See History Mode
@@ -728,6 +846,15 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 TambahanBGKirim.setVisible(false);
                 KategoriCombobox.setVisible(false);
                 KategoriCombobox.setEnabled(false);
+                PriceLabelSend.setVisible(false);
+                KeepDryButton.setVisible(false);
+                KeepDryButton.setEnabled(false);
+                FragileButton.setVisible(false);
+                FragileButton.setEnabled(false);
+                FlameableButton.setVisible(false);
+                FlameableButton.setEnabled(false);
+                ProtectButton.setVisible(false);
+                ProtectButton.setEnabled(false);
                 break;
         
             case 5: //Send Package Mode
@@ -783,6 +910,17 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 KategoriCombobox.setSelectedIndex(0);
                 SendBeratField.setText("");
                 PriceLabel.setText("");
+                PriceLabel.setVisible(false);
+                PriceLabelSend.setVisible(true);
+                PriceLabelSend.setText("");
+                KeepDryButton.setVisible(true);
+                KeepDryButton.setEnabled(true);
+                FragileButton.setVisible(true);
+                FragileButton.setEnabled(true);
+                FlameableButton.setVisible(true);
+                FlameableButton.setEnabled(true);
+                ProtectButton.setVisible(true);
+                ProtectButton.setEnabled(true);
                 break;
         
             case 6: //Cost Calculator Mode
@@ -838,6 +976,17 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
                 KategoriCombobox.setSelectedIndex(0);
                 SendBeratField.setText("");
                 PriceLabel.setText("");
+                PriceLabel.setVisible(true);
+                PriceLabelSend.setVisible(true);
+                PriceLabelSend.setText("");
+                KeepDryButton.setVisible(false);
+                KeepDryButton.setEnabled(false);
+                FragileButton.setVisible(false);
+                FragileButton.setEnabled(false);
+                FlameableButton.setVisible(false);
+                FlameableButton.setEnabled(false);
+                ProtectButton.setVisible(false);
+                ProtectButton.setEnabled(false);
                 break;
         }
     }
@@ -946,14 +1095,19 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity,Cit
     private javax.swing.JButton CekResiButton;
     private javax.swing.JLabel CostCalcBG;
     private javax.swing.JButton EditProfileButton;
+    private javax.swing.JButton FlameableButton;
+    private javax.swing.JButton FragileButton;
     private javax.swing.JList<String> HistoryList;
     private javax.swing.JButton HomeButton;
     private javax.swing.JComboBox<String> KategoriCombobox;
+    private javax.swing.JButton KeepDryButton;
     private javax.swing.JButton KirimButton;
     private javax.swing.JButton LogOutButton;
     private javax.swing.JButton PriceCalcButton;
     private javax.swing.JLabel PriceLabel;
+    private javax.swing.JLabel PriceLabelSend;
     private javax.swing.JButton ProfileButton;
+    private javax.swing.JButton ProtectButton;
     private javax.swing.JTextField SearchBar;
     private javax.swing.JLabel SearchBarBG;
     private javax.swing.JButton SearchButton;

@@ -228,52 +228,12 @@ public class LoginMenu extends javax.swing.JFrame implements Serializeation{
     }//GEN-LAST:event_CreateAccButtonActionPerformed
 
     private void SignInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonActionPerformed
-        boolean verifyUsername = true;
-        boolean verifyPassword = true;
-        boolean verifyKurir1 = true; //username kurir
-        boolean verifyKurir2 = true; //password kurir
-        User loggedAs = null;
-        Kurir loggedAsKurir = null;
+        User loggedAs;
+        Kurir loggedAsKurir;
         String logUsername = usernamefield.getText();
         String logPass = String.valueOf(PasswordField.getPassword());
-        if (userlist.containsKey(logUsername)) {
-            loggedAs = userlist.get(logUsername);
-            String passCheck = loggedAs.getPassword();
-            if (!passCheck.equals(logPass)) {
-                verifyPassword = false;
-            }
-            if (!verifyPassword) {
-                JOptionPane.showMessageDialog(null, "Password salah!", "DNF App", 2);
-            }
-        } else {
-            verifyUsername = false;
-        }
-        
-        if(!verifyUsername){ //bukan user
-            if(ListKurir.containsKey(logUsername)){
-                loggedAsKurir = ListKurir.get(logUsername);
-                String passCheck = loggedAsKurir.getPassword();
-                if (!passCheck.equals(logPass)) {
-                    verifyKurir2 = false;
-                }
-                if (!verifyKurir2) {
-                    JOptionPane.showMessageDialog(null, "Password salah!", "DNF App", 2);
-                }
-            }  else {
-                verifyKurir1 = false;
-            }
-        }
-        
-        System.out.println("veri user " + verifyUsername);
-        System.out.println("veri kurir " + verifyKurir1);
-        
-        if (!verifyUsername && !verifyKurir1) {
-            JOptionPane.showMessageDialog(null, "Username tidak ditemukan!", "DNF App", 2);
-        }
-        
-        if ((verifyUsername && verifyPassword) || (verifyKurir1 && verifyKurir2)) {
-            //berhasil login
-            if (logUsername.equalsIgnoreCase("admin")) {
+        if(userlist.containsKey(logUsername)){
+            if(logUsername.equalsIgnoreCase("admin")&&logPass.equalsIgnoreCase("admin")){
                 AdminMenu adminMenu = new AdminMenu(userlist, DeliveryList, ListKurir, usedEmail);
                 adminMenu.setVisible(true);
                 dispose();
@@ -281,16 +241,11 @@ public class LoginMenu extends javax.swing.JFrame implements Serializeation{
                 adminMenu.setLocationRelativeTo(null);
                 adminMenu.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
                 adminMenu.setResizable(false);
-            } else { //user/ kurir
-                if(ListKurir.containsKey(logUsername)){ //kurir, ex: kurir01
-                    KurirMainMenu KurirMenu = new KurirMainMenu(userlist, usedEmail, DeliveryList,ListKurir,loggedAsKurir);
-                    dispose();
-                    KurirMenu.setVisible(true);
-                    KurirMenu.pack();
-                    KurirMenu.setLocationRelativeTo(null);
-                    KurirMenu.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
-                    KurirMenu.setResizable(false);
-                } else { //user
+            }
+            else{
+                String userPass = userlist.get(logUsername).getPassword();
+                loggedAs = userlist.get(logUsername);
+                if(userPass.equals(logPass)){
                     UserMainMenu UserMenu = new UserMainMenu(userlist, usedEmail, DeliveryList,ListKurir,loggedAs);
                     dispose();
                     UserMenu.setVisible(true);
@@ -299,7 +254,29 @@ public class LoginMenu extends javax.swing.JFrame implements Serializeation{
                     UserMenu.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
                     UserMenu.setResizable(false);
                 }
+                else{
+                    JOptionPane.showMessageDialog(null, "Password salah!", "DNF App", 2);
+                }
             }
+        }
+        else if(ListKurir.containsKey(logUsername)){
+            String userPass = ListKurir.get(logUsername).getPassword();
+            loggedAsKurir = ListKurir.get(logUsername);
+            if(userPass.equals(logPass)){
+                KurirMainMenu KurirMenu = new KurirMainMenu(userlist, usedEmail, DeliveryList,ListKurir,loggedAsKurir);
+                dispose();
+                KurirMenu.setVisible(true);
+                KurirMenu.pack();
+                KurirMenu.setLocationRelativeTo(null);
+                KurirMenu.setDefaultCloseOperation(CreateAccountPage.EXIT_ON_CLOSE);
+                KurirMenu.setResizable(false);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Password salah!", "DNF App", 2);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Username tidak ditemukan!", "DNF App", 2);
         }
     }//GEN-LAST:event_SignInButtonActionPerformed
 

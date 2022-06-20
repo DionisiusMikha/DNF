@@ -27,7 +27,7 @@ public interface CityCalc {
     }
     
     static int CalcHarga(Kota Destinasi, Kota Asal, double weight){
-        if(Asal.getLat()==Destinasi.getLat()&&Destinasi.getLon()==Asal.getLon()){
+        if(Asal.getLat()!=Destinasi.getLat()&&Destinasi.getLon()!=Asal.getLon()){
             double lat_1,lat_2;
             double lon_1,lon_2;
             lat_1 = Destinasi.getLat();
