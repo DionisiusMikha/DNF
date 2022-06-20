@@ -103,6 +103,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
         CalculateBtn = new javax.swing.JButton();
         PriceLabelSend = new javax.swing.JLabel();
         PriceLabel = new javax.swing.JLabel();
+        PenerimaField = new javax.swing.JTextField();
         TujuanField = new javax.swing.JTextField();
         KeepDryButton = new javax.swing.JButton();
         FragileButton = new javax.swing.JButton();
@@ -198,6 +199,11 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 HomeButtonMouseClicked(evt);
             }
         });
+        HomeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HomeButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(HomeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 186, 53));
 
         KategoriCombobox.setBackground(new java.awt.Color(237, 238, 254));
@@ -268,6 +274,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
         PriceLabel.setForeground(new java.awt.Color(76, 76, 76));
         PriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(PriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 460, 390, 120));
+        getContentPane().add(PenerimaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 419, 240, 40));
 
         TujuanField.setBackground(new java.awt.Color(237, 238, 254));
         TujuanField.setFont(new java.awt.Font("Fira Sans", 0, 23)); // NOI18N
@@ -536,11 +543,11 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
     }//GEN-LAST:event_CalculateBtnActionPerformed
 
     private void TujuanComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TujuanComboboxActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_TujuanComboboxActionPerformed
 
     private void LogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutButtonActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_LogOutButtonActionPerformed
 
     private void PriceCalcButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceCalcButtonActionPerformed
@@ -549,30 +556,12 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
         }
     }//GEN-LAST:event_PriceCalcButtonActionPerformed
 
-    private void resetField() {
-        //ini buat resetfield" nya, nama variable nya sesuai in sama punya mu
-//        inputBeratBarang.setText("Masukan berat barang");
-//        inputDaerahTujuan.setText("Masukan daerah tujuan");
-//        inputNamaPenerima.setText("Masukan nama penerima");
-//        namaPengirim.setText("Masukkan nama pengirim");
-//        alamatPengirim.setText("Masukkan alamat pengirim");
-//        this.flammableButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Flammable.png")));
-//        this.protectfromheatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Protect.png")));
-//        this.keepdryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Keep_Dry.png")));
-//        this.fragileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_Fragile.png")));
-//        this.extraProtectButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Box-alt_no.png")));
-//        kategoriBarang.setSelectedIndex(0);
-//        Asal.setSelectedIndex(0);
-//        Tujuan.setSelectedIndex(0);
-//        keteranganBarang.setText("Masukkan keterangan");
-
-    }
     private void KirimButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KirimButtonActionPerformed
         LocalDateTime date = LocalDateTime.now();
         String temp = (String) KategoriCombobox.getSelectedItem();
         String KotaAsal = (String) AsalCombobox.getSelectedItem();
         String KotaTujuan = (String) TujuanCombobox.getSelectedItem();
-        String namaPenerima = "kosongan"; // kurang text field
+        String namaPenerima = PenerimaField.getText();
         String daerahPenerima = AsalField.getText() + ", " + KotaTujuan;
         String tempBeratBarang = SendBeratField.getText();
         String nmPengirim = currentUser.getUsername();
@@ -599,7 +588,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
 
         //pengecekan ada yang kosong ato nda
         boolean lulusGede = true;
-        if ((namaPenerima.equals("Masukkan nama penerima") || daerahPenerima.equals("Masukkan daerah tujuan") || nmPengirim.equals("Masukkan nama pengirim") || daerahPengirim.equals("Masukkan alamat pengirim") || tempKategori.equals("-Kategori-"))) {
+        if ((namaPenerima.equals("") || daerahPenerima.equals("") || nmPengirim.equals("") || daerahPengirim.equals("") || tempKategori.equals("-Kategori-"))) {
             lulusGede = false;
             JOptionPane.showMessageDialog(this, "Input tidak valid!", "DnF", 2);
         }
@@ -621,46 +610,45 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                         Package paket = new FnB(1, resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
                         paket.updateTrack("Barang diterima DNF");
                         DeliveryList.put(resi, paket);
-//                        gudang.add(paket);
+                        currentUser.addToHistory(paket);
                     } else if (temp.equals("Sports")) {
                         Package paket = new Sports(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
                         paket.updateTrack("Barang diterima DNF");
                         DeliveryList.put(resi, paket);
-//                        gudang.add(paket);
+                        currentUser.addToHistory(paket);
                     } else if (temp.equals("Electronic")) {
                         Package paket = new Electronic(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
                         paket.updateTrack("Barang diterima DNF");
                         DeliveryList.put(resi, paket);
-//                        gudang.add(paket);
+                        currentUser.addToHistory(paket);
                     } else if (temp.equals("Beauty and Fashion")) {
                         Package paket = new BnF(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
                         paket.updateTrack("Barang diterima DNF");
                         DeliveryList.put(resi, paket);
-//                        gudang.add(paket);
+                        currentUser.addToHistory(paket);
                     } else if (temp.equals("Hobby and Collections")) {
                         Package paket = new HnC(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
                         paket.updateTrack("Barang diterima DNF");
                         DeliveryList.put(resi, paket);
-//                        gudang.add(paket);
+                        currentUser.addToHistory(paket);
                     } else {
                         if (keterangan.equals("Masukkan keterangan")) {
                             Package paket = new Others("-", resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
                             paket.updateTrack("Barang diterima DNF");
                             DeliveryList.put(resi, paket);
-//                            gudang.add(paket);
+                            currentUser.addToHistory(paket);
                         } else {
                             Package paket = new Others(keterangan, resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
                             paket.updateTrack("Barang diterima DNF");
                             DeliveryList.put(resi, paket);
-//                            gudang.add(paket);
+                            currentUser.addToHistory(paket);
                         }
                     }
 
-                    resetField();
-
                     JOptionPane.showMessageDialog(null, "Entry Paket Berhasil! Nomor Resi : " + resi, "DNF App", 1);
                     Serializeation.savePackage(DeliveryList);
-                    break;
+                    ButtonController(false, true, false, false, false, false);
+                    PenerimaField.setText("");
                 }
             }
         }
@@ -736,6 +724,10 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
         }
     }//GEN-LAST:event_FlameableButtonActionPerformed
 
+    private void HomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeButtonActionPerformed
+        
+    }//GEN-LAST:event_HomeButtonActionPerformed
+
     public void generateCityCalc() {
         MapKota = GenerateCity.generateCityMap(MapKota);
         listkota = GenerateCity.generateCity(listkota);
@@ -809,6 +801,8 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 FlameableButton.setEnabled(false);
                 ProtectButton.setVisible(false);
                 ProtectButton.setEnabled(false);
+                PenerimaField.setEditable(false);
+                PenerimaField.setVisible(false);
                 break;
 
             case 2: //Cek Resi Mode
@@ -865,6 +859,8 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 FlameableButton.setEnabled(false);
                 ProtectButton.setVisible(false);
                 ProtectButton.setEnabled(false);
+                PenerimaField.setEditable(false);
+                PenerimaField.setVisible(false);
                 break;
 
             case 3: //Settings Mode
@@ -920,6 +916,8 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 FlameableButton.setEnabled(false);
                 ProtectButton.setVisible(false);
                 ProtectButton.setEnabled(false);
+                PenerimaField.setEditable(false);
+                PenerimaField.setVisible(false);
                 break;
 
             case 4: //See History Mode
@@ -977,6 +975,8 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 FlameableButton.setEnabled(false);
                 ProtectButton.setVisible(false);
                 ProtectButton.setEnabled(false);
+                PenerimaField.setEditable(false);
+                PenerimaField.setVisible(false);
                 break;
 
             case 5: //Send Package Mode
@@ -1043,6 +1043,8 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 FlameableButton.setEnabled(true);
                 ProtectButton.setVisible(true);
                 ProtectButton.setEnabled(true);
+                PenerimaField.setEditable(true);
+                PenerimaField.setVisible(true);
                 break;
 
             case 6: //Cost Calculator Mode
@@ -1109,6 +1111,8 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 FlameableButton.setEnabled(false);
                 ProtectButton.setVisible(false);
                 ProtectButton.setEnabled(false);
+                PenerimaField.setEditable(false);
+                PenerimaField.setVisible(false);
                 break;
         }
     }
@@ -1220,6 +1224,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
     private javax.swing.JButton KeepDryButton;
     private javax.swing.JButton KirimButton;
     private javax.swing.JButton LogOutButton;
+    private javax.swing.JTextField PenerimaField;
     private javax.swing.JButton PriceCalcButton;
     private javax.swing.JLabel PriceLabel;
     private javax.swing.JLabel PriceLabelSend;

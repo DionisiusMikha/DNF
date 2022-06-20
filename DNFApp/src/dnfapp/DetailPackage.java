@@ -37,6 +37,7 @@ public class DetailPackage extends javax.swing.JFrame {
         NamaPenerima.setText(CurrentPackage.getReceiver());
         LabelAlamatPengirim.setText(CurrentPackage.getFrom());
         LabelAlamatPenerima.setText(CurrentPackage.getDestination());
+        LabelResi.setText(CurrentPackage.getResi());
         generate();
         
     }
@@ -89,7 +90,6 @@ public class DetailPackage extends javax.swing.JFrame {
         getContentPane().add(LabelAlamatPenerima, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 560, 390, 40));
 
         DetailList.setBackground(new java.awt.Color(255, 255, 255));
-        DetailList.setBorder(null);
         DetailList.setFont(new java.awt.Font("Fira Sans", 0, 14)); // NOI18N
         DetailList.setForeground(new java.awt.Color(76, 76, 76));
         jScrollPane1.setViewportView(DetailList);
@@ -99,7 +99,6 @@ public class DetailPackage extends javax.swing.JFrame {
         LabelResi.setBackground(new java.awt.Color(255, 255, 255));
         LabelResi.setFont(new java.awt.Font("Fira Sans", 1, 18)); // NOI18N
         LabelResi.setForeground(new java.awt.Color(76, 76, 76));
-        LabelResi.setText("jLabel1");
         getContentPane().add(LabelResi, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 410, 40));
 
         ButtonKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Back.png"))); // NOI18N
