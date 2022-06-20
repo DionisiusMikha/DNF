@@ -187,7 +187,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 KirimButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(KirimButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 610, 135, 35));
+        getContentPane().add(KirimButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 620, 135, 35));
 
         HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Home_1.png"))); // NOI18N
         HomeButton.setBorderPainted(false);
@@ -260,7 +260,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 CalculateBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(CalculateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, 135, 35));
+        getContentPane().add(CalculateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 510, 135, 35));
         getContentPane().add(PriceLabelSend, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 550, 380, 60));
 
         PriceLabel.setBackground(new java.awt.Color(237, 238, 254));
@@ -293,7 +293,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 FragileButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(FragileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 410, 71, 71));
+        getContentPane().add(FragileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 410, 80, 71));
 
         FlameableButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_Flammable.png"))); // NOI18N
         FlameableButton.setBorderPainted(false);
@@ -303,7 +303,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 FlameableButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(FlameableButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 410, 72, 71));
+        getContentPane().add(FlameableButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 410, 80, 71));
 
         ProtectButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_SendPackage_Protect.png"))); // NOI18N
         ProtectButton.setBorderPainted(false);
@@ -313,7 +313,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 ProtectButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(ProtectButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 410, 72, 71));
+        getContentPane().add(ProtectButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 410, 80, 71));
 
         SendPackageBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_BG_SendPackage.png"))); // NOI18N
         getContentPane().add(SendPackageBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
