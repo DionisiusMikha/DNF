@@ -9,12 +9,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Frans
  */
-public class ListUser extends javax.swing.JFrame{
+public class ListUser extends javax.swing.JFrame implements Serializeation{
 
     private HashMap<String, User> userlist = new HashMap<String, User>();
     private HashMap<String, String> usedEmail = new HashMap<String, String>();
@@ -33,26 +34,24 @@ public class ListUser extends javax.swing.JFrame{
         this.usedEmail = usedEmail;
         this.DeliveryList = DeliveryList;
         this.ListKurir = ListKurir;
-        if (userlist.size() != 0) {
-            generate();
-            generateElement();
-        }
+        reset();
         this.SelectedObj=null;
     }
 
     public void generateElement() {
         if(this.ARRListUser.size()!=0){
             DefaultListModel listModel = new DefaultListModel();
+            Collections.sort(ARRListUser, new SortNamaUser());
             for (int i = 0; i < ARRListUser.size(); i++) {
                 String container = ARRListUser.get(i).getUsername() + " - " + ARRListUser.get(i).getEmail();
                 listModel.addElement(container);
             }
-            Collections.sort(ARRListUser, new SortNamaUser());
             JListUser.setModel(listModel);
         }
     }
 
     public void generate() {
+        this.ARRListUser.clear(); 
         for (Map.Entry<String, User> set : userlist.entrySet()) {
             if(!set.getKey().equals("admin")){
                 this.ARRListUser.add(set.getValue());
@@ -72,7 +71,6 @@ public class ListUser extends javax.swing.JFrame{
         jScrollPane1 = new javax.swing.JScrollPane();
         JListUser = new javax.swing.JList<>();
         HapusButton = new javax.swing.JButton();
-        EditButton = new javax.swing.JButton();
         BackButton = new javax.swing.JButton();
         displayUsernameField = new javax.swing.JLabel();
         displayEmailField = new javax.swing.JLabel();
@@ -102,12 +100,12 @@ public class ListUser extends javax.swing.JFrame{
         HapusButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_6.png"))); // NOI18N
         HapusButton.setBorderPainted(false);
         HapusButton.setContentAreaFilled(false);
-        getContentPane().add(HapusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 480, 163, 43));
-
-        EditButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button_5.png"))); // NOI18N
-        EditButton.setBorderPainted(false);
-        EditButton.setContentAreaFilled(false);
-        getContentPane().add(EditButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 480, 165, 43));
+        HapusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HapusButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(HapusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 480, 163, 43));
 
         BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_5_minisize.png"))); // NOI18N
         BackButton.setBorderPainted(false);
@@ -150,12 +148,41 @@ public class ListUser extends javax.swing.JFrame{
     private void JListUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JListUserMouseClicked
         if (evt.getClickCount() == 2 && evt.getButton() == evt.BUTTON1) {
             SelectedObj=JListUser.getSelectedIndex();
+            System.out.println(SelectedObj);
             displayUsernameField.setText(ARRListUser.get(SelectedObj).getUsername());
             displayEmailField.setText(ARRListUser.get(SelectedObj).getEmail());
             displayPasswordField.setText(ARRListUser.get(SelectedObj).getPassword());
         }
     }//GEN-LAST:event_JListUserMouseClicked
 
+    private void HapusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusButtonActionPerformed
+        System.out.println("luar");
+        if(SelectedObj!=-1){
+            System.out.println("dalem");
+            String targetUsername = ARRListUser.get(SelectedObj).getUsername();
+            ARRListUser.remove(SelectedObj);
+            userlist.remove(targetUsername);
+            SelectedObj=-1;
+            JOptionPane.showMessageDialog(null, "Berhasil Menghapus User "+targetUsername, "DNF App", 1);
+            reset();
+            Serializeation.saveUser(userlist);
+        }else{
+            JOptionPane.showMessageDialog(null, "Silahkan pilih user yang ingin dihapus!", "DNF App", 2);
+        }
+    }//GEN-LAST:event_HapusButtonActionPerformed
+
+    private void reset(){
+        DefaultListModel listModel = new DefaultListModel();
+        JListUser.setModel(listModel);
+        if (userlist.size() != 0) {
+            generate();
+            generateElement();
+        }
+        displayUsernameField.setText("");
+        displayEmailField.setText("");
+        displayPasswordField.setText("");
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -194,7 +221,6 @@ public class ListUser extends javax.swing.JFrame{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG_ListUser;
     private javax.swing.JButton BackButton;
-    private javax.swing.JButton EditButton;
     private javax.swing.JButton HapusButton;
     private javax.swing.JList<String> JListUser;
     private javax.swing.JLabel displayEmailField;

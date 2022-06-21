@@ -4,7 +4,7 @@
  */
 package dnfapp;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashMap;
 
 /**
@@ -14,23 +14,23 @@ import java.util.HashMap;
 public class User extends Account implements Serializable{
 
     private String email;
-    private ArrayList<Package> History;
+    private HashMap<String, Package> History;
 
     public User(String username, String password,String email) {
         super(username, password);
         this.email = email;
-        this.History = new ArrayList<Package>();
+        this.History = new HashMap<String, Package>();
     }
 
-    public ArrayList<Package> getHistory() {
+    public void addToHistory(String resi,Package newPackage){
+        History.put(resi, newPackage);
+    }
+
+    public HashMap<String, Package> getHistory() {
         return History;
     }
-    
-    public void addToHistory(Package paket){
-        History.add(paket);
-    }
 
-    public void setHistory(ArrayList<Package> History) {
+    public void setHistory(HashMap<String, Package> History) {
         this.History = History;
     }
 

@@ -7,6 +7,7 @@ package dnfapp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.DefaultListModel;
@@ -38,11 +39,14 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
     private HashMap<String, Package> DeliveryList = new HashMap<String, Package>();
     private HashMap<String, Kurir> ListKurir = new HashMap<String, Kurir>();
 
+    //Container ArrayList
+    ArrayList<Package> userPackage = new ArrayList<Package>();
+    
     //Reset History model
     DefaultListModel resetModel = new DefaultListModel();
     
     //Get Target Package on History
-    private int idx = -1;
+    private String resi = "";
     
     //private Generated HashMaps&ArrayList for City Index
     private HashMap<String, Kota> MapKota = new HashMap<String, Kota>();
@@ -190,6 +194,11 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
         KirimButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Button_Kirim.png"))); // NOI18N
         KirimButton.setBorderPainted(false);
         KirimButton.setContentAreaFilled(false);
+        KirimButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                KirimButtonMouseClicked(evt);
+            }
+        });
         KirimButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 KirimButtonActionPerformed(evt);
@@ -541,7 +550,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 throw new Exception("Alamat masih kosong");
             } else if (TujuanField.getText().equals("")) {
                 throw new Exception("Alamat masih kosong");
-            } else if (KategoriCombobox.getSelectedIndex() == 0) {
+            } else if (send && KategoriCombobox.getSelectedIndex() == 0) {
                 throw new Exception("Silahkan pilih kategori barang");
             } else {
                 if (send) {
@@ -579,101 +588,6 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
     }//GEN-LAST:event_PriceCalcButtonActionPerformed
 
     private void KirimButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KirimButtonActionPerformed
-        LocalDateTime date = LocalDateTime.now();
-        String temp = (String) KategoriCombobox.getSelectedItem();
-        String KotaAsal = (String) AsalCombobox.getSelectedItem();
-        String KotaTujuan = (String) TujuanCombobox.getSelectedItem();
-        String namaPenerima = PenerimaField.getText();
-        String daerahPenerima = AsalField.getText() + ", " + KotaTujuan;
-        String tempBeratBarang = SendBeratField.getText();
-        String nmPengirim = currentUser.getUsername();
-        String daerahPengirim = TujuanField.getText() + ", " + KotaAsal;
-        String keterangan = "MISC";
-        String tempKategori = (String) KategoriCombobox.getSelectedItem();
-
-        String resi = "DF";
-        int bulan = (int) date.getMonthValue();
-        int tanggal = (int) date.getDayOfMonth();
-        int tahun = (int) date.getYear();
-        int jam = (int) date.getHour();
-        int menit = (int) date.getMinute();
-        int detik = (int) date.getSecond();
-        String month = String.valueOf(bulan);
-        String det = String.valueOf(tanggal);
-        String year = String.valueOf(tahun);
-        String timea = String.valueOf(jam);
-        String timeb = String.valueOf(menit);
-        String timec = String.valueOf(detik);
-        char[] charberat = tempBeratBarang.toCharArray();
-        resi += timea + timeb + timec + det + month + year;
-        System.out.println(resi);
-
-        //pengecekan ada yang kosong ato nda
-        boolean lulusGede = true;
-        if ((namaPenerima.equals("") || daerahPenerima.equals("") || nmPengirim.equals("") || daerahPengirim.equals("") || tempKategori.equals("-Kategori-"))) {
-            lulusGede = false;
-            JOptionPane.showMessageDialog(this, "Input tidak valid!", "DnF", 2);
-        }
-
-        boolean lulusCilik = true;
-        String tempMinus = SendBeratField.getText().substring(0, 1);
-        if (SendBeratField.getText().equals("0") || tempMinus.equals("-")) {
-            JOptionPane.showMessageDialog(this, "Berat tidak valid!", "DnF", 2);
-            lulusCilik = false;
-        }
-
-        if (lulusGede == true && lulusCilik == true) { //lulus semua 
-            for (int i = 0; i < charberat.length; i++) {
-                if (charberat[i] >= 65 && charberat[i] <= 122) {
-                    JOptionPane.showMessageDialog(this, "Berat tidak valid!", "DnF", 2);
-                } else if (charberat[i] >= 48 && charberat[i] <= 57) {
-                    int beratBarang = Integer.parseInt(tempBeratBarang);
-                    if (temp.equals("Food and Beverages")) {
-                        Package paket = new FnB(1, resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
-                        paket.updateTrack("Barang diterima DNF");
-                        DeliveryList.put(resi, paket);
-                        currentUser.addToHistory(paket);
-                    } else if (temp.equals("Sports")) {
-                        Package paket = new Sports(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
-                        paket.updateTrack("Barang diterima DNF");
-                        DeliveryList.put(resi, paket);
-                        currentUser.addToHistory(paket);
-                    } else if (temp.equals("Electronic")) {
-                        Package paket = new Electronic(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
-                        paket.updateTrack("Barang diterima DNF");
-                        DeliveryList.put(resi, paket);
-                        currentUser.addToHistory(paket);
-                    } else if (temp.equals("Beauty and Fashion")) {
-                        Package paket = new BnF(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
-                        paket.updateTrack("Barang diterima DNF");
-                        DeliveryList.put(resi, paket);
-                        currentUser.addToHistory(paket);
-                    } else if (temp.equals("Hobby and Collections")) {
-                        Package paket = new HnC(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
-                        paket.updateTrack("Barang diterima DNF");
-                        DeliveryList.put(resi, paket);
-                        currentUser.addToHistory(paket);
-                    } else {
-                        if (keterangan.equals("Masukkan keterangan")) {
-                            Package paket = new Others("-", resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
-                            paket.updateTrack("Barang diterima DNF");
-                            DeliveryList.put(resi, paket);
-                            currentUser.addToHistory(paket);
-                        } else {
-                            Package paket = new Others(keterangan, resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
-                            paket.updateTrack("Barang diterima DNF");
-                            DeliveryList.put(resi, paket);
-                            currentUser.addToHistory(paket);
-                        }
-                    }
-
-                    JOptionPane.showMessageDialog(null, "Entry Paket Berhasil! Nomor Resi : " + resi, "DNF App", 1);
-                    Serializeation.savePackage(DeliveryList);
-                    ButtonController(false, true, false, false, false, false);
-                    PenerimaField.setText("");
-                }
-            }
-        }
 
     }//GEN-LAST:event_KirimButtonActionPerformed
 
@@ -751,12 +665,13 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
     }//GEN-LAST:event_HomeButtonActionPerformed
 
     private void HistoryListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HistoryListMouseClicked
-       this.idx =HistoryList.getSelectedIndex();
+       int idx =HistoryList.getSelectedIndex();
+       this.resi = userPackage.get(idx).getResi();
     }//GEN-LAST:event_HistoryListMouseClicked
 
     private void SeeDetailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeeDetailButtonActionPerformed
-       if(idx!=1){
-           Package Target = currentUser.getHistory().get(idx);
+       if(!resi.equals("")){
+            Package Target = currentUser.getHistory().get(resi);
             DetailPackage DP = new DetailPackage(userlist, usedEmail, DeliveryList, ListKurir, Target, currentUser);
             dispose();
             DP.setVisible(true);
@@ -769,6 +684,105 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
            JOptionPane.showMessageDialog(null, "Tidak ada Paket yang dipilih", "DNF App", 2);
        }
     }//GEN-LAST:event_SeeDetailButtonActionPerformed
+
+    private void KirimButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KirimButtonMouseClicked
+        LocalDateTime date = LocalDateTime.now();
+        String temp = (String) KategoriCombobox.getSelectedItem();
+        String KotaAsal = (String) AsalCombobox.getSelectedItem();
+        String KotaTujuan = (String) TujuanCombobox.getSelectedItem();
+        String namaPenerima = PenerimaField.getText();
+        String daerahPenerima = AsalField.getText() + ", " + KotaTujuan;
+        String tempBeratBarang = SendBeratField.getText();
+        String nmPengirim = currentUser.getUsername();
+        String daerahPengirim = TujuanField.getText() + ", " + KotaAsal;
+        String keterangan = "MISC";
+        String tempKategori = (String) KategoriCombobox.getSelectedItem();
+
+        String resi = "DF";
+        int bulan = (int) date.getMonthValue();
+        int tanggal = (int) date.getDayOfMonth();
+        int tahun = (int) date.getYear();
+        int jam = (int) date.getHour();
+        int menit = (int) date.getMinute();
+        int detik = (int) date.getSecond();
+        String month = String.valueOf(bulan);
+        String det = String.valueOf(tanggal);
+        String year = String.valueOf(tahun);
+        String timea = String.valueOf(jam);
+        String timeb = String.valueOf(menit);
+        String timec = String.valueOf(detik);
+        char[] charberat = tempBeratBarang.toCharArray();
+        resi += timea + timeb + timec + det + month + year;
+        System.out.println(resi);
+
+        //pengecekan ada yang kosong ato nda
+        boolean lulusGede = true;
+        if ((namaPenerima.equals("") || daerahPenerima.equals("") || nmPengirim.equals("") || daerahPengirim.equals("") || tempKategori.equals("-Kategori-"))) {
+            lulusGede = false;
+            JOptionPane.showMessageDialog(this, "Input tidak valid!", "DnF", 2);
+        }
+
+        boolean lulusCilik = true;
+        String tempMinus = SendBeratField.getText().substring(0, 1);
+        if (SendBeratField.getText().equals("0") || tempMinus.equals("-")) {
+            JOptionPane.showMessageDialog(this, "Berat tidak valid!", "DnF", 2);
+            lulusCilik = false;
+        }
+
+        if (lulusGede == true && lulusCilik == true) { //lulus semua 
+            for (int i = 0; i < charberat.length; i++) {
+                if (charberat[i] >= 65 && charberat[i] <= 122) {
+                    JOptionPane.showMessageDialog(this, "Berat tidak valid!", "DnF", 2);
+                } else if (charberat[i] >= 48 && charberat[i] <= 57) {
+                    int beratBarang = Integer.parseInt(tempBeratBarang);
+                    if (temp.equals("Food and Beverages")) {
+                        Package paket = new FnB(1, resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
+                        paket.updateTrack("Barang diterima DNF");
+                        DeliveryList.put(resi, paket);
+                        currentUser.addToHistory(resi, paket);
+                    } else if (temp.equals("Sports")) {
+                        Package paket = new Sports(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, false, keepdry, protectfromheat, extraprotect);
+                        paket.updateTrack("Barang diterima DNF");
+                        DeliveryList.put(resi, paket);
+                        currentUser.addToHistory(resi, paket);
+                    } else if (temp.equals("Electronic")) {
+                        Package paket = new Electronic(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                        paket.updateTrack("Barang diterima DNF");
+                        DeliveryList.put(resi, paket);
+                        currentUser.addToHistory(resi, paket);
+                    } else if (temp.equals("Beauty and Fashion")) {
+                        Package paket = new BnF(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                        paket.updateTrack("Barang diterima DNF");
+                        DeliveryList.put(resi, paket);
+                        currentUser.addToHistory(resi, paket);
+                    } else if (temp.equals("Hobby and Collections")) {
+                        Package paket = new HnC(resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                        paket.updateTrack("Barang diterima DNF");
+                        DeliveryList.put(resi, paket);
+                        currentUser.addToHistory(resi, paket);
+                    } else {
+                        if (keterangan.equals("Masukkan keterangan")) {
+                            Package paket = new Others("-", resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                            paket.updateTrack("Barang diterima DNF");
+                            DeliveryList.put(resi, paket);
+                            currentUser.addToHistory(resi, paket);
+                        } else {
+                            Package paket = new Others(keterangan, resi, nmPengirim, namaPenerima, daerahPengirim, daerahPenerima, beratBarang, fragile, flammable, keepdry, protectfromheat, extraprotect);
+                            paket.updateTrack("Barang diterima DNF");
+                            DeliveryList.put(resi, paket);
+                            currentUser.addToHistory(resi, paket);
+                        }
+                    }
+
+                    JOptionPane.showMessageDialog(null, "Entry Paket Berhasil! Nomor Resi : " + resi, "DNF App", 1);
+                    Serializeation.savePackage(DeliveryList);
+                    Serializeation.saveUser(userlist);
+                    ButtonController(false, true, false, false, false, false);
+                    PenerimaField.setText("");
+                }
+            }
+        }
+    }//GEN-LAST:event_KirimButtonMouseClicked
 
     public void generateCityCalc() {
         MapKota = GenerateCity.generateCityMap(MapKota);
@@ -1092,6 +1106,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
                 PenerimaField.setEditable(true);
                 PenerimaField.setVisible(true);
                 resetHistory();
+                generateHistory();
                 break;
 
             case 6: //Cost Calculator Mode
@@ -1220,11 +1235,15 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
     }
 
     public void generateHistory(){
-        ArrayList<Package> ARRListPackage = currentUser.getHistory();
-        if (ARRListPackage.size() != 0) {
+        HashMap<String, Package> ContainerMap = currentUser.getHistory();
+        userPackage.clear();
+        for (Map.Entry<String, Package> set : ContainerMap.entrySet()) {
+                userPackage.add(set.getValue());
+        }
+        if (userPackage.size() != 0) {
             DefaultListModel listModel = new DefaultListModel();
-            for (int i = 0; i < ARRListPackage.size(); i++) {
-                String container = ARRListPackage.get(i).getResi() + " - " + ARRListPackage.get(i).getSender() + " - " + ARRListPackage.get(i).getReceiver();
+            for (int i = 0; i < userPackage.size(); i++) {
+                String container = userPackage.get(i).getResi() + " - " + userPackage.get(i).getSender() + " - " + userPackage.get(i).getReceiver();
                 listModel.addElement(container);
             }
             HistoryList.setModel(listModel);
@@ -1232,6 +1251,7 @@ public class UserMainMenu extends javax.swing.JFrame implements GenerateCity, Ci
     }
     
     void resetHistory(){
+        this.resi="";
         HistoryList.setModel(this.resetModel);
     }
     
